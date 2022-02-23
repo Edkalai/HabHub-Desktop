@@ -4,22 +4,26 @@
  * and open the template in the editor.
  */
 package entities;
-
+import entities.Individu;
 /**
  *
  * @author Ed
  */
 public class ProprietaireChien {
     int idProprietaireChien;
-    int idUtilisateur;
+    Individu individu;
     String bio;
 
    
 
-    public ProprietaireChien(int idProprietaireChien, int idUtilisateur, String bio) {
+    public ProprietaireChien(int idProprietaireChien, Individu individu, String bio) {
         this.idProprietaireChien = idProprietaireChien;
-        this.idUtilisateur = idUtilisateur;
+        this.individu = individu;
         this.bio = bio;
+    }
+     public ProprietaireChien(int idProprietaireChien) {
+        this.idProprietaireChien = idProprietaireChien;
+     
     }
 
     public int getIdProprietaireChien() {
@@ -30,12 +34,12 @@ public class ProprietaireChien {
         this.idProprietaireChien = idProprietaireChien;
     }
 
-    public int getIdUtilisateur() {
-        return idUtilisateur;
+    public Individu getIndividu() {
+        return individu;
     }
 
-    public void setIdUtilisateur(int idUtilisateur) {
-        this.idUtilisateur = idUtilisateur;
+    public void setIndividu(Individu individu) {
+        this.individu = individu;
     }
 
     public String getBio() {
@@ -48,7 +52,7 @@ public class ProprietaireChien {
     
      @Override
     public String toString() {
-        return "ProprietaireChien{" + "idProprietaireChien=" + idProprietaireChien + ", idUtilisateur=" + idUtilisateur + ", bio=" + bio + '}';
+        return "ProprietaireChien{" + "idProprietaireChien=" + idProprietaireChien + ", \r\n individu=" + individu + ", bio=" + bio + '}';
     }
     
 }

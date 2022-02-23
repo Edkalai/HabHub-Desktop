@@ -4,27 +4,50 @@
  * and open the template in the editor.
  */
 package entities;
+import entities.ProprietaireChien;
 
 public class Chien {
     int idChien;
-    int idProprietaireChien;
+    ProprietaireChien proprietaireChien;
     String nom;
     String sexe;
     String age;
-
-    
     Boolean vaccination;
     String description;
 
-    public Chien(int idChien, int idProprietaireChien, String nom, String sexe, String age, Boolean vaccination, String description) {
+     public Chien() {
+    }
+    public Chien(int idChien, String nom, String sexe, String age, Boolean vaccination, String description) {
         this.idChien = idChien;
-        this.idProprietaireChien = idProprietaireChien;
         this.nom = nom;
         this.sexe = sexe;
         this.age = age;
         this.vaccination = vaccination;
         this.description = description;
     }
+
+    public Chien(int idChien) {
+        this.idChien = idChien;
+    }
+    public Chien(String nom, String sexe, String age, Boolean vaccination, String description) {
+        this.nom = nom;
+        this.sexe = sexe;
+        this.age = age;
+        this.vaccination = vaccination;
+        this.description = description;
+    }
+
+    public Chien(int idChien, ProprietaireChien proprietaireChien, String nom, String sexe, String age, Boolean vaccination, String description) {
+        this.idChien = idChien;
+        this.proprietaireChien = proprietaireChien;
+        this.nom = nom;
+        this.sexe = sexe;
+        this.age = age;
+        this.vaccination = vaccination;
+        this.description = description;
+    }
+    
+ 
 
     public int getIdChien() {
         return idChien;
@@ -34,12 +57,12 @@ public class Chien {
         this.idChien = idChien;
     }
 
-    public int getIdProprietaireChien() {
-        return idProprietaireChien;
+    public ProprietaireChien getProprietaireChien() {
+        return proprietaireChien;
     }
 
-    public void setIdProprietaireChien(int idProprietaireChien) {
-        this.idProprietaireChien = idProprietaireChien;
+    public void setProprietaireChien(ProprietaireChien proprietaireChien) {
+        this.proprietaireChien = proprietaireChien;
     }
 
     public String getNom() {
@@ -83,7 +106,7 @@ public class Chien {
     }
     @Override
     public String toString() {
-        return "Chien{" + "idChien=" + idChien + ", idProprietaireChien=" + idProprietaireChien + ", nom=" + nom + ", sexe=" + sexe + ", age=" + age + ", vaccination=" + vaccination + ", description=" + description + '}';
+        return "Chien{" + "idChien=" + idChien + ", \r\n proprietaireChien=" + proprietaireChien + ", nom=" + nom + ", sexe=" + sexe + ", age=" + age + ", vaccination=" + vaccination + ", description=" + description + '}';
     }
     
 }

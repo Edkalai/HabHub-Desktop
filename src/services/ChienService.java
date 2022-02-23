@@ -1,6 +1,7 @@
 package services;
 
 import entities.Chien;
+import entities.ProprietaireChien;
 import utils.MyDB;
 import java.sql.Connection;
 import java.sql.Date;
@@ -23,14 +24,24 @@ public class ChienService {
 
    
     
-     public void ajouterChien(Chien c) throws SQLException {
+     public void ajouterChienProprietaire(Chien c) throws SQLException {
         PreparedStatement pre = connect.prepareStatement("INSERT INTO chien (idProprietaireChien, nom,sexe,age,vaccination,description)VALUES (?,?,?,?,?,?);");
-        pre.setInt(1,c.getIdProprietaireChien());
+        pre.setInt(1,c.getProprietaireChien().getIdProprietaireChien());
         pre.setString(2,c.getNom());
         pre.setString(3,c.getSexe());
         pre.setString(4,c.getAge());
         pre.setBoolean(5,c.getVaccination());
         pre.setString(6,c.getDescription());
+        pre.executeUpdate();
+    }
+     
+     public void ajouterChienSansProprietaire(Chien c) throws SQLException {
+        PreparedStatement pre = connect.prepareStatement("INSERT INTO chien (nom,sexe,age,vaccination,description)VALUES (?,?,?,?,?);");
+        pre.setString(1,c.getNom());
+        pre.setString(2,c.getSexe());
+        pre.setString(3,c.getAge());
+        pre.setBoolean(4,c.getVaccination());
+        pre.setString(5,c.getDescription());
         pre.executeUpdate();
     }
    
@@ -76,15 +87,16 @@ public class ChienService {
 
     }
     
-       public List<Chien> afficherChien() throws SQLException {
+       public List<Chien> afficherChiens() throws SQLException {
         List<Chien> chiens = new ArrayList<>();
         String req = "select * from chien;";
         ste = connect.createStatement();
         ResultSet rst = ste.executeQuery(req);
 
         while (rst.next()) {
+            ProprietaireChien npc = new ProprietaireChien(rst.getInt("idProprietaireChien"));
             Chien a = new Chien(rst.getInt("idChien"),
-            rst.getInt("idProprietaireChien"),
+            npc,
             rst.getString("nom"),
             rst.getString("sexe"),
             rst.getString("age"),
@@ -95,6 +107,24 @@ public class ChienService {
             chiens.add(a);
         }
         return chiens;
+    }
+       
+       public Chien findChienById(int id) throws SQLException {
+       Chien c = new Chien();
+        String req = "select * from chien where idChien=? ";
+        PreparedStatement ps = connect.prepareStatement(req);
+            ps.setInt(1, id);
+            ResultSet rst = ps.executeQuery();
+            while (rst.next()) {
+                c.setIdChien(rst.getInt(1));
+                c.getProprietaireChien().setIdProprietaireChien(rst.getInt(2));
+                c.setNom(rst.getString(3));
+                c.setSexe(rst.getString(4));
+                c.setAge(rst.getString(5));
+                c.setVaccination(rst.getBoolean(6));
+                c.setDescription(rst.getString(7));
+            }
+            return c;
     }
         
      

@@ -4,21 +4,24 @@
  * and open the template in the editor.
  */
 package entities;
+import java.util.Date;
+import entities.Chien;
+
 
 public class AnnonceProprietaireChien {
     int idAnnonceProprietaireChien;
-    int idChien;
-    String datePublication;
+    Chien chien;
+    Date datePublication;
     String description;
     String type;
-    String datePerte;
+    Date datePerte;
     String localisation;
     String messageVocal;
 
 
-  public AnnonceProprietaireChien(int idAnnonceProprietaireChien, int idChien, String datePublication,String description,String type,String localisation ) {
+  public AnnonceProprietaireChien(int idAnnonceProprietaireChien, Chien chien, Date datePublication,String description,String type,String localisation ) {
         this.idAnnonceProprietaireChien=idAnnonceProprietaireChien;
-        this.idChien=idChien;
+        this.chien=chien;
         this.datePublication=datePublication;
         this.description=description;
         this.type=type;
@@ -26,10 +29,10 @@ public class AnnonceProprietaireChien {
              
     }
 
-  public AnnonceProprietaireChien(int idAnnonceProprietaireChien, int idChien, String datePublication,String description,String type,String datePerte,
+  public AnnonceProprietaireChien(int idAnnonceProprietaireChien, Chien chien, Date datePublication,String description,String type,Date datePerte,
           String localisation,String messageVocal ) {
         this.idAnnonceProprietaireChien=idAnnonceProprietaireChien;
-        this.idChien=idChien;
+        this.chien=chien;
         this.datePublication=datePublication;
         this.description=description;
         this.type=type;
@@ -49,19 +52,19 @@ public class AnnonceProprietaireChien {
         this.idAnnonceProprietaireChien = idAnnonceProprietaireChien;
     }
 
-    public int getIdChien() {
-        return idChien;
+    public Chien getChien() {
+        return chien;
     }
 
-    public void setIdChien(int idChien) {
-        this.idChien = idChien;
+    public void setChien(Chien chien) {
+        this.chien = chien;
     }
 
-    public String getDatePublication() {
+    public Date getDatePublication() {
         return datePublication;
     }
 
-    public void setDatePublication(String datePublication) {
+    public void setDatePublication(Date datePublication) {
         this.datePublication = datePublication;
     }
 
@@ -81,11 +84,11 @@ public class AnnonceProprietaireChien {
         this.type = type;
     }
 
-    public String getDatePerte() {
+    public Date getDatePerte() {
         return datePerte;
     }
 
-    public void setDatePerte(String datePerte) {
+    public void setDatePerte(Date datePerte) {
         this.datePerte = datePerte;
     }
 
@@ -109,7 +112,7 @@ public class AnnonceProprietaireChien {
     
   @Override
     public String toString() {
-        return "AnnonceProprietaireChien{" + "idAnnonceProprietaireChien=" + idAnnonceProprietaireChien + ", idChien=" + idChien + ", datePublication=" + datePublication + ", description=" + description + ", type=" + type + ", datePerte=" + datePerte + ", localisation=" + localisation + ", messageVocal=" + messageVocal + '}';
+        return "AnnonceProprietaireChien{" + "idAnnonceProprietaireChien=" + idAnnonceProprietaireChien + ", \r\n chien=" + chien + ", datePublication=" + datePublication + ", description=" + description + ", type=" + type + ", datePerte=" + datePerte + ", localisation=" + localisation + ", messageVocal=" + messageVocal + '}';
     }
 
 

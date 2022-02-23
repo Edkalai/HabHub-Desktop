@@ -7,6 +7,8 @@ package habhub;
 
 import entities.AnnonceProprietaireChien;
 import entities.ProprietaireChien;
+import entities.Utilisateur;
+import entities.Individu;
 import entities.Chien;
 import services.AnnonceProprietaireChienService;
 import services.ProprietaireChienService;
@@ -15,6 +17,7 @@ import services.ProprietaireChienService;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Date;
 
 
 
@@ -25,33 +28,35 @@ public class HabHub {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ProprietaireChien pc = new ProprietaireChien (-1,2,"azeazeazeazeaze");
+        Individu i = new Individu(1);
+        ProprietaireChien pc = new ProprietaireChien (10,i,"azeazeazeazeaze");
         ProprietaireChienService pcs=new ProprietaireChienService();
-        Chien c = new Chien(1,1,"aa","M","6mois",true,"aaaaa");
+        Chien c = new Chien(11,pc,"aa","M","2mois",true,"aaaaa");
         ChienService cs = new ChienService();
-        AnnonceProprietaireChien a = new AnnonceProprietaireChien(-1,1,"25/02/2020","hentita","A","Ezzahra");
+          
+       
+        AnnonceProprietaireChien acp = new AnnonceProprietaireChien(11,c,new Date("2009/10/10"),"hentita","P",new Date("2009/10/10"),"Rades","heeeeeeelp");
+                AnnonceProprietaireChien ac = new AnnonceProprietaireChien(12,c,new Date("2009/10/10"),"hentita","A","lBorj");
+
         AnnonceProprietaireChienService sa=new AnnonceProprietaireChienService();
         
-            //pcs.updateProprietaireChien(4, "aaaaaa");
-            //cs.updateChien(1,"test","M","5mois",true,"Golden");
-            /*try {
-           pcs.delete(1);
-            
-            
-           
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }*/
-       
-        /*
-        try {
-            pcs.ajouterProprietaireChien(pc);
+        sa.updateAnnonceProprietaireChien(acp);
+          
+         /* try {
+            sa.ajouterAnnonceProprietaireChien(ac);
             System.out.println("ajout avec succes");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+      
+            try {
+            System.out.println(sa.FilterAnnonceProprietaireChien("P","localisation","Ezzahra"));
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
         try {
-            cs.ajouterChien(c);
+        try {
+            cs.ajouterChienProprietaire(c);
             System.out.println("ajout avec succes");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -62,31 +67,63 @@ public class HabHub {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        pcs.ajouterProprietaireChien(pc);
+            System.out.println("ajout avec succes");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+         try {
+            sa.ajouterAnnonceChienPerdu(a);
+            System.out.println("ajout avec succes");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
         */
         
+        
+            //pcs.updateProprietaireChien(3, "test modification");
+            //cs.updateChien(1,"test","M","5mois",true,"Golden");
+          /*  try {
+           pcs.delete(5);
+            
+            
+           
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }*/
+       
+      /*try {
+            
+          */
+          
+            /*
+        
+       
+        
+        */
+        /*
         try {
             System.out.println(pcs.afficherProprietaireChien());
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        
-         try {
-            System.out.println(cs.afficherChien());
+        */
+        /* try {
+            //System.out.println(cs.afficherChiens());
+            System.out.println(c.getIdChien());
+            System.out.println(cs.findChienById(c.getIdChien()));
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-         
-          try {
+        /* try {
             System.out.println(sa.afficherAnnonceAccouplement());
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }
+        } */
+         /*
+          
          
-          try {
-            System.out.println(sa.afficherAnnonceChienPerdu());
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+         */
     
     }
         

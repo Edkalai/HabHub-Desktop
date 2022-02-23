@@ -1,6 +1,7 @@
 package services;
 
 import entities.ProprietaireChien;
+import entities.Individu;
 import utils.MyDB;
 import java.sql.Connection;
 import java.sql.Date;
@@ -24,8 +25,8 @@ public class ProprietaireChienService {
    
     
      public void ajouterProprietaireChien(ProprietaireChien p) throws SQLException {
-        PreparedStatement pre = connect.prepareStatement("INSERT INTO proprietaire_chien (idUtilisateur, bio)VALUES (?,?);");
-        pre.setInt(1,p.getIdUtilisateur());
+        PreparedStatement pre = connect.prepareStatement("INSERT INTO proprietaire_chien (idIndividu, bio)VALUES (?,?);");
+        pre.setInt(1,p.getIndividu().getIdIndividu());
         pre.setString(2,p.getBio());
         pre.executeUpdate();
     }
@@ -75,8 +76,9 @@ public class ProprietaireChienService {
         ResultSet rst = ste.executeQuery(req);
 
         while (rst.next()) {
+            Individu nI = new Individu (rst.getInt("idIndividu"));
             ProprietaireChien p = new ProprietaireChien(rst.getInt("idProprietaireChien"),
-            rst.getInt("idUtilisateur"),
+            nI,
             rst.getString("bio"));
             proprietairesChien.add(p);
         }
