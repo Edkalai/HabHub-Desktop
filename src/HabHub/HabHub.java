@@ -4,44 +4,95 @@
  * and open the template in the editor.
  */
 package habhub;
-
+import entities.Revue;
 import entities.Business;
+import entities.Individu;
+import entities.ServiceBusiness;
+import entities.Reservation;
+import entities.Utilisateur;
 import java.sql.SQLException;
-import services.BusinessServices;
+import services.UserBusinessServices;
+import services.ServiceBusinessServices;
 
+import services.RevueServices;
+import java.util.Date;
+import java.sql.Timestamp;
+import services.ReservationServices;
 
 
 public class HabHub {
 
     /**
      * @param args the command line arguments
-     */
+     **/
     public static void main(String[] args) {
         // TODO code application logic here
-        /*Business B1 = new Business("salma","Nouisser",10,"15h-19h","Ariana","yrltsggdfg");*/
-        Business B2 = new Business(-1,"ines","selmi",10,"15h-19h","Ariana","yrltsggdfg");
+    
+        //Reservation Res1 = new Reservation(-1);
+        //Business B2 = new Business(-1,"nada","nouisser",10,new Date("2022-10-26"),"Ariana","yrltsggdfg");
 
-       
-        BusinessServices BS1 = new BusinessServices();
+        //Revue R1 = new Revue(2,7,0,3,"revue produit ahmed");
+         // Utilisateur U2 = new Utilisateur("mariem123456@gmail.com","mdp",92962405,"business");
+        ///Business UB2 = new Business(-1,U2,"DogSalon","","","","");
+
+        //Individu I1 = new Individu(U2.getIdUtilisateur());
+        //Revue R2 = new Revue(I1,UB2,5,"revue business aziz");
+        RevueServices RS1 = new RevueServices();
+        //RevueServices RS2 = new RevueServices();
         
-        try {
-            BS1.ajouter(B2);
+        
+        
+        
+        //Utilisateur U2 = new Utilisateur("aziz@gmail.com","mdp",98745632,"business");
+        //Business UB2 = new Business(-1,U2,"petstore","","","","");
+        UserBusinessServices UBS1 = new UserBusinessServices();
+        
+        
+        
+        
+        
+        
+        
+        //Timestamp HrDeb = new Timestamp(System.currentTimeMillis());
+       // Timestamp HrFin = new Timestamp(System.currentTimeMillis());
+        //Reservation RV1 = new Reservation (-1,8,2,HrDeb,HrFin);
+        //ReservationServices RVS1= new ReservationServices();
+        //ServiceBusiness SB1 = new ServiceBusiness(-1,UB2,"grooming",20);
+        //ServiceBusinessServices SBS1 = new ServiceBusinessServices();
+       /* try {
+            //BS1.ajouter(B2);
+            //RS1.ajouterRevueProduit(R1);
+            //RS1.ajouterRevueBusiness(R2);
+            //UBS1.ajouter(UB2,U2);
+            //SBS1.ajouter(SB1);
+            //RVS1.ajouter(RV1); 
+            
             System.out.println("ajout avec succes");
-            BS1.Update(14,"petstore","BENSLIMEN",600,"15h-19h","Ariana","yrltsggdfg");
-        } catch (SQLException ex) {
+            //BS1.Update(19,"iheb","mejri",10,"15h-19h","Ariana","yrltsggdfg");
+            //BS1.delete(1);
+            
+            
+            
+                } catch (SQLException ex) {
             System.out.println(ex.getMessage());
 
-        }
+        }*/
         
-        try {
-            System.out.println(BS1.afficherBusiness());
+         try {
+            //System.out.println("jmeet el bizbiz");
+            //System.out.println(RS1.afficherRevueBusiness("petstore"));
+            //System.out.println("jmeet el produit");
+            //System.out.println(RS1.afficherRevueProduit());
+            //System.out.println(SBS1.filterBusinessByType("vet")); 
+            //System.out.println(SBS1.filterBusinessBy2Variables("vet","ville","ariana")); 
+              System.out.println(UBS1.afficherBusiness()); 
+
+            //System.out.println(UBS1.afficherVet());
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        
-  
-       
-        
+          
+ 
     }
     
 }

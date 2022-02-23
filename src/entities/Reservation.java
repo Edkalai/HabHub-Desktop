@@ -6,7 +6,7 @@
 package entities;
 
 import java.util.logging.Logger;
-
+import java.sql.Timestamp;
 /**
  *
  * @author User
@@ -15,8 +15,26 @@ public class Reservation {
     int idReservation;
     int idProprietaireChien ;
     int idBusinessServices;
-    String dateHeureDebut;
-    String dateHeureFin;
+    Timestamp dateHeureDebut;
+    Timestamp dateHeureFin;
+
+    
+
+    public Reservation(int idProprietaireChien, int idBusinessServices,Timestamp dateHeureDebut,Timestamp dateHeureFin) {
+        this.idProprietaireChien = idProprietaireChien;
+        this.idBusinessServices = idBusinessServices;
+        this.dateHeureDebut = dateHeureDebut;
+        this.dateHeureFin = dateHeureFin;
+
+    }
+    public Reservation(int idReservation,int idProprietaireChien, int idBusinessServices, Timestamp dateHeureDebut,java.sql.Timestamp dateHeureFin) {
+        this.idReservation = idReservation;
+        this.idProprietaireChien = idProprietaireChien;
+        this.idBusinessServices = idBusinessServices;
+        this.dateHeureDebut = dateHeureDebut;
+        this.dateHeureFin = dateHeureFin;
+
+    }
 
     public void setIdReservation(int idReservation) {
         this.idReservation = idReservation;
@@ -30,23 +48,13 @@ public class Reservation {
         this.idBusinessServices = idBusinessServices;
     }
 
-    public void setDateHeureDebut(String dateHeureDebut) {
+    public void setDateHeureDebut(Timestamp dateHeureDebut) {
         this.dateHeureDebut = dateHeureDebut;
     }
 
-    public void setDateHeureFin(String dateHeureFin) {
+    public void setDateHeureFin(Timestamp dateHeureFin) {
         this.dateHeureFin = dateHeureFin;
     }
-
-    public Reservation(int idReservation, int idProprietaireChien, int idBusinessServices, String dateHeureDebut,String dateHeureFin) {
-        this.idReservation = idReservation;
-        this.idProprietaireChien = idProprietaireChien;
-        this.idBusinessServices = idBusinessServices;
-        this.dateHeureDebut = dateHeureDebut;
-        this.dateHeureFin = dateHeureFin;
-
-    }
-
     public int getIdReservation() {
         return idReservation;
     }
@@ -59,11 +67,11 @@ public class Reservation {
         return idBusinessServices;
     }
 
-    public String getDateHeureDebut() {
+    public Timestamp getDateHeureDebut() {
         return dateHeureDebut;
     }
 
-    public String getDateHeureFin() {
+    public Timestamp getDateHeureFin() {
         return dateHeureFin;
     }
     

@@ -5,6 +5,7 @@
  */
 package services;
 
+import entities.Business;
 import entities.ServiceBusiness;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,24 +29,23 @@ public class ServiceBusinessServices implements Interface_ServiceBusiness {
         
 }
     public void ajouter(ServiceBusiness S)throws SQLException {
-        PreparedStatement pre = connect.prepareStatement("INSERT INTO business_services (idBusinessServices,idBusiness,nomService,prix)VALUES (?,?,?,?);");
-        pre.setInt(1, S.getIdBusinessServices());
-        pre.setInt(2, S.getIdBusiness());
-        pre.setString(3, S.getNomService());
-        pre.setFloat(4,S.getPrix());
+        Business B = new Business(9);
+        PreparedStatement pre = connect.prepareStatement("INSERT INTO business_services (idBusiness,nomService,prix)VALUES (?,?,?);");
+        pre.setInt(1, B.getIdBusiness());
+        pre.setString(2, S.getNomService());
+        pre.setFloat(3,S.getPrix());
 
         pre.executeUpdate();
    }
  
 
- public boolean Update(int idBusiness,String nomService,float prix,int idBusinessServices) {
+ public boolean Update(String nomService,float prix,int idBusinessServices) {
             try {
 
-            PreparedStatement pre = connect.prepareStatement("UPDATE business_services SET idBusiness = ? , nomService= ? , prix= ?  where idBusinessServices= ? ;");
-            pre.setInt(1, idBusiness);
-            pre.setString(2, nomService);
-            pre.setFloat(3, prix);   
-            pre.setInt(5,idBusinessServices);
+            PreparedStatement pre = connect.prepareStatement("UPDATE business_services  nomService= ? , prix= ?  where idBusinessServices= ? ;");
+            pre.setString(1, nomService);
+            pre.setFloat(2, prix);   
+            pre.setInt(3,idBusinessServices);
 
             if (pre.executeUpdate() != 0) {
                 System.out.println(" Business Service Updated");
@@ -72,19 +72,75 @@ public class ServiceBusinessServices implements Interface_ServiceBusiness {
         return false;
 
     }
- public List<ServiceBusiness> afficherBusinessServices() throws SQLException{
+ 
+    public List<ServiceBusiness> afficherBusinessServices() throws SQLException{
         List<ServiceBusiness> BServices = new ArrayList<>();
-        String req = "select * from reservation;";
+        String req = "select * from business_services;";
         stm = connect.createStatement();
         ResultSet rst = stm.executeQuery(req);
             while (rst.next()) {
             ServiceBusiness BS = new ServiceBusiness (rst.getInt("idBusinessServices"),
-            rst.getInt("idBusiness"),
+            new Business(rst.getInt("idBusiness")),
             rst.getString("nomService"),
             rst.getFloat("prix"));
-
+//SELECT * from business_services BS JOIN business B on BS.idBusiness=B.idBusiness join utilisateur U on U.idUtilisateur=B.idUtilisateur where U.type='business'
             BServices.add(BS);
         }
         return BServices;
         }
+    
+        public List<ServiceBusiness> filterBusinessById (int businessId) throws SQLException{
+        List<ServiceBusiness> BServices = new ArrayList<>();
+        PreparedStatement stm = connect.prepareStatement("select idBusinessServices,nomService,prix from business_services where idBusiness=?;");
+        stm.setInt(1,businessId);
+        ResultSet rst = stm.executeQuery();
+         
+            while (rst.next()) {
+            ServiceBusiness BS = new ServiceBusiness (rst.getInt("idBusinessServices"),
+            new Business(),
+            rst.getString("nomService"),
+            rst.getFloat("prix"));
+            BServices.add(BS);
         }
+        return BServices;
+        
+    }
+    
+    
+        public List<ServiceBusiness> filterBusinessByType (String businessType) throws SQLException{
+        List<ServiceBusiness> BServices = new ArrayList<>();
+        PreparedStatement stm = connect.prepareStatement("select idBusinessServices,titre,description,nomService,prix from business_services BS JOIN business B on BS.idBusiness=B.idBusiness where B.type=?;");
+        stm.setString(1,businessType);
+        ResultSet rst = stm.executeQuery();
+         
+            while (rst.next()) {
+            ServiceBusiness BS = new ServiceBusiness (rst.getInt("idBusinessServices"),
+            new Business(rst.getString("titre"),rst.getString("description")),
+            rst.getString("nomService"),
+            rst.getFloat("prix"));
+            BServices.add(BS);
+        }
+        return BServices;
+        
+    }
+    
+     public List<ServiceBusiness> filterBusinessBy2Variables (String businessType,String filter,String value) throws SQLException{
+        List<ServiceBusiness> BServices = new ArrayList<>();
+        PreparedStatement stm = connect.prepareStatement("select * from business_services BS JOIN business B on BS.idBusiness=B.idBusiness where B.type=? and "+filter+"=?;");
+        stm.setString(1,businessType);
+        stm.setString(2,value);
+
+        ResultSet rst = stm.executeQuery();
+         
+            while (rst.next()) {
+            ServiceBusiness BS = new ServiceBusiness (rst.getInt("idBusinessServices"),
+            new Business(rst.getString("titre")),
+            rst.getString("nomService"),
+            rst.getFloat("prix"));
+            BServices.add(BS);
+        }
+        return BServices;
+        
+    }
+
+}

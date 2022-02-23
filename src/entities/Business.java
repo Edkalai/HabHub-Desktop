@@ -5,37 +5,120 @@
  */
 package entities;
 
+import java.util.ArrayList;
+import java.util.List;
+import services.ServiceBusinessServices;
+
 /**
  *
  * @author User
  */
 public class Business {
     int idBusiness;
-    String titre;
+    Utilisateur user;
+    String titre; 
     String description;
-    float prix;
     String horaire;
     String ville;
     String localisation;
+    String type;
+    int optional;
+    int optional2;
+    List<ServiceBusiness> BServices = new ArrayList<>();
 
-    public Business( String titre, String description, float prix, String horaire, String ville, String localisation) {
+    public List<ServiceBusiness> getBServices() {
+        return BServices;
+    }
+
+    public void setBServices(List<ServiceBusiness> BServices) {
+        this.BServices = BServices;
+    }
+
+        
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    
+   public Business(){
+    } 
+    
+    public Business(int idBusiness){
+        this.idBusiness=idBusiness;  
+    }
+    public Business(String titre){
+        this.titre=titre;  
+    }
+     public Business(int idBusiness,String titre){
+        this.idBusiness=idBusiness;  
+        this.titre=titre;  
+    }
+    public Business(String titre,String description){
+        this.titre=titre;  
+        this.description=description;  
+
+    }
+    public Business( String titre, String description, String horaire, String ville, String localisation,String type) {
         this.titre = titre;
         this.description = description;
-        this.prix = prix;
         this.horaire = horaire;
         this.ville = ville;
         this.localisation = localisation;
+        this.type = type;
+
     }
-    public Business(int idBusiness, String titre, String description, float prix, String horaire, String ville, String localisation) {
+    public Business(int idBusiness, String titre, String description, String horaire, String ville, String localisation,String type) {
         this.idBusiness = idBusiness;
         this.titre = titre;
         this.description = description;
-        this.prix = prix;
         this.horaire = horaire;
         this.ville = ville;
         this.localisation = localisation;
+        this.type = type;
+
+    
     }
 
+    public Business(int idBusiness, Utilisateur user, String titre, String description, String horaire, String ville, String localisation,String type) {
+        this.idBusiness = idBusiness;
+        this.user = user;
+        this.titre = titre;
+        this.description = description;
+        this.horaire = horaire;
+        this.ville = ville;
+        this.localisation = localisation;
+        this.type = type;
+
+    }
+    public Business(int idBusiness,String titre, String description, String horaire, String ville, String localisation,String type,List<ServiceBusiness> BServices ,int optional,int optional2) {
+        this.idBusiness = idBusiness;
+        this.titre = titre;
+        this.description = description;
+        this.horaire = horaire;
+        this.ville = ville;
+        this.localisation = localisation;
+        this.type = type;
+        this.BServices=BServices;
+        this.optional=optional;
+        this.optional2=optional2;
+
+    }
+/*
+    public Business(int idBusiness, Utilisateur user, String titre, String description, String horaire, String ville, String localisation,String type,) {
+        this.idBusiness = idBusiness;
+        this.user = user;
+        this.titre = titre;
+        this.description = description;
+        this.horaire = horaire;
+        this.ville = ville;
+        this.localisation = localisation;
+        this.type = type;
+
+    }*/
     public int getIdBusiness() {
         return idBusiness;
     }
@@ -45,12 +128,10 @@ public class Business {
     }
 
     public String getDescription() {
+     
         return description;
     }
 
-    public float getPrix() {
-        return prix;
-    }
 
     public String getHoraire() {
         return horaire;
@@ -76,10 +157,6 @@ public class Business {
         this.description = description;
     }
 
-    public void setPrix(float prix) {
-        this.prix = prix;
-    }
-
     public void setHoraire(String horaire) {
         this.horaire = horaire;
     }
@@ -94,7 +171,7 @@ public class Business {
 
     @Override
     public String toString() {
-        return "Business{" + "idBusiness=" + idBusiness + ", titre=" + titre + ", description=" + description + ", prix=" + prix + ", horaire=" + horaire + ", ville=" + ville + ", localisation=" + localisation + '}';
+        return "Business{" + "idBusiness=" + idBusiness +/* ", idUtilisateur=" + user.idUtilisateur +*/", titre=" + titre + ", description=" + description + ", horaire=" + horaire + ", ville=" + ville + ", localisation=" + localisation + ", type=" + type +", listBS=" + BServices +'}';
     }
     
 }

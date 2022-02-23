@@ -7,6 +7,7 @@ package services;
 
 import entities.Reservation;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -15,9 +16,10 @@ import java.util.List;
  */
 public interface Interface_Reservation {
     public void ajouter(Reservation R)throws SQLException;
-    public boolean Update(int idReservation,int idProprietaireChien,int idBusinessServices,String dateHeureDebut,String dateHeureFin);
+    public boolean Update(int idReservation,int idProprietaireChien,int idBusinessServices, Timestamp dateHeureDebut,Timestamp  dateHeureFin);
     public boolean delete(Integer idReservation) throws SQLException ;
     public List<Reservation> afficherReservation() throws SQLException;
+
 
 
 }

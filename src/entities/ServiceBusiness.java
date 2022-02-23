@@ -11,23 +11,38 @@ package entities;
  */
 public class ServiceBusiness {
    int idBusinessServices;
-   int idBusiness;
+   Business business;
    String nomService;
    float prix;
-
-    public ServiceBusiness(int idBusinessServices, int idBusiness, String nomService, float prix) {
+   
+    public ServiceBusiness() {
+       
+    }
+      public ServiceBusiness(int idBusinessServices,String nomService, float prix) {
         this.idBusinessServices = idBusinessServices;
-        this.idBusiness = idBusiness;
+        this.business = business;
         this.nomService = nomService;
         this.prix = prix;
     }
+    
+   
+    public ServiceBusiness(int idBusinessServices, Business business, String nomService, float prix) {
+        this.idBusinessServices = idBusinessServices;
+        this.business = business;
+        this.nomService = nomService;
+        this.prix = prix;
+    }
+    
+    
+     
+    
 
     public int getIdBusinessServices() {
         return idBusinessServices;
     }
 
-    public int getIdBusiness() {
-        return idBusiness;
+    public int getidBusiness() {
+        return business.idBusiness;
     }
 
     public String getNomService() {
@@ -42,8 +57,8 @@ public class ServiceBusiness {
         this.idBusinessServices = idBusinessServices;
     }
 
-    public void setIdBusiness(int idBusiness) {
-        this.idBusiness = idBusiness;
+    public void setIdBusiness(Business business) {
+        this.business.idBusiness = business.idBusiness;
     }
 
     public void setNomService(String nomService) {
@@ -56,7 +71,7 @@ public class ServiceBusiness {
 
     @Override
     public String toString() {
-        return "ServiceBusiness{" + "idBusinessServices=" + idBusinessServices + ", idBusiness=" + idBusiness + ", nomService=" + nomService + ", prix=" + prix + '}';
+        return "ServiceBusiness{" + "idBusinessServices=" + idBusinessServices + ", idBusiness=" + business.idBusiness + ", nomService=" + nomService + ", prix=" + prix + "} \r\n";
     }
     
    

@@ -5,43 +5,56 @@
  */
 package services;
 
-import java.sql.Connection;
-import java.sql.Statement;
-import utils.MyDB;
 import entities.Business;
+import entities.ServiceBusiness;
+import entities.Utilisateur;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import utils.MyDB;
 
 /**
  *
  * @author User
  */
-public class BusinessServices implements Interface_Business {
-      Connection connect;
+public class UserBusinessServices {
+     Connection connect;
       Statement stm;
 
-    public BusinessServices() {
+    public UserBusinessServices() {
         connect=MyDB.getInstance().getConnexion();
     }
     
-    public void ajouter(Business B)throws SQLException {
-        PreparedStatement pre = connect.prepareStatement("INSERT INTO business (titre,description,prix,horaire,ville,localisation)VALUES (?,?,?,?,?,?);");
-        /*pre.setInt(1, B.getIdBusiness());
+    public void ajouter(Business B,Utilisateur U)throws SQLException {
+        PreparedStatement preUser = connect.prepareStatement("INSERT INTO utilisateur (email,password,numTel,type)VALUES (?,?,?,?);");
+        preUser.setString(1, U.getEmail());
+        preUser.setString(2, U.getPassword());
+        preUser.setInt(3, U.getNumTel());
+        preUser.setString(4, U.getType());
+        preUser.executeUpdate();
+        
+        PreparedStatement stm = connect.prepareStatement("select idUtilisateur from utilisateur where email =?;");
+        stm.setString(1, U.getEmail());
+        ResultSet rst = stm.executeQuery();
+        
+        Utilisateur u = new Utilisateur ();
+        while (rst.next()){
+        u.setIdUtilisateur(rst.getInt("idUtilisateur"));
+        }
+      
+        PreparedStatement pre = connect.prepareStatement("INSERT INTO business (idUtilisateur,titre,description,horaire,ville,localisation,type)VALUES (?,?,?,?,?,?,?);");
+        pre.setInt(1,u.getIdUtilisateur());      
         pre.setString(2, B.getTitre());
         pre.setString(3, B.getDescription());
-        pre.setFloat(4, B.getPrix());
-        pre.setString(5, B.getHoraire());
-        pre.setString(6, B.getVille());
-        pre.setString(7, B.getLocalisation());*/
-        pre.setString(1, B.getTitre());
-        pre.setString(2, B.getDescription());
-        pre.setFloat(3, B.getPrix());
         pre.setString(4, B.getHoraire());
         pre.setString(5, B.getVille());
         pre.setString(6, B.getLocalisation());
+        pre.setString(6, B.getType());
+
                                     
         pre.executeUpdate();
 
@@ -52,12 +65,12 @@ public class BusinessServices implements Interface_Business {
      public boolean Update(int idBusiness,String titre,String description,float prix,String horaire,String ville,String localisation) {
             try {
 
-            PreparedStatement pre = connect.prepareStatement("UPDATE business SET titre = ? , description= ? , prix= ? , horaire= ? , ville= ? , localisation= ? where idBusiness= ? ;");
+            PreparedStatement pre = connect.prepareStatement("UPDATE business SET titre = ? , description= ? , horaire= ? , ville= ? , localisation= ? type=? where idBusiness= ? ;");
             pre.setString(1, titre);
             pre.setString(2, description);   
-            pre.setFloat(3,prix);
-            pre.setString(4,horaire);
-            pre.setString(5, ville);
+            pre.setString(3,horaire);
+            pre.setString(4, ville);
+            pre.setString(5, localisation);
             pre.setString(6, localisation);
             pre.setInt(7, idBusiness);
 
@@ -90,6 +103,8 @@ public class BusinessServices implements Interface_Business {
  
         public List<Business> afficherBusiness() throws SQLException{
         List<Business> businesses = new ArrayList<>();
+        ServiceBusinessServices SBS1 = new ServiceBusinessServices();
+
         String req = "select * from business;";
         stm = connect.createStatement();
         ResultSet rst = stm.executeQuery(req);
@@ -97,14 +112,17 @@ public class BusinessServices implements Interface_Business {
             Business a = new Business(rst.getInt("idBusiness"),
             rst.getString("titre"),
             rst.getString("description"),
-            rst.getFloat("prix"),
             rst.getString("horaire"),
             rst.getString("ville"),
-            rst.getString("localisation"));
+            rst.getString("localisation"),
+            rst.getString("type"),SBS1.filterBusinessById(rst.getInt("idBusiness")),15,16 );
 
 
             businesses.add(a);
         }
         return businesses;
         }
+        
+//  public List<ServiceBusiness> filterBusinessById (int businessId) throws SQLException;
+        
         }

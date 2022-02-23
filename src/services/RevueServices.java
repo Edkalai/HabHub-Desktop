@@ -5,6 +5,8 @@
  */
 package services;
 
+import entities.Business;
+import entities.Individu;
 import entities.Revue;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,24 +29,24 @@ public class RevueServices implements Interface_Revue {
       connect=MyDB.getInstance().getConnexion();
 
     }
-       public void ajouter(Revue R)throws SQLException {
-        PreparedStatement pre = connect.prepareStatement("INSERT INTO revue (idRevue,idUtilisateur,nbEtoiles,commentaire)VALUES (?,?,?,?);");
-        pre.setInt(1, R.getIdRevue());
-        pre.setInt(2, R.getIdUtilisateur());
-        pre.setInt(3, R.getNbEtoiles());
-        pre.setString(4,R.getCommentaire());
+        @Override
+       public void ajouterRevueBusiness(Revue R)throws SQLException {
+        PreparedStatement pre = connect.prepareStatement("INSERT INTO revue (idIndividu,idBusiness,nbEtoiles,commentaire)VALUES (?,?,?,?);");
 
-        pre.executeUpdate();
+            pre.setInt(1, R.getIndividu().getIdIndividu());
+            pre.setInt(2, R.getBusiness().getIdBusiness());
+            pre.setInt(3, R.getNbEtoiles());
+            pre.setString(4, R.getCommentaire());   
+            pre.executeUpdate();
    }
-     
-    
-    public boolean Update(int idRevue,int idUtilisateur,int nbEtoiles,String commentaire) {
+         public boolean UpdateRevueBusiness(Individu indiv,int idProduit ,int idBusiness,int nbEtoiles, String commentaire,int idRevue) {
             try {
 
-            PreparedStatement pre = connect.prepareStatement("UPDATE revue SET idUtilisateur = ? , nbEtoiles= ? , commentaire= ?  where idRevue= ? ;");
-            pre.setInt(1, idUtilisateur);
-            pre.setInt(2, nbEtoiles);
-            pre.setString(3, commentaire);   
+            PreparedStatement pre = connect.prepareStatement("UPDATE revue SET idIndividu = ?,idBusiness = ?, nbEtoiles= ? , commentaire= ?  where idRevue= ? ;");
+            pre.setInt(1, indiv.getIdIndividu());
+            pre.setInt(2, idBusiness);
+            pre.setInt(3, nbEtoiles);
+            pre.setString(4, commentaire);   
             pre.setInt(5,idRevue);
 
             if (pre.executeUpdate() != 0) {
@@ -59,8 +61,8 @@ public class RevueServices implements Interface_Revue {
         }
         return false;
     }
-    
- public boolean delete(Integer idRevue) throws SQLException {
+        @Override
+         public boolean deleteRevue(Integer idRevue) throws SQLException {
 
         PreparedStatement pre = connect.prepareStatement("Delete from revue where idRevue=? ;");
         pre.setInt(1, idRevue);
@@ -72,20 +74,53 @@ public class RevueServices implements Interface_Revue {
         return false;
 
     }
-    public List<Revue> afficherRevue() throws SQLException{
+
+    @Override
+    public boolean UpdateRevueBusiness(Individu indiv, int idProduit, int nbEtoiles, String commentaire, int idRevue) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
+
+    @Override
+    public List<Revue> afficherAllRevues() throws SQLException {
         List<Revue> revues = new ArrayList<>();
-        String req = "select * from reservation;";
+        String req = "select * from revue where idProduit is NULL ;";
         stm = connect.createStatement();
         ResultSet rst = stm.executeQuery(req);
             while (rst.next()) {
             Revue R = new Revue (rst.getInt("idRevue"),
-            rst.getInt("idUtilisateur"),
+            new Individu(rst.getInt("idIndividu")),
+            new Business(rst.getInt("idBusiness")),
             rst.getInt("nbEtoiles"),
             rst.getString("commentaire"));
 
             revues.add(R);
         }
-        return revues;
+        return revues;    
+    }
+    
+    //requete jointure affichage
+    /*SELECT titre,prenom,nbEtoiles,commentaire from revue join business ON revue.idBusiness=business.idBusiness JOIN individu ON individu.idIndividu=revue.idIndividu WHERE business.idBusiness="9";*/
+    
+      @Override
+        public List<Revue> afficherRevueBusiness(String BusinessTitle) throws SQLException {
+        List<Revue> revues = new ArrayList<>();
+        PreparedStatement stm = connect.prepareStatement("SELECT prenom,nom,titre,nbEtoiles,commentaire from revue join business ON revue.idBusiness=business.idBusiness JOIN individu ON individu.idIndividu=revue.idIndividu WHERE business.titre=?;");
+        stm.setString(1,BusinessTitle);
+        //stm.setString(1, business.getTitre());
+
+        ResultSet rst = stm.executeQuery();
+            while (rst.next()) {
+            Revue R = new Revue (
+            new Individu(rst.getString("prenom"),rst.getString("nom")),
+            new Business(rst.getString("titre")),
+            rst.getInt("nbEtoiles"),
+            rst.getString("commentaire"));
+
+            revues.add(R);
         }
-        }
+        return revues;    
+    }
+}
  

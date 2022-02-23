@@ -15,9 +15,11 @@ import java.util.List;
  */
 public interface Interface_ServiceBusiness {
     public void ajouter(ServiceBusiness S)throws SQLException ;
-     public boolean Update(int idBusiness,String nomService,float prix,int idBusinessServices) ;
+     public boolean Update(String nomService,float prix,int idBusinessServices) ;
     public boolean delete(Integer idBusinessServices) throws SQLException ;
     public List<ServiceBusiness> afficherBusinessServices() throws SQLException;
+    public List<ServiceBusiness> filterBusinessByType(String businessType) throws SQLException;
+    public List<ServiceBusiness> filterBusinessBy2Variables (String businessType,String filter,String value) throws SQLException;
 
 
 }

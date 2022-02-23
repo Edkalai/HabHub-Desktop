@@ -5,6 +5,8 @@
  */
 package services;
 
+import entities.Business;
+import entities.Individu;
 import entities.Revue;
 import java.sql.SQLException;
 import java.util.List;
@@ -14,10 +16,15 @@ import java.util.List;
  * @author User
  */
 public interface Interface_Revue {
-        public void ajouter(Revue R)throws SQLException ;
-        public boolean Update(int idRevue,int idUtilisateur,int nbEtoiles,String commentaire) ;
-        public boolean delete(Integer idRevue) throws SQLException;
-        public List<Revue> afficherRevue() throws SQLException;
+        public void ajouterRevueBusiness(Revue R)throws SQLException ;
+        public boolean UpdateRevueBusiness(Individu indiv,int idProduit ,int nbEtoiles, String commentaire,int idRevue);
+        public boolean deleteRevue(Integer idRevue) throws SQLException;
+        public List<Revue> afficherAllRevues() throws SQLException ;
+//        public List<Revue> afficherRevueBusiness(Business business) throws SQLException;
+        public List<Revue> afficherRevueBusiness(String BusinessTitle) throws SQLException;
+
+
+
 
 
 }
