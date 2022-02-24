@@ -28,6 +28,7 @@ public class ServiceBusinessServices implements Interface_ServiceBusiness {
       connect=MyDB.getInstance().getConnexion();
         
 }
+      @Override
     public void ajouter(ServiceBusiness S)throws SQLException {
         Business B = new Business(9);
         PreparedStatement pre = connect.prepareStatement("INSERT INTO business_services (idBusiness,nomService,prix)VALUES (?,?,?);");
@@ -107,6 +108,7 @@ public class ServiceBusinessServices implements Interface_ServiceBusiness {
     }
     
     
+      @Override
         public List<ServiceBusiness> filterBusinessByType (String businessType) throws SQLException{
         List<ServiceBusiness> BServices = new ArrayList<>();
         PreparedStatement stm = connect.prepareStatement("select idBusinessServices,titre,description,nomService,prix from business_services BS JOIN business B on BS.idBusiness=B.idBusiness where B.type=?;");
@@ -123,7 +125,8 @@ public class ServiceBusinessServices implements Interface_ServiceBusiness {
         return BServices;
         
     }
-    
+        
+            
      public List<ServiceBusiness> filterBusinessBy2Variables (String businessType,String filter,String value) throws SQLException{
         List<ServiceBusiness> BServices = new ArrayList<>();
         PreparedStatement stm = connect.prepareStatement("select * from business_services BS JOIN business B on BS.idBusiness=B.idBusiness where B.type=? and "+filter+"=?;");
@@ -142,5 +145,5 @@ public class ServiceBusinessServices implements Interface_ServiceBusiness {
         return BServices;
         
     }
-
+    
 }

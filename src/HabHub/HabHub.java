@@ -85,7 +85,7 @@ public class HabHub {
             //System.out.println(RS1.afficherRevueProduit());
             //System.out.println(SBS1.filterBusinessByType("vet")); 
             //System.out.println(SBS1.filterBusinessBy2Variables("vet","ville","ariana")); 
-              System.out.println(UBS1.afficherBusiness()); 
+              System.out.println(UBS1.rechercherBusinessByType("vet","boumhel")); 
 
             //System.out.println(UBS1.afficherVet());
         } catch (SQLException ex) {

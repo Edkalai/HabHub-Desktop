@@ -100,7 +100,28 @@ public class ReservationServices implements Interface_Reservation {
         }
         return reservations;
         }
+        
+        public List<Reservation> afficherMesReservations() throws SQLException{
+        List<Reservation> reservations = new ArrayList<>();
+        String req = "select * from reservation;";
+        stm = connect.createStatement();
+        ResultSet rst = stm.executeQuery(req);
+            while (rst.next()) {
+            Reservation R = new Reservation (rst.getInt("idReservation"),
+            rst.getInt("idProprietaireChien"),
+            rst.getInt("idBusinessServices"),
+            rst.getTimestamp("dateHeureDebut",Calendar.getInstance()),
+            rst.getTimestamp("dateHeureFin",Calendar.getInstance()));
+
+            //rst.getString("dateHeureFin"));
+
+
+            reservations.add(R);
         }
+        return reservations;
+        }
+        
+}
  
 
 

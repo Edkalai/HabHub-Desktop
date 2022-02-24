@@ -122,6 +122,33 @@ public class UserBusinessServices {
         }
         return businesses;
         }
+         public List<Business> rechercherBusinessByType(String businessType,String input) throws SQLException{
+        List<Business> businesses = new ArrayList<>();
+        ServiceBusinessServices SBS1 = new ServiceBusinessServices();
+
+        String req = "select * from business where type= ? and ( titre like ? or ville like ? or description like ?);";
+        PreparedStatement ps = connect.prepareStatement(req);
+        ps.setString(1,businessType);      
+        ps.setString(2, "%" + input+ "%");
+        ps.setString(3, "%" + input+ "%");
+        ps.setString(4, "%" + input+ "%");
+
+        ResultSet rst = ps.executeQuery();
+            
+        while (rst.next()) {
+        Business a = new Business(rst.getInt("idBusiness"),
+        rst.getString("titre"),
+        rst.getString("description"),
+        rst.getString("horaire"),
+        rst.getString("ville"),
+        rst.getString("localisation"),
+        rst.getString("type"),SBS1.filterBusinessById(rst.getInt("idBusiness")),15,16 );
+
+
+            businesses.add(a);
+        }
+        return businesses;
+        }
         
 //  public List<ServiceBusiness> filterBusinessById (int businessId) throws SQLException;
         
