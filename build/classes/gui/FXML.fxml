@@ -2,15 +2,16 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="mainFxmlClass" stylesheets="@fxml.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="800.0" prefWidth="1280.0" styleClass="mainFxmlClass" stylesheets="@fxml.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <left>
-      <VBox alignment="TOP_CENTER" prefHeight="736.0" prefWidth="70.0" styleClass="VBox" stylesheets="@fxml.css" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="866.0" prefWidth="70.0" styleClass="VBox" stylesheets="@fxml.css" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" styleClass="navBarItems" textAlignment="CENTER" VBox.vgrow="NEVER">
                <graphic>
@@ -92,9 +93,37 @@
                </VBox.margin>
             </VBox>
          </children>
+         <BorderPane.margin>
+            <Insets bottom="-40.0" top="-52.0" />
+         </BorderPane.margin>
       </VBox>
    </left>
+   <center>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="609.0" prefWidth="870.0" styleClass="pane" stylesheets="@fxml.css" BorderPane.alignment="CENTER_LEFT">
+         <BorderPane.margin>
+            <Insets left="25.0" top="150.0" />
+         </BorderPane.margin>
+      </Pane>
+   </center>
    <right>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="720.0" prefWidth="275.0" styleClass="pane" stylesheets="@fxml.css" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="20.0" right="25.0" top="90.0" />
+         </BorderPane.margin>
+      </Pane>
    </right>
+   <bottom>
+      <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <buttons>
+          <Button mnemonicParsing="false" text="Button" />
+        </buttons>
+      </ButtonBar>
+   </bottom>
+   <top>
+      <Button mnemonicParsing="false" BorderPane.alignment="CENTER">
+         <graphic>
+            <ImageView fitHeight="45.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+      </Button>
+   </top>
 </BorderPane>

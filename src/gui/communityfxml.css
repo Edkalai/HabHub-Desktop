@@ -2,6 +2,7 @@
  * Empty Stylesheet file.
  */
 
+
 .mainFxmlClass {
 -fx-background-color : #F4F4F4;
 
@@ -19,8 +20,22 @@
 
 }
 
-
+.pane{
+    -fx-background-color: #ffffff;
+    background: #FFFFFF;
+    -fx-effect: dropshadow(gaussian,rgba(0, 0, 0, 0.05) , 20,0 , 0, 0);
+    -fx-background-radius: 15px;
+}
 .imageView{
      -fx-fit-width: 20px;
    -fx-fit-height: 20px;
 }
+
+.roundedButton{
+    -fx-background-radius: 15px;
+}
+
+.profileButton {
+    -fx-background-color : #F4F4F4;
+}
+
