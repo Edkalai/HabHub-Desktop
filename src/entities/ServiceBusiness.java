@@ -17,7 +17,15 @@ public class ServiceBusiness {
    
     public ServiceBusiness() {
        
+    
     }
+    public ServiceBusiness(int idBusinessServices) {
+       
+            this.idBusinessServices = idBusinessServices;
+
+    }
+    
+    
       public ServiceBusiness(int idBusinessServices,String nomService, float prix) {
         this.idBusinessServices = idBusinessServices;
         this.business = business;

@@ -6,12 +6,14 @@
 package services;
 import java.util.*;
 import entities.Business;
+import entities.ProprietaireChien;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import utils.MyDB;
 import entities.Reservation;
+import entities.ServiceBusiness;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -31,8 +33,8 @@ public class ReservationServices implements Interface_Reservation {
     }
    public void ajouter(Reservation R)throws SQLException {
         PreparedStatement pre = connect.prepareStatement("INSERT INTO reservation (idProprietaireChien,idBusinessServices,dateHeureDebut,dateHeureFin)VALUES (?,?,?,?);");
-        pre.setInt(1, R.getIdProprietaireChien());
-        pre.setInt(2, R.getIdBusinessServices());
+        pre.setInt(1, R.getPropChien().getIdProprietaireChien());
+        pre.setInt(2, R.getBusinessServices().getIdBusinessServices());
         Timestamp heureDebut = new Timestamp(R.getDateHeureDebut().getTime());
         pre.setTimestamp(3,heureDebut);
         Timestamp heureFin = new Timestamp(R.getDateHeureFin().getTime());
@@ -43,12 +45,12 @@ public class ReservationServices implements Interface_Reservation {
    }
    
      
-    public boolean Update(int idReservation,int idProprietaireChien,int idBusinessServices,Timestamp dateHeureDebut,Timestamp dateHeureFin) {
+    public boolean Update(int idReservation,ProprietaireChien PropChien,ServiceBusiness serviceBusiness,Timestamp dateHeureDebut,Timestamp dateHeureFin) {
             try {
 
             PreparedStatement pre = connect.prepareStatement("UPDATE reservation SET idProprietaireChien = ? , idBusinessServices= ? , dateHeureDebut= ? , dateHeureFin= ? where idReservation= ? ;");
-            pre.setInt(1, idProprietaireChien);
-            pre.setInt(2, idBusinessServices);
+            pre.setInt(1,PropChien.getIdProprietaireChien() );
+            pre.setInt(2, serviceBusiness.getIdBusinessServices());
             Timestamp heureDebut = new java.sql.Timestamp(dateHeureDebut.getTime());
             pre.setTimestamp(3, heureDebut);  
             java.sql.Timestamp heureFin = new java.sql.Timestamp(dateHeureFin.getTime());
@@ -88,8 +90,8 @@ public class ReservationServices implements Interface_Reservation {
         ResultSet rst = stm.executeQuery(req);
             while (rst.next()) {
             Reservation R = new Reservation (rst.getInt("idReservation"),
-            rst.getInt("idProprietaireChien"),
-            rst.getInt("idBusinessServices"),
+            new ProprietaireChien(rst.getInt("idProprietaireChien")),
+            new ServiceBusiness(rst.getInt("idBusinessServices")),
             rst.getTimestamp("dateHeureDebut",Calendar.getInstance()),
             rst.getTimestamp("dateHeureFin",Calendar.getInstance()));
 
@@ -108,8 +110,8 @@ public class ReservationServices implements Interface_Reservation {
         ResultSet rst = stm.executeQuery(req);
             while (rst.next()) {
             Reservation R = new Reservation (rst.getInt("idReservation"),
-            rst.getInt("idProprietaireChien"),
-            rst.getInt("idBusinessServices"),
+            new ProprietaireChien(rst.getInt("idProprietaireChien")),
+            new ServiceBusiness(rst.getInt("idBusinessServices")),
             rst.getTimestamp("dateHeureDebut",Calendar.getInstance()),
             rst.getTimestamp("dateHeureFin",Calendar.getInstance()));
 

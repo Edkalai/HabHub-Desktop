@@ -32,7 +32,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         this.stage = primaryStage;
         try {
-            parent = FXMLLoader.load(getClass().getResource("/tn/esprit/view/PersonnesFXML.fxml"));
+            parent = FXMLLoader.load(getClass().getResource("../gui/community.fxml"));
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }

@@ -46,14 +46,15 @@ public class UserBusinessServices {
         u.setIdUtilisateur(rst.getInt("idUtilisateur"));
         }
       
-        PreparedStatement pre = connect.prepareStatement("INSERT INTO business (idUtilisateur,titre,description,horaire,ville,localisation,type)VALUES (?,?,?,?,?,?,?);");
+        PreparedStatement pre = connect.prepareStatement("INSERT INTO business (idUtilisateur,titre,description,horaire,ville,localisation,type,experience)VALUES (?,?,?,?,?,?,?,?);");
         pre.setInt(1,u.getIdUtilisateur());      
         pre.setString(2, B.getTitre());
         pre.setString(3, B.getDescription());
         pre.setString(4, B.getHoraire());
         pre.setString(5, B.getVille());
         pre.setString(6, B.getLocalisation());
-        pre.setString(6, B.getType());
+        pre.setString(7, B.getType());
+        pre.setInt(8, B.getExperience());
 
                                     
         pre.executeUpdate();
@@ -62,7 +63,7 @@ public class UserBusinessServices {
     
 
         
-     public boolean Update(int idBusiness,String titre,String description,float prix,String horaire,String ville,String localisation) {
+     public boolean Update(int idBusiness,String titre,String description,float prix,String horaire,String ville,String localisation,String type,int experience) {
             try {
 
             PreparedStatement pre = connect.prepareStatement("UPDATE business SET titre = ? , description= ? , horaire= ? , ville= ? , localisation= ? type=? where idBusiness= ? ;");
@@ -71,8 +72,9 @@ public class UserBusinessServices {
             pre.setString(3,horaire);
             pre.setString(4, ville);
             pre.setString(5, localisation);
-            pre.setString(6, localisation);
-            pre.setInt(7, idBusiness);
+            pre.setString(6, type);
+            pre.setInt(7, experience);
+            pre.setInt(8, idBusiness);
 
             if (pre.executeUpdate() != 0) {
                 System.out.println(" Business Updated");
@@ -115,7 +117,7 @@ public class UserBusinessServices {
             rst.getString("horaire"),
             rst.getString("ville"),
             rst.getString("localisation"),
-            rst.getString("type"),SBS1.filterBusinessById(rst.getInt("idBusiness")),15,16 );
+            rst.getString("type"),SBS1.filterBusinessById(rst.getInt("idBusiness")),rst.getInt("experience"),16 );
 
 
             businesses.add(a);
@@ -142,7 +144,7 @@ public class UserBusinessServices {
         rst.getString("horaire"),
         rst.getString("ville"),
         rst.getString("localisation"),
-        rst.getString("type"),SBS1.filterBusinessById(rst.getInt("idBusiness")),15,16 );
+        rst.getString("type"),SBS1.filterBusinessById(rst.getInt("idBusiness")),rst.getInt("experience"),16 );
 
 
             businesses.add(a);

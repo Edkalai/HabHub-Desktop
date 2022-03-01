@@ -22,7 +22,7 @@ public class Business {
     String ville;
     String localisation;
     String type;
-    int optional;
+    int experience;
     int optional2;
     List<ServiceBusiness> BServices = new ArrayList<>();
 
@@ -83,7 +83,7 @@ public class Business {
     
     }
 
-    public Business(int idBusiness, Utilisateur user, String titre, String description, String horaire, String ville, String localisation,String type) {
+    public Business(int idBusiness, Utilisateur user, String titre, String description, String horaire, String ville, String localisation,String type,int experience) {
         this.idBusiness = idBusiness;
         this.user = user;
         this.titre = titre;
@@ -92,6 +92,8 @@ public class Business {
         this.ville = ville;
         this.localisation = localisation;
         this.type = type;
+        this.experience=experience;
+
 
     }
     public Business(int idBusiness,String titre, String description, String horaire, String ville, String localisation,String type,List<ServiceBusiness> BServices ,int optional,int optional2) {
@@ -103,8 +105,9 @@ public class Business {
         this.localisation = localisation;
         this.type = type;
         this.BServices=BServices;
-        this.optional=optional;
+        this.experience=experience;
         this.optional2=optional2;
+
 
     }
 /*
@@ -168,10 +171,16 @@ public class Business {
     public void setLocalisation(String localisation) {
         this.localisation = localisation;
     }
+    public int getExperience() {
+        return experience;
+    }
 
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
     @Override
     public String toString() {
-        return "Business{" + "idBusiness=" + idBusiness +/* ", idUtilisateur=" + user.idUtilisateur +*/", titre=" + titre + ", description=" + description + ", horaire=" + horaire + ", ville=" + ville + ", localisation=" + localisation + ", type=" + type +", listBS=" + BServices +'}';
+        return "Business{" + "idBusiness=" + idBusiness +/* ", idUtilisateur=" + user.idUtilisateur +*/", titre=" + titre + ", experience=" + experience + ", description=" + description + ", horaire=" + horaire + ", ville=" + ville + ", localisation=" + localisation + ", type=" + type +", listBS=" + BServices +'}';
     }
     
 }

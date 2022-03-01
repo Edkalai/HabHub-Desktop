@@ -13,24 +13,24 @@ import java.sql.Timestamp;
  */
 public class Reservation {
     int idReservation;
-    int idProprietaireChien ;
-    int idBusinessServices;
+    ProprietaireChien PropChien ;
+    ServiceBusiness serviceBusiness;
     Timestamp dateHeureDebut;
     Timestamp dateHeureFin;
 
     
 
-    public Reservation(int idProprietaireChien, int idBusinessServices,Timestamp dateHeureDebut,Timestamp dateHeureFin) {
-        this.idProprietaireChien = idProprietaireChien;
-        this.idBusinessServices = idBusinessServices;
+    public Reservation( ProprietaireChien PropChien,ServiceBusiness serviceBusiness,Timestamp dateHeureDebut,Timestamp dateHeureFin) {
+        this. PropChien = PropChien;
+        this.serviceBusiness = serviceBusiness;
         this.dateHeureDebut = dateHeureDebut;
         this.dateHeureFin = dateHeureFin;
 
     }
-    public Reservation(int idReservation,int idProprietaireChien, int idBusinessServices, Timestamp dateHeureDebut,java.sql.Timestamp dateHeureFin) {
+    public Reservation(int idReservation,ProprietaireChien PropChien,ServiceBusiness serviceBusiness, Timestamp dateHeureDebut,java.sql.Timestamp dateHeureFin) {
         this.idReservation = idReservation;
-        this.idProprietaireChien = idProprietaireChien;
-        this.idBusinessServices = idBusinessServices;
+        this.PropChien = PropChien;
+        this.serviceBusiness = serviceBusiness;
         this.dateHeureDebut = dateHeureDebut;
         this.dateHeureFin = dateHeureFin;
 
@@ -40,12 +40,12 @@ public class Reservation {
         this.idReservation = idReservation;
     }
 
-    public void setIdProprietaireChien(int idProprietaireChien) {
-        this.idProprietaireChien = idProprietaireChien;
+    public void setPropChien( ProprietaireChien PropChien) {
+        this.PropChien = PropChien;
     }
 
-    public void setIdBusinessServices(int idBusinessServices) {
-        this.idBusinessServices = idBusinessServices;
+    public void setIdBusinessServices(ServiceBusiness serviceBusiness) {
+        this.serviceBusiness = serviceBusiness;
     }
 
     public void setDateHeureDebut(Timestamp dateHeureDebut) {
@@ -59,12 +59,12 @@ public class Reservation {
         return idReservation;
     }
 
-    public int getIdProprietaireChien() {
-        return idProprietaireChien;
+    public ProprietaireChien getPropChien() {
+        return PropChien;
     }
 
-    public int getIdBusinessServices() {
-        return idBusinessServices;
+    public ServiceBusiness getBusinessServices() {
+        return serviceBusiness;
     }
 
     public Timestamp getDateHeureDebut() {
@@ -78,6 +78,6 @@ public class Reservation {
     
       @Override
     public String toString() {
-        return "Reservation{" + "idReservation=" + idReservation + ", idProprietaireChien=" + idProprietaireChien + ", idBusinessServices=" + idBusinessServices + ", dateHeureDebut=" + dateHeureDebut + ", dateHeureFin=" + dateHeureFin + '}';
+        return "Reservation{" + "idReservation=" + idReservation + ", idProprietaireChien=" + PropChien.idProprietaireChien + ", idBusinessServices=" + serviceBusiness.idBusinessServices + ", dateHeureDebut=" + dateHeureDebut + ", dateHeureFin=" + dateHeureFin + '}';
     }
 }

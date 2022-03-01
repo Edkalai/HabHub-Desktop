@@ -1,0 +1,62 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+
+.mainFxmlClass {
+-fx-background-color : #F4F4F4;
+
+}
+@font-face {
+  src: url(“/lato.ttf”);
+}
+
+.label {
+  -fx-font-family: “lato”;
+}
+
+.VBox{
+   -fx-background-color : #ffffff;
+   -fx-effect: dropshadow(gaussian,rgba(194, 213, 231, 0.7) , 20,0 , 0, 0);
+   -fx-background-radius: 15px;
+}
+
+.navBarItems{
+    -fx-background-color : #ffffff;
+
+}
+
+.pane{
+    -fx-background-color: #ffffff;
+    background: #FFFFFF;
+    -fx-effect: dropshadow(gaussian,rgba(0, 0, 0, 0.05) , 20,0 , 0, 0);
+    -fx-background-radius: 15px;
+}
+.imageView{
+     -fx-fit-width: 20px;
+   -fx-fit-height: 20px;
+}
+
+.roundedButton{
+    -fx-background-radius: 15px;
+}
+
+.profileButton {
+    -fx-background-color : #F4F4F4;
+}
+
+
+.businessWidgets {
+    -fx-background-color : #F4F4F4;
+}
+    
+.searchBar{
+    -fx-width: 874px;
+    -fx-height: 51px;
+    -fx-background-color : #FFFFFF;
+    -fx-effect: dropshadow(gaussian,rgba(0, 0, 0, 0.05) , 20,0 , 0, 0);
+    -fx-background-radius: 11.2px;
+
+
+
+}
