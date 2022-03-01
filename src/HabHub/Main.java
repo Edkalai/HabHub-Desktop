@@ -24,30 +24,19 @@ import javafx.stage.Stage;
  * @author macbook
  */
 public class Main extends Application {
-    
-    Parent parent;
-    Stage stage;
-    
-    @Override
-    public void start(Stage primaryStage) {
-        this.stage = primaryStage;
-        try {
-            parent = FXMLLoader.load(getClass().getResource("/tn/esprit/view/PersonnesFXML.fxml"));
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-        Scene scene = new Scene(parent);
-        stage.setScene(scene);
-        stage.setTitle("Add and Show Persons");
-        stage.show();
 
+ 
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/CommunityFXML.fxml"));
+        primaryStage.setTitle("HabHub");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
     }
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
+        
         launch(args);
     }
-    
 }

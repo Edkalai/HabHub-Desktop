@@ -15,9 +15,11 @@ import services.ProprietaireChienService;
 import services.ChienService;
 import services.ProprietaireChienService;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.Date;
+import java.util.List;
 
 
 
@@ -39,8 +41,13 @@ public class HabHub {
                 AnnonceProprietaireChien ac = new AnnonceProprietaireChien(12,c,new Date("2009/10/10"),"hentita","A","lBorj");
 
         AnnonceProprietaireChienService sa=new AnnonceProprietaireChienService();
-        
-        sa.updateAnnonceProprietaireChien(acp);
+List<AnnonceProprietaireChien> annonces=new ArrayList<>();        
+         try {
+            annonces=sa.afficherAnnonceProprietaireChien("A");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+         System.out.println(annonces);
           
          /* try {
             sa.ajouterAnnonceProprietaireChien(ac);
