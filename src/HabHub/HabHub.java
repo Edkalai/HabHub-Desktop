@@ -43,7 +43,7 @@ public class HabHub {
         AnnonceProprietaireChienService sa=new AnnonceProprietaireChienService();
 List<AnnonceProprietaireChien> annonces=new ArrayList<>();        
          try {
-            annonces=sa.afficherAnnonceProprietaireChien("A");
+            annonces=sa.afficherAnnonceProprietaireChien("P");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

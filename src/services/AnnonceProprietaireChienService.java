@@ -95,11 +95,11 @@ public class AnnonceProprietaireChienService {
             Individu  ni= new Individu(rst.getInt("idIndividu"),nu,rst.getString("i.nom"),rst.getString("prenom"),rst.getDate("dateNaissance"),rst.getString("adresse"),
             rst.getString("facebook"),rst.getString("instagram"),rst.getString("whatsapp"));
             ProprietaireChien npc=new ProprietaireChien(rst.getInt("idProprietaireChien"),ni,rst.getString("bio"));
-            Chien nc = new Chien(rst.getInt("idChien"),npc,rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("description"));
+            Chien nc = new Chien(rst.getInt("idChien"),npc,rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("c.description"));
             AnnonceProprietaireChien a = new AnnonceProprietaireChien(rst.getInt("idAnnonceProprietaireChien"),
             nc,
             rst.getDate("datePublication"),
-            rst.getString("description"),
+            rst.getString("a.description"),
             rst.getString("type"),
             rst.getDate("datePerte"),
             rst.getString("localisation"),

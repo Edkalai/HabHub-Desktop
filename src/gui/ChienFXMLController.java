@@ -5,6 +5,7 @@
  */
 package gui;
 
+import HabHub.CommunityListener;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -16,6 +17,7 @@ import entities.AnnonceProprietaireChien;
 import java.sql.SQLException;
 import java.util.List;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 
 
 
@@ -43,12 +45,19 @@ public class ChienFXMLController implements Initializable {
 
     @FXML
     private Label locationLabel;
-    
+     private CommunityListener communityListener;
      private AnnonceProprietaireChien annonceProprietaireChien;
     
+     @FXML
+    private void click(MouseEvent mouseEvent) {
+        communityListener.onClickListener(annonceProprietaireChien);
+    }
+  
+    
 
-    public void setData(AnnonceProprietaireChien annonceProprietaireChien) {
+    public void setData(AnnonceProprietaireChien annonceProprietaireChien,CommunityListener communityListener) {
         this.annonceProprietaireChien = annonceProprietaireChien;
+        this.communityListener=communityListener;
         nameLabel.setText(annonceProprietaireChien.getChien().getNom()+",");
         ageLabel.setText(annonceProprietaireChien.getChien().getAge());
         locationLabel.setText(annonceProprietaireChien.getLocalisation());
