@@ -1,153 +1,285 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1280.0" styleClass="mainFxmlClass" stylesheets="@BusinessFXML.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CommunityFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.BusinessFXMLController">
+   <stylesheets>
+      <URL value="@communityfxml.css" />
+   </stylesheets>
    <children>
-      <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="805.0" prefWidth="70.0" styleClass="VBox">
+      <HBox prefHeight="800.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button mnemonicParsing="false" styleClass="navBarItems" textAlignment="CENTER" VBox.vgrow="NEVER">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/img/HabHub%20logo.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </Button>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+            <VBox alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="805.0" prefWidth="70.0" styleClass="VBox" HBox.hgrow="ALWAYS">
                <children>
-                  <Button mnemonicParsing="false" styleClass="navBarItems">
+                  <Button mnemonicParsing="false" styleClass="navBarItems" textAlignment="CENTER" VBox.vgrow="NEVER">
                      <graphic>
-                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../assets/img/house-door.png" />
+                              <Image url="@../assets/img/HabHub%20logo.png" />
                            </image>
                         </ImageView>
                      </graphic>
                      <VBox.margin>
-                        <Insets bottom="20.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" styleClass="navBarItems">
-                     <graphic>
-                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/img/zoom-in.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Separator maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0">
+                           <VBox.margin>
+                              <Insets bottom="30.0" />
+                           </VBox.margin>
+                        </Separator>
+                        <Button mnemonicParsing="false" styleClass="navBarItems">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
+                                 <image>
+                                    <Image url="@../assets/img/house-door.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" styleClass="navBarItems">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/img/zoom-in.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" styleClass="navBarItems">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/img/Frame%20124.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" styleClass="navBarItems">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/img/mating%20icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" styleClass="navBarItems">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/img/gear.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
+                        <Separator maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </Separator>
+                     </children>
                      <VBox.margin>
-                        <Insets bottom="20.0" />
+                        <Insets top="130.0" />
                      </VBox.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" styleClass="navBarItems">
-                     <graphic>
-                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/img/Frame%20124.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <VBox.margin>
-                        <Insets bottom="20.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" styleClass="navBarItems">
-                     <graphic>
-                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/img/mating%20icon.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <VBox.margin>
-                        <Insets bottom="20.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" styleClass="navBarItems">
-                     <graphic>
-                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/img/gear.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Button>
+                  </VBox>
                </children>
-               <VBox.margin>
-                  <Insets top="130.0" />
-               </VBox.margin>
+            </VBox>
+            <VBox prefHeight="800.0" prefWidth="1215.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Text lineSpacing="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Help owners find their dogs !">
+                           <font>
+                              <Font name="Lazzy Dog Regular" size="30.0" />
+                           </font>
+                        </Text>
+                        <Pane prefHeight="100.0" prefWidth="673.0" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-background-radius: 50;" styleClass="transparent">
+                           <graphic>
+                              <ImageView fitHeight="54.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="676.0" prefWidth="1213.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox prefHeight="676.0" prefWidth="870.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <HBox maxHeight="-Infinity" prefHeight="72.0" prefWidth="869.0" VBox.vgrow="SOMETIMES">
+                                 <children>
+                                    <Button mnemonicParsing="false" styleClass="transparent">
+                                       <graphic>
+                                          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../assets/img/business/Grooming.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Pane maxHeight="-Infinity" prefHeight="65.0" prefWidth="200.0" />
+                                    <Button mnemonicParsing="false" styleClass="transparent">
+                                       <graphic>
+                                          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="transparent">
+                                             <image>
+                                                <Image url="@../assets/img/business/Parks.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Pane maxHeight="-Infinity" prefHeight="65.0" prefWidth="200.0" />
+                                    <Button mnemonicParsing="false" styleClass="transparent">
+                                       <graphic>
+                                          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../assets/img/business/Veterinary.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Pane prefHeight="200.0" prefWidth="200.0" />
+                                    <Button mnemonicParsing="false" styleClass="transparent">
+                                       <graphic>
+                                          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="transparent">
+                                             <image>
+                                                <Image url="@../assets/img/business/Frame%20125.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <Pane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="50.0" prefHeight="30.0" prefWidth="870.0" VBox.vgrow="NEVER" />
+                              <VBox alignment="TOP_CENTER" prefHeight="598.0" prefWidth="870.0" styleClass="left-arrow-button" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="868.0" VBox.vgrow="NEVER" />
+                                    <HBox alignment="TOP_CENTER" maxHeight="70.0" prefHeight="51.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Pane maxHeight="-Infinity" maxWidth="70.0" prefHeight="50.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
+                                          <HBox alignment="CENTER_LEFT" maxHeight="60.0" maxWidth="1300.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="850.0" styleClass="searchBoxWhite" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Pane minWidth="-Infinity" prefHeight="200.0" prefWidth="20.0" />
+                                                <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="750.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="500.0" styleClass="searchBar" HBox.hgrow="SOMETIMES">
+                                                   <children>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/img/searchBar/zoom-in.png" />
+                                                         </image>
+                                                         <HBox.margin>
+                                                            <Insets left="20.0" />
+                                                         </HBox.margin>
+                                                      </ImageView>
+                                                      <TextField prefHeight="31.0" prefWidth="423.0" promptText="Search for names, Dog Breeds, Age, Location" styleClass="transparent" />
+                                                   </children>
+                                                </HBox>
+                                                <Pane prefHeight="51.0" prefWidth="200.0" />
+                                                <HBox alignment="CENTER" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="100.0" styleClass="searchBar">
+                                                   <children>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/img/searchBar/funnel.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label text="Filters" />
+                                                   </children>
+                                                </HBox>
+                                                <Pane minWidth="-Infinity" prefHeight="200.0" prefWidth="20.0" />
+                                                <HBox alignment="CENTER" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="100.0" styleClass="searchBar">
+                                                   <children>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/img/searchBar/bar-chart-fill.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label text=" Sort" />
+                                                   </children>
+                                                </HBox>
+                                                <Pane minWidth="-Infinity" prefHeight="200.0" prefWidth="20.0" />
+                                             </children>
+                                          </HBox>
+                                          <Pane maxHeight="-Infinity" maxWidth="70.0" prefHeight="50.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" />
+                                    <GridPane fx:id="grid" alignment="CENTER_LEFT" prefHeight="11.0" prefWidth="868.0">
+                                       <rowConstraints>
+                                          <RowConstraints />
+                                       </rowConstraints>
+                                    </GridPane>
+                                    <Pane prefHeight="412.0" prefWidth="868.0" />
+                                    <Pagination prefHeight="75.0" prefWidth="823.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="676.0" prefWidth="31.0" />
+                        <VBox alignment="CENTER" maxWidth="420.0" prefHeight="676.0" prefWidth="285.0" styleClass="pane" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label fx:id="nameLabel" prefHeight="150.0" prefWidth="191.0" text="Label" />
+                                    <Pane prefHeight="100.0" prefWidth="213.0" />
+                                    <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </HBox>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="200.0" />
+                           </children>
+                        </VBox>
+                        <Pane maxWidth="30.0" prefHeight="200.0" prefWidth="20.0" HBox.hgrow="ALWAYS" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
             </VBox>
          </children>
-      </VBox>
-      <Pane layoutX="982.0" layoutY="92.0" prefHeight="688.0" prefWidth="275.0" styleClass="pane" />
-      <Button layoutX="1206.0" layoutY="26.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-background-radius: 50;">
-         <graphic>
-            <ImageView pickOnBounds="true" preserveRatio="true" />
-         </graphic>
-      </Button>
-      <Text layoutX="99.0" layoutY="68.0" lineSpacing="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Help owners find their dogs !">
-         <font>
-            <Font name="Georgia" size="30.0" />
-         </font>
-      </Text>
-      <Button layoutX="90.0" layoutY="92.0" mnemonicParsing="false" styleClass="businessWidgets" stylesheets="@BusinessFXML.css">
-         <graphic>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/img/business/Grooming.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="310.0" layoutY="92.0" mnemonicParsing="false" styleClass="businessWidgets" stylesheets="@BusinessFXML.css">
-         <graphic>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/img/business/Parks.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Button layoutX="530.0" layoutY="92.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="166.0" styleClass="businessWidgets" stylesheets="@BusinessFXML.css">
-         <graphic>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/img/business/Veterinary.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="750.0" layoutY="92.0" mnemonicParsing="false" styleClass="businessWidgets" stylesheets="@BusinessFXML.css">
-         <graphic>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/img/business/Frame%20125.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Pane layoutX="99.0" layoutY="227.0" prefHeight="51.0" prefWidth="860.0" styleClass="searchBar" stylesheets="@BusinessFXML.css">
-         <children>
-            <Button layoutX="743.0" layoutY="8.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="83.0" styleClass="navBarItems" stylesheets="@BusinessFXML.css" text="Button" />
-            <Button layoutX="651.0" layoutY="10.0" mnemonicParsing="false" styleClass="navBarItems" text="Button" />
-         </children>
-      </Pane>
+      </HBox>
    </children>
 </AnchorPane>

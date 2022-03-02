@@ -32,13 +32,13 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         this.stage = primaryStage;
         try {
-            parent = FXMLLoader.load(getClass().getResource("../gui/community.fxml"));
+            parent = FXMLLoader.load(getClass().getResource("../gui/businessFXML.fxml"));
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
         Scene scene = new Scene(parent);
         stage.setScene(scene);
-        stage.setTitle("Add and Show Persons");
+        stage.setTitle("business");
         stage.show();
 
     }
