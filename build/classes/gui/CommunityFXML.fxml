@@ -6,7 +6,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -157,7 +157,7 @@
                                  </children>
                               </HBox>
                               <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="870.0" VBox.vgrow="NEVER" />
-                              <VBox alignment="TOP_CENTER" prefHeight="598.0" prefWidth="870.0" styleClass="pane" VBox.vgrow="ALWAYS">
+                              <VBox prefHeight="598.0" prefWidth="870.0" styleClass="pane" VBox.vgrow="ALWAYS">
                                  <children>
                                     <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="868.0" VBox.vgrow="NEVER" />
                                     <HBox alignment="TOP_CENTER" maxHeight="70.0" prefHeight="51.0" prefWidth="600.0" styleClass="transparent" VBox.vgrow="ALWAYS">
@@ -176,7 +176,7 @@
                                                             <Insets left="20.0" />
                                                          </HBox.margin>
                                                       </ImageView>
-                                                      <TextField prefHeight="31.0" prefWidth="423.0" promptText="Search for names, Dog Breeds, Age, Location" styleClass="transparent" />
+                                                      <TextField fx:id="searchBox" prefHeight="25.0" prefWidth="441.0" styleClass="transparent" />
                                                    </children>
                                                 </HBox>
                                                 <Pane prefHeight="51.0" prefWidth="200.0" />
@@ -211,13 +211,18 @@
                                        </VBox.margin>
                                     </HBox>
                                     <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" />
-                                    <GridPane fx:id="grid" prefHeight="11.0" prefWidth="868.0">
-                                      <rowConstraints>
-                                        <RowConstraints />
-                                      </rowConstraints>
-                                    </GridPane>
-                                    <Pane prefHeight="412.0" prefWidth="868.0" />
-                                    <Pagination prefHeight="75.0" prefWidth="823.0" />
+                                    <ScrollPane prefHeight="507.0" prefWidth="769.0" styleClass="transparent">
+                                       <content>
+                                          <GridPane fx:id="grid" prefHeight="47.0" prefWidth="868.0">
+                                            <rowConstraints>
+                                              <RowConstraints />
+                                            </rowConstraints>
+                                             <padding>
+                                                <Insets left="50.0" />
+                                             </padding>
+                                          </GridPane>
+                                       </content>
+                                    </ScrollPane>
                                  </children>
                               </VBox>
                            </children>
@@ -335,7 +340,7 @@
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Text>
-                                    <Text fx:id="dogStory" strokeType="OUTSIDE" strokeWidth="0.0" text="Salwa is a cool puppy. I found her next to a shed on the beach and had to rescue her. But I can’t keep her for long since I already have my hands full." wrappingWidth="250.0" />
+                                    <Text fx:id="dogStory" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.0" />
                                  </children>
                               </VBox>
                               <VBox prefHeight="200.0" prefWidth="100.0">

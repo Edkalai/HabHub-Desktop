@@ -21,6 +21,7 @@ import javafx.scene.input.MouseEvent;
 
 
 
+
 /**
  * FXML Controller class
  *
@@ -47,13 +48,20 @@ public class ChienFXMLController implements Initializable {
     private Label locationLabel;
      private CommunityListener communityListener;
      private AnnonceProprietaireChien annonceProprietaireChien;
+     
+     
+     
+      
+  
     
      @FXML
     private void click(MouseEvent mouseEvent) {
         communityListener.onClickListener(annonceProprietaireChien);
+        
+     
     }
-  
-    
+   
+   
 
     public void setData(AnnonceProprietaireChien annonceProprietaireChien,CommunityListener communityListener) {
         this.annonceProprietaireChien = annonceProprietaireChien;

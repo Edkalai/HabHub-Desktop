@@ -111,13 +111,14 @@ public class AnnonceProprietaireChienService {
         return annoncesProprietaireChien;
     }
         
-        public List<AnnonceProprietaireChien> rechercheAnnonceProprietaireChien (String input) throws SQLException {
+        public List<AnnonceProprietaireChien> rechercheAnnonceProprietaireChien (String input,String type) throws SQLException {
         List<AnnonceProprietaireChien> annoncesProprietaireChien = new ArrayList<>();
-        String req = "select * from annonce_proprietaire_chien a join chien c ON a.idChien=c.idChien join proprietaire_chien pc on pc.idProprietaireChien=c.idProprietaireChien join individu i on i.idIndividu=pc.idIndividu where localisation like ? or i.nom like ? or c.nom like ? order by datePublication desc ";
+        String req = "select * from annonce_proprietaire_chien a join chien c ON a.idChien=c.idChien join proprietaire_chien pc on pc.idProprietaireChien=c.idProprietaireChien join individu i on i.idIndividu=pc.idIndividu where a.localisation like ? or c.nom like ? or i.prenom like ? and type=? order by datePublication desc ";
         PreparedStatement ps = connect.prepareStatement(req);
             ps.setString(1, "%" + input+ "%");
             ps.setString(2, "%" + input+ "%");
             ps.setString(3, "%" + input+ "%");
+            ps.setString(4, type);
             ResultSet rst = ps.executeQuery();
              while (rst.next()) {
             Utilisateur nu= new Utilisateur(rst.getInt("idUtilisateur"));
