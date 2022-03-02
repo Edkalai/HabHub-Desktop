@@ -5,6 +5,8 @@
  */
 package entities;
 
+import java.util.Date;
+
 /**
  *
  * @author User
@@ -16,6 +18,15 @@ public class Revue {
  Business business;
  int nbEtoiles;
  String commentaire;
+ Date datePublication;
+
+    public Date getDatePublication() {
+        return datePublication;
+    }
+
+    public void setDatePublication(Date datePublication) {
+        this.datePublication = datePublication;
+    }
 
     public int getIdProduit() {
         return idProduit;
@@ -40,15 +51,15 @@ public class Revue {
         this.nbEtoiles = nbEtoiles;
         this.commentaire = commentaire;
     }
-   /* public Revue(int idRevue,Individu indiv,int idProduit,int idBusiness,int nbEtoiles, String commentaire) {
+    public Revue(int idRevue,Individu indiv,Business business,int nbEtoiles, String commentaire,Date datePublication) {
         this.idRevue = idRevue;
         this.indiv =indiv;
-        this.idProduit = idProduit;
         this.business = business;
         this.nbEtoiles = nbEtoiles;
         this.commentaire = commentaire;
+        this.datePublication = datePublication;
+
     }
-    */
 
    
 
@@ -96,7 +107,7 @@ public class Revue {
 
     @Override
     public String toString() {
-        return "Revue{" + "idRevue=" + idRevue + ", idIndividu=" + indiv.idIndividu+ ", prenom=" + indiv.prenom + ", nom=" + indiv.nom + ", titre business=" + business.titre +",idProduit="+idProduit+ ",idBusiness="+business.idBusiness+  ", nbEtoiles=" + nbEtoiles + ", commentaire=" + commentaire + "} \r\n";
+        return "Revue{" + "idRevue=" + idRevue + ", idIndividu=" + indiv.idIndividu+ ", prenom=" + indiv.prenom + ", nom=" + indiv.nom + ", titre business=" + business.titre +",idProduit="+idProduit+ ",idBusiness="+business.idBusiness+  ", nbEtoiles=" + nbEtoiles + ", commentaire=" + commentaire +",datePublication=" + datePublication + "} \r\n";
     }
     
     

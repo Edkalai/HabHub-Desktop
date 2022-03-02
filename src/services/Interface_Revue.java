@@ -23,7 +23,7 @@ public interface Interface_Revue {
 //        public List<Revue> afficherRevueBusiness(Business business) throws SQLException;
         public List<Revue> afficherRevueBusiness(String BusinessTitle) throws SQLException;
 
-
+        public List<Revue> afficherRevueId(int BusinessId) throws SQLException ;
 
 
 

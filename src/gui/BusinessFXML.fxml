@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -18,10 +23,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.BusinessFXMLController">
-   <stylesheets>
-      <URL value="@communityfxml.css" />
-   </stylesheets>
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1280.0" styleClass="mainFxmlClass" stylesheets="@business.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.BusinessFXMLController">
    <children>
       <HBox prefHeight="800.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -124,7 +126,7 @@
                      <children>
                         <Text lineSpacing="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Help owners find their dogs !">
                            <font>
-                              <Font name="Lazzy Dog Regular" size="30.0" />
+                              <Font name="Aller" size="30.0" />
                            </font>
                         </Text>
                         <Pane prefHeight="100.0" prefWidth="673.0" HBox.hgrow="ALWAYS" />
@@ -254,22 +256,178 @@
                               <Insets left="15.0" />
                            </HBox.margin>
                         </VBox>
-                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="676.0" prefWidth="31.0" />
-                        <VBox alignment="CENTER" maxWidth="420.0" prefHeight="676.0" prefWidth="285.0" styleClass="pane" HBox.hgrow="ALWAYS">
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="676.0" prefWidth="13.0" />
+                        <VBox alignment="TOP_CENTER" maxWidth="420.0" prefHeight="676.0" prefWidth="285.0" styleClass="pane" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                            <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                              <ImageView fx:id="businessImageLabel" fitHeight="202.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
+                                 <cursor>
+                                    <Cursor fx:constant="S_RESIZE" />
+                                 </cursor>
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                              </ImageView>
+                              <Pane prefHeight="18.0" prefWidth="290.0" />
+                              <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="225.0">
                                  <children>
-                                    <Label fx:id="nameLabel" prefHeight="150.0" prefWidth="191.0" text="Label" />
-                                    <Pane prefHeight="100.0" prefWidth="213.0" />
-                                    <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+                                    <VBox alignment="CENTER_LEFT" prefHeight="52.0" prefWidth="229.0">
+                                       <children>
+                                          <Label fx:id="businessTitleLabel" prefHeight="31.0" prefWidth="189.0" text="Label">
+                                             <font>
+                                                <Font name="Aller Bold" size="22.0" />
+                                             </font>
+                                          </Label>
+                                          <Pane prefHeight="300.0" prefWidth="269.0" />
+                                          <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="70.0">
+                                             <children>
+                                                <ImageView fitHeight="24.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../assets/img/locationIcon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label fx:id="businessLocationLabel" prefHeight="21.0" prefWidth="173.0" text="Label">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../assets/img/business/BusinessItem/image%2016.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="genderImage" fitHeight="35.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </ImageView>
                                  </children>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
                               </HBox>
+                              <Pane prefHeight="14.0" prefWidth="290.0" />
+                              <TabPane maxWidth="250.0" minWidth="270.0" prefHeight="320.0" prefWidth="250.0" stylesheets="@business.css" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="100.0">
+                                <tabs>
+                                  <Tab text="Description">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="150.0">
+                                             <children>
+                                                <ScrollPane layoutX="7.0" layoutY="2.0" prefHeight="279.0" prefWidth="249.0">
+                                                  <content>
+                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="268.0" prefWidth="249.0" styleClass="transparent">
+                                                         <children>
+                                                            <VBox prefHeight="268.0" prefWidth="227.0">
+                                                               <children>
+                                                                  <Pane prefHeight="12.0" prefWidth="227.0" />
+                                                                  <Text fx:id="businessDecriptionLabel" fill="#8d8d8d" strokeType="OUTSIDE" strokeWidth="0.0" text="Salwa is a cool puppy. I found her next to a shed on the beach and had to rescue her. But I can’t keep her for long since I already have my hands full." wrappingWidth="220.0" />
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="206.0">
+                                                                     <children>
+                                                                        <Label fx:id="dogNameLabel1" prefHeight="29.0" prefWidth="89.0" text="Experience :">
+                                                                           <font>
+                                                                              <Font name="Aller Bold" size="15.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="experienceLabel" text="Label">
+                                                                           <font>
+                                                                              <Font name="Aller" size="15.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="235.0">
+                                                                     <children>
+                                                                        <Label fx:id="dogNameLabel11" prefHeight="29.0" prefWidth="115.0" text="Opening Hours :">
+                                                                           <font>
+                                                                              <Font name="Aller Bold" size="15.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="openingHoursLabel" text="Label">
+                                                                           <font>
+                                                                              <Font name="Aller" size="15.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <DatePicker />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </AnchorPane>
+                                                  </content>
+                                                </ScrollPane>
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </Tab>
+                                  <Tab text="Reviews">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <padding>
+                                                <Insets left="20.0" />
+                                             </padding>
+                                             <children>
+                                                <ScrollPane layoutX="7.0" prefHeight="279.0" prefWidth="249.0">
+                                                   <content>
+                                                      <VBox prefHeight="268.0" prefWidth="227.0">
+                                                         <children>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="235.0">
+                                                               <children>
+                                                                  <Label fx:id="addReview" text="Add Review" textFill="#808080" underline="true">
+                                                                     <font>
+                                                                        <Font name="Aller" size="13.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                               </children>
+                                                            </HBox>
+                                                            <GridPane fx:id="gridReview" alignment="CENTER_LEFT" prefHeight="11.0" prefWidth="868.0">
+                                                               <rowConstraints>
+                                                                  <RowConstraints />
+                                                               </rowConstraints>
+                                                            </GridPane>
+                                                            <Pane prefHeight="140.0" prefWidth="227.0" />
+                                                         </children>
+                                                      </VBox>
+                                                   </content>
+                                                </ScrollPane>
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </Tab>
+                                </tabs>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </TabPane>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="200.0" />
+                              <HBox alignment="BOTTOM_RIGHT" prefHeight="59.0" prefWidth="290.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="129.0" styleClass="bookButton" text="  Book Now" textFill="WHITE">
+                                       <font>
+                                          <Font name="Aller Bold" size="15.0" />
+                                       </font>
+                                       <graphic>
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../assets/img/business/BusinessItem/calendar-check-fill.png" />
+                                             </image></ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="15.0" right="15.0" />
+                                 </padding>
+                              </HBox>
                            </children>
+                           <padding>
+                              <Insets top="20.0" />
+                           </padding>
                         </VBox>
                         <Pane maxWidth="30.0" prefHeight="200.0" prefWidth="20.0" HBox.hgrow="ALWAYS" />
                      </children>

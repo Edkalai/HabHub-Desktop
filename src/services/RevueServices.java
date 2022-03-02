@@ -31,7 +31,7 @@ public class RevueServices implements Interface_Revue {
     }
         @Override
        public void ajouterRevueBusiness(Revue R)throws SQLException {
-        PreparedStatement pre = connect.prepareStatement("INSERT INTO revue (idIndividu,idBusiness,nbEtoiles,commentaire)VALUES (?,?,?,?);");
+        PreparedStatement pre = connect.prepareStatement("INSERT INTO revue (idIndividu,idBusiness,nbEtoiles,commentaire,datePublication)VALUES (?,?,?,?,SYSDATE());");
 
             pre.setInt(1, R.getIndividu().getIdIndividu());
             pre.setInt(2, R.getBusiness().getIdBusiness());
@@ -106,17 +106,41 @@ public class RevueServices implements Interface_Revue {
       @Override
         public List<Revue> afficherRevueBusiness(String BusinessTitle) throws SQLException {
         List<Revue> revues = new ArrayList<>();
-        PreparedStatement stm = connect.prepareStatement("SELECT prenom,nom,titre,nbEtoiles,commentaire from revue join business ON revue.idBusiness=business.idBusiness JOIN individu ON individu.idIndividu=revue.idIndividu WHERE business.titre=?;");
+        PreparedStatement stm = connect.prepareStatement("SELECT * from revue join business ON revue.idBusiness=business.idBusiness JOIN individu ON individu.idIndividu=revue.idIndividu WHERE business.titre=?;");
         stm.setString(1,BusinessTitle);
         //stm.setString(1, business.getTitre());
 
         ResultSet rst = stm.executeQuery();
             while (rst.next()) {
             Revue R = new Revue (
-            new Individu(rst.getString("prenom"),rst.getString("nom")),
-            new Business(rst.getString("titre")),
+            rst.getInt("idRevue"),
+            new Individu(rst.getInt("idIndividu"),rst.getString("prenom"),rst.getString("nom")),
+            new Business(rst.getInt("idBusiness"),rst.getString("titre")),
             rst.getInt("nbEtoiles"),
-            rst.getString("commentaire"));
+            rst.getString("commentaire"),
+            rst.getDate("datePublication"));
+
+            revues.add(R);
+        }
+        return revues;    
+    }
+        
+        @Override
+        public List<Revue> afficherRevueId(int BusinessId) throws SQLException {
+        List<Revue> revues = new ArrayList<>();
+        PreparedStatement stm = connect.prepareStatement("SELECT * from revue join business ON revue.idBusiness=business.idBusiness JOIN individu ON individu.idIndividu=revue.idIndividu WHERE business.idBusiness=?;");
+        stm.setInt(1,BusinessId);
+        //stm.setString(1, business.getTitre());
+
+        ResultSet rst = stm.executeQuery();
+            while (rst.next()) {
+            Revue R = new Revue (
+            rst.getInt("idRevue"),
+            new Individu(rst.getInt("idIndividu"),rst.getString("prenom"),rst.getString("nom")),
+            new Business(rst.getInt("idBusiness"),rst.getString("titre")),
+            rst.getInt("nbEtoiles"),
+            rst.getString("commentaire"),
+            rst.getDate("datePublication"));
 
             revues.add(R);
         }

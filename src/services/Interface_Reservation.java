@@ -17,11 +17,13 @@ import java.util.List;
  * @author User
  */
 public interface Interface_Reservation {
-    public void ajouter(Reservation R)throws SQLException;
-    public boolean Update(int idReservation,ProprietaireChien PropChien,ServiceBusiness serviceBusiness, Timestamp dateHeureDebut,Timestamp  dateHeureFin);
-    public boolean delete(Integer idReservation) throws SQLException ;
+
+    public void ajouter(Reservation R) throws SQLException;
+
+    public boolean Update(int idReservation, ProprietaireChien PropChien, ServiceBusiness serviceBusiness, Timestamp dateHeureDebut, Timestamp dateHeureFin);
+
+    public boolean delete(Integer idReservation) throws SQLException;
+
     public List<Reservation> afficherReservation() throws SQLException;
-
-
 
 }

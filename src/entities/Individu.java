@@ -4,13 +4,16 @@
  * and open the template in the editor.
  */
 package entities;
+
 import entities.Utilisateur;
 import java.util.Date;
+
 /**
  *
  * @author Ed
  */
 public class Individu {
+
     int idIndividu;
     Utilisateur utilisateur;
     String nom;
@@ -21,18 +24,37 @@ public class Individu {
     String instagram;
     String whatsapp;
 
-    public Individu( Utilisateur utilisateur) {
-        
+    public Individu(Utilisateur utilisateur) {
+
         this.utilisateur = utilisateur;
-        
+
     }
-    public Individu(String prenom,String nom) {
-        
+
+    public Individu(String prenom, String nom) {
+
         this.prenom = prenom;
         this.nom = nom;
 
     }
-    
+
+    public Individu(int idIndividu, String prenom, String nom) {
+        this.idIndividu = idIndividu;
+        this.prenom = prenom;
+        this.nom = nom;
+
+    }
+
+    public Individu(int idIndividu, String nom, String prenom, Date dateNaissance, String adresse, String facebook, String instagram, String whatsapp) {
+        this.idIndividu = idIndividu;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dateNaissance = dateNaissance;
+        this.adresse = adresse;
+        this.facebook = facebook;
+        this.instagram = instagram;
+        this.whatsapp = whatsapp;
+    }
+
     public Individu(int idIndividu, Utilisateur utilisateur, String nom, String prenom, Date dateNaissance, String adresse, String facebook, String instagram, String whatsapp) {
         this.idIndividu = idIndividu;
         this.utilisateur = utilisateur;
@@ -136,5 +158,5 @@ public class Individu {
     public String toString() {
         return "Individu{" + "idIndividu=" + idIndividu + ", utilisateur=" + utilisateur + ", nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance + ", adresse=" + adresse + ", facebook=" + facebook + ", instagram=" + instagram + ", whatsapp=" + whatsapp + '}';
     }
-    
+
 }

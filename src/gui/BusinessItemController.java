@@ -5,6 +5,7 @@
  */
 package gui;
 
+import HabHub.BusinessListener;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -16,6 +17,7 @@ import java.sql.SQLException;
 import java.util.List;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 
 
 
@@ -48,11 +50,22 @@ public class BusinessItemController implements Initializable {
     @FXML
     private Button bookingButton;
 
-     private Business business;
+    private Business business;
+     
+    private BusinessListener businessListener;
+    
+    @FXML
+    void click(MouseEvent mouseEvent) {
+        System.out.println("ahmed clei");
+        businessListener.onClickListener(business);
+        
+    } 
     
 
-    public void setData(Business business) {
+    public void setData(Business business,BusinessListener businessListener) {
         this.business = business;
+        this.businessListener = businessListener;
+
         businessTitle.setText(business.getTitre());
         villeLabel.setText(business.getVille());
         horaireLabel.setText(business.getHoraire());
