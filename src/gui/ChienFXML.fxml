@@ -21,16 +21,17 @@
             </ImageView>
             <HBox alignment="CENTER" prefHeight="27.0" prefWidth="102.0">
                <children>
-                  <Label fx:id="nameLabel" prefHeight="17.0" prefWidth="39.0" text="Label">
+                  <Label fx:id="nameLabel" prefHeight="17.0" prefWidth="39.0" style="-fx-font-family: Lato;" text="Label">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </Label>
-                  <Label fx:id="ageLabel" prefHeight="17.0" prefWidth="35.0" text="Label" textFill="#e0642c">
+                  <Label fx:id="ageLabel" prefHeight="17.0" prefWidth="35.0" style="-fx-font-family: Lato;" text="Label" textFill="#e0642c">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </Label>
+                  <Pane prefHeight="24.0" prefWidth="33.0" />
                   <ImageView fx:id="genderIcon" fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
                </children>
                <VBox.margin>
@@ -46,7 +47,7 @@
                      </image>
                   </ImageView>
                   <Pane prefHeight="22.0" prefWidth="9.0" />
-                  <Label fx:id="locationLabel" text="Label">
+                  <Label fx:id="locationLabel" style="-fx-font-family: Lato;" text="Label">
                      <font>
                         <Font size="10.0" />
                      </font>

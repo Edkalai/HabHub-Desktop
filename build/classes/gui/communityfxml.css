@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 .mainFxmlClass {
 -fx-background-color : #F4F4F4;
-
+-fx-font-family: 'Lato', sans-serif;
 }
-
 
 .VBox{
    -fx-background-color : #ffffff;
@@ -16,7 +16,6 @@
 }
 .vboxProperties{
     -fx-background-color: #ffffff;
-    -fx-effect: dropshadow(gaussian,rgba(0, 0, 0, 0.05) , 20,0 , 0, 0);
     -fx-background-radius: 15px;
     -fx-border-radius: 15px;
     -fx-border-color: #E5E5E5;
