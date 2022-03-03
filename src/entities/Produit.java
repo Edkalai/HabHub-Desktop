@@ -73,7 +73,7 @@ public class Produit {
         return prix;
     }
 
-    public void setPrix(int prix) {
+    public void setPrix(float prix) {
         this.prix = prix;
     }
 

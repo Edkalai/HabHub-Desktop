@@ -6,7 +6,6 @@
 package services;
 
 
-import static com.mysql.jdbc.Messages.getString;
 import entities.Produit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
