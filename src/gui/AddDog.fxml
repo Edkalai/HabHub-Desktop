@@ -329,7 +329,7 @@
                                           <Pane prefHeight="17.0" prefWidth="751.0" />
                                           <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="751.0">
                                              <children>
-                                                <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="152.0" styleClass="submitButton" text="Add Dog">
+                                                <Button mnemonicParsing="false" onAction="#seConnecter" prefHeight="37.0" prefWidth="152.0" styleClass="submitButton" text="Add Dog">
                                                    <font>
                                                       <Font name="Aller Bold" size="15.0" />
                                                    </font>

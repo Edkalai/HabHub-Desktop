@@ -182,12 +182,12 @@ public class MissingDogsController implements Initializable {
         dogRaceLabel.setText("Golden Retriever");
         dogGroupLabel.setText("Golden Retriever");
 
-        //dogLastSeenOnLabel.setText(a.getDatePerte().toString());
+        dogLastSeenOnLabel.setText(a.getDatePerte().toString());
         dogLastSeenInLabel.setText(a.getLocalisation());
         ownerNameLabel.setText(a.getChien().getProprietaireChien().getIndividu().getPrenom());
 
-        Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/dog.png"));
-        dogImage.setImage(dogImg);
+       Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/chien/"+a.getChien().getImage()+".png"));
+       dogImage.setImage(dogImg);
 
     }
 
@@ -212,7 +212,7 @@ public class MissingDogsController implements Initializable {
                 ChienCardController chienController = fxmlLoader.getController();
                 chienController.setData(annonces.get(i), communityListener);
 
-                if (column == 4) {
+                if (column == 5) {
                     column = 0;
                     row++;
                 }

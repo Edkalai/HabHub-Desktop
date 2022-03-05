@@ -14,30 +14,33 @@ public class Chien {
     String age;
     Boolean vaccination;
     String description;
+    String image;
 
      public Chien() {
     }
-    public Chien(int idChien, String nom, String sexe, String age, Boolean vaccination, String description) {
+    public Chien(int idChien, String nom, String sexe, String age, Boolean vaccination, String description,String image) {
         this.idChien = idChien;
         this.nom = nom;
         this.sexe = sexe;
         this.age = age;
         this.vaccination = vaccination;
         this.description = description;
+        this.image = image;
     }
 
     public Chien(int idChien) {
         this.idChien = idChien;
     }
-    public Chien(String nom, String sexe, String age, Boolean vaccination, String description) {
+    public Chien(String nom, String sexe, String age, Boolean vaccination, String description,String image) {
         this.nom = nom;
         this.sexe = sexe;
         this.age = age;
         this.vaccination = vaccination;
         this.description = description;
+        this.image = image;
     }
 
-    public Chien(int idChien, ProprietaireChien proprietaireChien, String nom, String sexe, String age, Boolean vaccination, String description) {
+    public Chien(int idChien, ProprietaireChien proprietaireChien, String nom, String sexe, String age, Boolean vaccination, String description,String image) {
         this.idChien = idChien;
         this.proprietaireChien = proprietaireChien;
         this.nom = nom;
@@ -45,6 +48,15 @@ public class Chien {
         this.age = age;
         this.vaccination = vaccination;
         this.description = description;
+        this.image = image;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
     
  
@@ -106,7 +118,7 @@ public class Chien {
     }
     @Override
     public String toString() {
-        return "Chien{" + "idChien=" + idChien + ", \r\n proprietaireChien=" + proprietaireChien + ", nom=" + nom + ", sexe=" + sexe + ", age=" + age + ", vaccination=" + vaccination + ", description=" + description + '}';
+        return "Chien{" + "idChien=" + idChien + ", \r\n proprietaireChien=" + proprietaireChien + ", nom=" + nom + ", sexe=" + sexe + ", age=" + age + ", vaccination=" + vaccination + ", description=" + description + ", image=" + image + '}';
     }
     
 }

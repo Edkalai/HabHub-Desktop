@@ -69,7 +69,7 @@ public class ChienCardController implements Initializable {
         nameLabel.setText(annonceProprietaireChien.getChien().getNom()+",");
         ageLabel.setText(annonceProprietaireChien.getChien().getAge());
         locationLabel.setText(annonceProprietaireChien.getLocalisation());
-        Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/dog.png"));
+        Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/chien/"+annonceProprietaireChien.getChien().getImage()+".png"));
         dogImage.setImage(dogImg);
         Image genderImg = new Image(getClass().getResourceAsStream("../assets/img/female.png"));
         if ("M".equals(annonceProprietaireChien.getChien().getSexe())){

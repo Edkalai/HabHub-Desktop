@@ -3,10 +3,27 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/gui/CommunityFXMLController.java</file>
+            <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/gui/AddDogController.java</file>
+            <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/gui/DogsMatchup.fxml</file>
+            <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/gui/MyDogs.fxml</file>
+            <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/gui/ChienCardController.java</file>
+            <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/gui/MyDogsController.java</file>
+            <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/gui/ajoutform.css</file>
+            <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/gui/mydogs.css</file>
+            <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/services/ChienService.java</file>
+            <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/gui/dogsnextdoor.css</file>
+            <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/gui/MissingDogsController.java</file>
+            <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/services/AnnonceProprietaireChienService.java</file>
+            <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/utils/MyDB.java</file>
+            <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/entities/Chien.java</file>
+            <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/gui/DogsNextDoor.fxml</file>
+            <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/gui/dogsmatchup.css</file>
             <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/HabHub/Main.java</file>
+            <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/gui/CommunityInitialPageController.java</file>
+            <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/HabHub/HabHub.java</file>
             <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/gui/communityfxml.css</file>
-            <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/gui/AnnonceChienController.java</file>
+            <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/gui/DogsNextDoorController.java</file>
+            <file>file:/C:/Kaizen/Esprit/3eme/HabHub/HabHub-Desktop/src/gui/DogsMatchupController.java</file>
         </group>
     </open-files>
 </project-private>

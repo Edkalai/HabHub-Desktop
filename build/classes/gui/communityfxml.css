@@ -75,8 +75,8 @@
 
 .chienCard{
     -fx-background-color : #ffffff;
-    -fx-effect: dropshadow(gaussian,rgba(194, 213, 231, 0.25) , 20,0 , 0, 0);
-    -fx-background-radius: 15px;
+    -fx-effect: dropshadow(gaussian,rgba(0,0,0, 0.15) , 10,0 , 0, 0);
+    -fx-background-radius: 10.7042px;
 }
 
 .scroll-pane > .viewport {

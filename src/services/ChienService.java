@@ -25,23 +25,25 @@ public class ChienService {
    
     
      public void ajouterChienProprietaire(Chien c) throws SQLException {
-        PreparedStatement pre = connect.prepareStatement("INSERT INTO chien (idProprietaireChien, nom,sexe,age,vaccination,description)VALUES (?,?,?,?,?,?);");
+        PreparedStatement pre = connect.prepareStatement("INSERT INTO chien (idProprietaireChien, nom,sexe,age,vaccination,description,image)VALUES (?,?,?,?,?,?,?);");
         pre.setInt(1,c.getProprietaireChien().getIdProprietaireChien());
         pre.setString(2,c.getNom());
         pre.setString(3,c.getSexe());
         pre.setString(4,c.getAge());
         pre.setBoolean(5,c.getVaccination());
         pre.setString(6,c.getDescription());
+        pre.setString(7,c.getImage());
         pre.executeUpdate();
     }
      
      public void ajouterChienSansProprietaire(Chien c) throws SQLException {
-        PreparedStatement pre = connect.prepareStatement("INSERT INTO chien (nom,sexe,age,vaccination,description)VALUES (?,?,?,?,?);");
+        PreparedStatement pre = connect.prepareStatement("INSERT INTO chien (nom,sexe,age,vaccination,description,image)VALUES (?,?,?,?,?,?);");
         pre.setString(1,c.getNom());
         pre.setString(2,c.getSexe());
         pre.setString(3,c.getAge());
         pre.setBoolean(4,c.getVaccination());
         pre.setString(5,c.getDescription());
+        pre.setString(6,c.getImage());
         pre.executeUpdate();
     }
    
@@ -101,7 +103,8 @@ public class ChienService {
             rst.getString("sexe"),
             rst.getString("age"),
             rst.getBoolean("vaccination"),
-            rst.getString("description"));
+            rst.getString("description"),
+            rst.getString("image"));
          
             
             chiens.add(a);

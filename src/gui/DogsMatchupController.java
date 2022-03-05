@@ -83,7 +83,6 @@ public class DogsMatchupController implements Initializable {
     @FXML
     private Label dogGroupLabel;
 
-
     @FXML
     private Text dogStory;
 
@@ -94,40 +93,37 @@ public class DogsMatchupController implements Initializable {
     private Label ownerLocationLabel2;
 
     private CommunityListener communityListener;
-    
-     private Stage stage;
+
+    private Stage stage;
     private Scene scene;
     private Parent root;
-    @FXML
-    public void switchSceneMyDogs (ActionEvent event) throws IOException
-    {
-       root = FXMLLoader.load(getClass().getResource("MyDogs.fxml"));
-    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-    }
-     @FXML
-    public void switchSceneDogsNextDoor (ActionEvent event) throws IOException
-    {
-       root = FXMLLoader.load(getClass().getResource("DogsNextDoor.fxml"));
-    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-    }
-     @FXML
-    public void switchSceneMissingDogs (ActionEvent event) throws IOException
-    {
-    root = FXMLLoader.load(getClass().getResource("MissingDogs.fxml"));
-    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-    }
-   
 
-    
+    @FXML
+    public void switchSceneMyDogs(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("MyDogs.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void switchSceneDogsNextDoor(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("DogsNextDoor.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void switchSceneMissingDogs(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("MissingDogs.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
     public ObservableList<AnnonceProprietaireChien> data = FXCollections.observableArrayList();
     AnnonceProprietaireChienService sa = new AnnonceProprietaireChienService();
@@ -177,10 +173,10 @@ public class DogsMatchupController implements Initializable {
         ownerLocationLabel2.setText(a.getLocalisation());
         dogRaceLabel.setText("Golden Retriever");
         dogGroupLabel.setText("Golden Retriever");
- 
+
         ownerNameLabel.setText(a.getChien().getProprietaireChien().getIndividu().getPrenom());
 
-        Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/dog.png"));
+        Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/chien/" + a.getChien().getImage() + ".png"));
         dogImage.setImage(dogImg);
 
     }
@@ -206,7 +202,7 @@ public class DogsMatchupController implements Initializable {
                 ChienCardController chienController = fxmlLoader.getController();
                 chienController.setData(annonces.get(i), communityListener);
 
-                if (column == 4) {
+                if (column == 5) {
                     column = 0;
                     row++;
                 }
