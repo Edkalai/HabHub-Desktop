@@ -9,6 +9,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -161,7 +162,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button minWidth="280.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="280.0" styleClass="transparent">
+                                    <Button fx:id="DogsNextDoor" minWidth="280.0" mnemonicParsing="false" onAction="#switchSceneDogsNextDoor" prefHeight="65.0" prefWidth="280.0" styleClass="transparent">
                                        <graphic>
                                           <ImageView fitHeight="65.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -173,7 +174,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button minWidth="280.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="280.0" styleClass="transparent">
+                                    <Button fx:id="DogsMatchup" minWidth="280.0" mnemonicParsing="false" onAction="#switchSceneDogsMatchup" prefHeight="65.0" prefWidth="280.0" styleClass="transparent">
                                        <graphic>
                                           <ImageView fitHeight="65.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -185,7 +186,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button minWidth="280.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="280.0" styleClass="transparent">
+                                    <Button fx:id="MissingDogs" minWidth="280.0" mnemonicParsing="false" onAction="#switchSceneMissingDogs" prefHeight="65.0" prefWidth="280.0" styleClass="transparent">
                                        <graphic>
                                           <ImageView fitHeight="65.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -233,8 +234,8 @@
                                                             <Font name="Aller" size="15.0" />
                                                          </font>
                                                       </Label>
-                                                      <Pane prefHeight="33.0" prefWidth="66.0" />
-                                                      <TextField prefHeight="33.0" prefWidth="373.0" styleClass="dogSimpleInput" />
+                                                      <Pane prefHeight="43.0" prefWidth="83.0" />
+                                                      <TextField fx:id="dogNameLabel" prefHeight="33.0" prefWidth="373.0" styleClass="dogSimpleInput" />
                                                    </children>
                                                    <VBox.margin>
                                                       <Insets />
@@ -250,10 +251,10 @@
                                                             <Font name="Aller" size="15.0" />
                                                          </font>
                                                       </Label>
-                                                      <Pane prefHeight="47.0" prefWidth="82.0" />
-                                                      <TextField prefHeight="33.0" prefWidth="68.0" styleClass="dogSimpleInput" />
+                                                      <Pane prefHeight="43.0" prefWidth="96.0" />
+                                                      <TextField fx:id="ageLabel" prefHeight="33.0" prefWidth="68.0" styleClass="dogSimpleInput" />
                                                       <Pane prefHeight="48.0" prefWidth="16.0" />
-                                                      <ComboBox prefWidth="150.0" />
+                                                      <ComboBox fx:id="ageComboBox" prefWidth="150.0" visibleRowCount="2" />
                                                    </children>
                                                    <padding>
                                                       <Insets left="100.0" />
@@ -266,14 +267,17 @@
                                                             <Font name="Aller" size="15.0" />
                                                          </font>
                                                       </Label>
-                                                      <Pane prefHeight="100.0" prefWidth="43.0" />
+                                                      <Pane prefHeight="43.0" prefWidth="58.0" />
                                                       <RadioButton fx:id="vaccination" mnemonicParsing="false" text="Yes">
                                                          <font>
                                                             <Font name="Aller" size="15.0" />
                                                          </font>
+                                                         <toggleGroup>
+                                                            <ToggleGroup fx:id="dogVaccination" />
+                                                         </toggleGroup>
                                                       </RadioButton>
                                                       <Pane prefHeight="37.0" prefWidth="13.0" />
-                                                      <RadioButton fx:id="vaccination" mnemonicParsing="false" text="No">
+                                                      <RadioButton fx:id="vaccination" mnemonicParsing="false" text="No" toggleGroup="$dogVaccination">
                                                          <font>
                                                             <Font name="Aller" size="15.0" />
                                                          </font>
@@ -290,14 +294,17 @@
                                                             <Font name="Aller" size="15.0" />
                                                          </font>
                                                       </Label>
-                                                      <Pane prefHeight="58.0" prefWidth="125.0" />
+                                                      <Pane prefHeight="43.0" prefWidth="141.0" />
                                                       <RadioButton mnemonicParsing="false" text="Male">
                                                          <font>
                                                             <Font name="Aller" size="15.0" />
                                                          </font>
+                                                         <toggleGroup>
+                                                            <ToggleGroup fx:id="dogGender" />
+                                                         </toggleGroup>
                                                       </RadioButton>
                                                       <Pane prefHeight="37.0" prefWidth="13.0" />
-                                                      <RadioButton mnemonicParsing="false" text="Female">
+                                                      <RadioButton mnemonicParsing="false" text="Female" toggleGroup="$dogGender">
                                                          <font>
                                                             <Font name="Aller" size="15.0" />
                                                          </font>
@@ -307,6 +314,39 @@
                                                       <Insets left="100.0" />
                                                    </padding>
                                                 </HBox>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Label text="Color" />
+                                                      <Pane prefHeight="43.0" prefWidth="91.0" />
+                                                      <TextField fx:id="colorLabel" prefHeight="33.0" prefWidth="149.0" styleClass="dogSimpleInput" />
+                                                      <Pane prefHeight="48.0" prefWidth="16.0" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets left="100.0" />
+                                                   </padding>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                   <padding>
+                                                      <Insets left="100.0" />
+                                                   </padding>
+                                                   <children>
+                                                      <Label text="Race" />
+                                                      <Pane prefHeight="43.0" prefWidth="95.0" />
+                                                      <ComboBox fx:id="raceComboBox" prefWidth="150.0" visibleRowCount="5" />
+                                                      <Pane prefHeight="48.0" prefWidth="16.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                   <padding>
+                                                      <Insets left="100.0" />
+                                                   </padding>
+                                                   <children>
+                                                      <Label text="Group" />
+                                                      <Pane prefHeight="43.0" prefWidth="86.0" />
+                                                      <ComboBox fx:id="groupeComboBox" prefWidth="150.0" visibleRowCount="5" />
+                                                      <Pane prefHeight="48.0" prefWidth="16.0" />
+                                                   </children>
+                                                </HBox>
                                                 <HBox prefHeight="150.0" prefWidth="719.0">
                                                    <children>
                                                       <Label text="Description">
@@ -314,8 +354,8 @@
                                                             <Font name="Aller" size="15.0" />
                                                          </font>
                                                       </Label>
-                                                      <Pane prefHeight="33.0" prefWidth="32.0" />
-                                                      <TextArea prefHeight="139.0" prefWidth="374.0" styleClass="text-area" />
+                                                      <Pane prefHeight="54.0" prefWidth="50.0" />
+                                                      <TextArea fx:id="descriptionTextArea" prefHeight="139.0" prefWidth="374.0" styleClass="text-area" />
                                                    </children>
                                                    <padding>
                                                       <Insets bottom="20.0" left="100.0" top="20.0" />
@@ -329,7 +369,7 @@
                                           <Pane prefHeight="17.0" prefWidth="751.0" />
                                           <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="751.0">
                                              <children>
-                                                <Button mnemonicParsing="false" onAction="#seConnecter" prefHeight="37.0" prefWidth="152.0" styleClass="submitButton" text="Add Dog">
+                                                <Button mnemonicParsing="false" onAction="#ajouterChien" prefHeight="37.0" prefWidth="152.0" styleClass="submitButton" text="Add Dog">
                                                    <font>
                                                       <Font name="Aller Bold" size="15.0" />
                                                    </font>

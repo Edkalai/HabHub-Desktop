@@ -72,7 +72,7 @@ public class DogsMatchupController implements Initializable {
     private Label ageLabel;
 
     @FXML
-    private Label genderColor;
+    private Label dogColorLabel;
 
     @FXML
     private Label genderLabel;
@@ -171,8 +171,9 @@ public class DogsMatchupController implements Initializable {
         dogStory.setText(a.getChien().getDescription());
         ownerLocationLabel.setText(a.getLocalisation());
         ownerLocationLabel2.setText(a.getLocalisation());
-        dogRaceLabel.setText("Golden Retriever");
-        dogGroupLabel.setText("Golden Retriever");
+        dogRaceLabel.setText(a.getChien().getRace());
+        dogGroupLabel.setText(a.getChien().getGroupe());
+        dogColorLabel.setText(a.getChien().getColor());
 
         ownerNameLabel.setText(a.getChien().getProprietaireChien().getIndividu().getPrenom());
 

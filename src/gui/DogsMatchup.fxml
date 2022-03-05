@@ -337,7 +337,7 @@
                                     <Pane prefHeight="78.0" prefWidth="32.0" />
                                     <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="80.0" styleClass="vboxProperties">
                                        <children>
-                                          <Label fx:id="genderColor" style="-fx-font-family: Lato; -fx-font-weight: Bold;" text="Label" />
+                                          <Label fx:id="dogColorLabel" style="-fx-font-family: Lato; -fx-font-weight: Bold;" text="Label" />
                                           <Text fill="#646464" strokeType="OUTSIDE" strokeWidth="0.0" text="Color">
                                              <font>
                                                 <Font name="Lato Regular" size="12.0" />

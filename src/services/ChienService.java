@@ -25,7 +25,7 @@ public class ChienService {
    
     
      public void ajouterChienProprietaire(Chien c) throws SQLException {
-        PreparedStatement pre = connect.prepareStatement("INSERT INTO chien (idProprietaireChien, nom,sexe,age,vaccination,description,image,color,race,group)VALUES (?,?,?,?,?,?,?,?,?,?);");
+        PreparedStatement pre = connect.prepareStatement("INSERT INTO chien (idProprietaireChien, nom,sexe,age,vaccination,description,image,color,race,groupe)VALUES (?,?,?,?,?,?,?,?,?,?);");
         pre.setInt(1,c.getProprietaireChien().getIdProprietaireChien());
         pre.setString(2,c.getNom());
         pre.setString(3,c.getSexe());
@@ -37,7 +37,7 @@ public class ChienService {
     }
      
      public void ajouterChienSansProprietaire(Chien c) throws SQLException {
-        PreparedStatement pre = connect.prepareStatement("INSERT INTO chien (nom,sexe,age,vaccination,description,image,color,race,group)VALUES (?,?,?,?,?,?,?,?,?);");
+        PreparedStatement pre = connect.prepareStatement("INSERT INTO chien (nom,sexe,age,vaccination,description,image,color,race,groupe)VALUES (?,?,?,?,?,?,?,?,?);");
         pre.setString(1,c.getNom());
         pre.setString(2,c.getSexe());
         pre.setString(3,c.getAge());
@@ -107,7 +107,7 @@ public class ChienService {
             rst.getString("image"),
             rst.getString("color"),
             rst.getString("race"),
-            rst.getString("group"));
+            rst.getString("groupe"));
          
             
             chiens.add(a);

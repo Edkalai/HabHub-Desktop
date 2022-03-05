@@ -33,7 +33,7 @@ public class HabHub {
         Individu i = new Individu(1);
         ProprietaireChien pc = new ProprietaireChien (10,i,"azeazeazeazeaze");
         ProprietaireChienService pcs=new ProprietaireChienService();
-        Chien c = new Chien(11,pc,"aa","M","2mois",true,"aaaaa","14.png");
+        Chien c = new Chien(11,pc,"aa","M","2mois",true,"aaaaa","14.png","white","Husky","Hunting");
         ChienService cs = new ChienService();
           
        

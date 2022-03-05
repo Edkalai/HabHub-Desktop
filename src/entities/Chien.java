@@ -15,7 +15,58 @@ public class Chien {
     Boolean vaccination;
     String description;
     String image;
+     String color;
+    String race;
+    String groupe;
 
+
+    
+   
+    public Chien() {
+    }
+
+    public Chien(int idChien, String nom, String sexe, String age, Boolean vaccination, String description, String image, String color, String race, String groupe) {
+        this.idChien = idChien;
+        this.nom = nom;
+        this.sexe = sexe;
+        this.age = age;
+        this.vaccination = vaccination;
+        this.description = description;
+        this.image = image;
+        this.color = color;
+        this.race = race;
+        this.groupe = groupe;
+    }
+
+    public Chien(int idChien) {
+        this.idChien = idChien;
+    }
+
+    public Chien(String nom, String sexe, String age, Boolean vaccination, String description, String image, String color, String race, String groupe) {
+        this.nom = nom;
+        this.sexe = sexe;
+        this.age = age;
+        this.vaccination = vaccination;
+        this.description = description;
+        this.image = image;
+        this.color = color;
+        this.race = race;
+        this.groupe = groupe;
+    }
+
+    public Chien(int idChien, ProprietaireChien proprietaireChien, String nom, String sexe, String age, Boolean vaccination, String description, String image, String color, String race, String groupe) {
+        this.idChien = idChien;
+        this.proprietaireChien = proprietaireChien;
+        this.nom = nom;
+        this.sexe = sexe;
+        this.age = age;
+        this.vaccination = vaccination;
+        this.description = description;
+        this.image = image;
+        this.color = color;
+        this.race = race;
+        this.groupe = groupe;
+    }
     public String getColor() {
         return color;
     }
@@ -32,61 +83,12 @@ public class Chien {
         this.race = race;
     }
 
-    public String getGroup() {
-        return group;
+    public String getGroupe() {
+        return groupe;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
-    }
-    String color;
-    String race;
-    String group;
-
-    public Chien() {
-    }
-
-    public Chien(int idChien, String nom, String sexe, String age, Boolean vaccination, String description, String image, String color, String race, String group) {
-        this.idChien = idChien;
-        this.nom = nom;
-        this.sexe = sexe;
-        this.age = age;
-        this.vaccination = vaccination;
-        this.description = description;
-        this.image = image;
-        this.color = color;
-        this.race = race;
-        this.group = group;
-    }
-
-    public Chien(int idChien) {
-        this.idChien = idChien;
-    }
-
-    public Chien(String nom, String sexe, String age, Boolean vaccination, String description, String image, String color, String race, String group) {
-        this.nom = nom;
-        this.sexe = sexe;
-        this.age = age;
-        this.vaccination = vaccination;
-        this.description = description;
-        this.image = image;
-        this.color = color;
-        this.race = race;
-        this.group = group;
-    }
-
-    public Chien(int idChien, ProprietaireChien proprietaireChien, String nom, String sexe, String age, Boolean vaccination, String description, String image, String color, String race, String group) {
-        this.idChien = idChien;
-        this.proprietaireChien = proprietaireChien;
-        this.nom = nom;
-        this.sexe = sexe;
-        this.age = age;
-        this.vaccination = vaccination;
-        this.description = description;
-        this.image = image;
-        this.color = color;
-        this.race = race;
-        this.group = group;
+    public void setGroupe(String group) {
+        this.groupe = group;
     }
 
     public String getImage() {
@@ -155,7 +157,7 @@ public class Chien {
 
     @Override
     public String toString() {
-        return "Chien{" + "idChien=" + idChien + ", proprietaireChien=" + proprietaireChien + ", nom=" + nom + ", sexe=" + sexe + ", age=" + age + ", vaccination=" + vaccination + ", description=" + description + ", image=" + image + ", color=" + color + ", race=" + race + ", group=" + group + '}';
+        return "Chien{" + "idChien=" + idChien + ", proprietaireChien=" + proprietaireChien + ", nom=" + nom + ", sexe=" + sexe + ", age=" + age + ", vaccination=" + vaccination + ", description=" + description + ", image=" + image + ", color=" + color + ", race=" + race + ", groupe=" + groupe + '}';
     }
 
   
