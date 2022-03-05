@@ -185,7 +185,7 @@ public class MissingDogsController implements Initializable {
 
         dogLastSeenOnLabel.setText(a.getDatePerte().toString());
         dogLastSeenInLabel.setText(a.getLocalisation());
-        ownerNameLabel.setText(a.getChien().getProprietaireChien().getIndividu().getPrenom());
+        ownerNameLabel.setText(a.getChien().getIndividu().getPrenom());
 
        Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/chien/"+a.getChien().getImage()+".png"));
        dogImage.setImage(dogImg);

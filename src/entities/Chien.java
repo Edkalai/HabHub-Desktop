@@ -8,7 +8,7 @@ package entities;
 public class Chien {
 
     int idChien;
-    ProprietaireChien proprietaireChien;
+    Individu individu;
     String nom;
     String sexe;
     String age;
@@ -54,9 +54,9 @@ public class Chien {
         this.groupe = groupe;
     }
 
-    public Chien(int idChien, ProprietaireChien proprietaireChien, String nom, String sexe, String age, Boolean vaccination, String description, String image, String color, String race, String groupe) {
+    public Chien(int idChien, Individu individu, String nom, String sexe, String age, Boolean vaccination, String description, String image, String color, String race, String groupe) {
         this.idChien = idChien;
-        this.proprietaireChien = proprietaireChien;
+        this.individu = individu;
         this.nom = nom;
         this.sexe = sexe;
         this.age = age;
@@ -107,12 +107,12 @@ public class Chien {
         this.idChien = idChien;
     }
 
-    public ProprietaireChien getProprietaireChien() {
-        return proprietaireChien;
+    public Individu getIndividu() {
+        return individu;
     }
 
-    public void setProprietaireChien(ProprietaireChien proprietaireChien) {
-        this.proprietaireChien = proprietaireChien;
+    public void setIndividu(Individu individu) {
+        this.individu = individu;
     }
 
     public String getNom() {
@@ -157,7 +157,7 @@ public class Chien {
 
     @Override
     public String toString() {
-        return "Chien{" + "idChien=" + idChien + ", proprietaireChien=" + proprietaireChien + ", nom=" + nom + ", sexe=" + sexe + ", age=" + age + ", vaccination=" + vaccination + ", description=" + description + ", image=" + image + ", color=" + color + ", race=" + race + ", groupe=" + groupe + '}';
+        return "Chien{" + "idChien=" + idChien + ", individu=" + individu + ", nom=" + nom + ", sexe=" + sexe + ", age=" + age + ", vaccination=" + vaccination + ", description=" + description + ", image=" + image + ", color=" + color + ", race=" + race + ", groupe=" + groupe + '}';
     }
 
   

@@ -1,7 +1,6 @@
 package services;
 
 import entities.AnnonceProprietaireChien;
-import entities.ProprietaireChien;
 import entities.Individu;
 import entities.Utilisateur;
 import entities.Chien;
@@ -26,19 +25,19 @@ public class AnnonceProprietaireChienService {
     }
 
     public void ajouterAnnonceProprietaireChien(AnnonceProprietaireChien a) throws SQLException {
-        PreparedStatement pre = connect.prepareStatement("INSERT INTO annonce_proprietaire_chien (idChien, datePublication,description,type,datePerte,Localisation,messageVocal) VALUES (?,?,?,?,?,?,?);");
+        PreparedStatement pre = connect.prepareStatement("INSERT INTO annonce_proprietaire_chien (idChien, datePublication,description,type,datePerte,Localisation,messageVocal) VALUES (?,SYSDATE(),?,?,?,?,?);");
         pre.setInt(1, a.getChien().getIdChien());
-        java.sql.Date sqlDatePublication = new java.sql.Date( a.getDatePublication().getTime() ); 
-        pre.setDate(2,sqlDatePublication);
-        pre.setString(3, a.getDescription());
-        pre.setString(4, a.getType());
+      //  java.sql.Date sqlDatePublication = new java.sql.Date( a.getDatePublication().getTime() ); 
+        //pre.setDate(2,sqlDatePublication);
+        pre.setString(2, a.getDescription());
+        pre.setString(3, a.getType());
         java.sql.Date sqlDatePerte=null;
         if (a.getDatePerte()!= null){
         sqlDatePerte = new java.sql.Date( a.getDatePerte().getTime() ); 
         }
-        pre.setDate(5,sqlDatePerte);
-        pre.setString(6, a.getLocalisation());
-        pre.setString(7, a.getMessageVocal());
+        pre.setDate(4,sqlDatePerte);
+        pre.setString(5, a.getLocalisation());
+        pre.setString(6, a.getMessageVocal());
         pre.executeUpdate();
     }
    
@@ -86,7 +85,7 @@ public class AnnonceProprietaireChienService {
    
         public List<AnnonceProprietaireChien> afficherAnnonceProprietaireChien(String type) throws SQLException {
         List<AnnonceProprietaireChien> annoncesProprietaireChien = new ArrayList<>();
-        PreparedStatement ps = connect.prepareStatement("select * from annonce_proprietaire_chien a join chien c ON a.idChien=c.idChien join proprietaire_chien pc on pc.idProprietaireChien=c.idProprietaireChien join individu i on i.idIndividu=pc.idIndividu where type=? order by datePublication desc;");
+        PreparedStatement ps = connect.prepareStatement("select * from annonce_proprietaire_chien a join chien c ON a.idChien=c.idChien join individu i on i.idIndividu=c.idIndividu where type=? order by datePublication desc;");
         ps.setString(1,type);
             ResultSet rst = ps.executeQuery();
 
@@ -94,8 +93,8 @@ public class AnnonceProprietaireChienService {
             Utilisateur nu= new Utilisateur(rst.getInt("idUtilisateur"));
             Individu  ni= new Individu(rst.getInt("idIndividu"),nu,rst.getString("i.nom"),rst.getString("prenom"),rst.getDate("dateNaissance"),rst.getString("adresse"),
             rst.getString("facebook"),rst.getString("instagram"),rst.getString("whatsapp"));
-            ProprietaireChien npc=new ProprietaireChien(rst.getInt("idProprietaireChien"),ni,rst.getString("bio"));
-            Chien nc = new Chien(rst.getInt("idChien"),npc,rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("c.description"),rst.getString("c.image"),rst.getString("color"),rst.getString("race"),rst.getString("groupe"));
+            
+            Chien nc = new Chien(rst.getInt("idChien"),ni,rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("c.description"),rst.getString("c.image"),rst.getString("color"),rst.getString("race"),rst.getString("groupe"));
             AnnonceProprietaireChien a = new AnnonceProprietaireChien(rst.getInt("idAnnonceProprietaireChien"),
             nc,
             rst.getDate("datePublication"),
@@ -113,7 +112,7 @@ public class AnnonceProprietaireChienService {
         
         public List<AnnonceProprietaireChien> rechercheAnnonceProprietaireChien (String input,String type) throws SQLException {
         List<AnnonceProprietaireChien> annoncesProprietaireChien = new ArrayList<>();
-        String req = "select * from annonce_proprietaire_chien a join chien c ON a.idChien=c.idChien join proprietaire_chien pc on pc.idProprietaireChien=c.idProprietaireChien join individu i on i.idIndividu=pc.idIndividu where (a.localisation like ? or c.nom like ? or i.prenom like ? ) and (type=?) order by datePublication desc ";
+        String req = "select * from annonce_proprietaire_chien a join chien c ON a.idChien=c.idChien join individu i on i.idIndividu=c.idIndividu where (a.localisation like ? or c.nom like ? or i.prenom like ? ) and (type=?) order by datePublication desc ";
         PreparedStatement ps = connect.prepareStatement(req);
             ps.setString(1, "%" + input+ "%");
             ps.setString(2, "%" + input+ "%");
@@ -124,8 +123,7 @@ public class AnnonceProprietaireChienService {
             Utilisateur nu= new Utilisateur(rst.getInt("idUtilisateur"));
             Individu  ni= new Individu(rst.getInt("idIndividu"),nu,rst.getString("i.nom"),rst.getString("prenom"),rst.getDate("dateNaissance"),rst.getString("adresse"),
             rst.getString("facebook"),rst.getString("instagram"),rst.getString("whatsapp"));
-            ProprietaireChien npc=new ProprietaireChien(rst.getInt("idProprietaireChien"),ni,rst.getString("bio"));
-            Chien nc = new Chien(rst.getInt("idChien"),npc,rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("description"),rst.getString("c.image"),rst.getString("color"),rst.getString("race"),rst.getString("groupe"));
+            Chien nc = new Chien(rst.getInt("idChien"),ni,rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("description"),rst.getString("c.image"),rst.getString("color"),rst.getString("race"),rst.getString("groupe"));
             AnnonceProprietaireChien a = new AnnonceProprietaireChien(rst.getInt("idAnnonceProprietaireChien"),
             nc,
             rst.getDate("datePublication"),
@@ -143,7 +141,7 @@ public class AnnonceProprietaireChienService {
      
     public List<AnnonceProprietaireChien> FilterAnnonceProprietaireChien(String type,String filtre,String valeur) throws SQLException {
         List<AnnonceProprietaireChien> annoncesProprietaireChien = new ArrayList<>();
-        PreparedStatement ps = connect.prepareStatement("select * from annonce_proprietaire_chien a join chien c ON a.idChien=c.idChien join proprietaire_chien pc on pc.idProprietaireChien=c.idProprietaireChien join individu i on i.idIndividu=pc.idIndividu where type=? and "+filtre+" = ?;");
+        PreparedStatement ps = connect.prepareStatement("select * from annonce_proprietaire_chien a join chien c ON a.idChien=c.idChien join individu i on i.idIndividu=pc.idIndividu where type=? and "+filtre+" = ?;");
         ps.setString(1,type);
         ps.setString(2,valeur);
         ResultSet rst = ps.executeQuery();
@@ -152,8 +150,7 @@ public class AnnonceProprietaireChienService {
             Utilisateur nu= new Utilisateur(rst.getInt("idUtilisateur"));
             Individu  ni= new Individu(rst.getInt("idIndividu"),nu,rst.getString("i.nom"),rst.getString("prenom"),rst.getDate("dateNaissance"),rst.getString("adresse"),
             rst.getString("facebook"),rst.getString("instagram"),rst.getString("whatsapp"));
-            ProprietaireChien npc=new ProprietaireChien(rst.getInt("idProprietaireChien"),ni,rst.getString("bio"));
-            Chien nc = new Chien(rst.getInt("idChien"),npc,rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("description"),rst.getString("c.image"),rst.getString("color"),rst.getString("race"),rst.getString("groupe"));
+            Chien nc = new Chien(rst.getInt("idChien"),ni,rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("description"),rst.getString("c.image"),rst.getString("color"),rst.getString("race"),rst.getString("groupe"));
             AnnonceProprietaireChien a = new AnnonceProprietaireChien(rst.getInt("idAnnonceProprietaireChien"),
             nc,
             rst.getDate("datePublication"),

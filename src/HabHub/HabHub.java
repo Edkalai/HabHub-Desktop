@@ -6,14 +6,14 @@
 package habhub;
 
 import entities.AnnonceProprietaireChien;
-import entities.ProprietaireChien;
+
 import entities.Utilisateur;
 import entities.Individu;
 import entities.Chien;
 import services.AnnonceProprietaireChienService;
-import services.ProprietaireChienService;
+
 import services.ChienService;
-import services.ProprietaireChienService;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -31,9 +31,8 @@ public class HabHub {
      */
     public static void main(String[] args) {
         Individu i = new Individu(1);
-        ProprietaireChien pc = new ProprietaireChien (10,i,"azeazeazeazeaze");
-        ProprietaireChienService pcs=new ProprietaireChienService();
-        Chien c = new Chien(11,pc,"aa","M","2mois",true,"aaaaa","14.png","white","Husky","Hunting");
+
+        Chien c = new Chien(11,i,"aa","M","2mois",true,"aaaaa","14.png","white","Husky","Hunting");
         ChienService cs = new ChienService();
           
        

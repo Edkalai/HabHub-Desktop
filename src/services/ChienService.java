@@ -1,7 +1,7 @@
 package services;
 
 import entities.Chien;
-import entities.ProprietaireChien;
+import entities.Individu;
 import utils.MyDB;
 import java.sql.Connection;
 import java.sql.Date;
@@ -26,7 +26,7 @@ public class ChienService {
     
      public void ajouterChienProprietaire(Chien c) throws SQLException {
         PreparedStatement pre = connect.prepareStatement("INSERT INTO chien (idProprietaireChien, nom,sexe,age,vaccination,description,image,color,race,groupe)VALUES (?,?,?,?,?,?,?,?,?,?);");
-        pre.setInt(1,c.getProprietaireChien().getIdProprietaireChien());
+        pre.setInt(1,c.getIndividu().getIdIndividu());
         pre.setString(2,c.getNom());
         pre.setString(3,c.getSexe());
         pre.setString(4,c.getAge());
@@ -96,9 +96,9 @@ public class ChienService {
         ResultSet rst = ste.executeQuery(req);
 
         while (rst.next()) {
-            ProprietaireChien npc = new ProprietaireChien(rst.getInt("idProprietaireChien"));
+            Individu ni = new Individu(rst.getInt("idIndividu"));
             Chien a = new Chien(rst.getInt("idChien"),
-            npc,
+            ni,
             rst.getString("nom"),
             rst.getString("sexe"),
             rst.getString("age"),
@@ -123,7 +123,7 @@ public class ChienService {
             ResultSet rst = ps.executeQuery();
             while (rst.next()) {
                 c.setIdChien(rst.getInt(1));
-                c.getProprietaireChien().setIdProprietaireChien(rst.getInt(2));
+                c.getIndividu().setIdIndividu(rst.getInt(2));
                 c.setNom(rst.getString(3));
                 c.setSexe(rst.getString(4));
                 c.setAge(rst.getString(5));
