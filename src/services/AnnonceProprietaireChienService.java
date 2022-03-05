@@ -95,7 +95,7 @@ public class AnnonceProprietaireChienService {
             Individu  ni= new Individu(rst.getInt("idIndividu"),nu,rst.getString("i.nom"),rst.getString("prenom"),rst.getDate("dateNaissance"),rst.getString("adresse"),
             rst.getString("facebook"),rst.getString("instagram"),rst.getString("whatsapp"));
             ProprietaireChien npc=new ProprietaireChien(rst.getInt("idProprietaireChien"),ni,rst.getString("bio"));
-            Chien nc = new Chien(rst.getInt("idChien"),npc,rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("c.description"),rst.getString("c.image"));
+            Chien nc = new Chien(rst.getInt("idChien"),npc,rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("c.description"),rst.getString("c.image"),rst.getString("color"),rst.getString("race"),rst.getString("group"));
             AnnonceProprietaireChien a = new AnnonceProprietaireChien(rst.getInt("idAnnonceProprietaireChien"),
             nc,
             rst.getDate("datePublication"),
@@ -125,7 +125,7 @@ public class AnnonceProprietaireChienService {
             Individu  ni= new Individu(rst.getInt("idIndividu"),nu,rst.getString("i.nom"),rst.getString("prenom"),rst.getDate("dateNaissance"),rst.getString("adresse"),
             rst.getString("facebook"),rst.getString("instagram"),rst.getString("whatsapp"));
             ProprietaireChien npc=new ProprietaireChien(rst.getInt("idProprietaireChien"),ni,rst.getString("bio"));
-            Chien nc = new Chien(rst.getInt("idChien"),npc,rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("description"),rst.getString("c.image"));
+            Chien nc = new Chien(rst.getInt("idChien"),npc,rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("description"),rst.getString("c.image"),rst.getString("color"),rst.getString("race"),rst.getString("group"));
             AnnonceProprietaireChien a = new AnnonceProprietaireChien(rst.getInt("idAnnonceProprietaireChien"),
             nc,
             rst.getDate("datePublication"),
@@ -153,7 +153,7 @@ public class AnnonceProprietaireChienService {
             Individu  ni= new Individu(rst.getInt("idIndividu"),nu,rst.getString("i.nom"),rst.getString("prenom"),rst.getDate("dateNaissance"),rst.getString("adresse"),
             rst.getString("facebook"),rst.getString("instagram"),rst.getString("whatsapp"));
             ProprietaireChien npc=new ProprietaireChien(rst.getInt("idProprietaireChien"),ni,rst.getString("bio"));
-            Chien nc = new Chien(rst.getInt("idChien"),npc,rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("description"),rst.getString("c.image"));
+            Chien nc = new Chien(rst.getInt("idChien"),npc,rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("description"),rst.getString("c.image"),rst.getString("color"),rst.getString("race"),rst.getString("group"));
             AnnonceProprietaireChien a = new AnnonceProprietaireChien(rst.getInt("idAnnonceProprietaireChien"),
             nc,
             rst.getDate("datePublication"),
