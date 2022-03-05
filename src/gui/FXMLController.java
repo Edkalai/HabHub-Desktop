@@ -26,6 +26,9 @@ public class FXMLController implements Initializable {
         // TODO
     }    
      public void  checkLogin()  throws IOException{
+     {
+     }
+
 
     }
      

@@ -7,6 +7,9 @@ package services;
 
 import entite.Individu;
 import entite.Utilisateur;
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
@@ -81,8 +84,9 @@ return utilisateurs;
     }
 
     @Override
-    public List<Utilisateur> chercherUtilisateur(String input) throws SQLException {
- List<Utilisateur> utilisateurs=new ArrayList<>();
+    public Utilisateur chercherUtilisateur(String input)  {
+
+        Utilisateur u = new Utilisateur();
       String req="SELECT * FROM UTILISATEUR where email="+input;
       try {
              //exec
@@ -90,20 +94,66 @@ return utilisateurs;
              ResultSet rs= st.executeQuery(req);
              while(rs.next())
              {
+               
                  //String nom, String prenom, String sexe, String date,String email, String login, String mdp, String role
-                 utilisateurs.add(new Utilisateur(rs.getInt("idUtilisateur"),rs.getString("email"), rs.getString("password"), rs.getInt("numtel"), rs.getString("type")));
+                 u =   new Utilisateur(rs.getInt("idUtilisateur"),rs.getString("email"), rs.getString("password"), rs.getInt("numtel"), rs.getString("type"));
              }
          } catch (SQLException ex) {
             ex.printStackTrace();
          }
-return utilisateurs;    }
+return u;    }
 
-   
+       
+    public String doHashing (String password) {
+         try {
+          MessageDigest messageDigest = MessageDigest.getInstance("SHA-512");
+
+          messageDigest.update(password.getBytes());
+
+          byte[] resultByteArray = messageDigest.digest();
+
+          StringBuilder sb = new StringBuilder();
+
+          for (byte b : resultByteArray) {
+           sb.append(String.format("%02x", b));
+          }
+
+          return sb.toString();
+
+         } catch (NoSuchAlgorithmException e) {
+          e.printStackTrace();
+         }
+
+         return "";
+        }
+    public Boolean verifLogin (String email ,String  mdp) throws IOException
+     {
+         String hashedMdp= doHashing(mdp); 
+         String requete = "select * from utilisateur where email=? and password=?";
+                 try {
+            PreparedStatement ps = connect.prepareStatement(requete);
+                     ps.setString(1, email);
+                     ps.setString(2, hashedMdp);
+            ResultSet resultat = ps.executeQuery();
+            if (resultat.next()) {
+             
+                return true ;
+ 
+            }
+            else{
+                           
+
+            return false;
+            }
+        } catch (SQLException ex) {
+            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("erreur lors de la recherche du depot " + ex.getMessage());
+            return false;
+        }}
     }
     
 
     
-
 
    
   

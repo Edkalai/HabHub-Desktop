@@ -11,7 +11,7 @@ import entite.Individu;
 
 public interface IUtilisateur <Utilisateur > {
     public boolean login(String login, String mdp)throws SQLException;
-     public List<Utilisateur> chercherUtilisateur(String input) throws SQLException;
+     public Utilisateur chercherUtilisateur(String input) throws SQLException;
     public List<Utilisateur> TrierUtilisateur() throws SQLException;
    
 }

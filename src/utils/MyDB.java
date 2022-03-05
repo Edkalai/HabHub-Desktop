@@ -5,6 +5,7 @@
  */
 package utils;
 
+import entite.Utilisateur;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -40,5 +41,5 @@ public class MyDB {
         return connexion;
     }
     
-    
+   
 }
