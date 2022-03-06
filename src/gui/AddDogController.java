@@ -2,12 +2,16 @@ package gui;
 
 import HabHub.CommunityListener;
 import entities.Chien;
+import entities.Individu;
+import java.io.File;
 import services.ChienService;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +25,14 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
+import services.UserIndividuServices;
+import utils.Statics;
 
 public class AddDogController implements Initializable {
 
@@ -39,7 +50,7 @@ public class AddDogController implements Initializable {
 
     @FXML
     private TextField ageLabel;
-    
+
     @FXML
     private TextField colorLabel;
 
@@ -70,14 +81,50 @@ public class AddDogController implements Initializable {
     @FXML
     private RadioButton female;
 
-
     @FXML
     private TextArea descriptionTextArea;
-    
-    ChienService cs = new ChienService();
 
     @FXML
-    void ajouterChien(ActionEvent event) {
+    private ImageView dogImageView;
+
+    @FXML
+    private AnchorPane test;
+
+    private String dogImageName;
+
+    UserIndividuServices uis = new UserIndividuServices();
+
+    @FXML
+    String insertImage(ActionEvent event) throws SQLException {
+        FileChooser fc = new FileChooser();
+        String imageFilePath = "";
+        String imageName = "";
+        File f = fc.showOpenDialog(null);
+
+        if (f != null) {
+
+            Image imageToBeSaved = new Image(f.toURI().toString(), 135, 130, false, true);
+
+            dogImageView.setImage(imageToBeSaved);
+
+            
+
+        }
+
+        return imageName;
+    }
+    ChienService cs = new ChienService();
+
+    public void switchSceneMyDogs(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("MyDogs.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void ajouterChien(ActionEvent event) throws IOException, SQLException {
         String age;
         String gender;
         boolean vaccination;
@@ -90,20 +137,39 @@ public class AddDogController implements Initializable {
         } else {
             age = ageLabel.getText() + " yr";
         }
-        if (male.isSelected()){
+        RadioButton selectedGender = (RadioButton) dogGender.getSelectedToggle();
+        String selectedGenderValue = selectedGender.getText();
+        if (selectedGenderValue.equals("Male")){
            gender="M";
-        
         }
-        else if (female.isSelected()){
+        else{
             gender="F";
         }
-        vaccination=vaccinationTrue.isSelected();
-        
+        RadioButton selectedVaccination = (RadioButton) dogVaccination.getSelectedToggle();
+        String selectedVaccinationValue = selectedVaccination.getText();
+        if (selectedVaccinationValue.equals("Yes")){
+           vaccination=true;
+        }
+        else{
+            vaccination=false;
+        }
+
         String nom = dogNameLabel.getText();
         String description = descriptionTextArea.getText();
         String color = colorLabel.getText();
-        //Chien c = new Chien(nom,age,gender,vaccination,description,color,selectedRace,selectedGroupe);
-        //cs.ajouterChienProprietaire(c);
+        Statics.currentIndividu.getIdIndividu();
+        String image=Integer.toString(Statics.currentIndividu.getIdIndividu()) + "_" + Integer.toString(uis.getDogsNumberByIdIndividu(Statics.currentIndividu.getIdIndividu())+1);
+        File file = new File("C:\\Kaizen\\Esprit\\3eme\\HabHub\\HabHub-Desktop\\src\\assets\\img\\chien\\"
+                    +image+".png");
+            try {
+                ImageIO.write(SwingFXUtils.fromFXImage(dogImageView.getImage(), null), "png", file);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        Individu i = new Individu(1);
+        Chien c = new Chien(i, nom, gender, age, vaccination, description, image, color, selectedRace, selectedGroupe);
+        cs.ajouterChienProprietaire(c);
+        switchSceneMyDogs(event);
     }
 
     private Stage stage;
@@ -140,8 +206,8 @@ public class AddDogController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ObservableList<String> ageList = FXCollections.observableArrayList("Months", "Years");
-        ObservableList<String> raceList = FXCollections.observableArrayList("Working", "Herding", "Toy", "Hound", "Sporting", "Non-Sporting", "Terrier");
-        ObservableList<String> groupeList = FXCollections.observableArrayList(
+        ObservableList<String> groupeList = FXCollections.observableArrayList("Working", "Herding", "Toy", "Hound", "Sporting", "Non-Sporting", "Terrier");
+        ObservableList<String> raceList = FXCollections.observableArrayList(
                 "Golden Retriever",
                 "Husky",
                 "Labrador Retriever",

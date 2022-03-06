@@ -5,7 +5,7 @@
  */
 package utils;
 
-import entities.Utilisateur;
+import entities.Individu;
 
 
 /**
@@ -14,6 +14,6 @@ import entities.Utilisateur;
  */
 public class Statics {
 
-    public static Utilisateur currentUser = new Utilisateur(1);
+    public static Individu currentIndividu = new Individu();
     
 }

@@ -25,6 +25,19 @@ public class Chien {
     public Chien() {
     }
 
+    public Chien(Individu individu, String nom, String sexe, String age, Boolean vaccination, String description, String image, String color, String race, String groupe) {
+        this.individu = individu;
+        this.nom = nom;
+        this.sexe = sexe;
+        this.age = age;
+        this.vaccination = vaccination;
+        this.description = description;
+        this.image = image;
+        this.color = color;
+        this.race = race;
+        this.groupe = groupe;
+    }
+
     public Chien(int idChien, String nom, String sexe, String age, Boolean vaccination, String description, String image, String color, String race, String groupe) {
         this.idChien = idChien;
         this.nom = nom;

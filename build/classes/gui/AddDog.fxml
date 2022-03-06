@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddDogController">
+<AnchorPane id="AnchorPane" fx:id="test" prefHeight="800.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddDogController">
    <stylesheets>
       <URL value="@communityfxml.css" />
       <URL value="@ajoutForm.css" />
@@ -203,9 +203,9 @@
                                     <Pane prefHeight="540.0" prefWidth="57.0" />
                                     <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="255.0" prefWidth="220.0" styleClass="addPictureDog">
                                        <children>
-                                          <Button mnemonicParsing="false" styleClass="transparent">
+                                          <Button mnemonicParsing="false" onAction="#insertImage" styleClass="transparent">
                                              <graphic>
-                                                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fx:id="dogImageView" fitHeight="230.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
                                                       <Image url="@../assets/img/chien/chooseImage.png" />
                                                    </image>
@@ -268,7 +268,7 @@
                                                          </font>
                                                       </Label>
                                                       <Pane prefHeight="43.0" prefWidth="58.0" />
-                                                      <RadioButton fx:id="vaccination" mnemonicParsing="false" text="Yes">
+                                                      <RadioButton fx:id="vaccinationTrue" mnemonicParsing="false" text="Yes">
                                                          <font>
                                                             <Font name="Aller" size="15.0" />
                                                          </font>
@@ -277,7 +277,7 @@
                                                          </toggleGroup>
                                                       </RadioButton>
                                                       <Pane prefHeight="37.0" prefWidth="13.0" />
-                                                      <RadioButton fx:id="vaccination" mnemonicParsing="false" text="No" toggleGroup="$dogVaccination">
+                                                      <RadioButton fx:id="vaccinationFalse" mnemonicParsing="false" text="No" toggleGroup="$dogVaccination">
                                                          <font>
                                                             <Font name="Aller" size="15.0" />
                                                          </font>
@@ -295,7 +295,7 @@
                                                          </font>
                                                       </Label>
                                                       <Pane prefHeight="43.0" prefWidth="141.0" />
-                                                      <RadioButton mnemonicParsing="false" text="Male">
+                                                      <RadioButton fx:id="male" mnemonicParsing="false" text="Male">
                                                          <font>
                                                             <Font name="Aller" size="15.0" />
                                                          </font>
@@ -304,7 +304,7 @@
                                                          </toggleGroup>
                                                       </RadioButton>
                                                       <Pane prefHeight="37.0" prefWidth="13.0" />
-                                                      <RadioButton mnemonicParsing="false" text="Female" toggleGroup="$dogGender">
+                                                      <RadioButton fx:id="female" mnemonicParsing="false" text="Female" toggleGroup="$dogGender">
                                                          <font>
                                                             <Font name="Aller" size="15.0" />
                                                          </font>
@@ -330,9 +330,9 @@
                                                       <Insets left="100.0" />
                                                    </padding>
                                                    <children>
-                                                      <Label text="Race" />
-                                                      <Pane prefHeight="43.0" prefWidth="95.0" />
-                                                      <ComboBox fx:id="raceComboBox" prefWidth="150.0" visibleRowCount="5" />
+                                                      <Label text="Group" />
+                                                      <Pane prefHeight="43.0" prefWidth="86.0" />
+                                                      <ComboBox fx:id="groupeComboBox" prefWidth="150.0" visibleRowCount="5" />
                                                       <Pane prefHeight="48.0" prefWidth="16.0" />
                                                    </children>
                                                 </HBox>
@@ -341,9 +341,9 @@
                                                       <Insets left="100.0" />
                                                    </padding>
                                                    <children>
-                                                      <Label text="Group" />
-                                                      <Pane prefHeight="43.0" prefWidth="86.0" />
-                                                      <ComboBox fx:id="groupeComboBox" prefWidth="150.0" visibleRowCount="5" />
+                                                      <Label text="Race" />
+                                                      <Pane prefHeight="43.0" prefWidth="95.0" />
+                                                      <ComboBox fx:id="raceComboBox" prefWidth="150.0" visibleRowCount="5" />
                                                       <Pane prefHeight="48.0" prefWidth="16.0" />
                                                    </children>
                                                 </HBox>
@@ -360,6 +360,12 @@
                                                    <padding>
                                                       <Insets bottom="20.0" left="100.0" top="20.0" />
                                                    </padding>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Pane prefHeight="38.0" prefWidth="622.0" />
+                                                      <Label fx:id="controleSaisie" textFill="#ff6767" />
+                                                   </children>
                                                 </HBox>
                                              </children>
                                              <padding>
@@ -399,4 +405,7 @@
          </children>
       </HBox>
    </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
 </AnchorPane>
