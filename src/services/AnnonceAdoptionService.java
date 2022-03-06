@@ -35,15 +35,12 @@ public class AnnonceAdoptionService implements IAnnonceAdoption<AnnonceAdoption>
 
     @Override
     public void addAnnonceAdoption(AnnonceAdoption a) throws SQLException {
-        String req = "insert into annonce_adoption (idIndividu,idChien,datePublication,description,localisation) values (?,?,?,?,?)";
+        String req = "insert into annonce_adoption (idIndividu,idChien,datePublication,description,localisation) values (?,?,SYSDATE(),?,?)";
         PreparedStatement ps = connexion.prepareStatement(req);
             ps.setInt(1, a.getIdIndividu().getIdIndividu());
             ps.setInt(2, a.getIdChien().getIdChien());
-            java.sql.Date sqlDatePublication = new java.sql.Date( a.getDatePublication().getTime() ); 
-            ps.setDate(3,sqlDatePublication);
-            //ps.setDate(3, a.getDatePublication());
-            ps.setString(4, a.getDescription());
-            ps.setString(5, a.getLocalisation());
+            ps.setString(3, a.getDescription());
+            ps.setString(4, a.getLocalisation());
             ps.executeUpdate();
             
     }
@@ -89,9 +86,9 @@ public class AnnonceAdoptionService implements IAnnonceAdoption<AnnonceAdoption>
             Utilisateur nu= new Utilisateur(rst.getInt("idUtilisateur"));
             Individu  ni= new Individu(rst.getInt("idIndividu"),nu,rst.getString("i.nom"),rst.getString("prenom"),rst.getDate("dateNaissance"),rst.getString("adresse"),
             rst.getString("facebook"),rst.getString("instagram"),rst.getString("whatsapp"));
-            Chien nc = new Chien(rst.getInt("idChien"),rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("description"));
+            Chien nc = new Chien(rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("description"),rst.getString("image")
+            ,rst.getString("color"),rst.getString("race"),rst.getString("groupe"));
             AnnonceAdoption a = new AnnonceAdoption(
-            rst.getInt("idAnnonceAdoption"),
             ni,
             nc,
             rst.getDate("datePublication"),
@@ -118,7 +115,8 @@ public class AnnonceAdoptionService implements IAnnonceAdoption<AnnonceAdoption>
             Utilisateur nu= new Utilisateur(rst.getInt("idUtilisateur"));
             Individu  ni= new Individu(rst.getInt("idIndividu"),nu,rst.getString("i.nom"),rst.getString("prenom"),rst.getDate("dateNaissance"),rst.getString("adresse"),
                                        rst.getString("facebook"),rst.getString("instagram"),rst.getString("whatsapp"));
-            Chien nc = new Chien(rst.getInt("idChien"),rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("description"));
+            Chien nc = new Chien(rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("description"),rst.getString("image"),
+                                 rst.getString("color"),rst.getString("race"),rst.getString("groupe"));
             AnnonceAdoption a = new AnnonceAdoption(
             rst.getInt("idAnnonceAdoption"),
             ni,
@@ -142,7 +140,8 @@ public class AnnonceAdoptionService implements IAnnonceAdoption<AnnonceAdoption>
             Utilisateur nu= new Utilisateur(rst.getInt("idUtilisateur"));
             Individu  ni= new Individu(rst.getInt("idIndividu"),nu,rst.getString("i.nom"),rst.getString("prenom"),rst.getDate("dateNaissance"),rst.getString("adresse"),
             rst.getString("facebook"),rst.getString("instagram"),rst.getString("whatsapp"));
-            Chien nc = new Chien(rst.getInt("idChien"),rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("description"));
+            Chien nc = new Chien(rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("description"),rst.getString("image"),
+                                 rst.getString("color"),rst.getString("race"),rst.getString("groupe"));
             AnnonceAdoption a = new AnnonceAdoption(
             rst.getInt("idAnnonceAdoption"),
             ni,

@@ -15,10 +15,10 @@ import javafx.scene.image.ImageView;
 import services.AnnonceAdoptionService;
 import entities.AnnonceAdoption;
 import entities.Chien;
-import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.List;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 
 
 
@@ -48,7 +48,7 @@ public class ChienFXMLController implements Initializable {
     private Label locationLabel;
     
     @FXML
-    private void click(MouseEvent mouseEvent) {
+    private void onClick(MouseEvent mouseEvent) {
         myListener.onClickListener(annonceAdoption);
     }
 
@@ -66,9 +66,14 @@ public class ChienFXMLController implements Initializable {
         locationLabel.setText(annonceAdoption.getLocalisation());
         Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/dog.png"));
         dogImage.setImage(dogImg);
-        Image genderImg = new Image(getClass().getResourceAsStream("../assets/img/female.png"));
-        if ("M".equals(annonceAdoption.getIdChien().getSexe())){
-            genderImg = new Image(getClass().getResourceAsStream("../assets/img/male.png"));
+        //Image genderImg = new Image(getClass().getResourceAsStream("../assets/img/female.png"));
+        Image genderImg = null;
+        if (annonceAdoption.getIdChien().getSexe().toLowerCase().equals("m")) {
+             genderImg = new Image(getClass().getResourceAsStream("../assets/img/male.png"));
+        }
+        else{
+             genderImg = new Image(getClass().getResourceAsStream("../assets/img/female.png"));
+            
         }
         genderIcon.setImage(genderImg);
     }

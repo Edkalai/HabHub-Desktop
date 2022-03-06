@@ -30,7 +30,7 @@ public class Main extends Application {
  
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../gui/AnnonceAdoptionFXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/Log_in.fxml"));
         primaryStage.setTitle("HabHub");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
@@ -40,5 +40,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         
         launch(args);
+     
     }
 }

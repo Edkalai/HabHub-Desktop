@@ -7,7 +7,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -20,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1280.0" styleClass="mainFxmlClass" stylesheets="@annonceadoption.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AnnonceAdoptionFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1280.0" styleClass="mainFxmlClass" stylesheets="@AnnonceAdoption.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AnnonceAdoptionFXMLController">
    <children>
       <HBox prefHeight="800.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -119,19 +118,38 @@
             </VBox>
             <VBox prefHeight="800.0" prefWidth="1215.0" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Text lineSpacing="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Help owners find their dogs !">
+                        <Text lineSpacing="36.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30; -fx-font-weight: 800;" text="Adopt a furry friend today!">
                            <font>
                               <Font name="Lazzy Dog Regular" size="30.0" />
                            </font>
                         </Text>
-                        <Pane prefHeight="100.0" prefWidth="673.0" HBox.hgrow="ALWAYS" />
+                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                        <Pane maxHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0" prefWidth="726.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <HBox alignment="CENTER" layoutY="9.0" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="144.0" styleClass="btnAdd">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#switchSceneAnnonceChien" style="-fx-font-weight: bold; -fx-font-size: 14.5;" styleClass="btnAdd" text="Add request" textFill="WHITE">
+                                       <graphic>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: white;" styleClass="btnAdd">
+                                             <image>
+                                                <Image url="@../assets/img/plus.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children></Pane>
                         <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-background-radius: 50;" styleClass="transparent">
                            <graphic>
                               <ImageView fitHeight="54.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../assets/img/locationIcon.png" />
+                                    <Image url="@../assets/img/Ellipse%202.png" />
                                  </image></ImageView>
                            </graphic>
                         </Button>
@@ -144,15 +162,6 @@
                      <children>
                         <VBox prefHeight="676.0" prefWidth="870.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <HBox maxHeight="-Infinity" prefHeight="72.0" prefWidth="869.0" VBox.vgrow="SOMETIMES">
-                                 <children>
-                                    <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="340.0" style="-fx-background-color: #C2D5E7;" styleClass="roundedButton" />
-                                    <Pane maxHeight="-Infinity" prefHeight="65.0" prefWidth="200.0" />
-                                    <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="340.0" style="-fx-background-color: #E8A4A4;" styleClass="roundedButton" />
-                                    <Pane maxHeight="-Infinity" prefHeight="65.0" prefWidth="200.0" />
-                                    <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="340.0" style="-fx-background-color: #A5E7B4;" styleClass="roundedButton" />
-                                 </children>
-                              </HBox>
                               <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="870.0" VBox.vgrow="NEVER" />
                               <VBox alignment="TOP_CENTER" prefHeight="598.0" prefWidth="870.0" styleClass="pane" VBox.vgrow="ALWAYS">
                                  <children>
@@ -173,7 +182,7 @@
                                                             <Insets left="20.0" />
                                                          </HBox.margin>
                                                       </ImageView>
-                                                      <TextField prefHeight="31.0" prefWidth="423.0" promptText="Search for names, Dog Breeds, Age, Location" styleClass="transparent" />
+                                                      <TextField fx:id="searchBox" prefHeight="31.0" prefWidth="423.0" promptText="Search for names, Dog Breeds, Age, Location" styleClass="transparent" />
                                                    </children>
                                                 </HBox>
                                                 <Pane prefHeight="51.0" prefWidth="200.0" />
@@ -214,7 +223,7 @@
                                       </rowConstraints>
                                     </GridPane>
                                     <Pane prefHeight="412.0" prefWidth="868.0" />
-                                    <Pagination prefHeight="75.0" prefWidth="823.0" />
+                                    <Pagination prefHeight="75.0" prefWidth="868.0" />
                                  </children>
                               </VBox>
                            </children>
@@ -228,74 +237,149 @@
                               <Insets />
                            </HBox.margin>
                            <children>
-                              <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                              <ImageView fx:id="chienImg" fitHeight="202.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
+                                 <cursor>
+                                    <Cursor fx:constant="S_RESIZE" />
+                                 </cursor>
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                              </ImageView>
+                              <Pane prefHeight="128.0" prefWidth="250.0" VBox.vgrow="ALWAYS" />
+                              <HBox prefHeight="36.0" prefWidth="225.0">
                                  <children>
-                                    <ImageView fitHeight="187.0" fitWidth="233.0" pickOnBounds="true" preserveRatio="true">
-                                       <cursor>
-                                          <Cursor fx:constant="S_RESIZE" />
-                                       </cursor>
-                                       <viewport>
-                                          <Rectangle2D />
-                                       </viewport>
-                                    </ImageView>
-                                 </children>
-                              </VBox>
-                              <HBox prefHeight="57.0" prefWidth="283.0">
-                                 <children>
-                                    <VBox prefHeight="200.0" prefWidth="100.0">
+                                    <VBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="146.0">
                                        <children>
-                                          <Label prefHeight="29.0" prefWidth="89.0" text="Label" />
+                                          <Label fx:id="chienNameLable" prefHeight="36.0" prefWidth="108.0" style="-fx-font-size: 25; -fx-font-weight: bold;" text="Label">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font></Label>
                                           <Pane prefHeight="300.0" prefWidth="269.0" />
-                                          <HBox prefHeight="100.0" prefWidth="200.0">
+                                          <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="70.0">
                                              <children>
-                                                <ImageView fitHeight="35.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" />
-                                                <Label text="Label" />
+                                                <ImageView fitHeight="24.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../assets/img/locationIcon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label fx:id="adoptionLocation" prefHeight="25.0" prefWidth="57.0" styleClass="adoptionLocation" text="Label" textFill="#6e6e6e">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
                                              </children>
                                           </HBox>
                                        </children>
                                     </VBox>
-                                    <Pane prefHeight="200.0" prefWidth="200.0" />
-                                    <ImageView fitHeight="42.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Pane prefHeight="61.0" prefWidth="92.0" />
+                                    <ImageView fx:id="genderImage" fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <Pane prefHeight="126.0" prefWidth="250.0" VBox.vgrow="ALWAYS" />
+                              <HBox alignment="CENTER" prefHeight="160.0" prefWidth="263.0">
+                                 <children>
+                                    <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="80.0" styleClass="vboxProperties">
+                                       <children>
+                                          <Label fx:id="chienAge" style="-fx-font-size: 13; -fx-font-weight: bold;" text="Label">
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font></Label>
+                                          <Text fill="#6e6e6e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 11; -fx-font-weight: 500; -fx-text-alignment: center;" styleClass="Item" text="Age" />
+                                       </children>
+                                    </VBox>
+                                    <Pane prefHeight="78.0" prefWidth="32.0" />
+                                    <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="80.0" styleClass="vboxProperties">
+                                       <children>
+                                          <Label fx:id="genderColor" style="-fx-font-weight: bold; -fx-font-size: 13;" text="Label">
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font></Label>
+                                          <Text fill="#6e6e6e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 11; -fx-font-weight: 500; -fx-text-alignment: center;" styleClass="Item" text="Color" />
+                                       </children>
+                                    </VBox>
+                                    <Pane prefHeight="78.0" prefWidth="33.0" />
+                                    <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="80.0" styleClass="vboxProperties">
+                                       <children>
+                                          <Label fx:id="chienSexe" style="-fx-font-size: 13; -fx-font-weight: bold;" text="Label">
+                                             <font>
+                                                <Font name="System Bold" size="13.0" />
+                                             </font></Label>
+                                          <Text fill="#6e6e6e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 11; -fx-font-weight: 500; -fx-text-alignment: center;" styleClass="Item" text="Gender" />
+                                       </children>
+                                    </VBox>
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                              <Pane prefHeight="129.0" prefWidth="250.0" VBox.vgrow="ALWAYS" />
+                              <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
+                                    <Text fill="#e0642c" strokeType="OUTSIDE" strokeWidth="0.0" text="Pet Story">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="chienDescription" fill="#6e6e6e" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Salwa is a cool puppy. I found her next to a shed on the beach and had to rescue her. But I can’t keep her for long since I already have my hands full." wrappingWidth="250.0">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font></Text>
                                     <Pane prefHeight="200.0" prefWidth="200.0" />
-                                    <Pane prefHeight="210.0" prefWidth="158.0" />
-                                    <Pane prefHeight="200.0" prefWidth="200.0" />
-                                    <Pane layoutX="72.0" layoutY="10.0" prefHeight="210.0" prefWidth="158.0" />
-                                    <Pane prefHeight="200.0" prefWidth="200.0" />
-                                 </children>
-                              </HBox>
-                              <VBox prefHeight="104.0" prefWidth="283.0">
-                                 <children>
-                                    <Label text="Label" />
-                                    <Pane prefHeight="19.0" prefWidth="278.0" />
-                                    <TextArea prefHeight="200.0" prefWidth="200.0" />
                                  </children>
                               </VBox>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="about thr owner" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 13; -fx-font-weight: bold;" text="About the owner" />
+                                    <Pane prefHeight="14.0" prefWidth="250.0" />
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
-                                          <Pane prefHeight="101.0" prefWidth="117.0" />
+                                          <VBox alignment="TOP_RIGHT" prefHeight="198.0" prefWidth="30.0">
+                                             <children>
+                                                <ImageView fx:id="individuImg" fitHeight="50.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../assets/img/Rectangle%20210.png" />
+                                                   </image></ImageView>
+                                             </children>
+                                          </VBox>
+                                          <Pane prefHeight="101.0" prefWidth="33.0" />
                                           <VBox prefHeight="100.0" prefWidth="469.0">
                                              <children>
-                                                <HBox prefHeight="49.0" prefWidth="196.0">
+                                                <HBox prefHeight="25.0" prefWidth="243.0">
                                                    <children>
-                                                      <Label fx:id="nameLabel1" prefHeight="17.0" prefWidth="41.0" text="Label" />
-                                                      <Label text="Label" />
+                                                      <Label fx:id="adoptionFosterName" prefHeight="25.0" prefWidth="70.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Label" textFill="#e0642c" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="," />
+                                                      <Label fx:id="adoptionFosterAdress" prefHeight="27.0" prefWidth="126.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Label" />
                                                    </children>
                                                 </HBox>
                                                 <HBox prefHeight="53.0" prefWidth="243.0">
                                                    <children>
-                                                      <ImageView fitHeight="39.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true" />
+                                                      <ImageView fitHeight="23.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/img/whatsapp.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Pane prefHeight="61.0" prefWidth="74.0" />
+                                                      <ImageView fitHeight="23.0" fitWidth="21.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/img/messenger.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Pane prefHeight="62.0" prefWidth="77.0" />
+                                                      <ImageView fitHeight="23.0" fitWidth="21.0" layoutX="78.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/img/instagram.png" />
+                                                         </image>
+                                                      </ImageView>
                                                       <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                      <ImageView fitHeight="39.0" fitWidth="53.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
-                                                      <Pane prefHeight="200.0" prefWidth="200.0" />
-                                                      <ImageView fitHeight="39.0" fitWidth="53.0" layoutX="78.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox layoutX="10.0" layoutY="35.0" prefHeight="53.0" prefWidth="243.0">
+                                                   <children>
+                                                      <Text fx:id="ownerDescription" fill="#6e6e6e" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="I am the biggest dog lover you’ll find.I have fostered dozens of dogs throughout the years and cared for them until they were adopted !" wrappingWidth="200.0" />
                                                    </children>
                                                 </HBox>
                                              </children>
@@ -304,8 +388,10 @@
                                     </HBox>
                                  </children>
                               </VBox>
-                              <TextArea prefHeight="200.0" prefWidth="200.0" />
                            </children>
+                           <padding>
+                              <Insets left="20.0" right="20.0" top="20.0" />
+                           </padding>
                         </VBox>
                         <Pane maxWidth="30.0" prefHeight="200.0" prefWidth="20.0" HBox.hgrow="ALWAYS" />
                      </children>

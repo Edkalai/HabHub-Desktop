@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package entities;
+import entities.Utilisateur;
 import java.util.Date;
 /**
  *
@@ -14,6 +15,7 @@ public class Individu {
     Utilisateur utilisateur;
     String nom;
     String prenom;
+    String sexe;
     Date dateNaissance;
     String adresse;
     String facebook;
@@ -32,6 +34,18 @@ public class Individu {
         this.whatsapp = whatsapp;
     }
 
+    public Individu(int idIndividu, Utilisateur utilisateur, String nom, String prenom,String sexe,String adresse, String facebook, String instagram, String whatsapp) {
+        this.idIndividu = idIndividu;
+        this.utilisateur = utilisateur;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.sexe=sexe;
+        this.adresse=adresse;
+        this.facebook = facebook;
+        this.instagram = instagram;
+        this.whatsapp = whatsapp;
+    }
+
     public Individu(Utilisateur utilisateur, String nom, String prenom, Date dateNaissance, String adresse, String facebook, String instagram, String whatsapp) {
         this.utilisateur = utilisateur;
         this.nom = nom;
@@ -45,6 +59,9 @@ public class Individu {
 
     public Individu(int idIndividu) {
         this.idIndividu = idIndividu;
+    }
+     public Individu() {
+       
     }
 
     public int getIdIndividu() {

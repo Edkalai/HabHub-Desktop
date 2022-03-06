@@ -14,7 +14,7 @@ import java.util.Date;
 public class AnnonceAdoption {
     private int idAnnonceAdoption;
     private Individu idIndividu ;
-    private Chien idChien;
+    private Chien Chien;
     private Date datePublication;
     private String description;
     private String localisation;
@@ -22,19 +22,37 @@ public class AnnonceAdoption {
     public AnnonceAdoption() {
     }
 
-    public AnnonceAdoption(int idAnnonceAdoption, Individu idIndividu , Chien idChien, Date datePublication, String description, String localisation) {
-        
-        this.idAnnonceAdoption= idAnnonceAdoption;
-        this.idIndividu  = idIndividu ;
-        this.idChien = idChien;
+    /**
+     *
+     * @param idAnnonceAdoption
+     * @param idIndividu
+     * @param Chien
+     * @param datePublication
+     * @param description
+     * @param localisation
+     */
+    public AnnonceAdoption(int idAnnonceAdoption, Individu idIndividu, Chien Chien, Date datePublication, String description, String localisation) {
+        this.idAnnonceAdoption = idAnnonceAdoption;
+        this.idIndividu = idIndividu;
+        this.Chien = Chien;
         this.datePublication = datePublication;
         this.description = description;
         this.localisation = localisation;
     }
+    
+    
 
-    public AnnonceAdoption(Individu idIndividu , Chien idChien, Date datePublication, String description, String localisation) {
-        this.idIndividu  = idIndividu;
-        this.idChien = idChien;
+    public AnnonceAdoption(Individu idIndividu, Chien Chien, String description, String localisation) {
+        this.idIndividu = idIndividu;
+        this.Chien = Chien;
+        this.description = description;
+        this.localisation = localisation;
+    }
+    
+
+    public AnnonceAdoption(Individu idIndividu , Chien Chien, Date datePublication, String description, String localisation) {
+        this.idIndividu  = idIndividu ;
+        this.Chien = Chien;
         this.datePublication = datePublication;
         this.description = description;
         this.localisation = localisation;
@@ -48,6 +66,8 @@ public class AnnonceAdoption {
         this.idAnnonceAdoption = idAnnonceAdoption;
     }
 
+    
+    
     public Individu getIdIndividu() {
         return idIndividu;
     }
@@ -59,11 +79,11 @@ public class AnnonceAdoption {
     
 
     public Chien getIdChien() {
-        return idChien;
+        return Chien;
     }
 
     public void setIdChien(Chien idChien) {
-        this.idChien = idChien;
+        this.Chien = idChien;
     }
 
 
@@ -93,7 +113,7 @@ public class AnnonceAdoption {
 
     @Override
     public String toString() {
-        return "AnnonceAdoption{" + "idAnnonceAdoption=" + idAnnonceAdoption + ", idIndividu=" + idIndividu + ", idChien=" + idChien + ", datePublication=" + datePublication + ", description=" + description + ", localisation=" + localisation + '}';
+        return "AnnonceAdoption{" + "idAnnonceAdoption=" + idAnnonceAdoption + ", idIndividu=" + idIndividu + ", Chien=" + Chien + ", datePublication=" + datePublication + ", description=" + description + ", localisation=" + localisation + '}';
     }
 
     

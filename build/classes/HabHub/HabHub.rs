@@ -1,2 +1,0 @@
-habhub.PidevJava
-habhub.HabHub

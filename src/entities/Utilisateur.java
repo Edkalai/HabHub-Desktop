@@ -77,4 +77,9 @@ public class Utilisateur {
         this.type = type;
     }
 
+    @Override
+    public String toString() {
+        return "Utilisateur{" + "idUtilisateur=" + idUtilisateur + ", email=" + email + ", password=" + password + ", numTel=" + numTel + ", type=" + type + '}';
+    }
+
 }

@@ -50,6 +50,57 @@
 
 
 }
+.text{
+    -fx-font-family: Lato;
+    -fx-font-style: normal;
+    -fx-font-weight: normal;
+    -fx-font-size: 16px;
+    -fx-line-height: 19px;
+    -fx-color: #6E6E6E;
+}
+.btnAdd{
+    -fx-background-color: #E0642C;
+    -fx-effect: dropshadow(gaussian,rgba(0, 0, 0, 0.05) , 20,0 , 0, 0);
+    -fx-box-shadow: 0px 4.72727px 11.8182px rgba(0, 0, 0, 0.05);
+    -fx-background-radius: 5.90909px;
+}
+.vboxProperties{
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E5E5E5;
+    -fx-border-style:solid;
+    -fx-border-width:1px;
+    -fx-box-sizing: border-box;
+    -fx-border-radius: 10px;
+}
+.individuImg{
+    -fx-background-radius: 57.5px;
+    
+}
+.adoptionLocation{
+    -fx-line-height: 18px;
+    -fx-display: flex;
+    -fx-align-items: center;
+}
+.Item{
+    -fx-line-height: 13px;
+    -fx-display: flex;
+    -fx-align-items: center;
+    -fx-text-align: center;
+}
+.Vitem{
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-line-height: 16px;
+/* identical to box height */
+
+    -fx-display: flex;
+    -fx-align-items: center;
+}
+.DogName{
+    -fx-font-weight: bold;
+    -fx-font-size: 25px;
+    -fx-line-height: 28px;
+}
 .pagination{}
 
 .pagination .pagination-control .button, .pagination .toggle-button {

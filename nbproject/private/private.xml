@@ -4,16 +4,18 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Tun21/Desktop/HabHub/HabHub-Desktop/src/entities/AnnonceAdoption.java</file>
+            <file>file:/C:/Users/Tun21/Desktop/HabHub/HabHub-Desktop/src/services/UserIndividuServices.java</file>
+            <file>file:/C:/Users/Tun21/Desktop/HabHub/HabHub-Desktop/src/HabHub/Main.java</file>
             <file>file:/C:/Users/Tun21/Desktop/HabHub/HabHub-Desktop/src/services/AnnonceAdoptionService.java</file>
-            <file>file:/C:/Users/Tun21/Desktop/HabHub/HabHub-Desktop/src/services/IAnnonceAdoption.java</file>
             <file>file:/C:/Users/Tun21/Desktop/HabHub/HabHub-Desktop/src/gui/AnnonceAdoptionFXMLController.java</file>
             <file>file:/C:/Users/Tun21/Desktop/HabHub/HabHub-Desktop/src/gui/ChienFXMLController.java</file>
+            <file>file:/C:/Users/Tun21/Desktop/HabHub/HabHub-Desktop/src/gui/AddAnnonceAdoptionFXMLController.java</file>
+            <file>file:/C:/Users/Tun21/Desktop/HabHub/HabHub-Desktop/src/gui/Log_inController.java</file>
             <file>file:/C:/Users/Tun21/Desktop/HabHub/HabHub-Desktop/src/entities/Chien.java</file>
-            <file>file:/C:/Users/Tun21/Desktop/HabHub/HabHub-Desktop/src/entities/ProprietaireChien.java</file>
             <file>file:/C:/Users/Tun21/Desktop/HabHub/HabHub-Desktop/src/gui/AnnonceAdoption.css</file>
             <file>file:/C:/Users/Tun21/Desktop/HabHub/HabHub-Desktop/src/services/ChienService.java</file>
-            <file>file:/C:/Users/Tun21/Desktop/HabHub/HabHub-Desktop/src/services/ProprietaireChienService.java</file>
-            <file>file:/C:/Users/Tun21/Desktop/HabHub/HabHub-Desktop/src/entities/Utilisateur.java</file>
+            <file>file:/C:/Users/Tun21/Desktop/HabHub/HabHub-Desktop/src/gui/annoncechien.css</file>
+            <file>file:/C:/Users/Tun21/Desktop/HabHub/HabHub-Desktop/src/utils/Statics.java</file>
             <file>file:/C:/Users/Tun21/Desktop/HabHub/HabHub-Desktop/src/HabHub/HabHub.java</file>
             <file>file:/C:/Users/Tun21/Desktop/HabHub/HabHub-Desktop/src/entities/Individu.java</file>
         </group>
