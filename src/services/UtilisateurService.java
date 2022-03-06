@@ -87,11 +87,11 @@ return utilisateurs;
     public Utilisateur chercherUtilisateur(String input)  {
 
         Utilisateur u = new Utilisateur();
-      String req="SELECT * FROM UTILISATEUR where email="+input;
-      try {
-             //exec
-             Statement st=connect.createStatement();
-             ResultSet rs= st.executeQuery(req);
+          try {
+       PreparedStatement req = connect.prepareStatement("select * from utilisateur where email=?");
+        req.setString(1, input);
+   
+             ResultSet rs= req.executeQuery();
              while(rs.next())
              {
                
@@ -103,8 +103,7 @@ return utilisateurs;
          }
 return u;    }
 
-       
-    public String doHashing (String password) {
+       public String doHashing (String password) {
          try {
           MessageDigest messageDigest = MessageDigest.getInstance("SHA-512");
 
@@ -126,7 +125,7 @@ return u;    }
 
          return "";
         }
-    public Boolean verifLogin (String email ,String  mdp) throws IOException
+     public Boolean verifLogin (String email ,String  mdp)
      {
          String hashedMdp= doHashing(mdp); 
          String requete = "select * from utilisateur where email=? and password=?";
@@ -150,7 +149,8 @@ return u;    }
             System.out.println("erreur lors de la recherche du depot " + ex.getMessage());
             return false;
         }}
-    }
+
+}
     
 
     

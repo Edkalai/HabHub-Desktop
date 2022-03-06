@@ -21,7 +21,17 @@ public class Individu {
     String facebook;
     String instagram;
     String whatsapp;
-
+public Individu(int idIndividu, Utilisateur utilisateur, String nom, String prenom,String sexe,String adresse, String facebook, String instagram, String whatsapp) {
+        this.idIndividu = idIndividu;
+        this.utilisateur = utilisateur;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.sexe=sexe;
+        this.adresse=adresse;
+        this.facebook = facebook;
+        this.instagram = instagram;
+        this.whatsapp = whatsapp;
+    }
     public Individu(){}
     public Individu(int idIndividu, Utilisateur utilisateur, String nom, String prenom, String dateNaissance,String sexe, String adresse, String facebook, String instagram, String whatsapp) {
         this.idIndividu = idIndividu;
@@ -134,9 +144,10 @@ public class Individu {
 
     @Override
     public String toString() {
-        return "Individu{" + "idIndividu=" + idIndividu + ", nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance + ", sexe=" + sexe + ", adresse=" + adresse + ", facebook=" + facebook + ", instagram=" + instagram + ", whatsapp=" + whatsapp + '}';
+        return "Individu{" + "idIndividu=" + idIndividu + ", utilisateur=" + utilisateur + ", nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance + ", sexe=" + sexe + ", adresse=" + adresse + ", facebook=" + facebook + ", instagram=" + instagram + ", whatsapp=" + whatsapp + '}';
     }
 
+ 
   
     
 }

@@ -6,8 +6,9 @@
 package gui;
 
 import HabHub.Main;
+import entite.Individu;
 import entite.Utilisateur;
-import java.awt.event.ActionListener;
+
 import java.io.IOException;
 import java.net.URL;
 import java.security.MessageDigest;
@@ -49,60 +50,72 @@ public class Log_inController implements Initializable {
         @FXML
          private TextField pswd;*/
     
-      @FXML
+       @FXML
     private TextField email;
 
     @FXML
     private TextField password;
 
     @FXML
-    private Button forgotpasswd;
-
-    @FXML
-    private Button signup;
+    private Button login;
 
     @FXML
     private Text wrongaccess;
-     Connection connect;
-
-   
-     
-     
-    @FXML
-   private Button  changer1;
-     
     
-@FXML
-
- private Stage stage;
+    private Stage stage;
  private Scene scene;
  private Parent parent;
  
- public void switchToScene1(ActionEvent event) throws IOException {
-  Parent root = FXMLLoader.load(getClass().getResource("../gui/log_in.fxml"));
-  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-  scene = new Scene(root);
-  stage.setScene(scene);
-  stage.show();
- }
  @FXML
-    private void seConnecter(ActionEvent event) throws IOException {
+    void switchSceneSignUp(ActionEvent event)throws IOException {
+    Parent root = FXMLLoader.load(getClass().getResource("../gui/SignUp.fxml"));
+    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    }
+    
+    void switchSceneProfile(ActionEvent event)throws IOException {
+    Parent root = FXMLLoader.load(getClass().getResource("../gui/profiledit.fxml"));
+    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    }
+ 
+
+   @FXML
+    void seConnecter(ActionEvent event) throws IOException, SQLException  {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Success");
-          
+
             UtilisateurService us = new UtilisateurService();
+            UserIndividuServices uis = new UserIndividuServices();
+     
+            
             if (us.verifLogin(email.getText(), password.getText()))
             {
-            alert.setContentText("auth succes");
-            Statics.currentUser = us.chercherUtilisateur(email.getText());
-            switchToScene1(event);
+         // name.setText(Statics.currentIndividu.getNom());
+                  alert.setContentText("welcome! ! "+Statics.currentIndividu.getNom());
+  Statics.currentIndividu= uis.findIndividuByIdUtilisateur(us.chercherUtilisateur(email.getText()));
+            System.out.println(Statics.currentIndividu);
+            switchSceneProfile(event);
             }
             else
             {
-            alert.setContentText("auth failed");
+            alert.setContentText("wrong email or password!!");
             }
             alert.show();
+
     }
+
+    
+    
+
+   
+     
+   
+     
  
  
  

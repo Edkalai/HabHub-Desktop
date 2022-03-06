@@ -22,10 +22,10 @@ public class HabHub {
         // TODO code application logic here
         
        
-              UserIndividuServices uis = new UserIndividuServices();
-              Utilisateur t = new Utilisateur();
-        Individu i = new Individu(2,t,"nada", "nouisser","123","bhgy","fff","fff","fff","fff");
-       
+     UserIndividuServices uis = new UserIndividuServices();
+              Utilisateur t = new Utilisateur("ahmedkalai@gmail.com","mdp",23070294,"I");
+        Individu i = new Individu(t,"nada", "nouisser","123","bhgy","fff","fff","fff","fff");
+
       /* try{
         uis.ajouter(i, t);
          } catch (SQLException ex) {

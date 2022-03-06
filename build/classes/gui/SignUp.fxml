@@ -25,10 +25,10 @@
                </image>
             </ImageView>
             <TextField fx:id="email" layoutX="101.0" layoutY="130.0" prefHeight="51.0" prefWidth="357.0" promptText="Email" styleClass="emailbox" />
-            <TextField fx:id="password" layoutX="101.0" layoutY="218.0" prefHeight="51.0" prefWidth="357.0" promptText="Name" styleClass="passwordbox" />
-            <Button fx:id="login" layoutX="101.0" layoutY="476.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="357.0" styleClass="loginButton" text="Sign up" textFill="WHITE" />
+            <TextField fx:id="name" layoutX="101.0" layoutY="218.0" prefHeight="51.0" prefWidth="357.0" promptText="Name" styleClass="passwordbox" />
+            <Button layoutX="101.0" layoutY="476.0" mnemonicParsing="false" onAction="#signup" prefHeight="51.0" prefWidth="357.0" styleClass="loginButton" text="Sign up" textFill="WHITE" />
             <TextField fx:id="password" layoutX="101.0" layoutY="385.0" prefHeight="51.0" prefWidth="357.0" promptText="Password" styleClass="passwordbox" />
-            <TextField fx:id="email" layoutX="101.0" layoutY="300.0" prefHeight="51.0" prefWidth="357.0" promptText="Phone Number" styleClass="emailbox" />
+            <TextField fx:id="numtel" layoutX="101.0" layoutY="300.0" prefHeight="51.0" prefWidth="357.0" promptText="Phone Number" styleClass="emailbox" />
             <Line endX="229.0" endY="6.0" layoutX="253.0" layoutY="99.0" startX="-177.0" startY="6.0" stroke="#e5e5e5" />
          </children>
       </Pane>
@@ -41,11 +41,6 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Hyperlink fx:id="change1" layoutX="819.0" layoutY="647.0" onAction="#switchToScene1" text="Sign in" textFill="#e0642c">
-         <font>
-            <Font name="System Bold" size="19.0" />
-         </font>
-      </Hyperlink>
-      <Button fx:id="changer2" layoutX="737.0" layoutY="650.0" mnemonicParsing="false" onAction="#switchToScene1" text="signin" />
+      <Button layoutX="737.0" layoutY="650.0" mnemonicParsing="false" onAction="#SwitchSceneLogIn" styleClass="loginButton" text="Sign in" textFill="WHITE" />
    </children>
 </AnchorPane>

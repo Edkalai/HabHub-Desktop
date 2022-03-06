@@ -7,6 +7,8 @@ package services;
 
 import entite.Individu;
 import entite.Utilisateur;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,10 +32,11 @@ public class UserIndividuServices implements IIndividu {
     }
 
     @Override
-    public void ajouter(Individu I , Utilisateur U) throws SQLException {
+    public void ajouter(Individu I , Utilisateur U) {
+        try{
             PreparedStatement preUser = connect.prepareStatement("INSERT INTO utilisateur (email,password,numTel,type)VALUES (?,?,?,?);");
         preUser.setString(1, U.getEmail());
-        preUser.setString(2, U.getPassword());
+        preUser.setString(2, doHashing(U.getPassword()));
         preUser.setInt(3, U.getNumTel());
         preUser.setString(4, U.getType());
         preUser.executeUpdate();
@@ -47,18 +50,15 @@ public class UserIndividuServices implements IIndividu {
         u.setIdUtilisateur(rst.getInt("idUtilisateur"));
         }
       
-        PreparedStatement pre = connect.prepareStatement("INSERT INTO indivdu (idUtilisateur,nom,prenom,dateNaissance,sexe,adresse,facebook,instagram,whatsapp)VALUES (?,?,?,?,?,?,?,?,?);");
+        PreparedStatement pre = connect.prepareStatement("INSERT INTO individu (idUtilisateur,nom)VALUES (?,?);");
         pre.setInt(1,u.getIdUtilisateur());      
         pre.setString(2, I.getNom());
-        pre.setString(3, I.getPrenom());
-        pre.setString(4, I.getDateNaissance());
-        pre.setString(5, I.getAdresse());
-        pre.setString(6, I.getFacebook());
-        pre.setString(7, I.getInstagram());
-        pre.setString(8, I.getWhatsapp());
+     
+        
                                     
         pre.executeUpdate();
-        
+        }catch (SQLException e){
+        e.printStackTrace();}
     }
 
     @Override
@@ -101,8 +101,55 @@ public class UserIndividuServices implements IIndividu {
 
     }
  
-   
+    
+ 
+   public String doHashing (String password) {
+         try {
+          MessageDigest messageDigest = MessageDigest.getInstance("SHA-512");
 
+          messageDigest.update(password.getBytes());
+
+          byte[] resultByteArray = messageDigest.digest();
+
+          StringBuilder sb = new StringBuilder();
+
+          for (byte b : resultByteArray) {
+           sb.append(String.format("%02x", b));
+          }
+
+          return sb.toString();
+
+         } catch (NoSuchAlgorithmException e) {
+          e.printStackTrace();
+         }
+
+         return "";
+        }
+   public Boolean verifLogin (String email ,String  mdp)
+     {
+         String hashedMdp= doHashing(mdp); 
+         String requete = "select * from utilisateur where email=? and password=?";
+                 try {
+            PreparedStatement ps = connect.prepareStatement(requete);
+                     ps.setString(1, email);
+                     ps.setString(2, hashedMdp);
+            ResultSet resultat = ps.executeQuery();
+            if (resultat.next()) {
+             
+                return true ;
+ 
+            }
+            else{
+                           
+
+            return false;
+            }
+        } catch (SQLException ex) {
+            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("erreur lors de la recherche du depot " + ex.getMessage());
+            return false;
+        }}
+   
     @Override
     public List<Individu> afficherIndividu() throws SQLException {
                
@@ -127,6 +174,29 @@ public class UserIndividuServices implements IIndividu {
             Individu.add(k);
         }
         return Individu;
+    }
+    public static Individu currentIndividu = new Individu();
+
+public Individu findIndividuByIdUtilisateur(Utilisateur u) throws SQLException{
+       Individu i = new   Individu();
+          try {
+       PreparedStatement req = connect.prepareStatement("select * from individu where idUtilisateur=?");
+            req.setInt(1,u.getIdUtilisateur());
+
+             ResultSet rst= req.executeQuery();
+             while(rst.next())
+             {
+
+                 //String nom, String prenom, String sexe, String date,String email, String login, String mdp, String role
+                i =   new Individu(rst.getInt("idIndividu"),u,rst.getString("nom"),rst.getString("prenom"),rst.getString("sexe"),rst.getString("adresse"),
+                        rst.getString("facebook"),
+                        rst.getString("instagram"),
+                        rst.getString("whatsapp"));
+             }
+         } catch (SQLException ex) {
+            ex.printStackTrace();
+         }
+return i;
     }
     
 }

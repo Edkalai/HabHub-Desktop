@@ -3,33 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/assets/img/mating%20icon.png</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/edu/esprit/util/Statics.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/HabHub/HabHub.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/services/UtilisateurService.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/services/UserIndividuServices.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/services/IIndividu.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/loginfxml.css</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/assets/img/HabHub%20logo.png</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/assets/img/zoom-in.png</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/FXMLController.java</file>
             <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/log_in.css</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/HabHub/Main.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/fxml.css</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/Log_in.fxml</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/profiledit.fxml</file>
             <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/utils/Statics.java</file>
             <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/entite/Utilisateur.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/assets/img/gear.png</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/assets/img/house-door.png</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/HabHub/HabHub.java</file>
             <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/SignUpController.java</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/services/UtilisateurService.java</file>
             <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/utils/MyDB.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/assets/img/HabHub%20logo%20(1).png</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/assets/img/Frame%20124.png</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/ProfileController.java</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/services/UserIndividuServices.java</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/profile.css</file>
             <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/Log_inController.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/SignUp.fxml</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/entite/Business.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/services/IUtilisateur.java</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/loginfxml.css</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/ProfileditController.java</file>
             <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/entite/Individu.java</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/FXMLController.java</file>
         </group>
     </open-files>
 </project-private>

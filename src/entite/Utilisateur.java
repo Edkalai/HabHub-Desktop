@@ -16,6 +16,12 @@ public class Utilisateur {
     int numTel;
     String type ; 
 
+    @Override
+    public String toString() {
+        return "Utilisateur{" + "idUtilisateur=" + idUtilisateur + ", email=" + email + ", password=" + password + ", numTel=" + numTel + ", type=" + type + '}';
+    }
+    
+
     public Utilisateur() {
     }
 
@@ -25,6 +31,7 @@ public class Utilisateur {
         this.password = password;
         this.numTel = numTel;
         this.type = type;
+       
     }
 
     public Utilisateur(int idUtilisateur, String email, String password, int numTel, String type) {
