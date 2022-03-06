@@ -93,3 +93,135 @@
 
 
 
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #E0642C;
+    -fx-background-radius: 10px;
+    -fx-background-insets:5px;
+
+
+}
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: white;
+    -fx-background-radius: 1em;
+
+}
+.scroll-bar:vertical .increment-arrow,
+.scroll-bar:horizontal .increment-arrow,
+.scroll-bar:horizontal .decrement-arrow,
+.scroll-bar:vertical .decrement-arrow{
+    -fx-shape : " ";    
+    -fx-background-color: transparent;
+
+}
+.scroll-pane .corner{
+        -fx-background-color: transparent;
+
+}
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+
+.scroll-pane {
+   -fx-background-color: transparent;
+}
+
+tab-pane .tab-content-area {
+    -fx-background-color: white;
+
+}
+.tab-pane:top *.tab-header-background {
+
+    /* this is area on which tabs are placed */
+
+    -fx-background-color: white ;
+
+}
+
+.tab-pane:top *.tab-header-area {
+
+    -fx-background-insets: 0.0;
+    -fx-padding: 0.0em ;   
+
+}
+
+
+.tab-pane .tab .tab-label {
+
+    -fx-text-fill: #E0642C;
+    -fx-alignment: center; 
+
+
+}
+.tab-header-background {
+    -fx-background-color: transparent;
+
+}
+
+.tab {
+    -fx-background-color: transparent;
+
+}
+.tab:selected {
+    -fx-text-fill: #E0642C;
+    -fx-background-color: #FFF3E1;
+    -fx-border-color:#F9DEB6;
+    -fx-font-weight: bold;
+    -fx-background-radius: 3em;
+    -fx-border-radius: 3em;
+
+}
+
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-border-style: segments(0.166667em, 0.166667em);
+    -fx-border-width: 1;
+    -fx-border-color: transparent;
+}
+
+
+.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label {
+    -fx-alignment: CENTER;
+     -fx-pref-width: 150.0;
+    -fx-text-fill: -fx-text-base-color;
+}
+
+
+
+.bal{
+   -fx-position: absolute;
+-fx-width: 81px;
+-fx-height: 25px;
+-fx-left: 1266px;
+-fx-top: 934px;
+
+-fx-font-family: Lato;
+-fx-font-style: normal;
+-fx-font-weight: normal;
+-fx-font-size: 15px;
+-fx-line-height: 18px;
+-fx-display: flex;
+-fx-align-items: center;
+
+-fx-color: white;
+
+
+
+}

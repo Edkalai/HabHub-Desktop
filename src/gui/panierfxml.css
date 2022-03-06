@@ -1,11 +1,21 @@
 .mainFxmlClass {
--fx-background-color : #F4F4F4;
+    -fx-background-color : #F4F4F4;
 
 }
 
+.description{
+    -fx-text-fill: #6E6E6E;
 
+}
+.bookButton{
+    -fx-background-color : #E0642C;
+    -fx-border-color:#E0642C ;
+    -fx-border-radius:10px;  
+    -fx-background-radius:10px;  
+
+}
 .VBox{
-   -fx-background-color : #ffffff;
+    -fx-background-color : #ffffff;
     -fx-effect: dropshadow(gaussian,rgba(194, 213, 231, 0.7) , 20,0 , 0, 0);
     -fx-background-radius: 15px;
 }
@@ -22,8 +32,8 @@
     -fx-background-radius: 15px;
 }
 .imageView{
-     -fx-fit-width: 20px;
-   -fx-fit-height: 20px;
+    -fx-fit-width: 20px;
+    -fx-fit-height: 20px;
 }
 
 .roundedButton{
@@ -40,13 +50,20 @@
 .searchBox{
     -fx-background-color : #F9f9f9;
     -fx-background-radius: 11.2px;
+}
+.searchBoxWhite{
+    -fx-background-color : #ffffff;
+    -fx-background-radius: 11.2px;
+    -fx-effect: dropshadow(gaussian,rgba(194, 213, 231, 0.5) , 20,0 , 0, 0);
 
 
 }
+
 .searchBar{
     -fx-background-color : #ffffff;
-    -fx-border-color:#CFCDCD;
+    -fx-border-color:#CFCDCD ;
     -fx-border-radius:5.6383px;
+    -fx-effect: dropshadow(gaussian,rgba(194, 213, 231, 0.2) , 20,0 , 0, 0);
 
 
 }
@@ -71,27 +88,6 @@
     -fx-effect: dropshadow(gaussian,rgba(194, 213, 231, 0.7) , 20,0 , 0, 0);
     -fx-background-radius: 15px;
 }
-
-
-
-.eval{
-    text-align: left;
-    color:red;
-}
-
-
-
-
-.bout{
-
-  -fx-background-color: #e0642c;
-  -fx-border: 2px solid #000;
-  -fx-font-family: "Berlin Sans FB Demi";
-      
- 
-}
-
-
 
 .scroll-bar:horizontal, .scroll-bar:vertical{
     -fx-background-color:transparent;
@@ -201,27 +197,4 @@ tab-pane .tab-content-area {
     -fx-alignment: CENTER;
      -fx-pref-width: 150.0;
     -fx-text-fill: -fx-text-base-color;
-}
-
-
-
-.bal{
-   -fx-position: absolute;
--fx-width: 81px;
--fx-height: 25px;
--fx-left: 1266px;
--fx-top: 934px;
-
--fx-font-family: Lato;
--fx-font-style: normal;
--fx-font-weight: normal;
--fx-font-size: 15px;
--fx-line-height: 18px;
--fx-display: flex;
--fx-align-items: center;
-
--fx-color: white;
-
-
-
 }

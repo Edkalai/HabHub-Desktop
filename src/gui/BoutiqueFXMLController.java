@@ -20,6 +20,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -27,8 +31,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import javafx.stage.Stage;
 import services.ProduitService;
-
 
 /**
  * FXML Controller class
@@ -37,15 +41,55 @@ import services.ProduitService;
  */
 public class BoutiqueFXMLController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
-     @FXML
+    private Stage stage;
+    private Scene scene;
+    private Parent parent;
+
+    @FXML
+    private TextField searchBox;
+
+    @FXML
     private GridPane grid;
-     
-  public ObservableList<Produit> produits = FXCollections.observableArrayList();
-    ProduitService sa=new ProduitService();
-    
+
+    @FXML
+    private ImageView ProdImage;
+
+    @FXML
+    private Label nameLabel;
+
+    @FXML
+    private Label Price;
+
+    @FXML
+    private ImageView genderImage;
+
+    @FXML
+    private Label Desc;
+
+    @FXML
+    private Label addReview;
+
+    @FXML
+    private GridPane gridReview;
+
+    @FXML
+    private Button reduce;
+
+    @FXML
+    private Label quantity;
+
+    @FXML
+    private Button add;
+
+    @FXML
+    private Button addtocart;
+
+    @FXML
+    private Label totprice;
+
+    public ObservableList<Produit> produits = FXCollections.observableArrayList();
+    ProduitService sa = new ProduitService();
+
     private ObservableList<Produit> getProduits() {
         List<Produit> Produit = new ArrayList<>();
 
@@ -59,7 +103,8 @@ public class BoutiqueFXMLController implements Initializable {
         return produits;
 
     }
-     private ObservableList<Produit> getRechercheProduits(String input) {
+
+    private ObservableList<Produit> getRechercheProduits(String input) {
         List<Produit> ProduitRecherche = new ArrayList<>();
 
         try {
@@ -72,23 +117,53 @@ public class BoutiqueFXMLController implements Initializable {
         return produits;
 
     }
-    
-    
-     private void setChosenProduit(Produit p) {
-          Image Image = new Image(getClass().getResourceAsStream("../assets/img/sq.jpg"));
+
+    @FXML
+    void switchSceneCart(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/PanierFXML.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void increaseQuantity() {
+        quantity.setText(Integer.toString(Integer.parseInt(quantity.getText()) + 1));
+        totprice.setText(Float.toString(Float.parseFloat(totprice.getText()) + (Float.parseFloat(Price.getText()))));
+
+    }
+
+    public void decreaseQuantity() {
+        if (Integer.parseInt(quantity.getText()) > 1) {
+            quantity.setText(Integer.toString(Integer.parseInt(quantity.getText()) - 1));
+            totprice.setText(Float.toString(Float.parseFloat(totprice.getText()) - (Float.parseFloat(Price.getText()))));
+        }
+
+    }
+
+    private void setChosenProduit(Produit p) {
+        quantity.setText("1");
+
+        Image Image = new Image(getClass().getResourceAsStream("../assets/img/sq.jpg"));
         ProdImage.setImage(Image);
         nameLabel.setText(p.getNom());
-        String s = Float.toString(p.getPrix())+"DNT";
+        String s = Float.toString(p.getPrix());
         Price.setText(s);
         Desc.setText(p.getDescription());
-      
-        
-        
-        
-        /*chosenFruitCard.setStyle("-fx-background-color: #" + fruit.getColor() + ";\n" +
-                "    -fx-background-radius: 30;");*/
+
+        totprice.setText(Price.getText());
+        // totprice.setText(  (Integer.parseInt  (quantity.getText()) ) * (Integer.parseInt (Price.getText() )) )  ;
+        //try{
+        //totprice.setText(String.valueOf(  (Float.parseFloat (Price.getText())) * (Integer.parseInt(quantity.getText())) ) ) ;
+        //  }catch(NumberFormatException ex){
+        // totprice.setText(Price.getText()); // handle your exception
+        // }
     }
-     private void displayProduits(ObservableList<Produit> produits) {
+
+    /*chosenFruitCard.setStyle("-fx-background-color: #" + fruit.getColor() + ";\n" +
+                "    -fx-background-radius: 30;");*/
+
+    private void displayProduits(ObservableList<Produit> produits) {
         grid.getChildren().clear();
         int column = 0;
         int row = 1;
@@ -131,47 +206,19 @@ public class BoutiqueFXMLController implements Initializable {
             e.printStackTrace();
         }
     }
-    
-  
 
     @FXML
-    private ImageView ProdImage;
-
-    @FXML
-    private Label nameLabel;
-
-    @FXML
-    private Label Price;
-
-    @FXML
-    private ImageView genderImage;
-
-    @FXML
-    private Label Desc;
-    
-    @FXML
-    private TextField searchBox;
-
-
-  
-    
-      @FXML
-    private Label totprice;
-    
-    
-        @FXML
     void RechercheProduit(ActionEvent event) {
-   
 
     }
-    
-    
-        private MyListener myListener;
-    
+
+    private MyListener myListener;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         displayProduits(getProduits());
-            if (produits.size() > 0) {
+        if (produits.size() > 0) {
             setChosenProduit(produits.get(0));
             myListener = new MyListener() {
                 @Override
@@ -181,10 +228,7 @@ public class BoutiqueFXMLController implements Initializable {
 
             };
         }
-        
-       
-        
-         
+
         searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
             System.out.println(newValue);
             displayProduits(getRechercheProduits(newValue));

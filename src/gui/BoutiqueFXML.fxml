@@ -7,7 +7,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -127,6 +130,16 @@
                            </font>
                         </Text>
                         <Pane prefHeight="100.0" prefWidth="673.0" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" onAction="#switchSceneCart" styleClass="transparent">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/img/boutique/cartIcon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Pane prefHeight="100.0" prefWidth="18.0" />
                         <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-background-radius: 50;" styleClass="transparent">
                            <graphic>
                               <ImageView fitHeight="54.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
@@ -214,7 +227,7 @@
                                         <RowConstraints />
                                       </rowConstraints>
                                     </GridPane>
-                                    <Pane prefHeight="412.0" prefWidth="868.0" />
+                                    <Pane prefHeight="412.0" prefWidth="868.0" fx:id="x" />
                                     <Pagination prefHeight="75.0" prefWidth="823.0" />
                                  </children>
                               </VBox>
@@ -253,6 +266,7 @@
                                     <Pane prefHeight="200.0" prefWidth="200.0">
                                        <children>
                                           <Label fx:id="Price" text="Label" textFill="#e0642c" />
+                                          <Label fx:id="Price1" layoutX="35.0" text="TND" textFill="#e0642c" />
                                        </children></Pane>
                                     <ImageView fx:id="genderImage" fitHeight="35.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                                        <HBox.margin>
@@ -271,10 +285,74 @@
                                        <children>
                                           <HBox prefHeight="41.0" prefWidth="117.0">
                                              <children>
-                                                <Button id="bout" fx:id="bout" mnemonicParsing="false" prefHeight="44.0" prefWidth="173.0" style="text: 1px solid;" styleClass="bout" stylesheets="@Boutiquefxml.css" text="Description/Reviews" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="Berlin Sans FB Demi Bold" size="12.0" />
-                                                   </font></Button>
+                                                <TabPane maxWidth="250.0" minHeight="250.0" minWidth="270.0" prefHeight="320.0" prefWidth="250.0" styleClass="pane" stylesheets="@Boutiquefxml.css" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="100.0">
+                                                   <tabs>
+                                                      <Tab text="Description">
+                                                         <content>
+                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="150.0">
+                                                               <children>
+                                                                  <ScrollPane layoutX="7.0" layoutY="2.0" prefHeight="279.0" prefWidth="249.0">
+                                                                     <content>
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="268.0" prefWidth="249.0" styleClass="transparent">
+                                                                           <children>
+                                                                              <VBox prefHeight="268.0" prefWidth="227.0">
+                                                                                 <children>
+                                                                                    <Pane prefHeight="12.0" prefWidth="227.0" />
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="206.0">
+                                                                                       <children>
+                                                                                          <Label fx:id="Desc" text="Label" />
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="235.0" />
+                                                                                 </children>
+                                                                              </VBox>
+                                                                           </children>
+                                                                        </AnchorPane>
+                                                                     </content>
+                                                                  </ScrollPane>
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </content>
+                                                      </Tab>
+                                                      <Tab text="Reviews">
+                                                         <content>
+                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                               <padding>
+                                                                  <Insets left="20.0" />
+                                                               </padding>
+                                                               <children>
+                                                                  <ScrollPane layoutX="7.0" prefHeight="279.0" prefWidth="249.0">
+                                                                     <content>
+                                                                        <VBox prefHeight="268.0" prefWidth="227.0">
+                                                                           <children>
+                                                                              <HBox alignment="CENTER_LEFT" minHeight="45.0" minWidth="45.0" prefHeight="45.0" prefWidth="235.0">
+                                                                                 <children>
+                                                                                    <Label fx:id="addReview" text="Add Review" textFill="#808080" underline="true">
+                                                                                       <font>
+                                                                                          <Font name="Aller" size="13.0" />
+                                                                                       </font>
+                                                                                    </Label>
+                                                                                 </children>
+                                                                                 <padding>
+                                                                                    <Insets left="13.0" />
+                                                                                 </padding>
+                                                                              </HBox>
+                                                                              <GridPane fx:id="gridReview" alignment="CENTER_LEFT" prefHeight="169.0" prefWidth="227.0">
+                                                                                 <rowConstraints>
+                                                                                    <RowConstraints />
+                                                                                 </rowConstraints>
+                                                                              </GridPane>
+                                                                              <Pane prefHeight="140.0" prefWidth="227.0" />
+                                                                           </children>
+                                                                        </VBox>
+                                                                     </content>
+                                                                  </ScrollPane>
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </content>
+                                                      </Tab>
+                                                   </tabs>
+                                                </TabPane>
                                              </children>
                                           </HBox>
                                        </children>
@@ -287,17 +365,14 @@
                               </HBox>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <HBox minHeight="150.0" minWidth="150.0" prefHeight="200.0" prefWidth="200.0">
-                                       <children>
-                                          <Label fx:id="Desc" text="Label" />
-                                       </children></HBox>
+                                    <HBox maxHeight="50.0" maxWidth="150.0" minHeight="26.0" minWidth="150.0" prefHeight="26.0" prefWidth="150.0" />
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>
                                           <HBox prefHeight="23.0" prefWidth="249.0">
                                              <children>
                                                 <HBox prefHeight="53.0" prefWidth="240.0">
                                                    <children>
-                                                      <Button mnemonicParsing="false" styleClass="transparent" textFill="#e0642c">
+                                                      <Button fx:id="reduce" mnemonicParsing="false" onAction="#decreaseQuantity" styleClass="transparent" textFill="#e0642c">
                                                          <graphic>
                                                             <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" styleClass="transparent">
                                                                <image>
@@ -305,8 +380,14 @@
                                                                </image>
                                                             </ImageView>
                                                          </graphic></Button>
-                                                      <Label prefHeight="31.0" prefWidth="48.0" />
-                                                      <Button mnemonicParsing="false" style="-fx-background-image: transparent;" styleClass="transparent" textFill="#e0642c">
+                                                      <HBox maxWidth="12.0" prefHeight="100.0" prefWidth="200.0" />
+                                                      <Label fx:id="quantity" text="Label">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                      <Label maxWidth="12.0" prefHeight="31.0" prefWidth="48.0" />
+                                                      <Button fx:id="add" mnemonicParsing="false" onAction="#increaseQuantity" style="-fx-background-image: transparent;" styleClass="transparent" textFill="#e0642c">
                                                          <graphic>
                                                             <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>
@@ -323,11 +404,6 @@
                                  </children>
                               </VBox>
                               <Pane prefHeight="131.0" prefWidth="265.0" VBox.vgrow="ALWAYS" />
-                              <VBox prefHeight="144.0" prefWidth="174.0">
-                                 <children>
-                                    <HBox prefHeight="130.0" prefWidth="267.0" />
-                                 </children>
-                              </VBox>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -339,11 +415,12 @@
                                                    <children>
                                                       <Pane prefHeight="61.0" prefWidth="74.0">
                                                          <children>
-                                                            <Label layoutY="6.0" text="Total price" />
+                                                            <Label layoutY="6.0" text="Total Price:" textFill="#979595" />
+                                                            <Label fx:id="totprice" layoutX="15.0" layoutY="31.0" text="Label" />
                                                          </children></Pane>
-                                                      <Pane prefHeight="200.0" prefWidth="200.0">
+                                                      <Pane prefHeight="75.0" prefWidth="198.0" styleClass="bal" stylesheets="@Boutiquefxml.css">
                                                          <children>
-                                                            <Button layoutX="22.0" layoutY="14.0" mnemonicParsing="false" text="Ajouter au panier" />
+                                                            <Button id="bal" layoutX="51.0" layoutY="24.0" mnemonicParsing="false" style="-fx-background-position: absolute; -fx-background-color: #E0642C; -fx-text-fill: white;" styleClass="bal" stylesheets="@Boutiquefxml.css" text="Add to cart" />
                                                          </children></Pane>
                                                    </children>
                                                 </HBox>

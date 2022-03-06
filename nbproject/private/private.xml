@@ -4,11 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/utils/MyDB.java</file>
+            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/gui/PanierFXMLController.java</file>
+            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/gui/panieritemfxml.css</file>
+            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/gui/BoutiqueFXML.fxml</file>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/HabHub/Main.java</file>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/services/ProduitService.java</file>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/HabHub/HabHub.java</file>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/entities/Produit.java</file>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/gui/BoutiqueFXMLController.java</file>
+            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/gui/Produitfxml.css</file>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/entities/Utilisateur.java</file>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/HabHub/MyListener.java</file>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/services/IProduit.java</file>
