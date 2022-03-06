@@ -34,9 +34,12 @@ public class HabHub {
 
         Chien c = new Chien(11,i,"aa","M","2mois",true,"aaaaa","14.png","white","Husky","Hunting");
         ChienService cs = new ChienService();
-          
-       
-        AnnonceProprietaireChien acp = new AnnonceProprietaireChien(11,c,new Date("2009/10/10"),"hentita","P",new Date("2009/10/10"),"Rades","heeeeeeelp");
+        try{
+          System.out.println(cs.findChienByIndividu(1));
+       } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+     /*   AnnonceProprietaireChien acp = new AnnonceProprietaireChien(11,c,new Date("2009/10/10"),"hentita","P",new Date("2009/10/10"),"Rades","heeeeeeelp");
                 AnnonceProprietaireChien ac = new AnnonceProprietaireChien(12,c,new Date("2009/10/10"),"hentita","A","lBorj");
 
         AnnonceProprietaireChienService sa=new AnnonceProprietaireChienService();
@@ -47,7 +50,7 @@ List<AnnonceProprietaireChien> annonces=new ArrayList<>();
             System.out.println(ex.getMessage());
         }
          System.out.println(annonces);
-          
+          */
          /* try {
             sa.ajouterAnnonceProprietaireChien(ac);
             System.out.println("ajout avec succes");
