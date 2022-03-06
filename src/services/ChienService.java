@@ -2,6 +2,7 @@ package services;
 
 import entities.Chien;
 import entities.Individu;
+import entities.Utilisateur;
 import utils.MyDB;
 import java.sql.Connection;
 import java.sql.Date;
@@ -11,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import utils.Statics;
 
 public class ChienService {
 
@@ -146,14 +148,19 @@ public class ChienService {
         return chiens;
     }
     
-        public List<Chien> findChienByLocation(String Location) throws SQLException {
+        public List<Chien> findChienByLocation(String location) throws SQLException {
         List<Chien> chiens = new ArrayList();
-        String req = "select * from chien c join  where idIndividu=? ";
+        String req = "select * from chien c join individu i on i.idIndividu=c.idIndividu join utilisateur u on u.idUtilisateur=i.idUtilisateur  where i.adresse=? and c.idIndividu!=?";
         PreparedStatement ps = connect.prepareStatement(req);
-        ps.setInt(1, id);
+        ps.setString(1, location);
+        ps.setInt(2, Statics.currentIndividu.getIdIndividu());
         ResultSet rst = ps.executeQuery();
         while (rst.next()) {
-            Individu i = new Individu(rst.getInt(2));
+            Utilisateur nu= new Utilisateur(rst.getInt("u.idUtilisateur"));
+            
+            Individu  i= new Individu(rst.getInt("i.idIndividu"),nu,rst.getString("i.nom"),rst.getString("prenom"),rst.getString("sexe"),rst.getDate("dateNaissance"),rst.getString("adresse"),
+                    rst.getString("facebook"),rst.getString("instagram"),rst.getString("whatsapp"),rst.getBoolean("proprietaireChien"));
+                    
             Chien c = new Chien(rst.getInt("idChien"), i, rst.getString("nom"), rst.getString("sexe"), rst.getString("age"), rst.getBoolean("vaccination"),
                      rst.getString("description"), rst.getString("image"), rst.getString("color"), rst.getString("race"), rst.getString("groupe"));
             chiens.add(c);

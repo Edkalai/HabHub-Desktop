@@ -21,6 +21,21 @@ public class Individu {
     String facebook;
     String instagram;
     String whatsapp;
+    Boolean ProprietaireChien;
+
+    public Individu(int idIndividu, Utilisateur utilisateur, String nom, String prenom, String sexe, Date dateNaissance, String adresse, String facebook, String instagram, String whatsapp, Boolean ProprietaireChien) {
+        this.idIndividu = idIndividu;
+        this.utilisateur = utilisateur;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.sexe = sexe;
+        this.dateNaissance = dateNaissance;
+        this.adresse = adresse;
+        this.facebook = facebook;
+        this.instagram = instagram;
+        this.whatsapp = whatsapp;
+        this.ProprietaireChien = ProprietaireChien;
+    }
 
     public Individu(int idIndividu, Utilisateur utilisateur, String nom, String prenom, Date dateNaissance, String adresse, String facebook, String instagram, String whatsapp) {
         this.idIndividu = idIndividu;

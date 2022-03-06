@@ -375,6 +375,19 @@
                                           <Pane prefHeight="17.0" prefWidth="751.0" />
                                           <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="751.0">
                                              <children>
+                                                <Button mnemonicParsing="false" onAction="#switchSceneMyDogs" styleClass="cancelButton" text="Cancel">
+                                                   <font>
+                                                      <Font name="Aller Bold" size="15.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/img/chien/x.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                                <Pane prefHeight="40.0" prefWidth="502.0" />
                                                 <Button mnemonicParsing="false" onAction="#ajouterChien" prefHeight="37.0" prefWidth="152.0" styleClass="submitButton" text="Add Dog">
                                                    <font>
                                                       <Font name="Aller Bold" size="15.0" />

@@ -59,7 +59,6 @@ public class Log_inController implements Initializable {
 
     @FXML
     private Text wrongaccess;
-
     private Stage stage;
     private Scene scene;
     private Parent parent;
@@ -74,7 +73,7 @@ public class Log_inController implements Initializable {
     }
 
     void switchSceneProfile(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../gui/AddDog.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/MyDogs.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -83,21 +82,20 @@ public class Log_inController implements Initializable {
 
     @FXML
     void seConnecter(ActionEvent event) throws IOException, SQLException {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Success");
+     
 
         UtilisateurService us = new UtilisateurService();
         UserIndividuServices uis = new UserIndividuServices();
         if (us.verifLogin(email.getText(), password.getText())) {
-            alert.setContentText("auth succes");
+           
 
             Statics.currentIndividu = uis.findIndividuByIdUtilisateur(us.chercherUtilisateur(email.getText()));
             System.out.println(Statics.currentIndividu);
             switchSceneProfile(event);
         } else {
-            alert.setContentText("auth failed");
+            wrongaccess.setText("Incorrect email or password");
         }
-        alert.show();
+        
 
     }
 
@@ -107,25 +105,4 @@ public class Log_inController implements Initializable {
 
 }
 
-/*  @FXML
-    private Button signup;        
-    private void seConnecter(ActionEvent event) throws IOException {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            LoginDAO ls = new LoginDAO();
-            UtilisateurDAO us = new UtilisateurDAO();
-            if (ls.verifLogin(emailInput.getText(), mdpInput.getText()))
-            {
-            alert.setContentText("auth succes");
-            Statics.currentUser = us.findUtilisateurtByMail(emailInput.getText());
-            switchSceneProfil(event);
-            }
-            else
-            {
-            alert.setContentText("auth failed");
-            }
-            alert.show();
-    }*/
-/**
- *
- */
+
