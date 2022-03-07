@@ -9,6 +9,7 @@ import entite.Individu;
 import entite.Utilisateur;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -79,40 +80,41 @@ public class ProfileController implements Initializable {
     }
 
 
-        @FXML
-    void savebutton(ActionEvent event) throws IOException{
+     @FXML
+    void savebutton(ActionEvent event) throws IOException, SQLException{
         Parent root = FXMLLoader.load(getClass().getResource("../gui/profiledit.fxml"));
-        
-        
-                  Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            
+
+          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
                   alert.setTitle("Success");
-          UserIndividuServices h = new UserIndividuServices();
-            UtilisateurService us = new UtilisateurService();
-            
+
+           // UtilisateurService us = new UtilisateurService();
+UtilisateurService us = new UtilisateurService();
             Utilisateur U = new Utilisateur();
              Individu p = new Individu();
-              
 
-            U.setEmail(email.getText());
-                 U.setPassword(password.getText());
-                 U.setNumTel(  Integer.parseInt(numtel.getText()));
-                 U.setType("individu");
+              UserIndividuServices i = new UserIndividuServices();
+
+           U.setEmail(email.getText());
+                 U.setPassword(password1.getText());
+                 U.setNumTel(Integer.parseInt(numtel.getText()));
                  p.setNom(name.getText());
-           // h.Update(0, U, nom, prenom, dateNaissance, sexe, adresse, facebook, instagram, whatsapp)
-            h.Update(0, U, "7", "o", "u", "j", "", "facebook", "instagram"," whatsapp");
-       
-            cancelbutton(event);
-          
-                      name.setText(Statics.currentIndividu.getNom());
-            surname.setText(Statics.currentIndividu.getPrenom());
-              email.setText(Statics.currentIndividu.getUtilisateur().getEmail());
-             password.setText("****");
-                  facebook.setText(Statics.currentIndividu.getFacebook());
-                    whatsapp.setText(Statics.currentIndividu.getWhatsapp());
-                      instagram.setText(Statics.currentIndividu.getInstagram());
-         
-        
+                 p.setPrenom(surname.getText());
+                 p.setFacebook(facebook.getText());
+                 p.setWhatsapp(whatsapp.getText());
+                 p.setInstagram(instagram.getText());
+                 p.setUtilisateur(U);
+
+
+         i.Update(p);
+
+       Statics.currentIndividu= i.findIndividuByIdUtilisateur(us.chercherUtilisateur(U.getEmail()));
+           System.out.println();
+                     cancelbutton(event);
+
+
+
+
            }
        
                  

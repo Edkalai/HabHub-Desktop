@@ -13,5 +13,6 @@ public interface IUtilisateur <Utilisateur > {
     public boolean login(String login, String mdp)throws SQLException;
      public Utilisateur chercherUtilisateur(String input) throws SQLException;
     public List<Utilisateur> TrierUtilisateur() throws SQLException;
+        public boolean UpdateUser(int idUtilisateur,String email,String password,    int numTel, String type) ;
    
-}
+} 

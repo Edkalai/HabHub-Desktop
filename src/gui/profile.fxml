@@ -218,7 +218,7 @@
                                        <children>
                                           <Label text="Old Password:" />
                                           <Pane prefHeight="37.0" prefWidth="145.0" />
-                                          <TextField prefHeight="29.0" prefWidth="194.0" styleClass="h" />
+                                          <TextField fx:id="passwordinput" prefHeight="29.0" prefWidth="194.0" styleClass="h" />
                                           <Button mnemonicParsing="false" styleClass="aa" text="Edit" textFill="#e0642c" />
                                        </children>
                                     </HBox>

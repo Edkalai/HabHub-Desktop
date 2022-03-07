@@ -9,6 +9,8 @@ import entite.Individu;
 import entite.Utilisateur;
 import java.sql.SQLException;
 import services.UserIndividuServices;
+import services.UtilisateurService;
+import utils.Statics;
 //import services.UtilisateurService;
 
 
@@ -25,12 +27,15 @@ public class HabHub {
      UserIndividuServices uis = new UserIndividuServices();
               Utilisateur t = new Utilisateur("ahmedkalai@gmail.com","mdp",23070294,"I");
         Individu i = new Individu(t,"nada", "nouisser","123","bhgy","fff","fff","fff","fff");
-
-      /* try{
-        uis.ajouter(i, t);
-         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }*/
+          UtilisateurService u = new UtilisateurService();
+       
+        u.UpdateUser(7, "e", "k", 0, "r");
+        
+        
+        System.out.println("choof edited wallee!!");
+        
+            System.out.println(Statics.currentIndividu);
+                
         
         //us.AjouterUser(u);
         

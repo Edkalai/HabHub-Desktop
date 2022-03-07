@@ -9,6 +9,7 @@ import entite.Individu;
 import entite.Utilisateur;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -58,7 +59,7 @@ public class SignUpController implements Initializable {
         stage.show();
     }
 
-    @FXML
+       @FXML
     void SwitchSceneLogeedIn(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../gui/profiledit.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -68,33 +69,32 @@ public class SignUpController implements Initializable {
     }
     
     
-        @FXML
-     void signup (ActionEvent event )throws IOException
+   @FXML
+     void signup (ActionEvent event )throws IOException, SQLException
      {
-          Parent root = FXMLLoader.load(getClass().getResource("../gui/FXML.fxml"));
-                  Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            
-                  alert.setTitle("Success");
+
           UserIndividuServices i = new UserIndividuServices();
             UtilisateurService us = new UtilisateurService();
-            
+
             Utilisateur U = new Utilisateur();
              Individu p = new Individu();
-                
+
 
             U.setEmail(email.getText());
                  U.setPassword(password.getText());
                  U.setNumTel(  Integer.parseInt(numtel.getText()));
                  U.setType("individu");
                  p.setNom(name.getText());
-                 
+                 p.setUtilisateur(U);
+
                  i.ajouter(p, U);
-                 
-                 
+
+              Statics.currentIndividu= i.findIndividuByIdUtilisateur(us.chercherUtilisateur(U.getEmail()));
+
                 SwitchSceneLogeedIn(event);
-          
-         
-        
+
+
+
            }
     @Override
     public void initialize(URL url, ResourceBundle rb) {

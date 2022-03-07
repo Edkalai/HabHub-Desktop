@@ -150,6 +150,30 @@ return u;    }
             return false;
         }}
 
+    @Override
+    public boolean UpdateUser(int idUtilisateur, String email, String password, int numTel, String type) {
+           try {
+
+            PreparedStatement pre = connect.prepareStatement("UPDATE Utilisateur SET email = ? , password= ? ,numtel= ? , type= ? , where idUtilisateur= ? ;");
+            pre.setString(1, String.valueOf(idUtilisateur));
+            pre.setString(2, email);   
+            pre.setString(3,password);
+            pre.setString(4, String.valueOf(numTel));
+            pre.setString(5, type);
+            
+              
+            if (pre.executeUpdate() != 0) {
+                System.out.println(" Updated successfully!!");
+                 } else {
+                System.out.println("not Updated!!!");
+            }
+                return true;
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return false;    }
+
 }
     
 

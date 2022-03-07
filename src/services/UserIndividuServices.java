@@ -62,18 +62,27 @@ public class UserIndividuServices implements IIndividu {
     }
 
     @Override
-    public boolean Update(int idIndividu, Utilisateur utilisateur, String nom, String prenom, String dateNaissance, String sexe,String adresse, String facebook, String instagram, String whatsapp) {
+    public boolean Update(Individu i) {
                     try {
 
-            PreparedStatement pre = connect.prepareStatement("UPDATE individu SET nom = ? , prenom= ? ,dateNaissance= ? , sexe= ? , adresse= ? , facebook= ?,instagram= ? , whatsapp= ? , where idIndividu= ? ;");
-            pre.setString(1, nom);
-            pre.setString(2, prenom);   
-            pre.setString(3,dateNaissance);
-            pre.setString(4, sexe);
-            pre.setString(5, adresse);
-            pre.setString(6, facebook);
-            pre.setString(7, instagram);
-            pre.setString(8, whatsapp);
+            PreparedStatement pre = connect.prepareStatement("UPDATE individu i join utilisateur u on i.idUtilisateur=u.idUtilisateur SET nom = ? ,"
+                    + " email=? , password= ? , prenom= ?,numtel=?"
+                    + " ,dateNaissance= ? , sexe= ? , adresse= ? ,    "
+                    + "facebook= ?,instagram= ? ,"
+                    + " whatsapp= ? , where idIndividu= ? ;");
+           pre.setString(1, i.getNom());
+            pre.setString(2, i.getUtilisateur().getEmail());
+            pre.setString(3,doHashing(i.getUtilisateur().getPassword()) );   
+           pre.setString(4, i.getPrenom());
+           pre.setInt(5, i.getUtilisateur().getNumTel());
+           pre.setString(6, i.getDateNaissance());
+           pre.setString(7, i.getSexe());
+           pre.setString(8, i.getAdresse());
+           pre.setString(9, i.getFacebook());
+                       pre.setString(10, i.getInstagram());
+           pre.setString(11, i.getWhatsapp());
+
+            
 
             if (pre.executeUpdate() != 0) {
                 System.out.println("individu Updated successfully!!");

@@ -33,7 +33,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         this.stage = primaryStage;
         try {
-            parent = FXMLLoader.load(getClass().getResource("../gui/profiledit.fxml"));
+            parent = FXMLLoader.load(getClass().getResource("../gui/log_in.fxml"));
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
