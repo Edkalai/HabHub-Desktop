@@ -21,9 +21,9 @@ public class Individu {
     String facebook;
     String instagram;
     String whatsapp;
-    Boolean ProprietaireChien;
+    Boolean proprietaireChien;
 
-    public Individu(int idIndividu, Utilisateur utilisateur, String nom, String prenom, String sexe, Date dateNaissance, String adresse, String facebook, String instagram, String whatsapp, Boolean ProprietaireChien) {
+    public Individu(int idIndividu, Utilisateur utilisateur, String nom, String prenom, String sexe, Date dateNaissance, String adresse, String facebook, String instagram, String whatsapp, Boolean proprietaireChien) {
         this.idIndividu = idIndividu;
         this.utilisateur = utilisateur;
         this.nom = nom;
@@ -34,7 +34,7 @@ public class Individu {
         this.facebook = facebook;
         this.instagram = instagram;
         this.whatsapp = whatsapp;
-        this.ProprietaireChien = ProprietaireChien;
+        this.proprietaireChien = proprietaireChien;
     }
 
     public Individu(int idIndividu, Utilisateur utilisateur, String nom, String prenom, Date dateNaissance, String adresse, String facebook, String instagram, String whatsapp) {
@@ -139,6 +139,22 @@ public class Individu {
         return instagram;
     }
 
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
+    public Boolean getProprietaireChien() {
+        return proprietaireChien;
+    }
+
+    public void setProprietaireChien(Boolean ProprietaireChien) {
+        this.proprietaireChien = ProprietaireChien;
+    }
+
     public void setInstagram(String instagram) {
         this.instagram = instagram;
     }
@@ -153,7 +169,10 @@ public class Individu {
 
     @Override
     public String toString() {
-        return "Individu{" + "idIndividu=" + idIndividu + ", utilisateur=" + utilisateur + ", nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance + ", adresse=" + adresse + ", facebook=" + facebook + ", instagram=" + instagram + ", whatsapp=" + whatsapp + '}';
+        return "Individu{" + "idIndividu=" + idIndividu + ", utilisateur=" + utilisateur + ", nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe + ", dateNaissance=" + dateNaissance + ", adresse=" + adresse + ", facebook=" + facebook + ", instagram=" + instagram + ", whatsapp=" + whatsapp + ", proprietaireChien=" + proprietaireChien + '}';
     }
+
+
+    
     
 }

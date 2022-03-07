@@ -187,10 +187,34 @@ public class UserIndividuServices implements IIndividu {
              {
                
                  //String nom, String prenom, String sexe, String date,String email, String login, String mdp, String role
-                 i =   new Individu(rst.getInt("idIndividu"),u,rst.getString("nom"),rst.getString("prenom"),rst.getString("sexe"),rst.getString("adresse"),
+                 i =   new Individu(rst.getInt("idIndividu"),u,rst.getString("nom"),rst.getString("prenom"),rst.getString("sexe"),rst.getDate("dateNaissance"),rst.getString("adresse"),
                         rst.getString("facebook"),
                         rst.getString("instagram"),
-                        rst.getString("whatsapp"));
+                        rst.getString("whatsapp"),
+                        rst.getBoolean("proprietaireChien"));
+             }
+         } catch (SQLException ex) {
+            ex.printStackTrace();
+         }
+return i;
+    }
+    
+     public Individu findIndividuById(int id) throws SQLException{
+         Individu i = new Individu();
+          try {
+       PreparedStatement req = connect.prepareStatement("select * from individu where idIndividu=?");
+            req.setInt(1,id);
+   
+             ResultSet rst= req.executeQuery();
+             while(rst.next())
+             {
+               
+                 //String nom, String prenom, String sexe, String date,String email, String login, String mdp, String role
+                 i =   new Individu(rst.getInt("idIndividu"),Statics.currentIndividu.getUtilisateur(),rst.getString("nom"),rst.getString("prenom"),rst.getString("sexe"),rst.getDate("dateNaissance"),rst.getString("adresse"),
+                        rst.getString("facebook"),
+                        rst.getString("instagram"),
+                        rst.getString("whatsapp"),
+                        rst.getBoolean("proprietaireChien"));
              }
          } catch (SQLException ex) {
             ex.printStackTrace();

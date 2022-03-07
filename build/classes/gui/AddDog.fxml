@@ -162,7 +162,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="DogsNextDoor" minWidth="280.0" mnemonicParsing="false" onAction="#switchSceneDogsNextDoor" prefHeight="65.0" prefWidth="280.0" styleClass="transparent">
+                                    <Button fx:id="dogsNextDoorButton" disable="true" minWidth="280.0" mnemonicParsing="false" onAction="#switchSceneDogsNextDoor" prefHeight="65.0" prefWidth="280.0" styleClass="transparent">
                                        <graphic>
                                           <ImageView fitHeight="65.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -174,7 +174,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="DogsMatchup" minWidth="280.0" mnemonicParsing="false" onAction="#switchSceneDogsMatchup" prefHeight="65.0" prefWidth="280.0" styleClass="transparent">
+                                    <Button fx:id="dogMatchupButton" disable="true" minWidth="280.0" mnemonicParsing="false" onAction="#switchSceneDogsMatchup" prefHeight="65.0" prefWidth="280.0" styleClass="transparent">
                                        <graphic>
                                           <ImageView fitHeight="65.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -186,7 +186,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="MissingDogs" minWidth="280.0" mnemonicParsing="false" onAction="#switchSceneMissingDogs" prefHeight="65.0" prefWidth="280.0" styleClass="transparent">
+                                    <Button fx:id="missingDogsButton" disable="true" minWidth="280.0" mnemonicParsing="false" onAction="#switchSceneMissingDogs" prefHeight="65.0" prefWidth="280.0" styleClass="transparent">
                                        <graphic>
                                           <ImageView fitHeight="65.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -375,7 +375,7 @@
                                           <Pane prefHeight="17.0" prefWidth="751.0" />
                                           <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="751.0">
                                              <children>
-                                                <Button mnemonicParsing="false" onAction="#switchSceneMyDogs" styleClass="cancelButton" text="Cancel">
+                                                <Button mnemonicParsing="false" onAction="#switchSceneCommunity" styleClass="cancelButton" text="Cancel">
                                                    <font>
                                                       <Font name="Aller Bold" size="15.0" />
                                                    </font>

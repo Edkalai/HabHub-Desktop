@@ -38,6 +38,9 @@ public class ChienService {
             pre.setString(9, c.getRace());
             pre.setString(10, c.getGroupe());
             pre.executeUpdate();
+            PreparedStatement updatepre = connect.prepareStatement("update individu set proprietaireChien=1 where idIndividu=?;");
+            updatepre.setInt(1, Statics.currentIndividu.getIdIndividu());
+            updatepre.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

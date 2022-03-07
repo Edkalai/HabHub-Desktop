@@ -76,6 +76,15 @@ public class AddDogController implements Initializable {
     private RadioButton male;
 
     @FXML
+    private Button dogsNextDoorButton;
+
+    @FXML
+    private Button dogMatchupButton;
+
+    @FXML
+    private Button missingDogsButton;
+
+    @FXML
     private ToggleGroup dogGender;
 
     @FXML
@@ -107,12 +116,25 @@ public class AddDogController implements Initializable {
 
             dogImageView.setImage(imageToBeSaved);
 
-            
-
         }
 
         return imageName;
     }
+
+    @FXML
+    void switchSceneCommunity(ActionEvent event) throws IOException {
+        System.out.println("cancel");
+        if (Statics.currentIndividu.getProprietaireChien()) {
+            root = FXMLLoader.load(getClass().getResource("MyDogs.fxml"));
+        } else {
+            root = FXMLLoader.load(getClass().getResource("CommunityInitialPage.fxml"));
+        }
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     ChienService cs = new ChienService();
 
     public void switchSceneMyDogs(ActionEvent event) throws IOException {
@@ -139,36 +161,36 @@ public class AddDogController implements Initializable {
         }
         RadioButton selectedGender = (RadioButton) dogGender.getSelectedToggle();
         String selectedGenderValue = selectedGender.getText();
-        if (selectedGenderValue.equals("Male")){
-           gender="M";
-        }
-        else{
-            gender="F";
+        if (selectedGenderValue.equals("Male")) {
+            gender = "M";
+        } else {
+            gender = "F";
         }
         RadioButton selectedVaccination = (RadioButton) dogVaccination.getSelectedToggle();
         String selectedVaccinationValue = selectedVaccination.getText();
-        if (selectedVaccinationValue.equals("Yes")){
-           vaccination=true;
-        }
-        else{
-            vaccination=false;
+        if (selectedVaccinationValue.equals("Yes")) {
+            vaccination = true;
+        } else {
+            vaccination = false;
         }
 
         String nom = dogNameLabel.getText();
         String description = descriptionTextArea.getText();
         String color = colorLabel.getText();
         Statics.currentIndividu.getIdIndividu();
-        String image=Integer.toString(Statics.currentIndividu.getIdIndividu()) + "_" + Integer.toString(uis.getDogsNumberByIdIndividu(Statics.currentIndividu.getIdIndividu())+1);
+        String image = Integer.toString(Statics.currentIndividu.getIdIndividu()) + "_" + Integer.toString(uis.getDogsNumberByIdIndividu(Statics.currentIndividu.getIdIndividu()) + 1);
         File file = new File("C:\\Kaizen\\Esprit\\3eme\\HabHub\\HabHub-Desktop\\src\\assets\\img\\chien\\"
-                    +image+".png");
-            try {
-                ImageIO.write(SwingFXUtils.fromFXImage(dogImageView.getImage(), null), "png", file);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        Individu i = new Individu(1);
+                + image + ".png");
+        try {
+            ImageIO.write(SwingFXUtils.fromFXImage(dogImageView.getImage(), null), "png", file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Individu i = new Individu(Statics.currentIndividu.getIdIndividu());
         Chien c = new Chien(i, nom, gender, age, vaccination, description, image, color, selectedRace, selectedGroupe);
         cs.ajouterChienProprietaire(c);
+        Statics.currentIndividu = uis.findIndividuById(Statics.currentIndividu.getIdIndividu());
+        System.out.println(Statics.currentIndividu);
         switchSceneMyDogs(event);
     }
 
@@ -205,6 +227,12 @@ public class AddDogController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        if (Statics.currentIndividu.getProprietaireChien()) {
+            dogsNextDoorButton.setDisable(false);
+            missingDogsButton.setDisable(false);
+            dogMatchupButton.setDisable(false);
+        }
+
         ObservableList<String> ageList = FXCollections.observableArrayList("Months", "Years");
         ObservableList<String> groupeList = FXCollections.observableArrayList("Working", "Herding", "Toy", "Hound", "Sporting", "Non-Sporting", "Terrier");
         ObservableList<String> raceList = FXCollections.observableArrayList(

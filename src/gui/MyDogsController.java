@@ -44,7 +44,7 @@ public class MyDogsController implements Initializable {
     /**
      * Initializes the controller class.
      */
-       @FXML
+    @FXML
     private GridPane grid;
 
     @FXML
@@ -82,56 +82,53 @@ public class MyDogsController implements Initializable {
 
     @FXML
     private Label ownerLocationLabel2;
-     private Stage stage;
+    private Stage stage;
     private Scene scene;
     private Parent root;
-    @FXML
-    public void switchSceneDogsMatchup (ActionEvent event) throws IOException
-    {
-       root = FXMLLoader.load(getClass().getResource("DogsMatchup.fxml"));
-    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-    }
-     @FXML
-    public void switchSceneDogsNextDoor (ActionEvent event) throws IOException
-    {
-       root = FXMLLoader.load(getClass().getResource("DogsNextDoor.fxml"));
-    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-    }
-     @FXML
-    public void switchSceneMissingDogs (ActionEvent event) throws IOException
-    {
-    root = FXMLLoader.load(getClass().getResource("MissingDogs.fxml"));
-    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-    }
-     @FXML
-    public void switchSceneAddDog (ActionEvent event) throws IOException
-    {
-    root = FXMLLoader.load(getClass().getResource("AddDog.fxml"));
-    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-    }
-   public ObservableList<Chien> data = FXCollections.observableArrayList();
-    ChienService cs = new ChienService();
 
-    
+    @FXML
+    public void switchSceneDogsMatchup(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("DogsMatchup.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void switchSceneDogsNextDoor(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("DogsNextDoor.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void switchSceneMissingDogs(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("MissingDogs.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void switchSceneAddDog(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("AddDog.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public ObservableList<Chien> data = FXCollections.observableArrayList();
+    ChienService cs = new ChienService();
 
     private ObservableList<Chien> getChienByIndividu() {
         List<Chien> chiens = new ArrayList<>();
 
         try {
-            //chiens = cs.findChienByIndividu(Statics.currentIndividu.getIdIndividu());
-            chiens = cs.findChienByIndividu(1);
+            chiens = cs.findChienByIndividu(Statics.currentIndividu.getIdIndividu());
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -141,7 +138,7 @@ public class MyDogsController implements Initializable {
 
     }
 
-   /* private void setChosenChien(Chien a) {
+    /* private void setChosenChien(Chien a) {
 
         dogNameLabel.setText(a.getChien().getNom());
         Image genderImg = new Image(getClass().getResourceAsStream("../assets/img/female.png"));
@@ -168,14 +165,13 @@ public class MyDogsController implements Initializable {
        dogImage.setImage(dogImg);
 
     }
-*/
-
+     */
     private void displayChiens(ObservableList<Chien> chiens) {
         grid.getChildren().clear();
         int column = 0;
         int row = 1;
 
-       try {
+        try {
             for (int i = 0; i < chiens.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("DogListItem.fxml"));
@@ -211,8 +207,6 @@ public class MyDogsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         displayChiens(getChienByIndividu());
 
-     
-        }
-   
-    
+    }
+
 }
