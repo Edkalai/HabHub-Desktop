@@ -9,16 +9,21 @@ import HabHub.BusinessListener;
 import entities.Business;
 import entities.Revue;
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import services.RevueServices;
+import utils.Statics;
 
 
 /**
@@ -41,14 +46,29 @@ public class RevueBusinessController implements Initializable {
 
     @FXML
     private Label datePubLabel; 
+    @FXML
+    private Button deleteButton;
+
     private Revue revue;
+    RevueServices rs = new RevueServices();
     /**
      * Initializes the controller class.
      */
+       @FXML
+    void deleteReview(ActionEvent event) throws SQLException {
     
-       public void setData(Revue revue) {
+    rs.deleteRevue(revue.getIdRevue());
+    }
+    
+        public void setData(Revue revue) {
         this.revue = revue;
+        
+        if(revue.getIndividu().getIdIndividu()==Statics.currentIndividu.getIdIndividu()){
+        deleteButton.setVisible(true);
+        deleteButton.setDisable(false);
 
+        }
+        
         idIndividuLabel.setText(revue.getIndividu().getPrenom());
         commentaireText.setText(revue.getCommentaire());
         datePubLabel.setText(revue.getDatePublication().toString());
@@ -72,6 +92,7 @@ public class RevueBusinessController implements Initializable {
         }
         starReviewsImage.setImage(starImg);
     }
+       
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -91,7 +91,7 @@ public class BusinessFXMLController implements Initializable {
     private Button vetButton;
      @FXML
     private Button dogSittingButton;
-    
+    private Business chosenBusiness;
     private BusinessListener businessListener;
 
     public ObservableList<Business> businessItems = FXCollections.observableArrayList();
@@ -102,24 +102,66 @@ public class BusinessFXMLController implements Initializable {
     public ObservableList<ServiceBusiness> serviceItems = FXCollections.observableArrayList();
     ServiceBusinessServices sbs = new ServiceBusinessServices();
 
-  
+    public void displayReviewsItems(ObservableList<Revue> revueItems){
+        gridReview.getChildren().clear();
+
+     int column2 = 0;
+        int row2 = 1;
+        try {
+            for (int j = 0; j < revueItems.size(); j++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("revueBusiness.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                RevueBusinessController revueBusinessController = fxmlLoader.getController();
+                revueBusinessController.setData(revueItems.get(j));
+
+                if (column2 == 1) {
+                    column2 = 0;
+                    row2++;
+                }
+
+                gridReview.add(anchorPane, column2++, row2); //(child,column,row)
+                //set grid width
+                gridReview.setMinWidth(Region.USE_PREF_SIZE);
+                gridReview.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                gridReview.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                gridReview.setMinHeight(Region.USE_PREF_SIZE);
+                gridReview.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                gridReview.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(anchorPane, new Insets(10));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
     @FXML
     void submitRatingButton(ActionEvent event)throws SQLException {
         
     int starNumber=(int)reviewRating.getRating();
     String reviewCommentaire=reviewText.getText();
     System.out.println(reviewRating.getRating());
-    Business b = new Business(16);
-    Individu i1 =Statics.currentIndividu;
-    Individu i = new Individu(1);
+   Individu i =Statics.currentIndividu;
+   // Individu i = new Individu(1);
     
-    Revue r = new Revue(i1,b,starNumber,reviewCommentaire);
-    System.out.println(r);
+    Revue r = new Revue(i,chosenBusiness,starNumber,reviewCommentaire);
+    //System.out.println(r);
     try {
             rs.ajouterRevueBusiness(r);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    reviewText.clear();
+    revueItems.clear();
+    revueItems.addAll(getReviewItems(chosenBusiness.getIdBusiness()));
+    
+    displayReviewsItems(revueItems);
+    
+
     }
     
     private ObservableList<Business> getRechercheBusiness(String type, String input) {
@@ -177,6 +219,7 @@ public class BusinessFXMLController implements Initializable {
     }
 
     private void setChosenBusiness(Business b) {
+        chosenBusiness=b;
         revueItems.clear();
         gridReview.getChildren().clear();
         Image businessImg = new Image(getClass().getResourceAsStream("../assets/img/business/BusinessItem/SalwaKbira.png"));

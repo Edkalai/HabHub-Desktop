@@ -232,7 +232,7 @@
                                                       <Label text=" Sort" />
                                                    </children>
                                                 </HBox>
-                                                <Pane fx:id="businessItems" minWidth="-Infinity" prefHeight="200.0" prefWidth="20.0" />
+                                                <Pane minWidth="-Infinity" prefHeight="200.0" prefWidth="20.0" />
                                              </children>
                                           </HBox>
                                           <Pane maxHeight="-Infinity" maxWidth="70.0" prefHeight="50.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
@@ -262,8 +262,7 @@
                            </HBox.margin>
                            <children>
                               <ImageView fx:id="businessImageLabel" fitHeight="202.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
-                                 <cursor>                                    
-                                     <Cursor fx:constant="S_RESIZE" />
+                                 <cursor>
                                  </cursor>
                                  <viewport>
                                     <Rectangle2D />
@@ -324,7 +323,7 @@
                                                          <children>
                                                             <Pane prefHeight="12.0" prefWidth="227.0" />
                                                             <Text fx:id="businessDecriptionLabel" fill="#8d8d8d" strokeType="OUTSIDE" strokeWidth="0.0" text="Salwa is a cool puppy. I found her next to a shed on the beach and had to rescue her. But I can’t keep her for long since I already have my hands full." wrappingWidth="220.0" />
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="206.0">
+                                                            <HBox alignment="CENTER_LEFT" minWidth="31.0" prefHeight="31.0" prefWidth="206.0">
                                                                <children>
                                                                   <Label fx:id="dogNameLabel1" prefHeight="29.0" prefWidth="89.0" text="Experience :">
                                                                      <font>
@@ -338,7 +337,7 @@
                                                                   </Label>
                                                                </children>
                                                             </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="235.0">
+                                                            <HBox alignment="CENTER_LEFT" minWidth="31.0" prefHeight="31.0" prefWidth="235.0">
                                                                <children>
                                                                   <Label fx:id="dogNameLabel11" prefHeight="29.0" prefWidth="115.0" text="Opening Hours :">
                                                                      <font>
@@ -378,18 +377,6 @@
                                                    <content>
                                                       <VBox prefHeight="268.0" prefWidth="227.0">
                                                          <children>
-                                                            <HBox alignment="CENTER_LEFT" minHeight="45.0" minWidth="45.0" prefHeight="45.0" prefWidth="235.0">
-                                                               <children>
-                                                                  <Label fx:id="addReview" text="Add Review" textFill="#808080" underline="true">
-                                                                     <font>
-                                                                        <Font name="Aller" size="13.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                               </children>
-                                                               <padding>
-                                                                  <Insets left="13.0" />
-                                                               </padding>
-                                                            </HBox>
                                                             <VBox prefHeight="200.0" prefWidth="100.0">
                                                                <children>
                                                                   <Rating fx:id="reviewRating" prefWidth="96.0" />
@@ -401,12 +388,12 @@
                                                                         <Insets bottom="5.0" top="10.0" />
                                                                      </padding>
                                                                   </Label>
-                                                                  <TextArea fx:id="reviewText" prefHeight="200.0" prefWidth="200.0">
+                                                                  <TextArea fx:id="reviewText" maxWidth="227.0" prefHeight="200.0" prefWidth="200.0" wrapText="true">
                                                                      <VBox.margin>
                                                                         <Insets />
                                                                      </VBox.margin>
                                                                   </TextArea>
-                                                                  <HBox alignment="BOTTOM_RIGHT" prefHeight="21.0" prefWidth="227.0">
+                                                                  <HBox alignment="BOTTOM_RIGHT" maxWidth="227.0" prefHeight="21.0" prefWidth="227.0">
                                                                      <children>
                                                                         <Button maxHeight="10.0" maxWidth="70.0" mnemonicParsing="false" onAction="#submitRatingButton" prefHeight="10.0" prefWidth="83.0" styleClass="ratingButton" text="Submit" textFill="WHITE">
                                                                            <font>
