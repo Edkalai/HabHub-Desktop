@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
@@ -207,7 +206,7 @@
                                                             <Insets left="20.0" />
                                                          </HBox.margin>
                                                       </ImageView>
-                                                      <TextField prefHeight="31.0" prefWidth="423.0" promptText="Search for names, Dog Breeds, Age, Location" styleClass="transparent" />
+                                                      <TextField fx:id="searchBox" prefHeight="31.0" prefWidth="423.0" promptText="Search for names, Dog Breeds, Age, Location" styleClass="transparent" />
                                                    </children>
                                                 </HBox>
                                                 <Pane prefHeight="51.0" prefWidth="200.0" />
@@ -248,7 +247,6 @@
                                        </rowConstraints>
                                     </GridPane>
                                     <Pane prefHeight="412.0" prefWidth="868.0" />
-                                    <Pagination prefHeight="75.0" prefWidth="823.0" />
                                  </children>
                               </VBox>
                            </children>
@@ -313,54 +311,56 @@
                                  </padding>
                               </HBox>
                               <Pane prefHeight="14.0" prefWidth="290.0" />
-                              <TabPane maxWidth="250.0" minWidth="270.0" prefHeight="320.0" prefWidth="250.0" stylesheets="@business.css" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="100.0">
+                              <TabPane minWidth="270.0" prefHeight="338.0" prefWidth="270.0" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="100.0" VBox.vgrow="ALWAYS">
                                 <tabs>
                                   <Tab text="Description">
                                     <content>
-                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="150.0">
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="317.0" prefWidth="270.0">
                                              <children>
-                                                <ScrollPane layoutX="7.0" layoutY="2.0" prefHeight="279.0" prefWidth="249.0">
-                                                  <content>
-                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="268.0" prefWidth="249.0" styleClass="transparent">
+                                                <ScrollPane layoutX="7.0" layoutY="2.0" prefHeight="279.0" prefWidth="268.0">
+                                                   <content>
+                                                      <VBox prefHeight="279.0" prefWidth="227.0">
                                                          <children>
-                                                            <VBox prefHeight="268.0" prefWidth="227.0">
+                                                            <Pane prefHeight="12.0" prefWidth="227.0" />
+                                                            <Text fx:id="businessDecriptionLabel" fill="#8d8d8d" strokeType="OUTSIDE" strokeWidth="0.0" text="Salwa is a cool puppy. I found her next to a shed on the beach and had to rescue her. But I can’t keep her for long since I already have my hands full." wrappingWidth="220.0" />
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="206.0">
                                                                <children>
-                                                                  <Pane prefHeight="12.0" prefWidth="227.0" />
-                                                                  <Text fx:id="businessDecriptionLabel" fill="#8d8d8d" strokeType="OUTSIDE" strokeWidth="0.0" text="Salwa is a cool puppy. I found her next to a shed on the beach and had to rescue her. But I can’t keep her for long since I already have my hands full." wrappingWidth="220.0" />
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="206.0">
-                                                                     <children>
-                                                                        <Label fx:id="dogNameLabel1" prefHeight="29.0" prefWidth="89.0" text="Experience :">
-                                                                           <font>
-                                                                              <Font name="Aller Bold" size="15.0" />
-                                                                           </font>
-                                                                        </Label>
-                                                                        <Label fx:id="experienceLabel" text="Label">
-                                                                           <font>
-                                                                              <Font name="Aller" size="15.0" />
-                                                                           </font>
-                                                                        </Label>
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="235.0">
-                                                                     <children>
-                                                                        <Label fx:id="dogNameLabel11" prefHeight="29.0" prefWidth="115.0" text="Opening Hours :">
-                                                                           <font>
-                                                                              <Font name="Aller Bold" size="15.0" />
-                                                                           </font>
-                                                                        </Label>
-                                                                        <Label fx:id="openingHoursLabel" text="Label">
-                                                                           <font>
-                                                                              <Font name="Aller" size="15.0" />
-                                                                           </font>
-                                                                        </Label>
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <DatePicker />
+                                                                  <Label fx:id="dogNameLabel1" prefHeight="29.0" prefWidth="89.0" text="Experience :">
+                                                                     <font>
+                                                                        <Font name="Aller Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Label fx:id="experienceLabel" text="Label">
+                                                                     <font>
+                                                                        <Font name="Aller" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
                                                                </children>
-                                                            </VBox>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="235.0">
+                                                               <children>
+                                                                  <Label fx:id="dogNameLabel11" prefHeight="29.0" prefWidth="115.0" text="Opening Hours :">
+                                                                     <font>
+                                                                        <Font name="Aller Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Label fx:id="openingHoursLabel" text="Label">
+                                                                     <font>
+                                                                        <Font name="Aller" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                               </children>
+                                                            </HBox>
+                                                            <DatePicker />
+                                                            <Label prefHeight="47.0" prefWidth="167.0" text="Our services include:" textFill="#e0642c" />
+                                                            <GridPane fx:id="gridServices" alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="227.0">
+                                                               <rowConstraints>
+                                                                  <RowConstraints />
+                                                               </rowConstraints>
+                                                            </GridPane>
                                                          </children>
-                                                      </AnchorPane>
-                                                  </content>
+                                                      </VBox>
+                                                   </content>
                                                 </ScrollPane>
                                              </children>
                                           </AnchorPane>
@@ -377,7 +377,7 @@
                                                    <content>
                                                       <VBox prefHeight="268.0" prefWidth="227.0">
                                                          <children>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="235.0">
+                                                            <HBox alignment="CENTER_LEFT" minHeight="45.0" minWidth="45.0" prefHeight="45.0" prefWidth="235.0">
                                                                <children>
                                                                   <Label fx:id="addReview" text="Add Review" textFill="#808080" underline="true">
                                                                      <font>
@@ -385,8 +385,11 @@
                                                                      </font>
                                                                   </Label>
                                                                </children>
+                                                               <padding>
+                                                                  <Insets left="13.0" />
+                                                               </padding>
                                                             </HBox>
-                                                            <GridPane fx:id="gridReview" alignment="CENTER_LEFT" prefHeight="11.0" prefWidth="868.0">
+                                                            <GridPane fx:id="gridReview" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="227.0">
                                                                <rowConstraints>
                                                                   <RowConstraints />
                                                                </rowConstraints>

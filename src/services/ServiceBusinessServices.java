@@ -90,6 +90,22 @@ public class ServiceBusinessServices implements Interface_ServiceBusiness {
         return BServices;
         }
     
+    public List<ServiceBusiness> afficherServicesById(int businessId) throws SQLException{
+        List<ServiceBusiness> BServices = new ArrayList<>();
+        PreparedStatement stm = connect.prepareStatement("select * from business_services where idBusiness=?;");
+        stm.setInt(1,businessId);
+        ResultSet rst = stm.executeQuery();
+         
+            while (rst.next()) {
+            ServiceBusiness BS = new ServiceBusiness (rst.getInt("idBusinessServices"),
+            new Business(rst.getInt("idBusiness")),
+            rst.getString("nomService"),
+            rst.getFloat("prix"));
+            BServices.add(BS);
+        }
+        return BServices;
+        }
+    
         public List<ServiceBusiness> filterBusinessById (int businessId) throws SQLException{
         List<ServiceBusiness> BServices = new ArrayList<>();
         PreparedStatement stm = connect.prepareStatement("select idBusinessServices,nomService,prix from business_services where idBusiness=?;");

@@ -20,6 +20,7 @@ public interface Interface_ServiceBusiness {
     public List<ServiceBusiness> afficherBusinessServices() throws SQLException;
     public List<ServiceBusiness> filterBusinessByType(String businessType) throws SQLException;
     public List<ServiceBusiness> filterBusinessBy2Variables (String businessType,String filter,String value) throws SQLException;
+    public List<ServiceBusiness> afficherServicesById(int businessId) throws SQLException;
 
 
 }

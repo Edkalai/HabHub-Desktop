@@ -96,7 +96,7 @@ public class Business {
 
 
     }
-    public Business(int idBusiness,String titre, String description, String horaire, String ville, String localisation,String type,List<ServiceBusiness> BServices ,int optional,int optional2) {
+    public Business(int idBusiness,String titre, String description, String horaire, String ville, String localisation,String type,List<ServiceBusiness> BServices ,int experience,int optional2) {
         this.idBusiness = idBusiness;
         this.titre = titre;
         this.description = description;
@@ -110,7 +110,22 @@ public class Business {
 
 
     }
+       public Business(int idBusiness,String titre, String description, String horaire, String ville, String localisation,String type,int experience,int optional2) {
+        this.idBusiness = idBusiness;
+        this.titre = titre;
+        this.description = description;
+        this.horaire = horaire;
+        this.ville = ville;
+        this.localisation = localisation;
+        this.type = type;
+        //this.BServices=BServices;
+        this.experience=experience;
+        this.optional2=optional2;
+
+
+    }
 /*
+    
     public Business(int idBusiness, Utilisateur user, String titre, String description, String horaire, String ville, String localisation,String type,) {
         this.idBusiness = idBusiness;
         this.user = user;
@@ -180,7 +195,7 @@ public class Business {
     }
     @Override
     public String toString() {
-        return "Business{" + "idBusiness=" + idBusiness +/* ", idUtilisateur=" + user.idUtilisateur +*/", titre=" + titre + ", experience=" + experience + ", description=" + description + ", horaire=" + horaire + ", ville=" + ville + ", localisation=" + localisation + ", type=" + type +", listBS=" + BServices +'}';
+        return "Business{" + "idBusiness=" + idBusiness +/* ", idUtilisateur=" + user.idUtilisateur +*/", titre=" + titre + ", experience=" + experience + ", description=" + description + ", horaire=" + horaire + ", ville=" + ville + ", localisation=" + localisation + ", type=" + type /*+", listBS=" + BServices */+", experience=" + experience+'}';
     }
     
 }

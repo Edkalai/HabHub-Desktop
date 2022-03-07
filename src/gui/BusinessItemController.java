@@ -56,7 +56,7 @@ public class BusinessItemController implements Initializable {
     
     @FXML
     void click(MouseEvent mouseEvent) {
-        System.out.println("ahmed clei");
+        //System.out.println("ahmed clei");
         businessListener.onClickListener(business);
         
     } 

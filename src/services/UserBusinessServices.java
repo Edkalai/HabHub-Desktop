@@ -144,7 +144,7 @@ public class UserBusinessServices {
         rst.getString("horaire"),
         rst.getString("ville"),
         rst.getString("localisation"),
-        rst.getString("type"),SBS1.filterBusinessById(rst.getInt("idBusiness")),rst.getInt("experience"),16 );
+        rst.getString("type"),rst.getInt("experience"),16);
 
 
             businesses.add(a);

@@ -8,6 +8,7 @@ package gui;
 import HabHub.BusinessListener;
 import entities.Business;
 import entities.Revue;
+import entities.ServiceBusiness;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -21,6 +22,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -28,6 +30,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import services.RevueServices;
+import services.ServiceBusinessServices;
 import services.UserBusinessServices;
 
 /**
@@ -40,6 +43,9 @@ public class BusinessFXMLController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    @FXML
+    private TextField searchBox;
+
      @FXML
     private GridPane grid;
 
@@ -67,13 +73,36 @@ public class BusinessFXMLController implements Initializable {
    
     @FXML
     private GridPane gridReview;
+    
+    @FXML
+    private GridPane gridServices;
 
     private BusinessListener businessListener;
 
     public ObservableList<Business> businessItems = FXCollections.observableArrayList();
     UserBusinessServices bs = new UserBusinessServices();
+    public ObservableList<Revue> revueItems = FXCollections.observableArrayList();
+    RevueServices rs = new RevueServices();
+     public ObservableList<ServiceBusiness> serviceItems = FXCollections.observableArrayList();
+    ServiceBusinessServices sbs = new ServiceBusinessServices();
+    
+    
 
-    private List<Business> getBusinessItems() {
+    private ObservableList<Business> getRechercheBusiness(String type,String input) {
+        List<Business> businessesRecherche = new ArrayList<>();
+
+        try {
+            businessesRecherche = bs.rechercherBusinessByType(type, input);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        businessItems.clear();
+        businessItems.addAll(businessesRecherche);
+        return businessItems;
+
+    }
+
+    private ObservableList<Business> getBusinessItems() {
         List<Business> BI = new ArrayList<>();
 
         try {
@@ -81,12 +110,12 @@ public class BusinessFXMLController implements Initializable {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return BI;
+        businessItems.clear();
+        businessItems.addAll(BI);
+        return businessItems;
 
     }
-      public ObservableList<Revue> revueItems = FXCollections.observableArrayList();
-    RevueServices rs = new RevueServices();
-
+    
     private List<Revue> getReviewItems(int businessId) {
         List<Revue> RI = new ArrayList<>();
 
@@ -98,8 +127,23 @@ public class BusinessFXMLController implements Initializable {
         return RI;
 
     }
+     private List<ServiceBusiness> getServiceItems(int businessId) {
+        List<ServiceBusiness> SI = new ArrayList<>();
+
+        try {
+            SI = sbs.afficherServicesById(businessId);
+            System.out.println(SI);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+         serviceItems.clear();
+       // serviceItems.addAll(SI);
+        return SI;
+
+    }
     private void setChosenBusiness(Business b) {
         revueItems.clear();
+        gridReview.getChildren().clear();
         Image businessImg = new Image(getClass().getResourceAsStream("../assets/img/business/BusinessItem/SalwaKbira.png"));       
         businessImageLabel.setImage(businessImg);
         businessTitleLabel.setText(b.getTitre());
@@ -109,10 +153,10 @@ public class BusinessFXMLController implements Initializable {
         experienceLabel.setText(Integer.toString(b.getExperience()));
         openingHoursLabel.setText(b.getHoraire());
         revueItems.addAll(getReviewItems(b.getIdBusiness()));
-        System.out.println(revueItems);
+        //System.out.println(revueItems);
         int column2 = 0;
         int row2 = 1;
-        /*try {
+        try {
             for (int i = 0; i < revueItems.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("revueBusiness.fxml"));
@@ -141,13 +185,93 @@ public class BusinessFXMLController implements Initializable {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
+        //serviceItems.clear();
+        gridServices.getChildren().clear();
+         serviceItems.addAll(getServiceItems(b.getIdBusiness()));
+        //System.out.println(serviceItems);
+        int column3 = 0;
+        int row3 = 1;
+        try {
+            for (int i = 0; i < serviceItems.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("ServicesFXML.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                ServicesFXMLController servicesFXMLController = fxmlLoader.getController();
+                servicesFXMLController.setData(serviceItems.get(i));
+
+                if (column3 == 1) {
+                    column3 = 0;
+                    row3++;
+                }
+
+                gridServices.add(anchorPane, column3++, row3); //(child,column,row)
+                //set grid width
+                gridServices.setMinWidth(Region.USE_PREF_SIZE);
+                gridServices.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                gridServices.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                gridServices.setMinHeight(Region.USE_PREF_SIZE);
+                gridServices.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                gridServices.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(anchorPane, new Insets(10));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void displayBusiness(ObservableList<Business> businesses) {
+        grid.getChildren().clear();
+        int column = 0;
+        int row = 1;
+
+        try {
+            businessListener = new BusinessListener() {
+                @Override
+                public void onClickListener(Business business) {
+                    setChosenBusiness(business);
+                }
+
+            };
+            for (int i = 0; i < businesses.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("BusinessItem.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                BusinessItemController itemController = fxmlLoader.getController();
+                itemController.setData(businesses.get(i), businessListener);
+
+                if (column == 1) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorPane, column++, row); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_PREF_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_COMPUTED_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_PREF_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_COMPUTED_SIZE);
+
+                GridPane.setMargin(anchorPane, new Insets(10));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
-        businessItems.addAll(getBusinessItems());
+        displayBusiness(getBusinessItems());
+        //businessItems.addAll(getBusinessItems());
         if (businessItems.size() > 0) {
             setChosenBusiness(businessItems.get(0));
             businessListener = new BusinessListener() {
@@ -158,6 +282,15 @@ public class BusinessFXMLController implements Initializable {
                 }
             };
         }
+        
+        searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println(newValue);
+            displayBusiness(getRechercheBusiness("vet",newValue));
+
+        });
+        
+        
+        /*
         int column = 0;
         int row = 1;
         try {
@@ -189,7 +322,7 @@ public class BusinessFXMLController implements Initializable {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
       
     }
 
