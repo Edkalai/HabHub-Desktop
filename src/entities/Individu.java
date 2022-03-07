@@ -4,55 +4,44 @@
  * and open the template in the editor.
  */
 package entities;
-
 import entities.Utilisateur;
 import java.util.Date;
-
 /**
  *
  * @author Ed
  */
 public class Individu {
-
     int idIndividu;
     Utilisateur utilisateur;
     String nom;
     String prenom;
+    String sexe;
     Date dateNaissance;
     String adresse;
     String facebook;
     String instagram;
     String whatsapp;
+    Boolean proprietaireChien;
 
-    public Individu(Utilisateur utilisateur) {
+    public Individu(int idIndividu,String prenom, String nom) {
+        this.idIndividu = idIndividu;
+        this.prenom = prenom;
+        this.nom = nom;
+        
+    }
 
+    public Individu(int idIndividu, Utilisateur utilisateur, String nom, String prenom, String sexe, Date dateNaissance, String adresse, String facebook, String instagram, String whatsapp, Boolean proprietaireChien) {
+        this.idIndividu = idIndividu;
         this.utilisateur = utilisateur;
-
-    }
-
-    public Individu(String prenom, String nom) {
-
-        this.prenom = prenom;
-        this.nom = nom;
-
-    }
-
-    public Individu(int idIndividu, String prenom, String nom) {
-        this.idIndividu = idIndividu;
-        this.prenom = prenom;
-        this.nom = nom;
-
-    }
-
-    public Individu(int idIndividu, String nom, String prenom, Date dateNaissance, String adresse, String facebook, String instagram, String whatsapp) {
-        this.idIndividu = idIndividu;
         this.nom = nom;
         this.prenom = prenom;
+        this.sexe = sexe;
         this.dateNaissance = dateNaissance;
         this.adresse = adresse;
         this.facebook = facebook;
         this.instagram = instagram;
         this.whatsapp = whatsapp;
+        this.proprietaireChien = proprietaireChien;
     }
 
     public Individu(int idIndividu, Utilisateur utilisateur, String nom, String prenom, Date dateNaissance, String adresse, String facebook, String instagram, String whatsapp) {
@@ -62,6 +51,18 @@ public class Individu {
         this.prenom = prenom;
         this.dateNaissance = dateNaissance;
         this.adresse = adresse;
+        this.facebook = facebook;
+        this.instagram = instagram;
+        this.whatsapp = whatsapp;
+    }
+
+    public Individu(int idIndividu, Utilisateur utilisateur, String nom, String prenom,String sexe,String adresse, String facebook, String instagram, String whatsapp) {
+        this.idIndividu = idIndividu;
+        this.utilisateur = utilisateur;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.sexe=sexe;
+        this.adresse=adresse;
         this.facebook = facebook;
         this.instagram = instagram;
         this.whatsapp = whatsapp;
@@ -80,6 +81,9 @@ public class Individu {
 
     public Individu(int idIndividu) {
         this.idIndividu = idIndividu;
+    }
+     public Individu() {
+       
     }
 
     public int getIdIndividu() {
@@ -142,6 +146,22 @@ public class Individu {
         return instagram;
     }
 
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
+    public Boolean getProprietaireChien() {
+        return proprietaireChien;
+    }
+
+    public void setProprietaireChien(Boolean ProprietaireChien) {
+        this.proprietaireChien = ProprietaireChien;
+    }
+
     public void setInstagram(String instagram) {
         this.instagram = instagram;
     }
@@ -156,7 +176,10 @@ public class Individu {
 
     @Override
     public String toString() {
-        return "Individu{" + "idIndividu=" + idIndividu + ", utilisateur=" + utilisateur + ", nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance + ", adresse=" + adresse + ", facebook=" + facebook + ", instagram=" + instagram + ", whatsapp=" + whatsapp + '}';
+        return "Individu{" + "idIndividu=" + idIndividu + ", utilisateur=" + utilisateur + ", nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe + ", dateNaissance=" + dateNaissance + ", adresse=" + adresse + ", facebook=" + facebook + ", instagram=" + instagram + ", whatsapp=" + whatsapp + ", proprietaireChien=" + proprietaireChien + '}';
     }
 
+
+    
+    
 }

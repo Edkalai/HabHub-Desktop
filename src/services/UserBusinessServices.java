@@ -103,13 +103,16 @@ public class UserBusinessServices {
 
     }
  
-        public List<Business> afficherBusiness() throws SQLException{
+        public List<Business> afficherBusiness(String businessType) throws SQLException{
         List<Business> businesses = new ArrayList<>();
         ServiceBusinessServices SBS1 = new ServiceBusinessServices();
 
-        String req = "select * from business;";
-        stm = connect.createStatement();
-        ResultSet rst = stm.executeQuery(req);
+        String req = "select * from business where type= ? ;";
+        PreparedStatement ps = connect.prepareStatement(req);
+        ps.setString(1,businessType);      
+       
+        ResultSet rst = ps.executeQuery();
+            
             while (rst.next()) {
             Business a = new Business(rst.getInt("idBusiness"),
             rst.getString("titre"),

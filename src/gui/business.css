@@ -2,9 +2,20 @@
     -fx-background-color : #F4F4F4;
 
 }
+.rating > .container .button {
+        -fx-background-size: cover;
+        -fx-padding: 8; 
+    }
 
 .description{
     -fx-text-fill: #6E6E6E;
+
+}
+.ratingButton{
+        -fx-background-color : #E0642C;
+    -fx-border-color:#E0642C ;
+    -fx-border-radius:5px;  
+    -fx-background-radius:5px;  
 
 }
 .bookButton{

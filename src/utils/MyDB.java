@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 public class MyDB {
     
-    final String url ="jdbc:mysql://localhost:3306/habhub";
+    final String url ="jdbc:mysql://localhost:3306/habhubv2";
     final String login ="root";
     final String pwd="";
     private static MyDB instance;

@@ -1,41 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/gui/BusinessFXML.fxml</file>
-            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/services/Interface_Reservation.java</file>
-            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/gui/revuebusiness.css</file>
-            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/gui/ServicesFXML.fxml</file>
-            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/assets/img/Frame%20124.png</file>
-            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/entities/Reservation.java</file>
-            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/services/ServiceBusinessServices.java</file>
-            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/services/ReservationServices.java</file>
             <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/services/RevueServices.java</file>
-            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/HabHub/BusinessListener.java</file>
-            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/services/Interface_Business.java</file>
-            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/gui/BusinessItemController.java</file>
-            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/gui/revueBusiness.fxml</file>
-            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/services/Interface_Revue.java</file>
-            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/gui/ServicesFXMLController.java</file>
-            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/gui/RevueBusinessController.java</file>
             <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/utils/MyDB.java</file>
             <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/entities/Revue.java</file>
             <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/assets/img/HabHub%20logo.png</file>
-            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/entities/ServiceBusiness.java</file>
             <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/entities/Utilisateur.java</file>
             <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/assets/img/zoom-in.png</file>
+            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/utils/Statics.java</file>
             <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/gui/business.css</file>
             <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/HabHub/Main.java</file>
             <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/gui/businessitem.css</file>
             <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/entities/Business.java</file>
-            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/services/Interface_ServiceBusiness.java</file>
             <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/gui/BusinessFXMLController.java</file>
+            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/assets/img/Frame%20124.png</file>
             <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/HabHub/HabHub.java</file>
             <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/services/UserBusinessServices.java</file>
-            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/gui/BusinessFXML.css</file>
+            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/services/ServiceBusinessServices.java</file>
             <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/entities/Individu.java</file>
-            <file>file:/D:/3eme/PIDEV/habHub/HabHub-Desktop/src/gui/servicesfxml.css</file>
         </group>
     </open-files>
 </project-private>
