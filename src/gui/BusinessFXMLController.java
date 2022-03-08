@@ -6,14 +6,19 @@
 package gui;
 
 import HabHub.BusinessListener;
+import HabHub.ServiceListener;
 import entities.Business;
 import entities.Individu;
+import entities.Reservation;
 import entities.Revue;
 import entities.ServiceBusiness;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -24,6 +29,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -34,10 +41,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import org.controlsfx.control.Rating;
+import services.ReservationServices;
 import services.RevueServices;
 import services.ServiceBusinessServices;
 import services.UserBusinessServices;
 import utils.Statics;
+
 /**
  * FXML Controller class
  *
@@ -71,12 +80,11 @@ public class BusinessFXMLController implements Initializable {
 
     @FXML
     private Label openingHoursLabel;
-    
+
     @FXML
     private Rating reviewRating;
-   @FXML
+    @FXML
     private TextArea reviewText;
-
 
     @FXML
     private GridPane gridReview;
@@ -85,27 +93,46 @@ public class BusinessFXMLController implements Initializable {
     private GridPane gridServices;
     @FXML
     private Button groomingButton;
-     @FXML
+    @FXML
     private Button parkButton;
-     @FXML
+    @FXML
     private Button vetButton;
-     @FXML
+    @FXML
     private Button dogSittingButton;
+    
+    @FXML
+    private ComboBox<String> timeComboBox;
+    @FXML
+    private DatePicker datePicker;
+
+    
+    
+    
     private Business chosenBusiness;
     private BusinessListener businessListener;
+    private ServiceListener serviceListener;
 
+    private List<Integer> selectedServices = new ArrayList();
     public ObservableList<Business> businessItems = FXCollections.observableArrayList();
     UserBusinessServices bs = new UserBusinessServices();
     public ObservableList<Revue> revueItems = FXCollections.observableArrayList();
     RevueServices rs = new RevueServices();
-    
+    ReservationServices rvs = new ReservationServices();
+
     public ObservableList<ServiceBusiness> serviceItems = FXCollections.observableArrayList();
     ServiceBusinessServices sbs = new ServiceBusinessServices();
-
-    public void displayReviewsItems(ObservableList<Revue> revueItems){
+    public void refreshReviewItems(){
+        revueItems.clear();
+        revueItems.addAll(getReviewItems(chosenBusiness.getIdBusiness())); 
+        System.out.println("ahla");
+        displayReviewsItems(revueItems);
+    }
+    
+    @FXML
+    public void displayReviewsItems(ObservableList<Revue> revueItems) {
         gridReview.getChildren().clear();
 
-     int column2 = 0;
+        int column2 = 0;
         int row2 = 1;
         try {
             for (int j = 0; j < revueItems.size(); j++) {
@@ -139,31 +166,48 @@ public class BusinessFXMLController implements Initializable {
         }
 
     }
-    @FXML
-    void submitRatingButton(ActionEvent event)throws SQLException {
+       @FXML
+      void ajouterReservation(ActionEvent event) throws SQLException {
+        System.out.println("mehh");
+        String selectedTime = timeComboBox.getSelectionModel().getSelectedItem();
+        java.util.Date date = java.util.Date.from(datePicker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        System.out.println(date);
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+                System.out.println(sqlDate);
+
+        for(int i = 0; i < selectedServices.size(); i++){
+            ServiceBusiness rs = new ServiceBusiness(selectedServices.get(i));
+            Reservation r = new Reservation(Statics.currentIndividu,rs,date,selectedTime);
+            rvs.ajouter(r);
+            System.out.println("ajout");
+            
+        }
         
-    int starNumber=(int)reviewRating.getRating();
-    String reviewCommentaire=reviewText.getText();
-    System.out.println(reviewRating.getRating());
-   Individu i =Statics.currentIndividu;
-   // Individu i = new Individu(1);
-    
-    Revue r = new Revue(i,chosenBusiness,starNumber,reviewCommentaire);
-    //System.out.println(r);
-    try {
+    }
+    @FXML
+    void submitRatingButton(ActionEvent event) throws SQLException {
+
+        int starNumber = (int) reviewRating.getRating();
+        String reviewCommentaire = reviewText.getText();
+        System.out.println(reviewRating.getRating());
+        Individu i = Statics.currentIndividu;
+        // Individu i = new Individu(1);
+
+        Revue r = new Revue(i, chosenBusiness, starNumber, reviewCommentaire);
+        //System.out.println(r);
+        try {
             rs.ajouterRevueBusiness(r);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-    reviewText.clear();
-    revueItems.clear();
-    revueItems.addAll(getReviewItems(chosenBusiness.getIdBusiness()));
-    
-    displayReviewsItems(revueItems);
-    
+        reviewText.clear();
+        revueItems.clear();
+        revueItems.addAll(getReviewItems(chosenBusiness.getIdBusiness()));
+
+        displayReviewsItems(revueItems);
 
     }
-    
+
     private ObservableList<Business> getRechercheBusiness(String type, String input) {
         List<Business> businessesRecherche = new ArrayList<>();
         try {
@@ -219,7 +263,7 @@ public class BusinessFXMLController implements Initializable {
     }
 
     private void setChosenBusiness(Business b) {
-        chosenBusiness=b;
+        chosenBusiness = b;
         revueItems.clear();
         gridReview.getChildren().clear();
         Image businessImg = new Image(getClass().getResourceAsStream("../assets/img/business/BusinessItem/SalwaKbira.png"));
@@ -270,14 +314,29 @@ public class BusinessFXMLController implements Initializable {
         //System.out.println(serviceItems);
         int column3 = 0;
         int row3 = 1;
+
         try {
+            serviceListener = new ServiceListener() {
+                @Override
+                public void onClickListener(ServiceBusiness sBusiness) {
+                    if (selectedServices.contains(sBusiness.getIdBusinessServices()))
+                    {
+                        
+                        selectedServices.remove(new Integer(sBusiness.getIdBusinessServices()));
+
+                    } else {
+                        selectedServices.add(sBusiness.getIdBusinessServices());
+                    }
+                    System.out.println(selectedServices);
+                }
+            };
             for (int i = 0; i < serviceItems.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("ServicesFXML.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
 
                 ServicesFXMLController servicesFXMLController = fxmlLoader.getController();
-                servicesFXMLController.setData(serviceItems.get(i));
+                servicesFXMLController.setData(serviceItems.get(i), serviceListener);
 
                 if (column3 == 1) {
                     column3 = 0;
@@ -351,7 +410,7 @@ public class BusinessFXMLController implements Initializable {
     void displayGrooming(ActionEvent event) {
         displayBusiness(getBusinessItems("grooming"));
         System.out.println("groom");
-    if (businessItems.size() > 0) {
+        if (businessItems.size() > 0) {
             setChosenBusiness(businessItems.get(0));
             businessListener = new BusinessListener() {
                 @Override
@@ -363,13 +422,11 @@ public class BusinessFXMLController implements Initializable {
         }
         searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
             System.out.println(newValue);
-            displayBusiness(getRechercheBusiness("grooming",newValue));
+            displayBusiness(getRechercheBusiness("grooming", newValue));
 
-        });        
+        });
         searchBox.clear();
 
-        
-        
     }
 
     @FXML
@@ -389,7 +446,7 @@ public class BusinessFXMLController implements Initializable {
 
         searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
             System.out.println(newValue);
-            displayBusiness(getRechercheBusiness("vet",newValue));
+            displayBusiness(getRechercheBusiness("vet", newValue));
 
         });
         searchBox.clear();
@@ -413,11 +470,10 @@ public class BusinessFXMLController implements Initializable {
 
         searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
             System.out.println(newValue);
-            displayBusiness(getRechercheBusiness("park",newValue));
+            displayBusiness(getRechercheBusiness("park", newValue));
 
         });
-                searchBox.clear();
-
+        searchBox.clear();
 
     }
 
@@ -437,10 +493,10 @@ public class BusinessFXMLController implements Initializable {
         }
         searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
             System.out.println(newValue);
-            displayBusiness(getRechercheBusiness("dogSitting",newValue));
+            displayBusiness(getRechercheBusiness("dogSitting", newValue));
 
         });
-                searchBox.clear();
+        searchBox.clear();
 
     }
 
@@ -458,11 +514,15 @@ public class BusinessFXMLController implements Initializable {
                 }
             };
         }
+        ObservableList<String> timeList = FXCollections.observableArrayList("9AM-10AM","10AM-11AM","11AM-12PM","12PM-13PM","13PM-14PM","14PM-15PM","15PM-16PM","16PM-17PM");
+        timeComboBox.setItems(timeList);
+        timeComboBox.getSelectionModel().selectFirst();
+        
 
         searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
-            
+
             System.out.println(newValue);
-            displayBusiness(getRechercheBusiness("grooming",newValue));
+            displayBusiness(getRechercheBusiness("grooming", newValue));
 
         });
     }

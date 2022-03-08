@@ -20,7 +20,7 @@ public interface Interface_Reservation {
 
     public void ajouter(Reservation R) throws SQLException;
 
-    public boolean Update(int idReservation, ProprietaireChien PropChien, ServiceBusiness serviceBusiness, Timestamp dateHeureDebut, Timestamp dateHeureFin);
+    public boolean Update(Reservation R);
 
     public boolean delete(Integer idReservation) throws SQLException;
 

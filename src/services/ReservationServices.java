@@ -6,6 +6,7 @@
 package services;
 import java.util.*;
 import entities.Business;
+import entities.Individu;
 import entities.ProprietaireChien;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -32,30 +33,31 @@ public class ReservationServices implements Interface_Reservation {
   
     }
    public void ajouter(Reservation R)throws SQLException {
-        PreparedStatement pre = connect.prepareStatement("INSERT INTO reservation (idProprietaireChien,idBusinessServices,dateHeureDebut,dateHeureFin)VALUES (?,?,?,?);");
-        pre.setInt(1, R.getPropChien().getIdProprietaireChien());
+        PreparedStatement pre = connect.prepareStatement("INSERT INTO reservation (idIndividu,idBusinessServices,dateReservation,heureReservation)VALUES (?,?,?,?);");
+        pre.setInt(1, R.getIndividu().getIdIndividu());
         pre.setInt(2, R.getBusinessServices().getIdBusinessServices());
-        Timestamp heureDebut = new Timestamp(R.getDateHeureDebut().getTime());
-        pre.setTimestamp(3,heureDebut);
-        Timestamp heureFin = new Timestamp(R.getDateHeureFin().getTime());
-        pre.setTimestamp(4,heureFin);
+        java.sql.Date dateReservation = new java.sql.Date(R.getDateReservation().getTime());
+        pre.setDate(3,dateReservation);
+        pre.setString(4, R.getHeureReservation());
+
+        
         
 
         pre.executeUpdate();
    }
    
      
-    public boolean Update(int idReservation,ProprietaireChien PropChien,ServiceBusiness serviceBusiness,Timestamp dateHeureDebut,Timestamp dateHeureFin) {
+    public boolean Update(Reservation r) {
             try {
 
-            PreparedStatement pre = connect.prepareStatement("UPDATE reservation SET idProprietaireChien = ? , idBusinessServices= ? , dateHeureDebut= ? , dateHeureFin= ? where idReservation= ? ;");
-            pre.setInt(1,PropChien.getIdProprietaireChien() );
-            pre.setInt(2, serviceBusiness.getIdBusinessServices());
-            Timestamp heureDebut = new java.sql.Timestamp(dateHeureDebut.getTime());
-            pre.setTimestamp(3, heureDebut);  
-            java.sql.Timestamp heureFin = new java.sql.Timestamp(dateHeureFin.getTime());
-            pre.setTimestamp(4,heureFin);
-            pre.setInt(5,idReservation);
+            PreparedStatement pre = connect.prepareStatement("UPDATE reservation SET idIndividu = ? , idBusinessServices= ? , dateReservation= ? , heureReservation= ? where idReservation= ? ;");
+            pre.setInt(1,r.getIndividu().getIdIndividu());
+            pre.setInt(2, r.getBusinessServices().getIdBusinessServices());
+            java.sql.Date dateReservation = new java.sql.Date(r.getDateReservation().getDate());
+            pre.setDate(3,dateReservation);
+            pre.setString(4, r.getHeureReservation());
+
+            pre.setInt(5,r.getIdReservation());
 
             if (pre.executeUpdate() != 0) {
                 System.out.println(" Reservation Updated");
@@ -90,12 +92,10 @@ public class ReservationServices implements Interface_Reservation {
         ResultSet rst = stm.executeQuery(req);
             while (rst.next()) {
             Reservation R = new Reservation (rst.getInt("idReservation"),
-            new ProprietaireChien(rst.getInt("idProprietaireChien")),
+            new Individu(rst.getInt("idIndividu")),
             new ServiceBusiness(rst.getInt("idBusinessServices")),
-            rst.getTimestamp("dateHeureDebut",Calendar.getInstance()),
-            rst.getTimestamp("dateHeureFin",Calendar.getInstance()));
+            rst.getDate("dateReservation"),rst.getString("heureReservation"));
 
-            //rst.getString("dateHeureFin"));
 
 
             reservations.add(R);
@@ -110,12 +110,9 @@ public class ReservationServices implements Interface_Reservation {
         ResultSet rst = stm.executeQuery(req);
             while (rst.next()) {
             Reservation R = new Reservation (rst.getInt("idReservation"),
-            new ProprietaireChien(rst.getInt("idProprietaireChien")),
+            new Individu(rst.getInt("idIndividu")),
             new ServiceBusiness(rst.getInt("idBusinessServices")),
-            rst.getTimestamp("dateHeureDebut",Calendar.getInstance()),
-            rst.getTimestamp("dateHeureFin",Calendar.getInstance()));
-
-            //rst.getString("dateHeureFin"));
+            rst.getDate("dateReservation"),rst.getString("heureReservation"));
 
 
             reservations.add(R);

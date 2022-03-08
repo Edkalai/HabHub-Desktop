@@ -7,32 +7,65 @@ package entities;
 
 import java.util.logging.Logger;
 import java.sql.Timestamp;
+import java.util.Date;
 /**
  *
  * @author User
  */
 public class Reservation {
     int idReservation;
-    ProprietaireChien PropChien ;
+    Individu individu;
     ServiceBusiness serviceBusiness;
-    Timestamp dateHeureDebut;
-    Timestamp dateHeureFin;
+    Date dateReservation;
+    String heureReservation;
+
+    public Date getDateReservation() {
+        return dateReservation;
+    }
+
+    public void setDateReservation(Date dateReservation) {
+        this.dateReservation = dateReservation;
+    }
+
+    public String getHeureReservation() {
+        return heureReservation;
+    }
+
+    public void setHeureReservation(String heureReservation) {
+        this.heureReservation = heureReservation;
+    }
+
+    public Individu getIndividu() {
+        return individu;
+    }
+
+    public void setIndividu(Individu individu) {
+        this.individu = individu;
+    }
+
+    public ServiceBusiness getServiceBusiness() {
+        return serviceBusiness;
+    }
+
+    public void setServiceBusiness(ServiceBusiness serviceBusiness) {
+        this.serviceBusiness = serviceBusiness;
+    }
 
     
 
-    public Reservation( ProprietaireChien PropChien,ServiceBusiness serviceBusiness,Timestamp dateHeureDebut,Timestamp dateHeureFin) {
-        this. PropChien = PropChien;
+    public Reservation( Individu individu,ServiceBusiness serviceBusiness,Date dateReservation,String heureReservation) {
+        this. individu = individu;
         this.serviceBusiness = serviceBusiness;
-        this.dateHeureDebut = dateHeureDebut;
-        this.dateHeureFin = dateHeureFin;
+        this.dateReservation = dateReservation;
+        this.heureReservation = heureReservation;
 
     }
-    public Reservation(int idReservation,ProprietaireChien PropChien,ServiceBusiness serviceBusiness, Timestamp dateHeureDebut,java.sql.Timestamp dateHeureFin) {
+    public Reservation(int idReservation,Individu individu,ServiceBusiness serviceBusiness, Date dateReservation,String heureReservation) {
         this.idReservation = idReservation;
-        this.PropChien = PropChien;
+        this.individu = individu;
         this.serviceBusiness = serviceBusiness;
-        this.dateHeureDebut = dateHeureDebut;
-        this.dateHeureFin = dateHeureFin;
+        this.dateReservation = dateReservation;
+        this.heureReservation = heureReservation;
 
     }
 
@@ -40,44 +73,28 @@ public class Reservation {
         this.idReservation = idReservation;
     }
 
-    public void setPropChien( ProprietaireChien PropChien) {
-        this.PropChien = PropChien;
-    }
+   
 
     public void setIdBusinessServices(ServiceBusiness serviceBusiness) {
         this.serviceBusiness = serviceBusiness;
     }
 
-    public void setDateHeureDebut(Timestamp dateHeureDebut) {
-        this.dateHeureDebut = dateHeureDebut;
-    }
-
-    public void setDateHeureFin(Timestamp dateHeureFin) {
-        this.dateHeureFin = dateHeureFin;
-    }
+   
     public int getIdReservation() {
         return idReservation;
     }
 
-    public ProprietaireChien getPropChien() {
-        return PropChien;
-    }
+    
 
     public ServiceBusiness getBusinessServices() {
         return serviceBusiness;
     }
 
-    public Timestamp getDateHeureDebut() {
-        return dateHeureDebut;
-    }
-
-    public Timestamp getDateHeureFin() {
-        return dateHeureFin;
-    }
+   
     
     
       @Override
     public String toString() {
-        return "Reservation{" + "idReservation=" + idReservation + ", idProprietaireChien=" + PropChien.idProprietaireChien + ", idBusinessServices=" + serviceBusiness.idBusinessServices + ", dateHeureDebut=" + dateHeureDebut + ", dateHeureFin=" + dateHeureFin + '}';
+        return "Reservation{" + "idReservation=" + idReservation + ", idIndividu=" + individu.getIdIndividu() + ", idBusinessServices=" + serviceBusiness.idBusinessServices + ", dateReservation=" + dateReservation + ", dateHeureFin=" + heureReservation + '}';
     }
 }
