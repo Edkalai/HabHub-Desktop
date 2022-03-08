@@ -12,9 +12,20 @@ package entities;
  * @author asus
  */
 public class Produit {
-    private int idProduit,idCategorie,nbetoiles;
- private String nom,description,marque;
+    private int idProduit;
+    private int idCategorie;
+    private int nbetoiles;
+    private String nom;
+     private String description;
+    private String marque;
     private float prix;
+
+    public Produit(String nom, float prix) {
+        this.nom = nom;
+        this.prix = prix;
+    }
+    
+    
     
     public Produit( int idCategorie ,int nbetoiles, String nom, String description, String marque, float prix) {
         this.nbetoiles = nbetoiles;

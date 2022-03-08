@@ -7,9 +7,13 @@ package gui;
 
 import HabHub.MyListener;
 import entities.Produit;
+import entities.panier;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -32,7 +36,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+import services.PanierService;
 import services.ProduitService;
+import utils.MyDB;
+import utils.Statics;
 
 /**
  * FXML Controller class
@@ -40,6 +47,8 @@ import services.ProduitService;
  * @author Ed
  */
 public class BoutiqueFXMLController implements Initializable {
+    
+    private Produit chosenProduit;
 
     private Stage stage;
     private Scene scene;
@@ -59,6 +68,10 @@ public class BoutiqueFXMLController implements Initializable {
 
     @FXML
     private Label Price;
+    
+    
+    @FXML
+    private Label unit;
 
     @FXML
     private ImageView genderImage;
@@ -140,8 +153,22 @@ public class BoutiqueFXMLController implements Initializable {
         }
 
     }
+    
+    
+   
+    @FXML
+    void insertPanier(ActionEvent event) throws SQLException {
+        String req = "INSERT INTO `panier` (  idProduit, idUtilisateur,quantite)  "
+                + "VALUES ( ?, ?, ?) ";
+        PanierService ps = new PanierService();
+        panier pa = new panier(chosenProduit, Statics.currentIndividu.getIdIndividu() , (Integer.parseInt(quantity.getText())) );
+         ps.ajouterPa(pa );
+         
+        
+    }
 
     private void setChosenProduit(Produit p) {
+        this.chosenProduit = p;
         quantity.setText("1");
 
         Image Image = new Image(getClass().getResourceAsStream("../assets/img/sq.jpg"));

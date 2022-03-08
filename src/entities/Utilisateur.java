@@ -7,27 +7,34 @@ package entities;
 
 /**
  *
- * @author asus
+ * @author User
  */
 public class Utilisateur {
     int idUtilisateur ;
     String email ; 
     String password;
-    String numTel;
+    int numTel;
     String type ; 
 
     public Utilisateur() {
     }
 
-    public Utilisateur(int idUtilisateur) {
-        this.idUtilisateur = idUtilisateur;
-    }
-
-    public Utilisateur(String email, String password, String numTel, String type) {
+    public Utilisateur(String email, String password, int numTel, String type) {
         this.email = email;
         this.password = password;
         this.numTel = numTel;
         this.type = type;
+    }
+
+    public Utilisateur(int idUtilisateur, String email, String password, int numTel, String type) {
+        this.idUtilisateur = idUtilisateur;
+        this.email = email;
+        this.password = password;
+        this.numTel = numTel;
+        this.type = type;
+    }
+      public Utilisateur(int idUtilisateur) {
+        this.idUtilisateur = idUtilisateur;
     }
 
     public int getIdUtilisateur() {
@@ -54,11 +61,11 @@ public class Utilisateur {
         this.password = password;
     }
 
-    public String getNumTel() {
+    public int getNumTel() {
         return numTel;
     }
 
-    public void setNumTel(String numTel) {
+    public void setNumTel(int numTel) {
         this.numTel = numTel;
     }
 
@@ -68,6 +75,11 @@ public class Utilisateur {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "Utilisateur{" + "idUtilisateur=" + idUtilisateur + ", email=" + email + ", password=" + password + ", numTel=" + numTel + ", type=" + type + '}';
     }
 
 }

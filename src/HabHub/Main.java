@@ -28,7 +28,7 @@ public class Main extends Application {
  
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../gui/BoutiqueFXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/Log_in.fxml"));
         primaryStage.setTitle("HabHub");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

@@ -19,56 +19,69 @@
    <children>
       <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" maxWidth="691.0" minWidth="691.0" prefHeight="69.0" prefWidth="691.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="79.0" styleClass="transparent">
+            <Button fx:id="del" mnemonicParsing="false" onAction="#deleteItem" prefHeight="56.0" prefWidth="79.0" styleClass="transparent">
                <graphic>
                   <ImageView fitHeight="150.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/img/Cart/trash-orange.png" />
+                        <Image url="@../assets/img/boutique/trash-orange.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <ImageView fitHeight="56.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" styleClass="roundImage" />
+            <ImageView fx:id="itemImage" fitHeight="56.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" styleClass="roundImage" />
             <Pane prefHeight="56.0" prefWidth="9.0" />
             <VBox prefHeight="63.0" prefWidth="144.0">
                <children>
-                  <Label fx:id="itemNameLabel" prefHeight="25.0" prefWidth="146.0" text="Label" textFill="#6f6f6f">
+                  <Label fx:id="itemName" prefHeight="25.0" prefWidth="146.0" text="Label" textFill="#6f6f6f">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="ItemPriceLabel" prefHeight="21.0" prefWidth="152.0" text="15 DT" textFill="#adadad" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="itemPrice" prefHeight="21.0" prefWidth="23.0" text="15 " textFill="#adadad" />
+                        <Label fx:id="itemPrice1" prefHeight="21.0" prefWidth="45.0" text=" TND" textFill="#adadad" />
+                     </children>
+                  </HBox>
                </children>
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </VBox>
-            <Pane prefHeight="63.0" prefWidth="102.0" />
-            <Button mnemonicParsing="false" styleClass="transparent">
+            <Pane prefHeight="63.0" prefWidth="102.0">
+               <children>
+                  <ImageView fx:id="itemImage" fitHeight="65.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+               </children></Pane>
+            <Button fx:id="minus" mnemonicParsing="false" onAction="#minusQuantity" styleClass="transparent">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/img/Cart/Frame%20135.png" />
+                        <Image url="@../assets/img/boutique/Frame%20135.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Label fx:id="quantityLabel" text="1" textFill="#6e6e6e">
+            <Label fx:id="quantity" text="1" textFill="#6e6e6e">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" styleClass="transparent">
+            <Button fx:id="plus" mnemonicParsing="false" onAction="#plusQuantity" styleClass="transparent">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/img/Cart/Frame%20134.png" />
+                        <Image url="@../assets/img/boutique/Frame%20134.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
             <Pane prefHeight="56.0" prefWidth="75.0" />
-            <Label fx:id="priceQuantityLabel" text="2 DT" textFill="#6e6e6e">
+            <Label fx:id="TotItemPrice" text="2 DT" textFill="#1e1d1d">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="TotItemPrice1" prefHeight="27.0" prefWidth="48.0" text=" TND" textFill="#1e1d1d">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

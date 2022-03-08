@@ -6,6 +6,7 @@
 package services;
 
 import entities.Categorie;
+import entities.Produit;
 import entities.panier;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,24 +35,26 @@ public class PanierService implements IPanier<panier> {
                String req = "INSERT INTO `panier` (  idProduit, idUtilisateur,quantite)  "
                 + "VALUES ( ?, ?, ?) ";
         PreparedStatement ps = connexion.prepareStatement(req);
-        ps.setInt(1, pa.getIdProduit());
-        ps.setInt(2, pa.getIdUtilisateur());
+        ps.setInt(1, pa.getIdProduit().getIdProduit());
+        ps.setInt(2,pa.getIdUtilisateur());
         ps.setInt(3, pa.getQuantite());
-       
+     
         ps.executeUpdate();
     }
 
     @Override
     public List<panier> afficherPanier() throws SQLException {
  List<panier> paniers = new ArrayList<>();
-        String req = "select * from panier";
+        String req = "select * from panier pa join produit p on pa.idProduit=p.idProduit ";
         stm = connexion.createStatement();
         //ensemble de resultat
         ResultSet rst = stm.executeQuery(req);
-
+        
         while (rst.next()) {
-            panier pa = new panier(rst.getInt("idPanier"),//or rst.getInt(1)
-                    rst.getInt("idProduit"),
+            Produit P = new Produit(rst.getString("p.nom"),rst.getFloat("p.prix"));
+            panier pa = new panier(
+               //or rst.getInt(1)
+                    P,
                     rst.getInt("idUtilisateur"),
                     rst.getInt("quantite")
                     );
@@ -63,7 +66,7 @@ public class PanierService implements IPanier<panier> {
 
     @Override
     public void deletePanier(int idPanier) throws SQLException {
-String req = "delete from panier where idPanier =?";
+        String req = "delete from panier where idPanier =?";
         PreparedStatement ps = connexion.prepareStatement(req);
             ps.setInt(1, idPanier);
             ps.executeUpdate();
@@ -91,6 +94,31 @@ String req = "delete from panier where idPanier =?";
         return false;  
 
 }
-    
 
+    @Override
+    public List<panier> afficheParId(int id) throws SQLException {
+             List<panier> paniers = new ArrayList<>();
+        String req = "select * from produit p join panier pa on p.idProduit=pa.idProduit where idUtilisateur =? ";
+              
+        PreparedStatement ps = connexion.prepareStatement(req);
+        ps.setInt(1,id);
+       
+        //ensemble de resultat
+        ResultSet rst = ps.executeQuery();
+
+        while (rst.next()) {
+             Produit P = new Produit(rst.getString("p.nom"),rst.getFloat("p.prix"));
+            panier pa = new panier(
+               rst.getInt("idPanier"),
+                    P,
+                    rst.getInt("idUtilisateur"),
+                    rst.getInt("quantite")
+                    );
+                    
+            paniers.add(pa);
+        }
+        return paniers;
+
+}
+    
 }

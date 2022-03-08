@@ -37,7 +37,7 @@ public class MagasinService implements IMagasin<Magasin> {
         PreparedStatement preUser = connexion.prepareStatement("INSERT INTO utilisateur (email,password,numTel,type)VALUES (?,?,?,?);");
         preUser.setString(1, ma.getUser().getEmail());
         preUser.setString(2, ma.getUser().getPassword());
-        preUser.setString(3, ma.getUser().getNumTel());
+        preUser.setInt(3, ma.getUser().getNumTel());
         preUser.setString(4, ma.getUser().getType());
         preUser.executeUpdate();
 

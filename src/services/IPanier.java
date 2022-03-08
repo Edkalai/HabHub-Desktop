@@ -5,6 +5,7 @@
  */
 package services;
 
+import entities.panier;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -13,8 +14,10 @@ import java.util.List;
  * @author asus
  */
 public interface IPanier<Pa> {
-     public void ajouterPa(Pa pa) throws SQLException;
+     public void ajouterPa(panier pa) throws SQLException;
     public List<Pa> afficherPanier() throws SQLException;
     public void deletePanier(int idPanier) throws SQLException;
    public boolean updatePanier(int idPanier,int idProduit,int idUtilisateur,int quantite) ;
+   public List<Pa> afficheParId(int id) throws SQLException;
+   
 }

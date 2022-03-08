@@ -163,7 +163,7 @@
                               </HBox>
                               <ScrollPane prefHeight="404.0" prefWidth="690.0" style="-fx-background-color: white;">
                                  <content>
-                                    <GridPane prefHeight="0.0" prefWidth="691.0">
+                                    <GridPane fx:id="grid" prefHeight="0.0" prefWidth="691.0">
                                       <rowConstraints>
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
@@ -184,7 +184,7 @@
                                        </font>
                                     </Label>
                                     <Pane prefHeight="37.0" prefWidth="386.0" />
-                                    <Label fx:id="subtotalPriceLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="104.0" text="20.99 DT" textFill="#adadad">
+                                    <Label fx:id="sommeprod" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="104.0" text="20.99 DT" textFill="#adadad">
                                        <font>
                                           <Font name="System Bold" size="17.0" />
                                        </font>
@@ -221,7 +221,7 @@
                                        </font>
                                     </Label>
                                     <Pane prefHeight="37.0" prefWidth="411.0" />
-                                    <Label fx:id="totalPriceLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="104.0" text="20.99 DT" textFill="#adadad">
+                                    <Label fx:id="total" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="104.0" text="20.99 DT" textFill="#adadad">
                                        <font>
                                           <Font name="System Bold" size="17.0" />
                                        </font>
@@ -231,18 +231,18 @@
                               <HBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="691.0">
                                  <children>
                                     <Pane prefHeight="49.0" prefWidth="51.0" />
-                                    <Button mnemonicParsing="false" styleClass="transparent">
+                                    <Button fx:id="clear" mnemonicParsing="false" styleClass="transparent">
                                        <graphic>
                                           <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../assets/img/boutique/trash-orange.png" />
+                                                <Image url="@../assets/img/boutique/Trash.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
                                     </Button>
                                     <Label fx:id="clearCartClickLabel" text="Clear Cart" textFill="#adadad" />
                                     <Pane prefHeight="49.0" prefWidth="348.0" />
-                                    <Button fx:id="placeOrderButton" mnemonicParsing="false" prefHeight="33.0" prefWidth="134.0" styleClass="bookButton" text="Place Order" textFill="WHITE">
+                                    <Button fx:id="order" mnemonicParsing="false" prefHeight="33.0" prefWidth="134.0" styleClass="bookButton" text="Place Order" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
                                        </font>

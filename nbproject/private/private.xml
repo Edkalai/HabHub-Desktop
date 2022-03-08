@@ -5,20 +5,28 @@
         <group>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/utils/MyDB.java</file>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/gui/PanierFXMLController.java</file>
-            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/gui/panieritemfxml.css</file>
-            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/gui/BoutiqueFXML.fxml</file>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/HabHub/Main.java</file>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/services/ProduitService.java</file>
+            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/gui/panierfxml.css</file>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/HabHub/HabHub.java</file>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/entities/Produit.java</file>
+            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/gui/PanierItemFXMLController.java</file>
+            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/services/CategorieService.java</file>
+            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/entities/Utilisateur.java</file>
+            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/utils/Statics.java</file>
+            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/HabHub/MyListener.java</file>
+            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/assets/img/HabHub%20logo.png</file>
+            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/services/PanierService.java</file>
+            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/gui/panieritemfxml.css</file>
+            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/gui/Log_inController.java</file>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/gui/BoutiqueFXMLController.java</file>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/gui/Produitfxml.css</file>
-            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/entities/Utilisateur.java</file>
-            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/HabHub/MyListener.java</file>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/services/IProduit.java</file>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/gui/Boutiquefxml.css</file>
-            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/assets/img/HabHub%20logo.png</file>
+            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/services/MagasinService.java</file>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/services/Icategorie.java</file>
+            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/entities/panier.java</file>
+            <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/services/IPanier.java</file>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/gui/ProduitFXMLController.java</file>
             <file>file:/C:/Users/asus/Desktop/Cours/Sem2/PI/habhub/HabHub-Desktop/src/assets/img/bellingham.jpg</file>
         </group>

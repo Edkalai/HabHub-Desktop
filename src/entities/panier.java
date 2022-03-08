@@ -10,20 +10,26 @@ package entities;
  * @author asus
  */
 public class panier {
-    private int idPanier,idProduit,idUtilisateur,quantite;
+    private int idPanier;
+    private Produit idProduit;
+    private int idUtilisateur;
+    private int quantite;
+    
 
-    public panier(int idPanier, int idProduit, int idUtilisateur, int quantite) {
+    public panier(int idPanier, Produit idProduit, int idUtilisateur, int quantite) {
         this.idPanier = idPanier;
         this.idProduit = idProduit;
         this.idUtilisateur = idUtilisateur;
         this.quantite = quantite;
     }
 
-    public panier(int idProduit, int idUtilisateur, int quantite) {
+    public panier(Produit idProduit, int idUtilisateur, int quantite) {
         this.idProduit = idProduit;
         this.idUtilisateur = idUtilisateur;
         this.quantite = quantite;
     }
+
+    
 
     public int getIdPanier() {
         return idPanier;
@@ -33,11 +39,11 @@ public class panier {
         this.idPanier = idPanier;
     }
 
-    public int getIdProduit() {
+    public Produit getIdProduit() {
         return idProduit;
     }
 
-    public void setIdProduit(int idProduit) {
+    public void setIdProduit(Produit idProduit) {
         this.idProduit = idProduit;
     }
 

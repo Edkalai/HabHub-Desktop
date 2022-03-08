@@ -266,7 +266,7 @@
                                     <Pane prefHeight="200.0" prefWidth="200.0">
                                        <children>
                                           <Label fx:id="Price" text="Label" textFill="#e0642c" />
-                                          <Label fx:id="Price1" layoutX="35.0" text="TND" textFill="#e0642c" />
+                                          <Label fx:id="unit" layoutX="35.0" text="TND" textFill="#e0642c" />
                                        </children></Pane>
                                     <ImageView fx:id="genderImage" fitHeight="35.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                                        <HBox.margin>
@@ -420,7 +420,7 @@
                                                          </children></Pane>
                                                       <Pane prefHeight="75.0" prefWidth="198.0" styleClass="bal" stylesheets="@Boutiquefxml.css">
                                                          <children>
-                                                            <Button id="bal" layoutX="51.0" layoutY="24.0" mnemonicParsing="false" style="-fx-background-position: absolute; -fx-background-color: #E0642C; -fx-text-fill: white;" styleClass="bal" stylesheets="@Boutiquefxml.css" text="Add to cart" />
+                                                            <Button id="bal" fx:id="insert" layoutX="51.0" layoutY="24.0" mnemonicParsing="false" onAction="#insertPanier" style="-fx-background-position: absolute; -fx-background-color: #E0642C; -fx-text-fill: white;" styleClass="bal" stylesheets="@Boutiquefxml.css" text="Add to Cart" />
                                                          </children></Pane>
                                                    </children>
                                                 </HBox>
