@@ -64,6 +64,18 @@ public class ProfileditController implements Initializable {
     stage.show();
 
     }
+    
+    
+    
+      @FXML
+    void logout(ActionEvent event) throws IOException {
+       
+    Parent root = FXMLLoader.load(getClass().getResource("../gui/log_in.fxml"));
+    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    }
     /**
      * Initializes the controller class.
      */

@@ -48,19 +48,19 @@
             <Pane layoutX="-6.0" layoutY="193.0" prefHeight="31.0" prefWidth="426.0">
                <children>
                   <Label layoutX="14.0" layoutY="8.0" styleClass="nn" text="Facebook" />
-                  <TextField fx:id="facebook" layoutX="153.0" layoutY="2.0" prefHeight="31.0" prefWidth="203.0" styleClass="style" />
+                  <TextField fx:id="facebook" layoutX="151.0" layoutY="2.0" prefHeight="31.0" prefWidth="203.0" styleClass="style" />
                </children>
             </Pane>
             <Pane layoutX="-6.0" layoutY="236.0" prefHeight="31.0" prefWidth="426.0">
                <children>
                   <Label layoutX="14.0" layoutY="8.0" styleClass="nn" text="Whatsapp" />
-                  <TextField fx:id="whatsapp" layoutX="157.0" layoutY="2.0" prefHeight="31.0" prefWidth="203.0" styleClass="style" />
+                  <TextField fx:id="whatsapp" layoutX="151.0" layoutY="2.0" prefHeight="31.0" prefWidth="203.0" styleClass="style" />
                </children>
             </Pane>
             <Pane layoutX="-6.0" layoutY="275.0" prefHeight="31.0" prefWidth="426.0">
                <children>
                   <Label layoutX="14.0" layoutY="8.0" styleClass="nn" text="Insatgram" />
-                  <TextField fx:id="instagram" layoutX="161.0" layoutY="2.0" prefHeight="31.0" prefWidth="203.0" styleClass="style" />
+                  <TextField fx:id="instagram" layoutX="151.0" layoutY="2.0" prefHeight="31.0" prefWidth="203.0" styleClass="style" />
                </children>
             </Pane>
             <Button layoutX="255.0" layoutY="330.0" mnemonicParsing="false" onAction="#editprofile" styleClass="save" text="Edit Profile" textFill="#e0642c" />
@@ -178,5 +178,6 @@
             <Font name="Aller" size="30.0" />
          </font>
       </Text>
+      <Button layoutX="144.0" layoutY="649.0" mnemonicParsing="false" onAction="#logout" prefHeight="38.0" prefWidth="89.0" styleClass="save" text="log out" textFill="#e0642c" />
    </children>
 </AnchorPane>
