@@ -243,12 +243,15 @@
                                        </VBox.margin>
                                     </HBox>
                                     <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" />
-                                    <GridPane fx:id="grid" alignment="CENTER_LEFT" prefHeight="11.0" prefWidth="868.0">
-                                       <rowConstraints>
-                                          <RowConstraints />
-                                       </rowConstraints>
-                                    </GridPane>
-                                    <Pane prefHeight="412.0" prefWidth="868.0" />
+                                    <ScrollPane prefHeight="615.0" prefWidth="880.0">
+                                       <content>
+                                          <GridPane fx:id="grid" alignment="CENTER_LEFT" prefHeight="11.0" prefWidth="868.0">
+                                             <rowConstraints>
+                                                <RowConstraints />
+                                             </rowConstraints>
+                                          </GridPane>
+                                       </content>
+                                    </ScrollPane>
                                  </children>
                               </VBox>
                            </children>
@@ -262,12 +265,15 @@
                               <Insets />
                            </HBox.margin>
                            <children>
-                              <ImageView fx:id="businessImageLabel" fitHeight="202.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="businessImage" fitHeight="202.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
                                  </cursor>
                                  <viewport>
                                     <Rectangle2D />
                                  </viewport>
+                                 <image>
+                                    <Image url="@../assets/img/business/dynamic/21.png" />
+                                 </image>
                               </ImageView>
                               <Pane prefHeight="18.0" prefWidth="290.0" />
                               <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="225.0">
@@ -327,7 +333,7 @@
                                                          <children>
                                                             <Pane prefHeight="12.0" prefWidth="227.0" />
                                                             <Text fx:id="businessDecriptionLabel" fill="#8d8d8d" strokeType="OUTSIDE" strokeWidth="0.0" text="Salwa is a cool puppy. I found her next to a shed on the beach and had to rescue her. But I can’t keep her for long since I already have my hands full." wrappingWidth="220.0" />
-                                                            <HBox alignment="CENTER_LEFT" minWidth="31.0" prefHeight="31.0" prefWidth="206.0">
+                                                            <HBox fx:id="experienceBox" alignment="CENTER_LEFT" minWidth="31.0" prefHeight="31.0" prefWidth="206.0" visible="false">
                                                                <children>
                                                                   <Label fx:id="dogNameLabel1" prefHeight="29.0" prefWidth="89.0" text="Experience :">
                                                                      <font>
@@ -361,7 +367,7 @@
                                                                   <Insets bottom="10.0" top="5.0" />
                                                                </VBox.margin>
                                                             </HBox>
-                                                            <Label prefHeight="47.0" prefWidth="167.0" text="Our services include:" textFill="#e0642c" />
+                                                            <Label fx:id="serviceIncludeLabel" prefHeight="47.0" prefWidth="167.0" text="Our services include:" textFill="#e0642c" />
                                                             <GridPane fx:id="gridServices" alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="227.0">
                                                                <rowConstraints>
                                                                   <RowConstraints />
@@ -370,7 +376,7 @@
                                                                   <Insets bottom="10.0" />
                                                                </VBox.margin>
                                                             </GridPane>
-                                                            <HBox prefHeight="41.0" prefWidth="227.0">
+                                                            <HBox fx:id="dateBox" prefHeight="41.0" prefWidth="227.0">
                                                                <children>
                                                                   <Label prefHeight="21.0" prefWidth="39.0" text="Date" />
                                                                   <Pane prefHeight="26.0" prefWidth="35.0" />
@@ -380,11 +386,11 @@
                                                                   <Insets bottom="10.0" top="10.0" />
                                                                </padding>
                                                             </HBox>
-                                                            <HBox prefHeight="41.0" prefWidth="227.0">
+                                                            <HBox fx:id="timeBox" prefHeight="41.0" prefWidth="227.0">
                                                                <children>
                                                                   <Label prefHeight="21.0" prefWidth="39.0" text="Time" />
                                                                   <Pane prefHeight="26.0" prefWidth="35.0" />
-                                                                  <ComboBox fx:id="timeComboBox" prefWidth="150.0" />
+                                                                  <ComboBox fx:id="timeComboBox" onAction="#select" prefWidth="150.0" />
                                                                </children>
                                                                <padding>
                                                                   <Insets bottom="10.0" top="10.0" />
@@ -458,9 +464,9 @@
                                     <Insets left="10.0" />
                                  </VBox.margin>
                               </TabPane>
-                              <HBox alignment="BOTTOM_RIGHT" prefHeight="59.0" prefWidth="290.0">
+                              <HBox fx:id="bookBox" alignment="BOTTOM_RIGHT" prefHeight="59.0" prefWidth="290.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#ajouterReservation" prefHeight="31.0" prefWidth="129.0" styleClass="bookButton" text="  Book Now" textFill="WHITE">
+                                    <Button fx:id="bookButton" disable="true" mnemonicParsing="false" onAction="#ajouterReservation" prefHeight="31.0" prefWidth="129.0" styleClass="bookButton" text="  Book Now" textFill="WHITE">
                                        <font>
                                           <Font name="Aller Bold" size="15.0" />
                                        </font>

@@ -64,10 +64,10 @@ public class UserBusinessServices {
     
 
         
-     public boolean Update(int idBusiness,String titre,String description,float prix,String horaire,String ville,String localisation,String type,int experience) {
+     public boolean Update(int idBusiness,String titre,String description,float prix,String horaire,String ville,String localisation,String type,int experience,String image) {
             try {
 
-            PreparedStatement pre = connect.prepareStatement("UPDATE business SET titre = ? , description= ? , horaire= ? , ville= ? , localisation= ? type=? where idBusiness= ? ;");
+            PreparedStatement pre = connect.prepareStatement("UPDATE business SET titre = ? , description= ? , horaire= ? , ville= ? , localisation= ? type=? image=? where idBusiness= ? ;");
             pre.setString(1, titre);
             pre.setString(2, description);   
             pre.setString(3,horaire);
@@ -75,6 +75,7 @@ public class UserBusinessServices {
             pre.setString(5, localisation);
             pre.setString(6, type);
             pre.setInt(7, experience);
+            pre.setString(9, image);
             pre.setInt(8, idBusiness);
 
             if (pre.executeUpdate() != 0) {

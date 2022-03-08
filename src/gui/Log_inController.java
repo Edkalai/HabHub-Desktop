@@ -104,7 +104,7 @@ public class Log_inController implements Initializable {
             }
             else
             {
-                System.out.println("ghalet khra");
+                System.out.println("Wrong Password");
             }
 
     }

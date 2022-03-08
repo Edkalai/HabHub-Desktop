@@ -70,14 +70,10 @@ public class BusinessItemController implements Initializable {
         villeLabel.setText(business.getVille());
         horaireLabel.setText(business.getHoraire());
         nbEtoilesLabel.setText("5");
-        Image bImage = new Image(getClass().getResourceAsStream("../assets/img/business/BusinessItem/vetImage.png"));
+        Image bImage = new Image(getClass().getResourceAsStream("../assets/img/business/dynamic/"+business.getImage()+".png"));
         
         businessImage.setImage(bImage);
-        /*Image genderImg = new Image(getClass().getResourceAsStream("../assets/img/female.png"));
-        if ("M".equals(annonceProprietaireChien.getChien().getSexe())){
-            genderImg = new Image(getClass().getResourceAsStream("../assets/img/male.png"));
-        }
-        genderIcon.setImage(genderImg);*/
+        
     }
 
     @Override

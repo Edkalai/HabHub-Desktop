@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -38,6 +38,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import org.controlsfx.control.Rating;
@@ -64,7 +65,7 @@ public class BusinessFXMLController implements Initializable {
     private GridPane grid;
 
     @FXML
-    private ImageView businessImageLabel;
+    private ImageView businessImage;
 
     @FXML
     private Label businessTitleLabel;
@@ -96,16 +97,29 @@ public class BusinessFXMLController implements Initializable {
     @FXML
     private Button parkButton;
     @FXML
+    private Button bookButton;
+    @FXML
     private Button vetButton;
     @FXML
     private Button dogSittingButton;
-    
+        @FXML
+    private HBox experienceBox;
+
+    @FXML
+    private Label serviceIncludeLabel;
+
     @FXML
     private ComboBox<String> timeComboBox;
     @FXML
     private DatePicker datePicker;
 
-    
+    @FXML
+    private HBox dateBox;
+    @FXML
+    private HBox timeBox;
+    @FXML
+    private HBox bookBox;
+
     
     
     private Business chosenBusiness;
@@ -121,6 +135,18 @@ public class BusinessFXMLController implements Initializable {
 
     public ObservableList<ServiceBusiness> serviceItems = FXCollections.observableArrayList();
     ServiceBusinessServices sbs = new ServiceBusinessServices();
+    
+    
+    @FXML
+    void select(ActionEvent event) {
+        String selectedTime = timeComboBox.getSelectionModel().getSelectedItem();
+        if(selectedTime.equals("select time")){
+            bookButton.setDisable(true);
+        }else{
+            bookButton.setDisable(false);
+        }
+    }
+
     public void refreshReviewItems(){
         revueItems.clear();
         revueItems.addAll(getReviewItems(chosenBusiness.getIdBusiness())); 
@@ -183,6 +209,9 @@ public class BusinessFXMLController implements Initializable {
             
         }
         
+        datePicker.setValue(null);
+        
+               
     }
     @FXML
     void submitRatingButton(ActionEvent event) throws SQLException {
@@ -252,6 +281,7 @@ public class BusinessFXMLController implements Initializable {
 
         try {
             SI = sbs.afficherServicesById(businessId);
+           
             System.out.println(SI);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -266,11 +296,14 @@ public class BusinessFXMLController implements Initializable {
         chosenBusiness = b;
         revueItems.clear();
         gridReview.getChildren().clear();
-        Image businessImg = new Image(getClass().getResourceAsStream("../assets/img/business/BusinessItem/SalwaKbira.png"));
-        businessImageLabel.setImage(businessImg);
+        timeComboBox.getSelectionModel().selectFirst();
+
+       // Image businessImg = new Image(getClass().getResourceAsStream("../assets/img/business/dynamic/16.png"));
+
+        Image businessImg = new Image(getClass().getResourceAsStream("../assets/img/business/dynamic/"+b.getImage()+".png"));
+        businessImage.setImage(businessImg);
         businessTitleLabel.setText(b.getTitre());
         businessLocationLabel.setText(b.getLocalisation());
-
         businessDecriptionLabel.setText(b.getDescription());
         experienceLabel.setText(Integer.toString(b.getExperience()));
         openingHoursLabel.setText(b.getHoraire());
@@ -319,6 +352,7 @@ public class BusinessFXMLController implements Initializable {
             serviceListener = new ServiceListener() {
                 @Override
                 public void onClickListener(ServiceBusiness sBusiness) {
+                     
                     if (selectedServices.contains(sBusiness.getIdBusinessServices()))
                     {
                         
@@ -330,6 +364,11 @@ public class BusinessFXMLController implements Initializable {
                     System.out.println(selectedServices);
                 }
             };
+            if(serviceItems.isEmpty()){
+                serviceIncludeLabel.setVisible(false);
+            }else{
+                serviceIncludeLabel.setVisible(true);
+            }
             for (int i = 0; i < serviceItems.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("ServicesFXML.fxml"));
@@ -408,6 +447,10 @@ public class BusinessFXMLController implements Initializable {
 
     @FXML
     void displayGrooming(ActionEvent event) {
+        experienceBox.setVisible(false);
+        dateBox.setVisible(true);
+        timeBox.setVisible(true);
+        bookBox.setVisible(true);
         displayBusiness(getBusinessItems("grooming"));
         System.out.println("groom");
         if (businessItems.size() > 0) {
@@ -431,6 +474,10 @@ public class BusinessFXMLController implements Initializable {
 
     @FXML
     void displayVet(ActionEvent event) {
+        experienceBox.setVisible(true);
+        dateBox.setVisible(true);
+        timeBox.setVisible(true);
+        bookBox.setVisible(true);
         displayBusiness(getBusinessItems("vet"));
         System.out.println("vet");
         if (businessItems.size() > 0) {
@@ -455,6 +502,11 @@ public class BusinessFXMLController implements Initializable {
 
     @FXML
     void displayParks(ActionEvent event) {
+        experienceBox.setVisible(false);
+        dateBox.setVisible(false);
+        timeBox.setVisible(false);
+        bookBox.setVisible(false);
+
         displayBusiness(getBusinessItems("park"));
         System.out.println("park");
         if (businessItems.size() > 0) {
@@ -479,6 +531,11 @@ public class BusinessFXMLController implements Initializable {
 
     @FXML
     void displayDogSitting(ActionEvent event) {
+        
+        experienceBox.setVisible(false);
+        dateBox.setVisible(true);
+        timeBox.setVisible(true);
+        bookBox.setVisible(true);
         displayBusiness(getBusinessItems("dogSitting"));
         System.out.println("dogSitting");
         if (businessItems.size() > 0) {
@@ -514,7 +571,7 @@ public class BusinessFXMLController implements Initializable {
                 }
             };
         }
-        ObservableList<String> timeList = FXCollections.observableArrayList("9AM-10AM","10AM-11AM","11AM-12PM","12PM-13PM","13PM-14PM","14PM-15PM","15PM-16PM","16PM-17PM");
+        ObservableList<String> timeList = FXCollections.observableArrayList("select time","9AM-10AM","10AM-11AM","11AM-12PM","12PM-13PM","13PM-14PM","14PM-15PM","15PM-16PM","16PM-17PM");
         timeComboBox.setItems(timeList);
         timeComboBox.getSelectionModel().selectFirst();
         
