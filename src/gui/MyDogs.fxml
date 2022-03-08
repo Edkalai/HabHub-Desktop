@@ -316,8 +316,18 @@
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <Pane prefHeight="18.0" prefWidth="250.0" />
+                                    <Pane prefHeight="16.0" prefWidth="250.0" />
                                     <Button fx:id="matingButton" mnemonicParsing="false" onMouseClicked="#handleMating" prefHeight="33.0" prefWidth="213.0" styleClass="whiteButton" text="Looking for a breeding partner">
+                                       <graphic>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../assets/img/chien/matingIcon.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Pane prefHeight="15.0" prefWidth="250.0" />
+                                    <Button fx:id="playingButton" mnemonicParsing="false" onMouseClicked="#handlePlaying" prefHeight="29.0" prefWidth="173.0" styleClass="whiteButton" text="Looking for a playmate">
                                        <graphic>
                                           <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                              <image>

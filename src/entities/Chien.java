@@ -18,9 +18,43 @@ public class Chien {
      String color;
     String race;
     String groupe;
-
+    int like;
+    boolean playWithMe;
 
     
+
+    public Chien(int idChien, Individu individu, String nom, String sexe, String age, Boolean vaccination, String description, String image, String color, String race, String groupe, int like, boolean playWithMe) {
+        this.idChien = idChien;
+        this.individu = individu;
+        this.nom = nom;
+        this.sexe = sexe;
+        this.age = age;
+        this.vaccination = vaccination;
+        this.description = description;
+        this.image = image;
+        this.color = color;
+        this.race = race;
+        this.groupe = groupe;
+        this.like = like;
+        this.playWithMe = playWithMe;
+    }
+                                                                        
+    public Chien(int idChien, Individu individu, String nom, String sexe, String age, Boolean vaccination, String description, String image, String color, String race, String groupe, int like) {
+        this.idChien = idChien;
+        this.individu = individu;
+        this.nom = nom;
+        this.sexe = sexe;
+        this.age = age;
+        this.vaccination = vaccination;
+        this.description = description;
+        this.image = image;
+        this.color = color;
+        this.race = race;
+        this.groupe = groupe;
+        this.like = like;
+    }
+
+   
    
     public Chien() {
     }
@@ -167,11 +201,30 @@ public class Chien {
     public void setDescription(String description) {
         this.description = description;
     }
+    
+     public int getLike() {
+        return like;
+    }
+
+    public void setLike(int like) {
+        this.like = like;
+    }
+
+    public boolean isPlayWithMe() {
+        return playWithMe;
+    }
+
+    public void setPlayWithMe(boolean playWithMe) {
+        this.playWithMe = playWithMe;
+    }
 
     @Override
     public String toString() {
-        return "Chien{" + "idChien=" + idChien + ", individu=" + individu + ", nom=" + nom + ", sexe=" + sexe + ", age=" + age + ", vaccination=" + vaccination + ", description=" + description + ", image=" + image + ", color=" + color + ", race=" + race + ", groupe=" + groupe + '}';
+        return "Chien{" + "idChien=" + idChien + ", individu=" + individu + ", nom=" + nom + ", sexe=" + sexe + ", age=" + age + ", vaccination=" + vaccination + ", description=" + description + ", image=" + image + ", color=" + color + ", race=" + race + ", groupe=" + groupe + ", like=" + like + ", playWithMe=" + playWithMe + '}';
     }
+
+    
+    
 
   
 

@@ -40,8 +40,11 @@
             </HBox>
             <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="212.0">
                <children>
-                  <Pane prefHeight="50.0" prefWidth="161.0" />
-                  <Label fx:id="likeNumberLabel" />
+                  <Pane prefHeight="50.0" prefWidth="133.0" />
+                  <Label fx:id="likeNumberLabel" prefHeight="17.0" prefWidth="21.0">
+                     <font>
+                        <Font name="Lato Bold" size="15.0" />
+                     </font></Label>
                   <Pane prefHeight="50.0" prefWidth="11.0" />
                   <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -6,6 +6,7 @@
 package gui;
 
 import HabHub.CommunityListener;
+import HabHub.DogItemListener;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -17,8 +18,12 @@ import entities.AnnonceProprietaireChien;
 import entities.Chien;
 import java.sql.SQLException;
 import java.util.List;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import services.LikesService;
+import utils.Statics;
 
 
 
@@ -34,53 +39,91 @@ public class DogListItemController implements Initializable {
      * Initializes the controller class.
      */
     
-      @FXML
+    @FXML
+    private Button likeButton;
+    @FXML
+    private Button playWithMeButton;
+
+    @FXML
     private ImageView dogImage;
+    
+    @FXML
+    private ImageView likeImage;
 
     @FXML
-    private Label dogName;
-
-    @FXML
-    private ImageView dogGenderIcon;
-
-    @FXML
-    private Label dogGenderLabel;
+    private Label nameLabel;
 
     @FXML
     private Label ageLabel;
 
     @FXML
-    private Label dogBreedLabel;
+    private ImageView genderIcon;
 
     @FXML
-    private Label dogGroupLabel;
+    private Label locationLabel;
+    
+    private boolean clickedPlayWithMeButton=false;
+    private boolean clickedLikeButton=false;
+    Image liked = new Image(getClass().getResourceAsStream("../assets/img/chien/heartIcon.png"));
+    Image notLiked = new Image(getClass().getResourceAsStream("../assets/img/chien/emptyHeartIcon.png"));
 
-     //private CommunityListener communityListener;
-     private Chien chien;
-     
-     
-     
-      
+    LikesService ls = new LikesService(); 
+   
+
+    @FXML
+    void likeButtonHandler(ActionEvent event) {
+   
+        clickedLikeButton = !clickedLikeButton; 
+       if (clickedLikeButton) {
+            likeImage.setImage(liked);
+            ls .ajouterLike(Statics.currentIndividu.getIdIndividu(), chien.getIdChien());
+        } else {
+            likeImage.setImage(notLiked);
+            ls .supprimerLike(Statics.currentIndividu.getIdIndividu(), chien.getIdChien());
+        }
+
+
+    }
+    
+    
+
+
+    
+
+  private DogItemListener dogItemListener;
+    private Chien chien;
+
+    @FXML
+    private void click(MouseEvent mouseEvent) {
+        dogItemListener.onClickListener(chien);
+    }
   
   
    
    
 
-    public void setData(Chien chien) {
+    public void setData(Chien chien,DogItemListener dogItemListener) throws SQLException {
         this.chien = chien;
-        dogName.setText(chien.getNom()+",");
+        this.dogItemListener=dogItemListener;
+        if (chien.isPlayWithMe()){
+            playWithMeButton.setVisible(true);
+        }
+        if (ls.checkLike(Statics.currentIndividu.getIdIndividu(), chien.getIdChien()))
+        {   clickedLikeButton=true;
+            likeImage.setImage(liked);
+        }
+        nameLabel.setText(chien.getNom()+",");
         ageLabel.setText(chien.getAge());
         Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/chien/"+chien.getImage()+".png"));
         dogImage.setImage(dogImg);
         Image genderImg = new Image(getClass().getResourceAsStream("../assets/img/female.png"));
-        dogGenderLabel.setText("Female");
+       
         if ("M".equals(chien.getSexe())) {
             genderImg = new Image(getClass().getResourceAsStream("../assets/img/male.png"));
-            dogGenderLabel.setText("Male");
+            
         }
-        dogGenderIcon.setImage(genderImg);
-        dogGroupLabel.setText(chien.getGroupe());
-        dogBreedLabel.setText(chien.getRace());
+        genderIcon.setImage(genderImg);
+        locationLabel.setText(chien.getIndividu().getAdresse());
     }
 
     @Override

@@ -8,6 +8,7 @@ package gui;
 import HabHub.DogItemListener;
 import entities.Chien;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import services.LikesService;
 
 /**
  * FXML Controller class
@@ -39,19 +41,20 @@ public class DogBigCardController implements Initializable {
 
     private DogItemListener dogItemListener;
     private Chien chien;
-
+      LikesService ls = new LikesService(); 
     @FXML
     private void click(MouseEvent mouseEvent) {
         dogItemListener.onClickListener(chien);
     }
 
-    public void setData(Chien chien, DogItemListener dogItemListener) {
+    public void setData(Chien chien, DogItemListener dogItemListener) throws SQLException {
         this.chien = chien;
         this.dogItemListener = dogItemListener;
         nameLabel.setText(chien.getNom() + ",");
         ageLabel.setText(chien.getAge());
         Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/chien/" + chien.getImage() + ".png"));
         dogImage.setImage(dogImg);
+        likeNumberLabel.setText(Integer.toString(ls.getLikeByDogId(chien.getIdChien())));
     }
 
     @Override

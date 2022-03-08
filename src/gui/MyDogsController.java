@@ -92,17 +92,23 @@ public class MyDogsController implements Initializable {
 
     @FXML
     private Button matingButton;
+    
+    @FXML
+    private Button playingButton;
 
     @FXML
     private Label ownerLocationLabel2;
     private boolean clickedMating = false;
     private boolean clickedMissing = false;
+    private boolean clickedPlaying = false;
     private DogItemListener dogItemListener;
     private Chien chosenDog;
     private Stage stage;
     private Scene scene;
     private Parent root;
     AnnonceProprietaireChienService as = new AnnonceProprietaireChienService();
+    ChienService cs = new ChienService();
+      
 
     @FXML
     void handleMissing(MouseEvent event) throws SQLException {
@@ -144,6 +150,28 @@ public class MyDogsController implements Initializable {
         }
 
     }
+    
+     @FXML
+    void handlePlaying(MouseEvent event) throws SQLException {
+        clickedPlaying = !clickedPlaying;
+        if (clickedPlaying) {
+            playingButton.setStyle("-fx-background-color: #FFEEE8; "
+                    + "-fx-border-color:#E0642C;"
+                    + "-fx-font-weight:bold;"
+                    + "-fx-text-fill:#E0642C;");
+            System.out.println(chosenDog.getIdChien());
+           cs.playWithMeHandler(chosenDog.getIdChien(), 1);
+        } else {
+            playingButton.setStyle("-fx-background-color: #FFFFFF; "
+                    + "-fx-border-color:#FFC7AC;"
+                    + "-fx-font-weight:regular;"
+                    + "-fx-text-fill:black;");
+            System.out.println(chosenDog.getIdChien());
+            cs.playWithMeHandler(chosenDog.getIdChien(),0);
+
+        }
+
+    }
 
     @FXML
     public void switchSceneDogsMatchup(ActionEvent event) throws IOException {
@@ -181,7 +209,7 @@ public class MyDogsController implements Initializable {
         stage.show();
     }
     public ObservableList<Chien> data = FXCollections.observableArrayList();
-    ChienService cs = new ChienService();
+    
 
     private ObservableList<Chien> getChienByIndividu() {
         List<Chien> chiens = new ArrayList<>();
@@ -226,6 +254,21 @@ public class MyDogsController implements Initializable {
                     + "-fx-text-fill:black;");
             clickedMating=false;
         }
+        if (a.isPlayWithMe()){
+  
+            playingButton.setStyle("-fx-background-color: #FFEEE8; "
+                    + "-fx-border-color:#E0642C;"
+                    + "-fx-font-weight:bold;"
+                    + "-fx-text-fill:#E0642C;");
+            clickedPlaying=true;
+        } else {
+            playingButton.setStyle("-fx-background-color: #FFFFFF; "
+                    + "-fx-border-color:#FFC7AC;"
+                    + "-fx-font-weight:regular;"
+                    + "-fx-text-fill:black;");
+            clickedPlaying=false;
+        }  
+        
         chosenDog = a;
         dogNameLabel.setText(a.getNom());
 
@@ -246,7 +289,7 @@ public class MyDogsController implements Initializable {
 
     }
 
-    private void displayChiens(ObservableList<Chien> chiens) {
+    private void displayChiens(ObservableList<Chien> chiens) throws SQLException {
         grid.getChildren().clear();
         int column = 0;
         int row = 1;
@@ -295,7 +338,11 @@ public class MyDogsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        displayChiens(getChienByIndividu());
+        try {
+            displayChiens(getChienByIndividu());
+        } catch (SQLException ex) {
+            Logger.getLogger(MyDogsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         if (data.size() > 0) {
             try {
                 setChosenChien(data.get(0));

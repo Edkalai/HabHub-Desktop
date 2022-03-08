@@ -6,6 +6,7 @@
 package gui;
 
 import HabHub.CommunityListener;
+import HabHub.DogItemListener;
 import entities.Chien;
 import java.io.IOException;
 import java.net.URL;
@@ -13,6 +14,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -67,7 +70,7 @@ public class DogsNextDoorController implements Initializable {
     private Label ageLabel;
 
     @FXML
-    private Label genderColor;
+    private Label colorLabel;
 
     @FXML
     private Label genderLabel;
@@ -86,6 +89,9 @@ public class DogsNextDoorController implements Initializable {
 
     @FXML
     private Label ownerLocationLabel2;
+    
+    private DogItemListener dogItemListener;
+    private Chien chosenDog;
      private Stage stage;
     private Scene scene;
     private Parent root;
@@ -137,50 +143,58 @@ public class DogsNextDoorController implements Initializable {
 
     }
 
-   /* private void setChosenChien(Chien a) {
+     private void setChosenChien(Chien a) {
 
-        dogNameLabel.setText(a.getChien().getNom());
+        dogNameLabel.setText(a.getNom());
         Image genderImg = new Image(getClass().getResourceAsStream("../assets/img/female.png"));
         genderLabel.setText("Female");
-        if ("M".equals(a.getChien().getSexe())) {
+        if ("M".equals(a.getSexe())) {
             genderImg = new Image(getClass().getResourceAsStream("../assets/img/male.png"));
             genderLabel.setText("Male");
         }
         genderImage.setImage(genderImg);
 
-        ageLabel.setText(a.getChien().getAge());
-        dogStory.setText(a.getChien().getDescription());
-        ownerLocationLabel.setText(a.getLocalisation());
-        ownerLocationLabel2.setText(a.getLocalisation());
-        dogRaceLabel.setText(a.getChien().getRace());
-        dogGroupLabel.setText(a.getChien().getGroupe());
-        dogColorLabel.setText(a.getChien().getColor());
+        ageLabel.setText(a.getAge());
+        dogStory.setText(a.getDescription());
+        ownerLocationLabel.setText(a.getIndividu().getAdresse());
+        ownerLocationLabel2.setText(a.getIndividu().getAdresse());
+        dogRaceLabel.setText(a.getRace());
+        dogGroupLabel.setText(a.getGroupe());
+        colorLabel.setText(a.getColor());
 
-        dogLastSeenOnLabel.setText(a.getDatePerte().toString());
-        dogLastSeenInLabel.setText(a.getLocalisation());
-        ownerNameLabel.setText(a.getChien().getIndividu().getPrenom());
+       
+        ownerNameLabel.setText(a.getIndividu().getPrenom());
 
-       Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/chien/"+a.getChien().getImage()+".png"));
+       Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/chien/"+a.getImage()+".png"));
        dogImage.setImage(dogImg);
 
     }
-*/
 
-    private void displayChiens(ObservableList<Chien> chiens) {
+
+
+    private void displayChiens(ObservableList<Chien> chiens) throws SQLException {
         grid.getChildren().clear();
         int column = 0;
         int row = 1;
 
        try {
+           dogItemListener = new DogItemListener() {
+                @Override
+                public void onClickListener(Chien chien) {
+                    
+                        setChosenChien(chien);
+                   
+                }
+            };
             for (int i = 0; i < chiens.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("DogListItem.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
 
                 DogListItemController dogListItemController = fxmlLoader.getController();
-                dogListItemController.setData(chiens.get(i));
+                dogListItemController.setData(chiens.get(i),dogItemListener);
 
-                if (column == 1) {
+                if (column == 4) {
                     column = 0;
                     row++;
                 }
@@ -205,9 +219,16 @@ public class DogsNextDoorController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        displayChiens(getChienByLocation());
+           try {
+               displayChiens(getChienByLocation());
+           } catch (SQLException ex) {
+               Logger.getLogger(DogsNextDoorController.class.getName()).log(Level.SEVERE, null, ex);
+           }
 
-     
+     if (data.size() > 0) {
+                setChosenChien(data.get(0));
+       
+        }
         }
    
     
