@@ -5,22 +5,14 @@
         <group>
             <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/log_in.css</file>
             <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/HabHub/Main.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/profiledit.fxml</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/edu/esprit/util/Statics.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/utils/Statics.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/entite/Utilisateur.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/HabHub/HabHub.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/SignUpController.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/services/UtilisateurService.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/utils/MyDB.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/ProfileController.java</file>
             <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/services/UserIndividuServices.java</file>
             <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/profile.css</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/Log_inController.java</file>
             <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/loginfxml.css</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/Log_inController.java</file>
             <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/ProfileditController.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/entite/Individu.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/FXMLController.java</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/SignUpController.java</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/services/UtilisateurService.java</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/ProfileController.java</file>
         </group>
     </open-files>
 </project-private>

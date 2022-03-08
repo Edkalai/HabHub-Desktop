@@ -17,9 +17,14 @@
 
 }
 .fpoasswd{ -fx-background-color:rgba(0,0,0,0);}
+
+
+
 .transparent {
     -fx-background-color:rgba(0,0,0,0);
 }
+
+
 .loginButton
 {
   /*   -fx-effect: dropshadow(gaussian,rgba(194, 213, 231, 0.7) , 20,0 , 0, 0);*/
@@ -28,6 +33,11 @@
      -fx-font-weight: bold;
       -fx-cursor:hand;
        -fx-effect: dropshadow( three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+}
+.loginButton:pressed{
+    
+
+ -fx-effect: dropshadow( three-pass-box, rgba(0, 0, 0, 0.60), 5, 0.0, 0, 1);
 }
 
 .image{
@@ -80,14 +90,7 @@ javafx
     -fx-border-insets: -15px;
 }
 
-.signup{
-    -fx-font-weight: bold;
-  
--fx-background-color: transparent;
 
-   
-    -fx-cursor:hand;
-}
 
 .effect{
        -fx-cursor:hand;
@@ -96,7 +99,14 @@ javafx
 { -fx-effect: dropshadow( three-pass-box, rgba(0, 0, 0, 0.4), 1, 0.0, 0, 1);
 }
  
+.signup{
+    -fx-font-weight: bold;
+  
+-fx-background-color: transparent;
 
+   
+    -fx-cursor:hand;
+}
 .signup:pressed
 {
  -fx-effect: dropshadow( three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);

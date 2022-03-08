@@ -83,10 +83,36 @@ javafx
     -fx-border-color: yellowgreen;
     -fx-border-insets: -15px;
 }
-
 .signup{
     -fx-font-weight: bold;
+  
+-fx-background-color: transparent;
+
+   
+    -fx-cursor:hand;
+}
+.signup:pressed
+{
+ -fx-effect: dropshadow( three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
 }
 
- 
+.fg{
+   
+  
+-fx-background-color: transparent;
 
+   
+    -fx-cursor:hand;
+}
+.fg:pressed
+{
+ -fx-effect: dropshadow( three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+}
+
+.effect{
+       -fx-cursor:hand;
+}
+.effect :pressed
+{ -fx-effect: dropshadow( three-pass-box, rgba(0, 0, 0, 0.4), 1, 0.0, 0, 1);
+}
+ 
