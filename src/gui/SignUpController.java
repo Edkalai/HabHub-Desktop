@@ -20,7 +20,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import services.UserIndividuServices;
 import services.UtilisateurService;
@@ -52,7 +54,7 @@ public class SignUpController implements Initializable {
 
     @FXML
     void SwitchSceneLogIn(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../gui/profiledit.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/log_in.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -61,7 +63,7 @@ public class SignUpController implements Initializable {
 
        @FXML
     void SwitchSceneLogeedIn(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../gui/profiledit.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/log_in.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -96,6 +98,16 @@ public class SignUpController implements Initializable {
 
 
            }
+     
+   
+
+  
+
+
+
+
+     
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
