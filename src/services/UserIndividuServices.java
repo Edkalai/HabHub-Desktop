@@ -17,6 +17,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import utils.MyDB;
+import utils.Statics;
 
 /**
  *
@@ -66,21 +67,22 @@ public class UserIndividuServices implements IIndividu {
                     try {
 
             PreparedStatement pre = connect.prepareStatement("UPDATE individu i join utilisateur u on i.idUtilisateur=u.idUtilisateur SET nom = ? ,"
-                    + " email=? , password= ? , prenom= ?,numtel=?"
+                    + " email=? , prenom= ?,numtel=?"
                     + " ,dateNaissance= ? , sexe= ? , adresse= ? ,    "
                     + "facebook= ?,instagram= ? ,"
-                    + " whatsapp= ? , where idIndividu= ? ;");
+                    + " whatsapp= ? where idIndividu= ? ;");
            pre.setString(1, i.getNom());
             pre.setString(2, i.getUtilisateur().getEmail());
-            pre.setString(3,doHashing(i.getUtilisateur().getPassword()) );   
-           pre.setString(4, i.getPrenom());
-           pre.setInt(5, i.getUtilisateur().getNumTel());
-           pre.setString(6, i.getDateNaissance());
-           pre.setString(7, i.getSexe());
-           pre.setString(8, i.getAdresse());
-           pre.setString(9, i.getFacebook());
-                       pre.setString(10, i.getInstagram());
-           pre.setString(11, i.getWhatsapp());
+               
+           pre.setString(3, i.getPrenom());
+           pre.setInt(4, i.getUtilisateur().getNumTel());
+           pre.setString(5, i.getDateNaissance());
+           pre.setString(6, i.getSexe());
+           pre.setString(7, i.getAdresse());
+           pre.setString(8, i.getFacebook());
+           pre.setString(9, i.getInstagram());
+           pre.setString(10, i.getWhatsapp());
+           pre.setInt(11,Statics.currentIndividu.getIdIndividu());
 
             
 

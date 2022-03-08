@@ -82,16 +82,22 @@ javafx
 
 .signup{
     -fx-font-weight: bold;
+  
+-fx-background-color: transparent;
+
+   
+    -fx-cursor:hand;
 }
 
+.effect{
+       -fx-cursor:hand;
+}
+.effect :pressed
+{ -fx-effect: dropshadow( three-pass-box, rgba(0, 0, 0, 0.4), 1, 0.0, 0, 1);
+}
  
 
 .signup:pressed
 {
  -fx-effect: dropshadow( three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
-
- 
- 
-
-
 }

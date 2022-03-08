@@ -26,21 +26,21 @@
             </ImageView>
             <TextField fx:id="email" layoutX="101.0" layoutY="130.0" prefHeight="51.0" prefWidth="357.0" promptText="Email" styleClass="emailbox" />
             <TextField fx:id="name" layoutX="101.0" layoutY="218.0" prefHeight="51.0" prefWidth="357.0" promptText="Name" styleClass="passwordbox" />
-            <Button layoutX="101.0" layoutY="476.0" mnemonicParsing="false" onAction="#signup" prefHeight="51.0" prefWidth="357.0" styleClass="loginButton" text="Sign up" textFill="WHITE" />
-            <TextField fx:id="password" layoutX="101.0" layoutY="385.0" prefHeight="51.0" prefWidth="357.0" promptText="Password" styleClass="passwordbox" />
             <TextField fx:id="numtel" layoutX="101.0" layoutY="300.0" prefHeight="51.0" prefWidth="357.0" promptText="Phone Number" styleClass="emailbox" />
+            <TextField fx:id="password" layoutX="101.0" layoutY="385.0" prefHeight="51.0" prefWidth="357.0" promptText="Password" styleClass="passwordbox" />
+            <Button layoutX="101.0" layoutY="476.0" mnemonicParsing="false" onAction="#signup" prefHeight="51.0" prefWidth="357.0" styleClass="loginButton" text="Sign up" textFill="WHITE" />
             <Line endX="229.0" endY="6.0" layoutX="253.0" layoutY="99.0" startX="-177.0" startY="6.0" stroke="#e5e5e5" />
          </children>
       </Pane>
-      <Hyperlink layoutX="392.0" layoutY="721.0" text="Copyright © 2021, par HabHub. Tous droits réservés" textFill="#cfcdcd" />
-      <Hyperlink layoutX="856.0" layoutY="721.0" text="info@habhub.tn" textFill="#cfcdcd" />
-      <Hyperlink layoutX="106.0" layoutY="721.0" text="Terms and conditions" textFill="#cfcdcd" />
-      <Hyperlink layoutX="1086.0" layoutY="721.0" text="+216 23 070 294" textFill="#cfcdcd" />
+      <Hyperlink layoutX="392.0" layoutY="721.0" styleClass="effect" text="Copyright © 2021, par HabHub. Tous droits réservés" textFill="#cfcdcd" />
+      <Hyperlink layoutX="856.0" layoutY="721.0" styleClass="effect" text="info@habhub.tn" textFill="#cfcdcd" />
+      <Hyperlink layoutX="106.0" layoutY="721.0" styleClass="effect" text="Terms and conditions" textFill="#cfcdcd" />
+      <Hyperlink layoutX="1086.0" layoutY="721.0" styleClass="effect" text="+216 23 070 294" textFill="#cfcdcd" />
       <Text fill="#515151" layoutX="509.0" layoutY="673.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account ?">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Button layoutX="737.0" layoutY="650.0" mnemonicParsing="false" onAction="#SwitchSceneLogIn" styleClass="loginButton" text="Sign in" textFill="WHITE" />
+      <Button layoutX="737.0" layoutY="650.0" mnemonicParsing="false" onAction="#SwitchSceneLogIn" styleClass="signup" text="Sign in" textFill="#e0642c" />
    </children>
 </AnchorPane>

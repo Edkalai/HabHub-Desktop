@@ -84,19 +84,15 @@ public class ProfileController implements Initializable {
     void savebutton(ActionEvent event) throws IOException, SQLException{
         Parent root = FXMLLoader.load(getClass().getResource("../gui/profiledit.fxml"));
 
-          Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
-                  alert.setTitle("Success");
-
-           // UtilisateurService us = new UtilisateurService();
-UtilisateurService us = new UtilisateurService();
+          
+            UtilisateurService us = new UtilisateurService();
             Utilisateur U = new Utilisateur();
-             Individu p = new Individu();
+            Individu p = new Individu();
 
               UserIndividuServices i = new UserIndividuServices();
 
-           U.setEmail(email.getText());
-                 U.setPassword(password1.getText());
+                 U.setEmail(email.getText());
+                // U.setPassword();
                  U.setNumTel(Integer.parseInt(numtel.getText()));
                  p.setNom(name.getText());
                  p.setPrenom(surname.getText());

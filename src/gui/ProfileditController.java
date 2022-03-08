@@ -73,7 +73,7 @@ public class ProfileditController implements Initializable {
           name.setText(Statics.currentIndividu.getNom());
             surname.setText(Statics.currentIndividu.getPrenom());
               email.setText(Statics.currentIndividu.getUtilisateur().getEmail());
-             password.setText("****");
+               password.setText("****");
                   facebook.setText(Statics.currentIndividu.getFacebook());
                     whatsapp.setText(Statics.currentIndividu.getWhatsapp());
                       instagram.setText(Statics.currentIndividu.getInstagram());

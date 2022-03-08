@@ -52,7 +52,7 @@ public class SignUpController implements Initializable {
 
     @FXML
     void SwitchSceneLogIn(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../gui/Log_in.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/profiledit.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -87,7 +87,7 @@ public class SignUpController implements Initializable {
                  p.setNom(name.getText());
                  p.setUtilisateur(U);
 
-                 i.ajouter(p, U);
+                i.ajouter(p, U);
 
               Statics.currentIndividu= i.findIndividuByIdUtilisateur(us.chercherUtilisateur(U.getEmail()));
 
