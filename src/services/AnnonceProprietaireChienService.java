@@ -25,19 +25,19 @@ public class AnnonceProprietaireChienService {
     }
 
     public void ajouterAnnonceProprietaireChien(AnnonceProprietaireChien a) throws SQLException {
-        PreparedStatement pre = connect.prepareStatement("INSERT INTO annonce_proprietaire_chien (idChien, datePublication,description,type,datePerte,Localisation,messageVocal) VALUES (?,SYSDATE(),?,?,?,?,?);");
+        PreparedStatement pre = connect.prepareStatement("INSERT INTO annonce_proprietaire_chien (idChien, datePublication,description,type,datePerte,Localisation,messageVocal) VALUES (?,SYSDATE(),?,?,SYSDATE(),?,?);");
         pre.setInt(1, a.getChien().getIdChien());
       //  java.sql.Date sqlDatePublication = new java.sql.Date( a.getDatePublication().getTime() ); 
         //pre.setDate(2,sqlDatePublication);
         pre.setString(2, a.getDescription());
         pre.setString(3, a.getType());
-        java.sql.Date sqlDatePerte=null;
+        /*java.sql.Date sqlDatePerte=null;
         if (a.getDatePerte()!= null){
         sqlDatePerte = new java.sql.Date( a.getDatePerte().getTime() ); 
         }
-        pre.setDate(4,sqlDatePerte);
-        pre.setString(5, a.getLocalisation());
-        pre.setString(6, a.getMessageVocal());
+        pre.setDate(4,sqlDatePerte);*/
+        pre.setString(4, a.getLocalisation());
+        pre.setString(5, a.getMessageVocal());
         pre.executeUpdate();
     }
    
@@ -82,6 +82,20 @@ public class AnnonceProprietaireChienService {
         return false;
 
     }
+    
+     public void deleteAnnonceProprietaireChienById(int id,String type) throws SQLException {
+
+        PreparedStatement pre = connect.prepareStatement("Delete from annonce_proprietaire_chien where idChien=? and type=? ;");
+        pre.setInt(1, id);
+        pre.setString(2, type);
+        if (pre.executeUpdate() != 0) {
+            System.out.println("Annonce Deleted");
+           
+        }
+        System.out.println("Annonce not found");
+       
+
+    }
    
         public List<AnnonceProprietaireChien> afficherAnnonceProprietaireChien(String type) throws SQLException {
         List<AnnonceProprietaireChien> annoncesProprietaireChien = new ArrayList<>();
@@ -94,7 +108,8 @@ public class AnnonceProprietaireChienService {
             Individu  ni= new Individu(rst.getInt("idIndividu"),nu,rst.getString("i.nom"),rst.getString("prenom"),rst.getDate("dateNaissance"),rst.getString("adresse"),
             rst.getString("facebook"),rst.getString("instagram"),rst.getString("whatsapp"));
             
-            Chien nc = new Chien(rst.getInt("idChien"),ni,rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("c.description"),rst.getString("c.image"),rst.getString("color"),rst.getString("race"),rst.getString("groupe"));
+            Chien nc = new Chien(rst.getInt("idChien"),ni,rst.getString("c.nom"),rst.getString("c.sexe"),rst.getString("age"),rst.getBoolean("vaccination"),rst.getString("c.description"),
+                    rst.getString("c.image"),rst.getString("color"),rst.getString("race"),rst.getString("groupe"));
             AnnonceProprietaireChien a = new AnnonceProprietaireChien(rst.getInt("idAnnonceProprietaireChien"),
             nc,
             rst.getDate("datePublication"),
@@ -164,6 +179,20 @@ public class AnnonceProprietaireChienService {
             annoncesProprietaireChien.add(a);
         }
         return annoncesProprietaireChien;
+    }
+     public boolean checkDog(int id,String type) throws SQLException {
+
+        PreparedStatement pre = connect.prepareStatement("select * from annonce_proprietaire_chien where idChien=? and type=? ;");
+        pre.setInt(1, id);
+        pre.setString(2, type);
+        ResultSet rst = pre.executeQuery();
+        if (rst.next()) {
+             System.out.println("Annonce found");
+            return true;
+        }
+        System.out.println("Annonce not found");
+        return false;
+
     }
 /*
     

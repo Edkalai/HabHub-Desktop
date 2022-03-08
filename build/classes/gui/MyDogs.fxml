@@ -22,6 +22,7 @@
 <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MyDogsController">
    <stylesheets>
       <URL value="@communityfxml.css" />
+      <URL value="@mydogs.css" />
    </stylesheets>
    <children>
       <HBox prefHeight="800.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -236,7 +237,7 @@
                                     <Rectangle2D />
                                  </viewport>
                               </ImageView>
-                              <Pane prefHeight="128.0" prefWidth="250.0" VBox.vgrow="ALWAYS" />
+                              <Pane prefHeight="0.0" prefWidth="250.0" VBox.vgrow="ALWAYS" />
                               <HBox prefHeight="36.0" prefWidth="225.0">
                                  <children>
                                     <VBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="264.0">
@@ -247,23 +248,7 @@
                                              </font>
                                           </Label>
                                           <Pane prefHeight="300.0" prefWidth="269.0" />
-                                          <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="70.0">
-                                             <children>
-                                                <ImageView fitHeight="24.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../assets/img/locationIcon.png" />
-                                                   </image>
-                                                </ImageView>
-                                                <Label fx:id="ownerLocationLabel" text="Label" textFill="#808080">
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" />
-                                                   </HBox.margin>
-                                                   <font>
-                                                      <Font name="Lato Regular" size="12.0" />
-                                                   </font>
-                                                </Label>
-                                             </children>
-                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="70.0" />
                                        </children>
                                     </VBox>
                                     <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -277,8 +262,7 @@
                                     <Insets left="20.0" />
                                  </VBox.margin>
                               </HBox>
-                              <Pane prefHeight="126.0" prefWidth="250.0" VBox.vgrow="ALWAYS" />
-                              <HBox alignment="CENTER" prefHeight="160.0" prefWidth="263.0">
+                              <HBox alignment="CENTER" prefHeight="79.0" prefWidth="250.0">
                                  <children>
                                     <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="80.0" styleClass="vboxProperties">
                                        <children>
@@ -314,27 +298,7 @@
                                     </VBox>
                                  </children>
                               </HBox>
-                              <Pane prefHeight="129.0" prefWidth="250.0" VBox.vgrow="ALWAYS" />
-                              <VBox prefHeight="200.0" prefWidth="100.0">
-                                 <children>
-                                    <HBox prefHeight="100.0" prefWidth="200.0">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-family: Lato;" text="Dog Breed : " />
-                                          <Label fx:id="dogRaceLabel" style="-fx-font-family: Lato;" text="Label" textFill="#646464" />
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="100.0" prefWidth="200.0">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-family: Lato;" text="Dog Group:" />
-                                          <Label fx:id="dogGroupLabel" style="-fx-font-family: Lato;" text="Label" textFill="#646464" />
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="100.0" prefWidth="200.0" />
-                                    <HBox prefHeight="100.0" prefWidth="200.0" />
-                                 </children>
-                              </VBox>
-                              <Pane prefHeight="131.0" prefWidth="265.0" VBox.vgrow="ALWAYS" />
-                              <VBox prefHeight="200.0" prefWidth="100.0">
+                              <VBox prefHeight="290.0" prefWidth="250.0">
                                  <children>
                                     <Text fill="#e0642c" strokeType="OUTSIDE" strokeWidth="0.0" text="Pet Story">
                                        <font>
@@ -342,29 +306,50 @@
                                        </font>
                                     </Text>
                                     <Text fx:id="dogStory" fill="#646464" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Lato;" wrappingWidth="250.0" />
+                                    <Pane prefHeight="112.0" prefWidth="250.0" />
+                                    <Button fx:id="missingButton" mnemonicParsing="false" onMouseClicked="#handleMissing" prefHeight="33.0" styleClass="whiteButton" text="Declare Missing">
+                                       <graphic>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../assets/img/chien/missingIcon.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Pane prefHeight="18.0" prefWidth="250.0" />
+                                    <Button fx:id="matingButton" mnemonicParsing="false" onMouseClicked="#handleMating" prefHeight="33.0" prefWidth="213.0" styleClass="whiteButton" text="Looking for a breeding partner">
+                                       <graphic>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../assets/img/chien/matingIcon.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
                                  </children>
                               </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0">
+                              <Pane prefHeight="61.0" prefWidth="250.0" />
+                              <VBox prefHeight="72.0" prefWidth="250.0">
                                  <children>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                        <children>
                                           <VBox prefHeight="200.0" prefWidth="100.0">
                                              <children>
-                                                <ImageView fitHeight="47.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fx:id="profileImageChosen" fitHeight="47.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
                                                       <Image url="@../assets/img/user.png" />
                                                    </image>
                                                 </ImageView>
                                              </children>
                                           </VBox>
-                                          <Pane prefHeight="125.0" prefWidth="259.0" />
+                                          <Pane prefHeight="54.0" prefWidth="285.0" />
                                           <VBox prefHeight="100.0" prefWidth="469.0">
                                              <children>
                                                 <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="243.0">
                                                    <children>
                                                       <Label fx:id="ownerNameLabel" prefHeight="21.0" prefWidth="55.0" style="-fx-font-weight: bold; -fx-font-family: Lato;" text="Label" textFill="#e0642c" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="," />
-                                                      <Label fx:id="ownerLocationLabel2" style="-fx-font-family: Lato;" text="Label" />
+                                                      <Label fx:id="ownerLocationLabel" style="-fx-font-family: Lato;" text="Label" />
                                                    </children>
                                                    <VBox.margin>
                                                       <Insets left="5.0" />

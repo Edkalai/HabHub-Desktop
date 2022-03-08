@@ -6,6 +6,8 @@
 package gui;
 
 import HabHub.CommunityListener;
+import HabHub.DogItemListener;
+import entities.AnnonceProprietaireChien;
 import entities.Chien;
 import java.io.IOException;
 import java.net.URL;
@@ -13,6 +15,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,14 +27,17 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import services.AnnonceProprietaireChienService;
 import services.ChienService;
 import utils.Statics;
 
@@ -81,10 +88,62 @@ public class MyDogsController implements Initializable {
     private Label ownerNameLabel;
 
     @FXML
+    private Button missingButton;
+
+    @FXML
+    private Button matingButton;
+
+    @FXML
     private Label ownerLocationLabel2;
+    private boolean clickedMating = false;
+    private boolean clickedMissing = false;
+    private DogItemListener dogItemListener;
+    private Chien chosenDog;
     private Stage stage;
     private Scene scene;
     private Parent root;
+    AnnonceProprietaireChienService as = new AnnonceProprietaireChienService();
+
+    @FXML
+    void handleMissing(MouseEvent event) throws SQLException {
+        clickedMissing = !clickedMissing;
+        if (clickedMissing) {
+            missingButton.setStyle("-fx-background-color: #FFEEE8; "
+                    + "-fx-border-color:#E0642C;"
+                    + "-fx-font-weight:bold;"
+                    + "-fx-text-fill:#E0642C;");
+            AnnonceProprietaireChien apc = new AnnonceProprietaireChien(chosenDog, "P", Statics.currentIndividu.getAdresse());
+            as.ajouterAnnonceProprietaireChien(apc);
+        } else {
+            missingButton.setStyle("-fx-background-color: #FFFFFF; "
+                    + "-fx-border-color:#FFC7AC;"
+                    + "-fx-font-weight:regular;"
+                    + "-fx-text-fill:black;");
+            as.deleteAnnonceProprietaireChienById(chosenDog.getIdChien(),"P");
+
+        }
+    }
+
+    @FXML
+    void handleMating(MouseEvent event) throws SQLException {
+        clickedMating = !clickedMating;
+        if (clickedMating) {
+            matingButton.setStyle("-fx-background-color: #FFEEE8; "
+                    + "-fx-border-color:#E0642C;"
+                    + "-fx-font-weight:bold;"
+                    + "-fx-text-fill:#E0642C;");
+            AnnonceProprietaireChien apc = new AnnonceProprietaireChien(chosenDog, "A", Statics.currentIndividu.getAdresse());
+            as.ajouterAnnonceProprietaireChien(apc);
+        } else {
+            matingButton.setStyle("-fx-background-color: #FFFFFF; "
+                    + "-fx-border-color:#FFC7AC;"
+                    + "-fx-font-weight:regular;"
+                    + "-fx-text-fill:black;");
+            as.deleteAnnonceProprietaireChienById(chosenDog.getIdChien(),"A");
+
+        }
+
+    }
 
     @FXML
     public void switchSceneDogsMatchup(ActionEvent event) throws IOException {
@@ -138,49 +197,80 @@ public class MyDogsController implements Initializable {
 
     }
 
-    /* private void setChosenChien(Chien a) {
+    private void setChosenChien(Chien a) throws SQLException {
+        if (as.checkDog(a.getIdChien(),"P")){
+            missingButton.setStyle("-fx-background-color: #FFEEE8; "
+                    + "-fx-border-color:#E0642C;"
+                    + "-fx-font-weight:bold;"
+                    + "-fx-text-fill:#E0642C;");
+            clickedMissing=true;
+        }
+        else { 
+            missingButton.setStyle("-fx-background-color: #FFFFFF; "
+                    + "-fx-border-color:#FFC7AC;"
+                    + "-fx-font-weight:regular;"
+                    + "-fx-text-fill:black;");
+            clickedMissing=false;
+        }
+        if (as.checkDog(a.getIdChien(),"A")){
+            matingButton.setStyle("-fx-background-color: #FFEEE8; "
+                    + "-fx-border-color:#E0642C;"
+                    + "-fx-font-weight:bold;"
+                    + "-fx-text-fill:#E0642C;");
+            clickedMating=true;
+        }
+        else { 
+            matingButton.setStyle("-fx-background-color: #FFFFFF; "
+                    + "-fx-border-color:#FFC7AC;"
+                    + "-fx-font-weight:regular;"
+                    + "-fx-text-fill:black;");
+            clickedMating=false;
+        }
+        chosenDog = a;
+        dogNameLabel.setText(a.getNom());
 
-        dogNameLabel.setText(a.getChien().getNom());
-        Image genderImg = new Image(getClass().getResourceAsStream("../assets/img/female.png"));
+        ageLabel.setText(a.getAge());
+        dogStory.setText(a.getDescription());
         genderLabel.setText("Female");
-        if ("M".equals(a.getChien().getSexe())) {
-            genderImg = new Image(getClass().getResourceAsStream("../assets/img/male.png"));
+       
+        if ("M".equals(a.getSexe())) {
+           
             genderLabel.setText("Male");
         }
-        genderImage.setImage(genderImg);
+        dogColorLabel.setText(a.getColor());
+        ownerLocationLabel.setText(Statics.currentIndividu.getAdresse());
+        ownerNameLabel.setText(Statics.currentIndividu.getPrenom());
 
-        ageLabel.setText(a.getChien().getAge());
-        dogStory.setText(a.getChien().getDescription());
-        ownerLocationLabel.setText(a.getLocalisation());
-        ownerLocationLabel2.setText(a.getLocalisation());
-        dogRaceLabel.setText(a.getChien().getRace());
-        dogGroupLabel.setText(a.getChien().getGroupe());
-        dogColorLabel.setText(a.getChien().getColor());
-
-        dogLastSeenOnLabel.setText(a.getDatePerte().toString());
-        dogLastSeenInLabel.setText(a.getLocalisation());
-        ownerNameLabel.setText(a.getChien().getIndividu().getPrenom());
-
-       Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/chien/"+a.getChien().getImage()+".png"));
-       dogImage.setImage(dogImg);
+        Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/chien/" + a.getImage() + ".png"));
+        dogImage.setImage(dogImg);
 
     }
-     */
+
     private void displayChiens(ObservableList<Chien> chiens) {
         grid.getChildren().clear();
         int column = 0;
         int row = 1;
 
         try {
+            dogItemListener = new DogItemListener() {
+                @Override
+                public void onClickListener(Chien chien) {
+                    try {
+                        setChosenChien(chien);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(MyDogsController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            };
             for (int i = 0; i < chiens.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("DogListItem.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("DogBigCard.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
 
-                DogListItemController dogListItemController = fxmlLoader.getController();
-                dogListItemController.setData(chiens.get(i));
+                DogBigCardController dogBigCardController = fxmlLoader.getController();
+                dogBigCardController.setData(chiens.get(i), dogItemListener);
 
-                if (column == 1) {
+                if (column == 3) {
                     column = 0;
                     row++;
                 }
@@ -206,7 +296,13 @@ public class MyDogsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         displayChiens(getChienByIndividu());
+        if (data.size() > 0) {
+            try {
+                setChosenChien(data.get(0));
+            } catch (SQLException ex) {
+                Logger.getLogger(MyDogsController.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
+        }
     }
-
 }

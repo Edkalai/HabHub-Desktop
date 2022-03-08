@@ -18,6 +18,12 @@ public class AnnonceProprietaireChien {
     String localisation;
     String messageVocal;
 
+    public AnnonceProprietaireChien(Chien chien, String type, String localisation) {
+        this.chien = chien;
+        this.type = type;
+        this.localisation = localisation;
+    }
+
 
   public AnnonceProprietaireChien(int idAnnonceProprietaireChien, Chien chien, Date datePublication,String description,String type,String localisation ) {
         this.idAnnonceProprietaireChien=idAnnonceProprietaireChien;
