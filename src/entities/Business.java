@@ -24,6 +24,9 @@ public class Business {
     String type;
     int experience;
     int optional2;
+    String image;
+
+  
     List<ServiceBusiness> BServices = new ArrayList<>();
 
     public List<ServiceBusiness> getBServices() {
@@ -83,7 +86,7 @@ public class Business {
     
     }
 
-    public Business(int idBusiness, Utilisateur user, String titre, String description, String horaire, String ville, String localisation,String type,int experience) {
+    public Business(int idBusiness, Utilisateur user, String titre, String description, String horaire, String ville, String localisation,String type,int experience,String image) {
         this.idBusiness = idBusiness;
         this.user = user;
         this.titre = titre;
@@ -93,10 +96,12 @@ public class Business {
         this.localisation = localisation;
         this.type = type;
         this.experience=experience;
+        this.image=image;
+
 
 
     }
-    public Business(int idBusiness,String titre, String description, String horaire, String ville, String localisation,String type,List<ServiceBusiness> BServices ,int experience,int optional2) {
+    public Business(int idBusiness,String titre, String description, String horaire, String ville, String localisation,String type,List<ServiceBusiness> BServices ,int experience,int optional2,String image) {
         this.idBusiness = idBusiness;
         this.titre = titre;
         this.description = description;
@@ -107,10 +112,12 @@ public class Business {
         this.BServices=BServices;
         this.experience=experience;
         this.optional2=optional2;
+        this.image=image;
+
 
 
     }
-       public Business(int idBusiness,String titre, String description, String horaire, String ville, String localisation,String type,int experience,int optional2) {
+       public Business(int idBusiness,String titre, String description, String horaire, String ville, String localisation,String type,int experience,int optional2,String image) {
         this.idBusiness = idBusiness;
         this.titre = titre;
         this.description = description;
@@ -121,6 +128,7 @@ public class Business {
         //this.BServices=BServices;
         this.experience=experience;
         this.optional2=optional2;
+        this.image=image;
 
 
     }
@@ -162,7 +170,13 @@ public class Business {
     public String getLocalisation() {
         return localisation;
     }
+    public String getImage() {
+        return image;
+    }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
     public void setIdBusiness(int idBusiness) {
         this.idBusiness = idBusiness;
     }
@@ -195,7 +209,7 @@ public class Business {
     }
     @Override
     public String toString() {
-        return "Business{" + "idBusiness=" + idBusiness +/* ", idUtilisateur=" + user.idUtilisateur +*/", titre=" + titre + ", experience=" + experience + ", description=" + description + ", horaire=" + horaire + ", ville=" + ville + ", localisation=" + localisation + ", type=" + type /*+", listBS=" + BServices */+", experience=" + experience+'}';
+        return "Business{" + "idBusiness=" + idBusiness +/* ", idUtilisateur=" + user.idUtilisateur +*/", titre=" + titre + ", image=" + image + ", description=" + description + ", horaire=" + horaire + ", ville=" + ville + ", localisation=" + localisation + ", type=" + type /*+", listBS=" + BServices */+", experience=" + experience+", image=" + image+'}';
     }
     
 }
