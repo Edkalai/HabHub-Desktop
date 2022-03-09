@@ -23,6 +23,12 @@ public class Individu {
     String whatsapp;
     Boolean proprietaireChien;
 
+    public Individu(int idIndividu, String nom, String prenom) {
+        this.idIndividu = idIndividu;
+        this.nom = nom;
+        this.prenom = prenom;
+    }
+
     public Individu(int idIndividu, Utilisateur utilisateur, String nom, String prenom, String sexe, Date dateNaissance, String adresse, String facebook, String instagram, String whatsapp, Boolean proprietaireChien) {
         this.idIndividu = idIndividu;
         this.utilisateur = utilisateur;
