@@ -8,6 +8,7 @@ package gui;
 import HabHub.BusinessListener;
 import entities.Business;
 import entities.Revue;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -18,12 +19,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import services.RevueServices;
 import utils.Statics;
 
@@ -53,11 +58,23 @@ public class RevueBusinessController implements Initializable {
 
     private Revue revue;
     RevueServices rs = new RevueServices();
+     private Stage stage;
+ private Scene scene;
+ private Parent parent;
+ /* void switchSceneProfile(ActionEvent event)throws IOException {
+//("../gui/backOffice/HomeBackOffice.fxml
+    Parent root = FXMLLoader.load(getClass().getResource("../gui/BusinessFXML.fxml"));
+
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    } */
 
     @FXML
-    void deleteReview(ActionEvent event) throws SQLException {
+    void deleteReview(ActionEvent event) throws SQLException, IOException {
         //FXMLLoader fxmlLoader = new FXMLLoader();
         rs.deleteRevue(revue.getIdRevue());
+        //switchSceneProfile(event);
         /*fxmlLoader.setLocation(getClass().getResource("revueBusiness.fxml"));
         //AnchorPane anchorPane = fxmlLoader.load();
 
@@ -65,7 +82,7 @@ public class RevueBusinessController implements Initializable {
         businessFXMLController.refreshReviewItems();
 */
     }
-
+    
     public void setData(Revue revue) {
         this.revue = revue;
 
