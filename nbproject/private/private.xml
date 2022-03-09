@@ -3,8 +3,31 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Kaizen/Esprit/3eme/PI/HabHub/src/HabHub/HabHub.java</file>
-            <file>file:/C:/Kaizen/Esprit/3eme/PI/HabHub/src/utils/MyDB.java</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/gui/backOffice/ChienPopUpController.java</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/HabHub/CommunityListener.java</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/entities/Business.java</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/gui/log_in.css</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/gui/backOffice/popup.css</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/entities/Utilisateur.java</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/services/AnnonceProprietaireChienService.java</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/services/UserIndividuServices.java</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/services/ChienService.java</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/services/RevueServices.java</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/gui/DogBigCardController.java</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/gui/backOffice/ChiensBackOfficeController.java</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/entities/Individu.java</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/gui/communityfxml.css</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/services/Interface_Reservation.java</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/gui/BusinessFXMLController.java</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/gui/loginfxml.css</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/gui/Log_inController.java</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/services/ReservationServices.java</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/utils/MyDB.java</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/utils/SmsApi.java</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/gui/MissingDogs.fxml</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/utils/Statics.java</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/gui/Log_in.fxml</file>
+            <file>file:/C:/Kaizen/HabHub/Habhub-desktop/src/HabHub/Main.java</file>
         </group>
     </open-files>
 </project-private>
