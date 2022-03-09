@@ -6,6 +6,7 @@
 package services;
 
 
+import entities.Categorie;
 import entities.Produit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -33,15 +34,16 @@ public class ProduitService implements IProduit<Produit>{
     
     @Override
        public void ajouterp(Produit p) throws SQLException {
-        String req = "INSERT INTO `produit`(idCategorie,prix, nbEtoiles ,nom,  description, marque )  "
-                + "VALUES (?, ?, ? ,?, ? , ?) ";
+        String req = "INSERT INTO `produit`(nom , prix , description , marque , image)  "
+                + "VALUES (?, ?, ? ,?) ";
         PreparedStatement ps = connexion.prepareStatement(req);
-        ps.setInt(1, p.getIdCategorie());
+        ps.setString(1, p.getNom());
         ps.setFloat(2, p.getPrix());
-        ps.setInt(3, p.getNbetoiles());
-        ps.setString(4, p.getNom());
-        ps.setString(5, p.getDescription());
-        ps.setString(6, p.getMarque());
+        ps.setString(3, p.getMarque());
+       
+        ps.setString(4, p.getDescription());
+        
+         ps.setString(5, p.getImage());
        
         ps.executeUpdate();
     }
@@ -49,7 +51,7 @@ public class ProduitService implements IProduit<Produit>{
     @Override
     public List<Produit> afficherproduit() throws SQLException {
         List<Produit> produits = new ArrayList<>();
-        String req = "select * from produit";
+        String req = "select * from produit p left join categorie c on p.idCategorie = c.idCategorie";
         stm = connexion.createStatement();
         //ensemble de resultat
         ResultSet rst = stm.executeQuery(req);
@@ -57,14 +59,18 @@ public class ProduitService implements IProduit<Produit>{
         while (rst.next()) {
             Produit p = new Produit(
                     rst.getInt("IdProduit"),
+                    new Categorie(rst.getInt("idCategorie"), rst.getString("nom") , rst.getString("description")),
+                    
                     rst.getInt("nbetoiles"),
                    
-                    rst.getInt("idCategorie"),//or rst.getInt(1)
+                    //or rst.getInt(1)
                   
                     rst.getString("nom"),
                     rst.getString("description"),
                     rst.getString("marque"),
-                    rst.getFloat("prix"))
+                    rst.getFloat("prix") ,
+                    rst.getString("image") 
+            )
                     ;
                     
             produits.add(p);
@@ -81,17 +87,17 @@ public class ProduitService implements IProduit<Produit>{
     }
 
     @Override
-    public boolean updateProduit(int idProduit, int idCategorie, int nbetoiles, String nom, String description, String marque, float prix) {
+    public boolean updateProduit(int idProduit,  Produit p) {
         try {
 
-            PreparedStatement pre = connexion.prepareStatement("UPDATE produit SET idProduit = ? , nbetoiles= ? ,nom = ? , description= ?,marque = ? , prix= ?  where idProduit= ? ;");
-           pre.setInt(1, idCategorie);
-            pre.setInt(2, nbetoiles);  
-            pre.setString(3, nom);
-            pre.setString(4, description);  
-            pre.setString(5, marque);
-            pre.setFloat(6, prix);   
-            pre.setInt(7, idProduit);
+            PreparedStatement pre = connexion.prepareStatement("UPDATE produit SET idProduit = ? ,nom = ? , description= ?,marque = ? , prix= ?  where idProduit= ? ;");
+           
+           
+            pre.setString(1, p.getNom());
+            pre.setString(2, p.getDescription());  
+            pre.setString(3, p.getMarque());
+            pre.setFloat(4, p.getPrix());   
+            pre.setInt(5, idProduit);
             if (pre.executeUpdate() != 0) {
                 System.out.println(" Produit Updated");
                  } else {
@@ -108,7 +114,7 @@ public class ProduitService implements IProduit<Produit>{
     @Override
     public List<Produit> afficherProduitTriP() throws SQLException {
  List<Produit> produits = new ArrayList<>();
-        String req = "select * from produit order by prix";
+        String req = "select * from produit p join categorie c on p.idCategorie=c.idCategorie order by prix";
         stm = connexion.createStatement();
         //ensemble de resultat
         ResultSet rst = stm.executeQuery(req);
@@ -116,14 +122,18 @@ public class ProduitService implements IProduit<Produit>{
         while (rst.next()) {
             Produit p = new Produit(
                     rst.getInt("IdProduit"),
+                    
+                     new Categorie(rst.getInt("idCategorie"), rst.getString("nom") , rst.getString("description")),
+                    
                     rst.getInt("nbetoiles"),
                    
-                    rst.getInt("idCategorie"),//or rst.getInt(1)
+                   //or rst.getInt(1)
                   
                     rst.getString("nom"),
                     rst.getString("description"),
                     rst.getString("marque"),
-                    rst.getFloat("prix"))
+                    rst.getFloat("prix"),
+            rst.getString("image") )
                     ;
                     
             produits.add(p);
@@ -141,14 +151,18 @@ List<Produit> produits = new ArrayList<>();
         while (rst.next()) {
             Produit p = new Produit(
                     rst.getInt("IdProduit"),
+                    
+                    new Categorie(rst.getInt("idCategorie"), rst.getString("nom") , rst.getString("description")), 
+                   
                     rst.getInt("nbetoiles"),
                    
-                    rst.getInt("idCategorie"),//or rst.getInt(1)
+                   
                   
                     rst.getString("nom"),
                     rst.getString("description"),
                     rst.getString("marque"),
-                    rst.getFloat("prix"))
+                    rst.getFloat("prix"),
+            rst.getString("image") )
                     ;
                     
             produits.add(p);
@@ -170,14 +184,18 @@ List<Produit> produits = new ArrayList<>();
         while (rst.next()) {
             Produit p = new Produit(
                     rst.getInt("IdProduit"),
+                    
+                     new Categorie(rst.getInt("idCategorie"), rst.getString("nom") , rst.getString("description")),
+                    
                     rst.getInt("nbetoiles"),
                    
-                    rst.getInt("idCategorie"),//or rst.getInt(1)
+                 //or rst.getInt(1)
                   
                     rst.getString("nom"),
                     rst.getString("description"),
                     rst.getString("marque"),
-                    rst.getFloat("prix"))
+                    rst.getFloat("prix") , 
+            rst.getString("image") )
                     ;
                     
             produits.add(p);
@@ -195,14 +213,18 @@ List<Produit> produits = new ArrayList<>();
         while (rst.next()) {
             Produit p = new Produit(
                     rst.getInt("IdProduit"),
+                    
+                     new Categorie(rst.getInt("idCategorie"), rst.getString("nom") , rst.getString("description")),
+                    
                     rst.getInt("nbetoiles"),
                    
-                    rst.getInt("idCategorie"),//or rst.getInt(1)
+                
                   
                     rst.getString("nom"),
                     rst.getString("description"),
                     rst.getString("marque"),
-                    rst.getFloat("prix"))
+                    rst.getFloat("prix") ,
+              rst.getString("image") )
                     ;
                     
             produits.add(p);

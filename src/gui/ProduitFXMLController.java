@@ -16,12 +16,16 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import services.ProduitService;
 import entities.Produit;
+import entities.panier;
 
 import java.sql.SQLException;
 import java.util.List;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import services.PanierService;
+import utils.Statics;
 
 
 
@@ -45,9 +49,9 @@ public class ProduitFXMLController implements Initializable {
     private Label Price;
     
    
+     @FXML
+    private ImageView EvalImage;
     
-    @FXML
-    private Button EvalProduit;
 
     @FXML
     private Button AjPanier;
@@ -60,6 +64,18 @@ public class ProduitFXMLController implements Initializable {
     }
     
  private MyListener myListener;
+ 
+ 
+ @FXML
+    void AddItemToCart(ActionEvent event) {
+        /*  int quantity = 1;
+        String req = "INSERT INTO `panier` (  idProduit, idUtilisateur,quantite)  "
+                + "VALUES ( ?, ?, ?) ";
+        PanierService ps = new PanierService();
+        panier pa = new panier(chosenProduit, Statics.currentIndividu.getIdIndividu() , (Integer.parseInt(quantity.getText())) );
+         ps.ajouterPa(pa );*/
+
+    }
          
          
     public void setData(Produit produit,MyListener myListener) {
@@ -69,8 +85,42 @@ public class ProduitFXMLController implements Initializable {
         String s = Float.toString(produit.getPrix())+"DNT";
         Price.setText(s);
        
-        Image Image = new Image(getClass().getResourceAsStream("../assets/img/sq.jpg"));
-        ProdImage.setImage(Image);
+       
+               Image PImg = new Image(getClass().getResourceAsStream("../assets/img/produits/"+produit.getImage()+".jpg"));
+        ProdImage.setImage(PImg);
+        
+        System.out.println(this.produit.getIdCategorie());
+        
+       /* if (produit.getIdCategorie()== 5){
+                Image Im = new Image(getClass().getResourceAsStream("../assets/img/revue/5.png"));
+        EvalImage.setImage(Image);
+        }
+      
+        if (produit.getIdCategorie()== 4){
+                Image Im = new Image(getClass().getResourceAsStream("../assets/img/revue/4.png"));
+        EvalImage.setImage(Image);
+        }
+        if (produit.getIdCategorie()== 3){
+                Image Im = new Image(getClass().getResourceAsStream("../assets/img/revue/3.png"));
+        EvalImage.setImage(Image);
+        }
+        
+        if (produit.getIdCategorie()== 2){
+                Image Im = new Image(getClass().getResourceAsStream("../assets/img/revue/2.png"));
+        EvalImage.setImage(Image);
+        }
+        
+         if (produit.getIdCategorie()== 1){
+                Image Im = new Image(getClass().getResourceAsStream("../assets/img/revue/1.png"));
+        EvalImage.setImage(Image);
+        }
+        
+        else {
+             Image Im = new Image(getClass().getResourceAsStream("../assets/img/revue/0.png"));
+        EvalImage.setImage(Image);
+        }
+        */
+        
         
         
        

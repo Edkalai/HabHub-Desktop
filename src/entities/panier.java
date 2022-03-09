@@ -14,6 +14,9 @@ public class panier {
     private Produit idProduit;
     private int idUtilisateur;
     private int quantite;
+   
+
+ 
     
 
     public panier(int idPanier, Produit idProduit, int idUtilisateur, int quantite) {
@@ -28,6 +31,8 @@ public class panier {
         this.idUtilisateur = idUtilisateur;
         this.quantite = quantite;
     }
+
+  
 
     
 
@@ -67,6 +72,10 @@ public class panier {
     public String toString() {
         return "panier{" + "idPanier=" + idPanier + ", idProduit=" + idProduit + ", idUtilisateur=" + idUtilisateur + ", quantite=" + quantite + '}';
     }
+
+ 
+
+   
     
     
     

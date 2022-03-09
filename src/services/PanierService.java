@@ -51,12 +51,13 @@ public class PanierService implements IPanier<panier> {
         ResultSet rst = stm.executeQuery(req);
         
         while (rst.next()) {
-            Produit P = new Produit(rst.getString("p.nom"),rst.getFloat("p.prix"));
+            Produit P = new Produit(rst.getString("p.nom"),rst.getFloat("p.prix"), rst.getString("Image"));
             panier pa = new panier(
                //or rst.getInt(1)
                     P,
                     rst.getInt("idUtilisateur"),
                     rst.getInt("quantite")
+                   
                     );
                     
             paniers.add(pa);
@@ -107,12 +108,13 @@ public class PanierService implements IPanier<panier> {
         ResultSet rst = ps.executeQuery();
 
         while (rst.next()) {
-             Produit P = new Produit(rst.getString("p.nom"),rst.getFloat("p.prix"));
+             Produit P = new Produit(rst.getString("p.nom"),rst.getFloat("p.prix") , rst.getString("p.image"));
             panier pa = new panier(
                rst.getInt("idPanier"),
                     P,
                     rst.getInt("idUtilisateur"),
                     rst.getInt("quantite")
+                   
                     );
                     
             paniers.add(pa);

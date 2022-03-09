@@ -5,6 +5,7 @@
  */
 package services;
 
+import entities.Produit;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public interface IProduit<P> {
     public void ajouterp(P p) throws SQLException;
     public List<P> afficherproduit() throws SQLException;
      public void deleteProduit(int idProduit) throws SQLException;
-     public boolean updateProduit(int idProduit, int idCategorie, int nbetoiles, String nom, String description, String marque, float prix) ;
+     public boolean updateProduit(int idProduit,  Produit p) ;
      public List<P>afficherProduitTriP()throws SQLException;
      public List<P>afficherProduitParCategorie(String categorie)throws SQLException;
       public List<P>RechercheProduit(String nom)throws SQLException;

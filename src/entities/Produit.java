@@ -12,22 +12,35 @@ package entities;
  * @author asus
  */
 public class Produit {
+    private String image;
+
+    public Produit(int idProduit, Categorie idCategorie, int nbetoiles, String nom, String description, String marque, float prix , String image) {
+        this.image = image;
+        this.idProduit = idProduit;
+        this.idCategorie = idCategorie;
+        this.nbetoiles = nbetoiles;
+        this.nom = nom;
+        this.description = description;
+        this.marque = marque;
+        this.prix = prix;
+    }
     private int idProduit;
-    private int idCategorie;
+    private Categorie idCategorie;
     private int nbetoiles;
     private String nom;
      private String description;
     private String marque;
     private float prix;
 
-    public Produit(String nom, float prix) {
+    public Produit(String nom, float prix , String image) {
         this.nom = nom;
         this.prix = prix;
+        this.image=image;
     }
     
     
     
-    public Produit( int idCategorie ,int nbetoiles, String nom, String description, String marque, float prix) {
+    public Produit( Categorie idCategorie ,int nbetoiles, String nom, String description, String marque, float prix) {
         this.nbetoiles = nbetoiles;
      
         this.idCategorie = idCategorie;
@@ -36,9 +49,19 @@ public class Produit {
         this.marque = marque;
         this.prix = prix;
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+    
+    
    
 
-    public Produit(int idProduit, int idCategorie, int nbetoiles, String nom, String description, String marque, float prix) {
+    public Produit(int idProduit, Categorie idCategorie, int nbetoiles, String nom, String description, String marque, float prix) {
         this.idProduit = idProduit;
         this.nbetoiles = nbetoiles;
      
@@ -48,15 +71,35 @@ public class Produit {
         this.marque = marque;
         this.prix = prix;
     }
+
+    public Produit( String nom ,Categorie idCategorie, float prix, String description, String marque) {
+        this.nom = nom;
+        this.idCategorie = idCategorie;
+        this.prix = prix;
+        
+        this.marque = marque;
+        this.description = description;
+    }
+
+    public Produit(String nom , float prix, String description, String marque) {
+        this.nom = nom;
+        this.description = description;
+        this.marque = marque;
+        this.prix = prix;
+    }
+
+  
    
+    
+    
 
  
 
-    public int getIdCategorie() {
+    public Categorie getIdCategorie() {
         return idCategorie;
     }
 
-    public void setIdCategorie(int idCategorie) {
+    public void setIdCategorie(Categorie idCategorie) {
         this.idCategorie = idCategorie;
     }
 
@@ -120,12 +163,19 @@ public class Produit {
         this.marque = marque;
     }
 
-
-
     @Override
     public String toString() {
-        return "Produit{" + "idProduit=" + idProduit + ", nbetoiles=" + nbetoiles +  ", idCategorie=" + idCategorie + ", nom=" + nom + ", description=" + description + ", marque=" + marque + ", prix=" + prix + '}';
+        return "Produit{" + "image=" + image + ", idProduit=" + idProduit + ", idCategorie=" + idCategorie + ", nbetoiles=" + nbetoiles + ", nom=" + nom + ", description=" + description + ", marque=" + marque + ", prix=" + prix + '}';
     }
+
+    public Produit( String nom, String marque, float prix , String image) {
+        this.image = image;
+        this.nom = nom;
+        this.marque = marque;
+        this.prix = prix;
+    }
+
+
 
   
 

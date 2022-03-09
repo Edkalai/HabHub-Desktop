@@ -62,9 +62,13 @@ public class PanierItemFXMLController implements Initializable {
     private Button plus;
 
     @FXML
-    private Label TotItemPrice;
+     public Label TotItemPrice;
     
     private panier panier;
+    
+  
+
+   
     
      PanierService ps = new PanierService();
     
@@ -82,7 +86,7 @@ public class PanierItemFXMLController implements Initializable {
         if (Integer.parseInt(quantity.getText()) > 1) {
             quantity.setText(Integer.toString(Integer.parseInt(quantity.getText()) - 1));
             TotItemPrice.setText(Float.toString(Integer.parseInt(quantity.getText()) * (Float.parseFloat(itemPrice.getText()))));
-
+            //sommeprod.setText( Float.toString (Float.parseFloat(itemPrice.getText())  - (Float.parseFloat(sommeprod.getText()))  ));
         }
 
     }
@@ -91,7 +95,7 @@ public class PanierItemFXMLController implements Initializable {
     void plusQuantity(ActionEvent event) {
          quantity.setText(Integer.toString(Integer.parseInt(quantity.getText()) + 1));
         TotItemPrice.setText(Float.toString(Integer.parseInt(quantity.getText()) * (Float.parseFloat(itemPrice.getText()))));
-
+        //sommeprod.setText( Float.toString (Float.parseFloat(itemPrice.getText()))  +(Float.parseFloat(sommeprod.getText()))  );
     }
     
      @FXML
@@ -126,8 +130,10 @@ public class PanierItemFXMLController implements Initializable {
        itemName.setText(pa.getIdProduit().getNom());
        String s = Float.toString(pa.getIdProduit().getPrix());
         itemPrice.setText(s);
-        Image Image = new Image(getClass().getResourceAsStream("../assets/img/sq.jpg"));
-        itemImage.setImage(Image);
+        System.out.println(pa.getIdProduit().getImage());
+        Image PImg = new Image(getClass().getResourceAsStream("../assets/img/produits/"+pa.getIdProduit().getImage()+".jpg"));
+       // Image PImg = new Image(getClass().getResourceAsStream("../assets/img/produits/food.jpg"));
+        itemImage.setImage(PImg);
         
         quantity.setText(Integer.toString(pa.getQuantite()));
         TotItemPrice.setText(Float.toString(Integer.parseInt(quantity.getText()) * (Float.parseFloat(itemPrice.getText()))));

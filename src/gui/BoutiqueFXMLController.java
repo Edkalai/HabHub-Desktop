@@ -27,6 +27,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -158,33 +159,38 @@ public class BoutiqueFXMLController implements Initializable {
    
     @FXML
     void insertPanier(ActionEvent event) throws SQLException {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            
         String req = "INSERT INTO `panier` (  idProduit, idUtilisateur,quantite)  "
                 + "VALUES ( ?, ?, ?) ";
         PanierService ps = new PanierService();
-        panier pa = new panier(chosenProduit, Statics.currentIndividu.getIdIndividu() , (Integer.parseInt(quantity.getText())) );
+        panier pa = new panier(chosenProduit, Statics.currentIndividu.getIdIndividu() , (Integer.parseInt(quantity.getText()))   );
          ps.ajouterPa(pa );
-         
+        alert.setContentText("Product Added To Cart");
+         alert.show();
         
     }
+    
+    
+   
+    
+    
 
     private void setChosenProduit(Produit p) {
         this.chosenProduit = p;
         quantity.setText("1");
 
-        Image Image = new Image(getClass().getResourceAsStream("../assets/img/sq.jpg"));
-        ProdImage.setImage(Image);
+        Image PImg = new Image(getClass().getResourceAsStream("../assets/img/produits/"+p.getImage()+".JPG"));
+        ProdImage.setImage(PImg);
+       
         nameLabel.setText(p.getNom());
         String s = Float.toString(p.getPrix());
         Price.setText(s);
         Desc.setText(p.getDescription());
 
         totprice.setText(Price.getText());
-        // totprice.setText(  (Integer.parseInt  (quantity.getText()) ) * (Integer.parseInt (Price.getText() )) )  ;
-        //try{
-        //totprice.setText(String.valueOf(  (Float.parseFloat (Price.getText())) * (Integer.parseInt(quantity.getText())) ) ) ;
-        //  }catch(NumberFormatException ex){
-        // totprice.setText(Price.getText()); // handle your exception
-        // }
+       
     }
 
     /*chosenFruitCard.setStyle("-fx-background-color: #" + fruit.getColor() + ";\n" +

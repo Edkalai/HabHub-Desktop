@@ -14,17 +14,24 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import javafx.stage.Stage;
 import services.PanierService;
 import services.ProduitService;
 import utils.Statics;
@@ -56,12 +63,21 @@ public class PanierFXMLController implements Initializable {
     private Button clear;
     
     
+   PanierService ps = new PanierService();
+   
+   private panier panier;
+    
+   
+    private Stage stage;
+    private Scene scene;
+    private Parent parent;
+    
    
     
       public ObservableList<panier> paniers = FXCollections.observableArrayList();
     PanierService pa = new PanierService();
 
-    private ObservableList<panier> getProduits() {
+    private ObservableList<panier> getPaniers() {
         List<panier> Panier = new ArrayList<>();
 
         try {
@@ -78,9 +94,45 @@ public class PanierFXMLController implements Initializable {
     }
     
   
+     @FXML
+    void ClearCart(ActionEvent event) throws SQLException, IOException {
+         for (int i = 0; i < paniers.size(); i++) {
+             ps.deletePanier(paniers.get(i).getIdPanier());
+             
+         }
+         switchSceneCart( event);
+
+    }
+    
+     @FXML
+    void goToStore(ActionEvent event) throws IOException {
+        goback(event);
+
+    }
+    
+      @FXML
+    void goback(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/BoutiqueFXML.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
     
     
-     private void displayProduits(ObservableList<panier> paniers) {
+      @FXML
+    void switchSceneCart(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/PanierFXML.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    
+   
+    
+    
+     private void displayPaniers(ObservableList<panier> paniers) {
         grid.getChildren().clear();
         int column = 0;
         int row = 1;
@@ -88,6 +140,8 @@ public class PanierFXMLController implements Initializable {
         try {
          
             for (int i = 0; i < paniers.size(); i++) {
+               
+                
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("PanierItemFXML.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
@@ -95,10 +149,12 @@ public class PanierFXMLController implements Initializable {
                 PanierItemFXMLController itemController = fxmlLoader.getController();
               
                     itemController.setData(paniers.get(i));
+                    
+                    //itemController.plusQuantity(sommeprod.setText( Float.toString (Float.parseFloat(sommeprod.getText()) ) + 1 ));
                     //System.out.println(paniers.get(i).getIdPanier());
                     
-                    //sommeprod=Integer.toString(Integer.parseInt(itemController.TotItemPrice));
-                    
+                    //sommeprod.setText (Integer.toString(Integer.parseInt(itemController.ps.afficherPanier().) ;
+                   
                 if (column == 1) { 
                     column = 0;
                     row++;
@@ -130,8 +186,30 @@ public class PanierFXMLController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        displayProduits(getProduits());
+        displayPaniers(getPaniers());
+        
+         /* FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("PanierItemFXML.fxml"));
+        try {
+            AnchorPane anchorPane = fxmlLoader.load();
+        } catch (IOException ex) {
+            Logger.getLogger(PanierFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+                PanierItemFXMLController itemController = fxmlLoader.getController();
+                
+       
+        
+         for (int i = 0; i < paniers.size(); i++) {
+              String a = itemController.TotItemPrice.getText();
+             System.out.println(a);
+             sommeprod.setText (Float.toString( Float.parseFloat(a)) + ( Float.parseFloat(sommeprod.getText())))  ;
+         }
+         }*/
+        
+         
         // TODO
     }    
     
+
 }

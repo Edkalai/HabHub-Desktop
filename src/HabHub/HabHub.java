@@ -38,7 +38,7 @@ public class HabHub {
         }
         // *****************************************************************
         
-          Produit p1 = new Produit (11,11,"makrouna","spaghetti num 3","Warda",1000);
+          //Produit p1 = new Produit (11,11,"makrouna","spaghetti num 3","Warda",1000);
         
         ProduitService sp1 = new ProduitService();
         
