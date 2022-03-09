@@ -17,7 +17,7 @@
          <children>
             <ImageView fitHeight="51.0" fitWidth="238.0" layoutX="95.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/img/HabHub_Logo.png" />
+                  <Image url="@../assets/assets/img/Logo+Text%20(1).png" />
                </image>
             </ImageView>
             <TextField fx:id="email" layoutX="59.0" layoutY="101.0" prefHeight="44.0" prefWidth="274.0" promptText="email" styleClass="emailbox" />
@@ -30,7 +30,7 @@
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="301.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="453.0" fitWidth="400.0" layoutX="162.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
          <image>
-            <Image url="@../assets/img/photo-1587300003388-59208cc962cb.png" />
+            <Image url="@../assets/assets/img/photo-1587300003388-59208cc962cb.png" />
          </image>
       </ImageView>
       <Text fill="#515151" layoutX="782.0" layoutY="621.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don’t have an account ?">

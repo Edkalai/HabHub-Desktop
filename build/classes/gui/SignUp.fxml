@@ -21,7 +21,7 @@
          <children>
             <ImageView fitHeight="51.0" fitWidth="238.0" layoutX="177.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/img/HabHub_Logo.png" />
+                  <Image url="@../assets/img/LogoText.png" />
                </image>
             </ImageView>
             <TextField fx:id="email" layoutX="101.0" layoutY="130.0" prefHeight="51.0" prefWidth="357.0" promptText="Email" styleClass="emailbox" />

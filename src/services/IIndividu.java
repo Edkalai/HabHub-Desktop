@@ -16,6 +16,8 @@ import java.util.List;
  */
 public interface IIndividu {
              public void ajouter(Individu I,Utilisateur U)throws SQLException;
+                         // public void ajouter1(Individu I)throws SQLException;
+
         public boolean Update(Individu i);
         public boolean delete(int idIndividu) throws SQLException;
         public List<Individu> afficherIndividu() throws SQLException;

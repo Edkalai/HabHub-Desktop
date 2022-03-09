@@ -57,7 +57,8 @@ public class EnterMailController implements Initializable {
             }
             if ( gmail.getText()==null){
                 System.out.println(" gmail not found");}
-            else{SwitchScene(event);}
+            else{
+                SwitchScene(event);}
    
             
             SwitchScene(event);

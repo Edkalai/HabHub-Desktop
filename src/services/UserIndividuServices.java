@@ -165,7 +165,7 @@ public class UserIndividuServices implements IIndividu {
     public List<Individu> afficherIndividu() throws SQLException {
                
         List<Individu> Individu = new ArrayList<>();
-        String req = "select * from individu;";
+        String req = "select * from individu i join utilisateur u on i.idUtilisateur=u.idUtilisateur";
         stm = connect.createStatement();
         ResultSet rst = stm.executeQuery(req);
             while (rst.next()) {

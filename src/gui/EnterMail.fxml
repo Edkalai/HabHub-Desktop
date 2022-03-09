@@ -12,7 +12,7 @@
         <URL value="@log_in.css" />
     </stylesheets>
    <children>
-      <Button layoutX="329.0" layoutY="224.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="103.0" styleClass="signup" text="send !" textFill="#e0642c" />
+      <Button layoutX="329.0" layoutY="224.0" mnemonicParsing="false" onAction="#SendEmail" prefHeight="42.0" prefWidth="103.0" styleClass="signup" text="send !" textFill="#e0642c" />
       <TextField fx:id="gmail" layoutX="102.0" layoutY="151.0" onAction="#SendEmail" prefHeight="49.0" prefWidth="397.0" promptText="my gmail account" styleClass="emailbox" />
       <Text layoutX="102.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="please enter your gmail account!" wrappingWidth="405.9453125">
          <font>
