@@ -26,6 +26,14 @@ public class Business {
     int optional2;
     String image;
 
+    public Utilisateur getUser() {
+        return user;
+    }
+
+    public void setUser(Utilisateur user) {
+        this.user = user;
+    }
+
   
     List<ServiceBusiness> BServices = new ArrayList<>();
 
@@ -60,11 +68,17 @@ public class Business {
         this.idBusiness=idBusiness;  
         this.titre=titre;  
     }
+        public Business(int idBusiness,Utilisateur user ,String titre){
+        this.idBusiness=idBusiness; 
+        this.user=user;  
+        this.titre=titre;  
+    }
     public Business(String titre,String description){
         this.titre=titre;  
         this.description=description;  
 
     }
+    
     public Business( String titre, String description, String horaire, String ville, String localisation,String type) {
         this.titre = titre;
         this.description = description;
@@ -86,7 +100,7 @@ public class Business {
     
     }
 
-    public Business(int idBusiness, Utilisateur user, String titre, String description, String horaire, String ville, String localisation,String type,int experience,String image) {
+    public Business(int idBusiness, Utilisateur user, String titre, String description, String horaire, String ville, String localisation,String type,int experience,int optional2,String image) {
         this.idBusiness = idBusiness;
         this.user = user;
         this.titre = titre;
@@ -96,6 +110,7 @@ public class Business {
         this.localisation = localisation;
         this.type = type;
         this.experience=experience;
+        this.optional2=optional2;
         this.image=image;
 
 

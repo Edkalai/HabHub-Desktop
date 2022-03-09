@@ -7,6 +7,7 @@ package services;
 
 import entities.Business;
 import entities.ServiceBusiness;
+import entities.Utilisateur;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -105,6 +106,22 @@ public class ServiceBusinessServices implements Interface_ServiceBusiness {
         }
         return BServices;
         }
+    public List<ServiceBusiness> afficherServicesBack() throws SQLException{
+        List<ServiceBusiness> BServices = new ArrayList<>();
+        PreparedStatement stm = connect.prepareStatement("select * from business_services BS JOIN business B on BS.idBusiness=B.idBusiness JOIN utilisateur u on u.idUtilisateur=B.idUtilisateur");
+        ResultSet rst = stm.executeQuery();
+         
+            while (rst.next()) {
+            ServiceBusiness BS = new ServiceBusiness (rst.getInt("idBusinessServices"),
+            new Business(rst.getInt("idBusiness"),new Utilisateur(rst.getString("email")),rst.getString("titre")),
+            rst.getString("nomService"),
+            rst.getFloat("prix"));
+            BServices.add(BS);
+        }
+        return BServices;
+        }
+    
+
     
         public List<ServiceBusiness> filterBusinessById (int businessId) throws SQLException{
         List<ServiceBusiness> BServices = new ArrayList<>();
@@ -161,5 +178,27 @@ public class ServiceBusinessServices implements Interface_ServiceBusiness {
         return BServices;
         
     }
+             String req = "select * from business b JOIN utilisateur u on b.idUtilisateur=.u.idUtilisateur where b.type= ? and ( b.titre like ? or b.ville like ? or b.description like ?);";
+
+      public List<ServiceBusiness> rechercherServicesBack(String input) throws SQLException{
+        List<ServiceBusiness> BServices = new ArrayList<>();
+
+        String req = "select * from business_services sb JOIN business b on sb.idBusiness=b.idBusiness JOIN utilisateur u on b.idUtilisateur=.u.idUtilisateur where ( sb.nomService like ? or u.email like ? or sb.prix like ?);";
+        PreparedStatement ps = connect.prepareStatement(req);
+        ps.setString(1, "%" + input+ "%");
+        ps.setString(2, "%" + input+ "%");
+        ps.setString(3, "%" + input+ "%");
+
+        ResultSet rst = ps.executeQuery();
+            
+        while (rst.next()) {
+            ServiceBusiness BS = new ServiceBusiness (rst.getInt("idBusinessServices"),
+            new Business(rst.getInt("idBusiness"),new Utilisateur(rst.getString("email")),rst.getString("titre")),
+            rst.getString("nomService"),
+            rst.getFloat("prix"));
+            BServices.add(BS);
+        }
+        return BServices;
+      }
     
 }

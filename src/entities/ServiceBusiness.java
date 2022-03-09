@@ -13,6 +13,8 @@ public class ServiceBusiness {
    int idBusinessServices;
    Business business;
    String nomService;
+
+  
    float prix;
    
     public ServiceBusiness() {
@@ -44,7 +46,13 @@ public class ServiceBusiness {
     
      
     
+  public Business getBusiness() {
+        return business;
+    }
 
+    public void setBusiness(Business business) {
+        this.business = business;
+    }
     public int getIdBusinessServices() {
         return idBusinessServices;
     }

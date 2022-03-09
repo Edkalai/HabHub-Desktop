@@ -26,6 +26,13 @@ public class Utilisateur {
         this.type = type;
     }
 
+    public Utilisateur(int idUtilisateur, String email, int numTel) {
+        this.idUtilisateur = idUtilisateur;
+        this.email = email;
+        this.numTel = numTel;
+    }
+
+    
     public Utilisateur(int idUtilisateur, String email, String password, int numTel, String type) {
         this.idUtilisateur = idUtilisateur;
         this.email = email;
@@ -35,6 +42,9 @@ public class Utilisateur {
     }
       public Utilisateur(int idUtilisateur) {
         this.idUtilisateur = idUtilisateur;
+    }
+      public Utilisateur(String email) {
+        this.email = email;
     }
 
     public int getIdUtilisateur() {
