@@ -64,18 +64,28 @@ public class UserIndividuServices implements IIndividu {
     }
 
     @Override
-    public boolean Update(int idIndividu, Utilisateur utilisateur, String nom, String prenom, String dateNaissance, String sexe,String adresse, String facebook, String instagram, String whatsapp) {
+    public boolean Update(Individu i) {
                     try {
 
-            PreparedStatement pre = connect.prepareStatement("UPDATE individu SET nom = ? , prenom= ? ,dateNaissance= ? , sexe= ? , adresse= ? , facebook= ?,instagram= ? , whatsapp= ? , where idIndividu= ? ;");
-            pre.setString(1, nom);
-            pre.setString(2, prenom);   
-            pre.setString(3,dateNaissance);
-            pre.setString(4, sexe);
-            pre.setString(5, adresse);
-            pre.setString(6, facebook);
-            pre.setString(7, instagram);
-            pre.setString(8, whatsapp);
+            PreparedStatement pre = connect.prepareStatement("UPDATE individu i join utilisateur u on i.idUtilisateur=u.idUtilisateur SET nom = ? ,"
+                    + " email=? , prenom= ?,numtel=?"
+                    + "sexe= ? , adresse= ? ,    "
+                    + "facebook= ?,instagram= ? ,"
+                    + " whatsapp= ? where idIndividu= ? ;");
+           pre.setString(1, i.getNom());
+            pre.setString(2, i.getUtilisateur().getEmail());
+               
+           pre.setString(3, i.getPrenom());
+           pre.setInt(4, i.getUtilisateur().getNumTel());
+           //pre.setString(5, i.getDateNaissance());
+           pre.setString(5, i.getSexe());
+           pre.setString(6, i.getAdresse());
+           pre.setString(7, i.getFacebook());
+           pre.setString(8, i.getInstagram());
+           pre.setString(9, i.getWhatsapp());
+           pre.setInt(10,Statics.currentIndividu.getIdIndividu());
+
+            
 
             if (pre.executeUpdate() != 0) {
                 System.out.println("individu Updated successfully!!");
@@ -89,6 +99,7 @@ public class UserIndividuServices implements IIndividu {
         }
         return false;
     }
+
 
     @Override
     public boolean delete(int idIndividu) throws SQLException {
@@ -151,11 +162,12 @@ public class UserIndividuServices implements IIndividu {
             System.out.println("erreur lors de la recherche du depot " + ex.getMessage());
             return false;
         }}
+    
     @Override
     public List<Individu> afficherIndividu() throws SQLException {
                
         List<Individu> Individu = new ArrayList<>();
-        String req = "select * from individu;";
+        String req = "select * from individu i join utilisateur u on i.idUtilisateur=u.idUtilisateur";
         stm = connect.createStatement();
         ResultSet rst = stm.executeQuery(req);
             while (rst.next()) {
@@ -234,5 +246,25 @@ return i;
              }
             return i;
  
+    }
+    
+    public List<Individu> findIndividuByName(String u) throws SQLException{
+       List<Individu> L = new ArrayList();
+          try {
+       PreparedStatement req = connect.prepareStatement("select * from individu where nom like ?");
+            req.setString(1,"%"+u+"%");
+
+             ResultSet rst= req.executeQuery();
+             while(rst.next())
+             {
+                 Utilisateur nu = new Utilisateur(rst.getInt("idUtilisateur"));
+                 Individu i = new Individu(rst.getInt("idIndividu"),nu,rst.getString("nom"),rst.getString("prenom"),
+                 rst.getString("sexe"),rst.getString("adresse"),rst.getString("facebook"),rst.getString("instagram"),rst.getString("whatsapp"));
+                    L.add(i);
+             }
+         } catch (SQLException ex) {
+            ex.printStackTrace();
+         }
+return L;
     }
 }
