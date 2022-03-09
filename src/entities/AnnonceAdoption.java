@@ -6,6 +6,7 @@
 package entities;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -22,15 +23,15 @@ public class AnnonceAdoption {
     public AnnonceAdoption() {
     }
 
-    /**
-     *
-     * @param idAnnonceAdoption
-     * @param idIndividu
-     * @param Chien
-     * @param datePublication
-     * @param description
-     * @param localisation
-     */
+    public AnnonceAdoption(int idAnnonceAdoption, Individu idIndividu, Chien Chien, String description, String localisation) {
+        this.idAnnonceAdoption = idAnnonceAdoption;
+        this.idIndividu = idIndividu;
+        this.Chien = Chien;
+        this.description = description;
+        this.localisation = localisation;
+    }
+
+    
     public AnnonceAdoption(int idAnnonceAdoption, Individu idIndividu, Chien Chien, Date datePublication, String description, String localisation) {
         this.idAnnonceAdoption = idAnnonceAdoption;
         this.idIndividu = idIndividu;
@@ -115,7 +116,7 @@ public class AnnonceAdoption {
     public String toString() {
         return "AnnonceAdoption{" + "idAnnonceAdoption=" + idAnnonceAdoption + ", idIndividu=" + idIndividu + ", Chien=" + Chien + ", datePublication=" + datePublication + ", description=" + description + ", localisation=" + localisation + '}';
     }
-
+    
     
 
     

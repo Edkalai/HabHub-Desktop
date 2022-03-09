@@ -4,8 +4,9 @@
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -185,19 +186,21 @@
                                                       <TextField fx:id="searchBox" prefHeight="31.0" prefWidth="423.0" promptText="Search for names, Dog Breeds, Age, Location" styleClass="transparent" />
                                                    </children>
                                                 </HBox>
-                                                <Pane prefHeight="51.0" prefWidth="200.0" />
-                                                <HBox alignment="CENTER" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="100.0" styleClass="searchBar">
+                                                <Pane prefHeight="51.0" prefWidth="60.0" />
+                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../assets/img/searchBar/funnel.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ComboBox fx:id="filterComboBox" onAction="#setFilterValue" prefHeight="17.0" prefWidth="177.0" visibleRowCount="5" />
+                                                <Pane prefHeight="59.0" prefWidth="74.0" />
+                                                <HBox alignment="CENTER" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="70.0" styleClass="searchBar">
                                                    <children>
-                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@../assets/img/searchBar/funnel.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                      <Label text="Filters" />
+                                                      <ComboBox fx:id="filterComboBoxValue" prefHeight="40.0" prefWidth="68.0" visibleRowCount="5" />
                                                    </children>
                                                 </HBox>
                                                 <Pane minWidth="-Infinity" prefHeight="200.0" prefWidth="20.0" />
-                                                <HBox alignment="CENTER" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="100.0" styleClass="searchBar">
+                                                <HBox alignment="CENTER" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="74.0" styleClass="searchBar">
                                                    <children>
                                                       <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
@@ -207,7 +210,7 @@
                                                       <Label text=" Sort" />
                                                    </children>
                                                 </HBox>
-                                                <Pane minWidth="-Infinity" prefHeight="200.0" prefWidth="20.0" />
+                                                <Pane minWidth="-Infinity" prefHeight="59.0" prefWidth="10.0" />
                                              </children>
                                           </HBox>
                                           <Pane maxHeight="-Infinity" maxWidth="70.0" prefHeight="50.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
@@ -217,13 +220,15 @@
                                        </VBox.margin>
                                     </HBox>
                                     <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" />
-                                    <GridPane fx:id="grid" prefHeight="11.0" prefWidth="868.0">
-                                      <rowConstraints>
-                                        <RowConstraints />
-                                      </rowConstraints>
-                                    </GridPane>
-                                    <Pane prefHeight="412.0" prefWidth="868.0" />
-                                    <Pagination prefHeight="75.0" prefWidth="868.0" />
+                                    <ScrollPane prefHeight="561.0" prefWidth="868.0">
+                                       <content>
+                                          <GridPane fx:id="grid" prefHeight="11.0" prefWidth="868.0">
+                                            <rowConstraints>
+                                              <RowConstraints />
+                                            </rowConstraints>
+                                          </GridPane>
+                                       </content>
+                                    </ScrollPane>
                                  </children>
                               </VBox>
                            </children>
@@ -246,11 +251,11 @@
                                  </viewport>
                               </ImageView>
                               <Pane prefHeight="128.0" prefWidth="250.0" VBox.vgrow="ALWAYS" />
-                              <HBox prefHeight="36.0" prefWidth="225.0">
+                              <HBox prefHeight="55.0" prefWidth="250.0">
                                  <children>
                                     <VBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="146.0">
                                        <children>
-                                          <Label fx:id="chienNameLable" prefHeight="36.0" prefWidth="108.0" style="-fx-font-size: 25; -fx-font-weight: bold;" text="Label">
+                                          <Label fx:id="chienNameLable" prefHeight="30.0" prefWidth="149.0" style="-fx-font-size: 20; -fx-font-weight: bold;" text="Label">
                                              <font>
                                                 <Font size="24.0" />
                                              </font></Label>
@@ -262,7 +267,7 @@
                                                       <Image url="@../assets/img/locationIcon.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label fx:id="adoptionLocation" prefHeight="25.0" prefWidth="57.0" styleClass="adoptionLocation" text="Label" textFill="#6e6e6e">
+                                                <Label fx:id="adoptionLocation" prefHeight="25.0" prefWidth="124.0" styleClass="adoptionLocation" text="Label" textFill="#6e6e6e">
                                                    <HBox.margin>
                                                       <Insets left="10.0" />
                                                    </HBox.margin>
@@ -271,8 +276,8 @@
                                           </HBox>
                                        </children>
                                     </VBox>
-                                    <Pane prefHeight="61.0" prefWidth="92.0" />
-                                    <ImageView fx:id="genderImage" fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                    <Pane prefHeight="55.0" prefWidth="42.0" />
+                                    <ImageView fx:id="genderImage" fitHeight="35.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                                        <HBox.margin>
                                           <Insets right="20.0" />
                                        </HBox.margin>

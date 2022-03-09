@@ -88,7 +88,7 @@ public class ChienService {
     
     public boolean delete(int idChien) throws SQLException {
 
-        PreparedStatement pre = connect.prepareStatement("Delete from chien where IdChien=? ;");
+        PreparedStatement pre = connect.prepareStatement("Delete from chien where idChien=? ;");
         pre.setInt(1, idChien);
         if (pre.executeUpdate() != 0) {
             System.out.println("Chien Deleted");
@@ -141,6 +141,28 @@ public class ChienService {
                 c.setDescription(rst.getString(7));
             }
             return c;
+    }
+       public Chien fetchAddedChien() throws SQLException {
+       Chien c = new Chien();
+        String req = "SELECT * FROM chien WHERE idChien = (SELECT MAX(idChien) FROM chien)";
+        ste = connect.createStatement();
+            ResultSet rst = ste.executeQuery(req);
+            while (rst.next()) {
+                Individu ni = new Individu(rst.getInt("idIndividu"));
+                Chien a = new Chien(rst.getInt("idChien"),
+                ni,
+                rst.getString("nom"),
+                rst.getString("sexe"),
+                rst.getString("age"),
+                rst.getBoolean("vaccination"),
+                rst.getString("description"),
+                rst.getString("image"),
+                rst.getString("color"),
+                rst.getString("race"),
+                rst.getString("groupe"));
+                c=a;
+                }
+                return c;
     }
         
      

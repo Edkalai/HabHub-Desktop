@@ -122,4 +122,30 @@
     -fx-effect: dropshadow(gaussian,rgba(194, 213, 231, 0.7) , 20,0 , 0, 0);
     -fx-background-radius: 15px;
 }
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
 
+.scroll-pane {
+   -fx-background-color: transparent;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #E0642C;
+    -fx-background-radius: 1em;
+
+}
+
+.scroll-bar:vertical .increment-arrow,
+.scroll-bar:horizontal .increment-arrow,
+.scroll-bar:horizontal .decrement-arrow,
+.scroll-bar:vertical .decrement-arrow{
+    -fx-shape : " ";
+    -fx-background-color: transparent;
+
+}
+.scroll-pane .corner{
+        -fx-background-color: transparent;
+
+}

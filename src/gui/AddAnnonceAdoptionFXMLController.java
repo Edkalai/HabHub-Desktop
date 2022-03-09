@@ -9,6 +9,8 @@ import services.ChienService;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,7 +38,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import services.AnnonceAdoptionService;
-import services.UserIndividuServices;
 import utils.Statics;
 
 public class AddAnnonceAdoptionFXMLController implements Initializable {
@@ -78,9 +79,13 @@ public class AddAnnonceAdoptionFXMLController implements Initializable {
     
     @FXML
     private Label vaccinationLabel;
+    @FXML
+    private Label ageMessage;
+    @FXML
+    private Button addDog;
 
     
-    UserIndividuServices uis = new UserIndividuServices();
+    
 
     @FXML
     String insertImage(ActionEvent event) throws SQLException {
@@ -95,12 +100,11 @@ public class AddAnnonceAdoptionFXMLController implements Initializable {
 
             dogImageView.setImage(imageToBeSaved);
 
-            
-
         }
 
         return imageName;
     }
+
     ChienService cs = new ChienService();
     AnnonceAdoptionService as = new AnnonceAdoptionService();
 
@@ -110,6 +114,10 @@ public class AddAnnonceAdoptionFXMLController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+    
+    private static boolean isNumeric(String str){
+        return str != null && str.matches("[0-9.]+");
     }
 
     @FXML
@@ -152,50 +160,88 @@ public class AddAnnonceAdoptionFXMLController implements Initializable {
             vaccination=false;
         }   
         
-        if(dogNameLabel.getText().isEmpty() | ageLabel.getText().isEmpty()|colorLabel.getText().isEmpty()|descriptionTextArea.getText().isEmpty()){
-                
+        if(dogNameLabel.getText().isEmpty() | ageLabel.getText().isEmpty()|colorLabel.getText().isEmpty()|descriptionTextArea.getText().isEmpty()|!isNumeric(ageLabel.getText())){
+            
                 Alert alert = new Alert(AlertType.ERROR);
-                
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Fill all blank fields!");
                 alert.showAndWait();
                 
-            }
-       
+            
              if(dogNameLabel.getText().isEmpty()){
-                dogNameLabel.setStyle("-fx-border-width:2px; -fx-border-color:#FF6347");}
+                dogNameLabel.setStyle("-fx-border-width:2px; -fx-border-color:#d30c0c");}
              
              if(ageLabel.getText().isEmpty()){
-                ageLabel.setStyle("-fx-border-width:2px; -fx-border-color:#FF6347");}
+                ageLabel.setStyle("-fx-border-width:2px; -fx-border-color:#d30c0c");}
+             
+             if(!isNumeric(ageLabel.getText())){
+                 ageMessage.setStyle("-fx-text-fill:#d30c0c");
+                 ageLabel.setStyle("-fx-border-width:2px; -fx-border-color:#d30c0c");}
              
              if(colorLabel.getText().isEmpty()){
-                colorLabel.setStyle("-fx-border-width:2px; -fx-border-color:#FF6347");}
+                colorLabel.setStyle("-fx-border-width:2px; -fx-border-color:#d30c0c");}
              
              if(descriptionTextArea.getText().isEmpty()){
-                descriptionTextArea.setStyle("-fx-border-width:2px; -fx-border-color:#FF6347");}
+                descriptionTextArea.setStyle("-fx-border-width:2px; -fx-border-color:#d30c0c");}
              
              
+             
+                }
+            
              else{
                 String nom = dogNameLabel.getText();
                 String description = descriptionTextArea.getText();
                 String color = colorLabel.getText();
                 Statics.currentIndividu.getIdIndividu();
-                String image=Integer.toString(Statics.currentIndividu.getIdIndividu()) + "_" + Integer.toString(uis.getDogsNumberByIdIndividu(Statics.currentIndividu.getIdIndividu())+1)+".png";
-                File file = new File("C:\\Users\\Tun21\\Desktop\\HabHub\\HabHub-Desktop\\src\\assets\\img\\chien"
-                    +image);
-            try {
-                ImageIO.write(SwingFXUtils.fromFXImage(dogImageView.getImage(), null), "png", file);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                String image = Integer.toString(Statics.currentIndividu.getIdIndividu()) + "_" + Integer.toString(as.getAnnonceAdoptionNumberByIdIndividu(Statics.currentIndividu.getIdIndividu())+ 1);
+                File file = new File("C:\\Users\\Tun21\\Desktop\\HabHub\\HabHub-Desktop\\src\\assets\\img\\adoption\\"
+                + image + ".png");
+                try {
+                    ImageIO.write(SwingFXUtils.fromFXImage(dogImageView.getImage(), null), "png", file);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
         
         Chien c = new Chien(nom, gender, age, vaccination, description, image, color, selectedRace, selectedGroupe);
         cs.ajouterChienSansProprietaire(c);
+        Chien nc= cs.fetchAddedChien();
+        AnnonceAdoption a = new AnnonceAdoption(Statics.currentIndividu,nc,nc.getDescription(),Statics.currentIndividu.getAdresse());
+        List <AnnonceAdoption> allAnnonce = new ArrayList(as.displayAnnonceAdoption());
+        boolean verif= false;
         
-        AnnonceAdoption a = new AnnonceAdoption(Statics.currentIndividu,c,c.getDescription(),Statics.currentIndividu.getAdresse());
-        as.addAnnonceAdoption(a);
-        switchSceneAnnonceAdoption(event);
+        for (int i = 0; i < allAnnonce.size(); i++){
+         
+            String descrip = allAnnonce.get(i).getIdChien().getDescription();
+            String couleur = allAnnonce.get(i).getIdChien().getColor();
+            String ra = allAnnonce.get(i).getIdChien().getRace();
+            String gr = allAnnonce.get(i).getIdChien().getGroupe();
+            String aa = allAnnonce.get(i).getIdChien().getAge();
+            String name = allAnnonce.get(i).getIdChien().getNom();
+            String sex= allAnnonce.get(i).getIdChien().getSexe();
+            
+            
+           
+               if(name.equals(a.getIdChien().getNom()) && aa.equals(a.getIdChien().getAge()) && couleur.equals(a.getIdChien().getColor())
+                       && ra.equals(a.getIdChien().getRace()) && gr.equals(a.getIdChien().getGroupe()) && descrip.equals(a.getIdChien().getDescription())  && sex.equals(a.getIdChien().getSexe()) )
+                {
+                verif= true;
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Existing announce");
+                alert.setHeaderText(null);
+                alert.setContentText("Announcement already exists");
+                alert.showAndWait();
+                break;
+            }
+        }
+        if( !verif){
+            as.addAnnonceAdoption(a);
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("Announcement added successfully");
+            alert.showAndWait();
+        } 
              }
     }
 

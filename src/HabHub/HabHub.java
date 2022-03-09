@@ -37,13 +37,13 @@ public class HabHub {
         AnnonceAdoptionService as = new AnnonceAdoptionService();
         
         //cs.updateChien(c.getIdChien(), c.getNom(), c.getSexe(), c.getAge(), c.getVaccination(), c.getDescription(), c.getImage(), c.getColor(), c.getRace(), c.getGroupe()); 
-        try {
+        /*try {
         cs.ajouterChienSansProprietaire(c);
         System.out.println("ajout avec succes");
         System.out.println(c);
         } catch (SQLException ex) {
         System.out.println(ex.getMessage());
-        } 
+        } */
         /*try {
         cs.delete(b.getIdChien());
         System.out.println("supression avec succes");
@@ -55,8 +55,28 @@ public class HabHub {
         } catch (SQLException ex) {
         System.out.println(ex.getMessage());
         }*/
+        try {
+        System.out.println(as.afficherLocation());
+        } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+        }
+        /*try {
+        System.out.println(as.afficherAnnonceDogName());
+        } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+        }*/
+        /*try {
+        System.out.println(as.afficherAnnonceUserName());
+        } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+        }*/
         /*try {
         System.out.println(cs.findChienById(b.getIdChien()));
+        } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+        }*/
+        /*try {
+        System.out.println(cs.fetchAddedChien());
         } catch (SQLException ex) {
         System.out.println(ex.getMessage());
         }*/

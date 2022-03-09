@@ -64,7 +64,7 @@ public class ChienFXMLController implements Initializable {
         nameLabel.setText(annonceAdoption.getIdChien().getNom()+",");
         ageLabel.setText(annonceAdoption.getIdChien().getAge());
         locationLabel.setText(annonceAdoption.getLocalisation());
-        Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/dog.png"));
+        Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/adoption/"+annonceAdoption.getIdChien().getImage()+".png"));
         dogImage.setImage(dogImg);
         //Image genderImg = new Image(getClass().getResourceAsStream("../assets/img/female.png"));
         Image genderImg = null;

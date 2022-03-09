@@ -11,11 +11,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,6 +28,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -83,6 +88,11 @@ public class AnnonceAdoptionFXMLController implements Initializable {
     private Text ownerDescription;
    @FXML
     private TextField searchBox;
+   
+    @FXML
+    private ComboBox<String> filterComboBox;
+    @FXML
+    private ComboBox<String> filterComboBoxValue;
 
     @FXML
     private GridPane grid;
@@ -94,13 +104,65 @@ public class AnnonceAdoptionFXMLController implements Initializable {
     private Parent root;
     
     public ObservableList<AnnonceAdoption> data = FXCollections.observableArrayList();
+    public ObservableList<String> locations = FXCollections.observableArrayList();
+    public ObservableList<String> dogNames = FXCollections.observableArrayList();
+    public ObservableList<String> userNames = FXCollections.observableArrayList();
     AnnonceAdoptionService sa = new AnnonceAdoptionService();
+    
+    private ObservableList<String> getLocaions() {
+        HashSet<String> loc = new HashSet<>();
+
+        try {
+            loc = sa.afficherLocation();
+            
+         
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        locations.addAll(loc);
+        return locations;
+
+    }
+    
+    private ObservableList<String> getDogNames() {
+        HashSet<String> dogn = new HashSet<>();
+
+        try {
+            dogn = sa.afficherDogName();
+            
+         
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        dogNames.addAll(dogn);
+        return dogNames;
+
+    }
+     private ObservableList<String> getUserNames() {
+        HashSet<String> usen = new HashSet<>();
+
+        try {
+            usen = sa.afficherUserName();
+            
+         
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        userNames.addAll(usen);
+        return userNames;
+
+    }
     
     private ObservableList<AnnonceAdoption> getAnnonceAdoption() {
         List<AnnonceAdoption> annonces = new ArrayList<>();
 
         try {
             annonces = sa.displayAnnonceAdoption();
+            
+          System.out.println(annonces);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -109,6 +171,115 @@ public class AnnonceAdoptionFXMLController implements Initializable {
         return data;
 
     }
+    private ObservableList<AnnonceAdoption> getLocationAnnonceAdoption(String Filter) {
+        List<AnnonceAdoption> annonces = new ArrayList<>();
+
+        try {
+            annonces = sa.afficherAnnonceLocation(Filter);
+            
+          System.out.println(annonces);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        data.clear();
+        data.addAll(annonces);
+        return data;
+
+    }
+     private ObservableList<AnnonceAdoption> getDogNameAnnonceAdoption(String Filter) {
+        List<AnnonceAdoption> annonces = new ArrayList<>();
+
+        try {
+            annonces = sa.afficherAnnonceDogName(Filter);
+            
+          System.out.println(annonces);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        data.clear();
+        data.addAll(annonces);
+        return data;
+
+    }
+      private ObservableList<AnnonceAdoption> getUserNameAnnonceAdoption(String Filter) {
+        List<AnnonceAdoption> annonces = new ArrayList<>();
+
+        try {
+            annonces = sa.afficherAnnonceUserName(Filter);
+            
+          System.out.println(annonces);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        data.clear();
+        data.addAll(annonces);
+        return data;
+
+    }
+       private ObservableList<AnnonceAdoption> getVaccinatedAnnonceAdoption() {
+        List<AnnonceAdoption> annonces = new ArrayList<>();
+        int i= 1 ;
+
+        try {
+            annonces = sa.afficherAnnonceVaccinated(i);
+            
+          System.out.println(annonces);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        data.clear();
+        data.addAll(annonces);
+        return data;
+
+    }
+       
+        private ObservableList<AnnonceAdoption> getNoneVaccinatedAnnonceAdoption() {
+        List<AnnonceAdoption> annonces = new ArrayList<>();
+        int o=0;
+
+        try {
+            annonces = sa.afficherAnnonceNoneVaccinated(o);
+            
+          System.out.println(annonces);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        data.clear();
+        data.addAll(annonces);
+        return data;
+
+    }
+         private ObservableList<AnnonceAdoption> getMaleAnnonceAdoption() {
+        List<AnnonceAdoption> annonces = new ArrayList<>();
+
+        try {
+            annonces = sa.afficherAnnonceMale();
+            
+          System.out.println(annonces);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        data.clear();
+        data.addAll(annonces);
+        return data;
+
+    }
+          private ObservableList<AnnonceAdoption> getFemaleAnnonceAdoption() {
+        List<AnnonceAdoption> annonces = new ArrayList<>();
+
+        try {
+            annonces = sa.afficherAnnoncefemale();
+            
+          System.out.println(annonces);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        data.clear();
+        data.addAll(annonces);
+        return data;
+
+    }
+       
     private ObservableList<AnnonceAdoption> getRechercheAnnonceAdoption(String input) {
         List<AnnonceAdoption> annoncesRecherche = new ArrayList<>();
 
@@ -140,7 +311,7 @@ public class AnnonceAdoptionFXMLController implements Initializable {
         adoptionLocation.setText(a.getLocalisation());
         adoptionFosterName.setText(a.getIdIndividu().getPrenom());
         adoptionFosterAdress.setText(a.getIdIndividu().getAdresse());
-        Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/dog.png"));
+        Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/adoption/"+a.getIdChien().getImage()+".png"));
         chienImg.setImage(dogImg);
         
         /*chosenFruitCard.setStyle("-fx-background-color: #" + fruit.getColor() + ";\n" +
@@ -205,10 +376,41 @@ public class AnnonceAdoptionFXMLController implements Initializable {
         stage.show();
     }
     
+    ObservableList<String> sexes = FXCollections.observableArrayList("Male", "Female");
+    ObservableList<String> vaccinations = FXCollections.observableArrayList("Vaccinated", "None vaccinated");
     
+    @FXML
+    private void setFilterValue(ActionEvent event) throws IOException
+    {
+        String selectedFilter = filterComboBox.getSelectionModel().getSelectedItem();
+        if(selectedFilter.equals("Dog sexe")){
+            filterComboBoxValue.setItems(sexes);
+        }
+        else if (selectedFilter.equals("Dog name")){
+            filterComboBoxValue.setItems(dogNames);
+        }
+        else if (selectedFilter.equals("User name")){
+           filterComboBoxValue.setItems(userNames);
+        }
+        else if (selectedFilter.equals("Location")){
+            filterComboBoxValue.setItems(locations);
+            
+        }
+        else{
+            filterComboBoxValue.setItems(vaccinations);
+        }
+        filterComboBoxValue.equals(dogNames);
+        //return filterComboBoxValue;
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         displayAnnonces(getAnnonceAdoption());
+        getLocaions();
+        getDogNames();
+        getUserNames();
+        //setFilterValue();
+        
         if (data.size() > 0) {
             setChosenChien(data.get(0));
             myListener = new MyListener() {
@@ -224,53 +426,83 @@ public class AnnonceAdoptionFXMLController implements Initializable {
             displayAnnonces(getRechercheAnnonceAdoption(newValue));
 
         });
-        /*annoncesAdoption.addAll(getAnnonceAdoption());
-        if (annoncesAdoption.size() > 0) {
-            setChosenChien(annoncesAdoption.get(0));
-            myListener = new MyListener(){
-            @Override
-            public void onClickListener(AnnonceAdoption annonceAdoption) {
-                setChosenChien(annonceAdoption);
-            }
-            
-        };
+         /*try {
+            locations.addAll(sa.afficherLocation());
+        } catch (SQLException ex) {
+           System.out.println(ex.getMessage());
         }
-        int column = 0;
-        int row = 1;
-        
         try {
-            for (int i = 0; i < annoncesAdoption.size(); i++) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("ChienFXML.fxml"));
-                AnchorPane anchorPane = fxmlLoader.load();
-
-                ChienFXMLController chienController = fxmlLoader.getController();
-                chienController.setData(annoncesAdoption.get(i),myListener);
-
-                if (column == 6) {
-                    column = 0;
-                    row++;
-                }
-
-                grid.add(anchorPane, column++, row); //(child,column,row)
-                //set grid width
-                grid.setMinWidth(Region.USE_PREF_SIZE);
-                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                grid.setMaxWidth(Region.USE_PREF_SIZE);
-
-                //set grid height
-                grid.setMinHeight(Region.USE_PREF_SIZE);
-                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                grid.setMaxHeight(Region.USE_PREF_SIZE);
-
-                GridPane.setMargin(anchorPane, new Insets(10));
-                
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+            dogNames.addAll(sa.afficherDogName());
+        } catch (SQLException ex) {
+           System.out.println(ex.getMessage());
         }
-    }*/
-    
+        try {
+            userNames.addAll(sa.afficherUserName());
+        } catch (SQLException ex) {
+           System.out.println(ex.getMessage());
+        }*/
+        
+        
+        ObservableList<String> filterList = FXCollections.observableArrayList("Dog sexe", "Dog name","User name","Location","Vaccination");
+        filterComboBox.setItems(filterList);
+        filterComboBox.setValue("Select filter");
+        
+        filterComboBoxValue.setOnAction(event->{
+            
+           String selectedFilterValue = filterComboBoxValue.getSelectionModel().getSelectedItem();
+           for(int i=0;i<locations.size();i++){
+               if (locations.get(i).equals(selectedFilterValue)){
+                   
+                    displayAnnonces(getLocationAnnonceAdoption(selectedFilterValue));
+               }
+           }
+            for(int i=0;i<dogNames.size();i++){
+               if (dogNames.get(i).equals(selectedFilterValue)){
+                   
+                    displayAnnonces(getDogNameAnnonceAdoption(selectedFilterValue));
+               }
+           }
+             for(int i=0;i<userNames.size();i++){
+               if (userNames.get(i).equals(selectedFilterValue)){
+                   
+                    displayAnnonces(getUserNameAnnonceAdoption(selectedFilterValue));
+               }
+           }
+              for(int i=0;i<vaccinations.size();i++){
+               if (vaccinations.get(i).equals(selectedFilterValue)){
+                   if(selectedFilterValue.equals("yes")){
+                       
+                       displayAnnonces(getVaccinatedAnnonceAdoption());
+                   }
+                   else{
+                       
+                       displayAnnonces(getNoneVaccinatedAnnonceAdoption());
+                   }
+                    
+               }
+           }
+               for(int i=0;i<sexes.size();i++){
+               if (sexes.get(i).equals(selectedFilterValue)){
+                   if(selectedFilterValue.equals("Male")){
+                       displayAnnonces(getMaleAnnonceAdoption());
+                   }
+                   else {
+                       displayAnnonces(getFemaleAnnonceAdoption());
+                   }
+                   
+                    
+               }
+           }
+        });
+        
+        
+        
+        
+        
+       
+        
+        
+        
 
 }
 }
