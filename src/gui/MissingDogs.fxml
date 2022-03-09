@@ -433,7 +433,10 @@
                                                             <Image url="@../assets/img/instagram.png" />
                                                          </image>
                                                       </ImageView>
-                                                      <Pane prefHeight="200.0" prefWidth="200.0" />
+                                                      <Pane prefHeight="200.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Button layoutX="55.0" layoutY="27.0" mnemonicParsing="false" onAction="#sendSms" styleClass="submitButton" stylesheets="@ajoutform.css" text="Alert Owner" />
+                                                         </children></Pane>
                                                    </children>
                                                 </HBox>
                                              </children>

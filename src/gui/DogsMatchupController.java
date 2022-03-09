@@ -6,7 +6,6 @@
 package gui;
 
 import HabHub.CommunityListener;
-import com.jfoenix.controls.JFXTextField;
 import entities.AnnonceProprietaireChien;
 import java.io.IOException;
 import java.net.URL;

@@ -160,7 +160,7 @@ public class UserIndividuServices implements IIndividu {
         ResultSet rst = stm.executeQuery(req);
             while (rst.next()) {
             Individu k = new Individu(rst.getInt("idIndividu"),
-                       new Utilisateur(rst.getInt     ("idUtilisateur"))  ,
+                       new Utilisateur(rst.getInt     ("idUtilisateur"),rst.getString("email"),rst.getInt("numTel"))  ,
             rst.getString("nom"),
             rst.getString("prenom"),
             rst.getString("sexe"),

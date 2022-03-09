@@ -21,6 +21,15 @@ public class Chien {
     int like;
     boolean playWithMe;
 
+    public Chien(String nom, String age,String description, String color, String race, String groupe) {
+        this.nom = nom;
+        this.age = age;
+        this.description = description;
+        this.color = color;
+        this.race = race;
+        this.groupe = groupe;
+    }
+
     
 
     public Chien(int idChien, Individu individu, String nom, String sexe, String age, Boolean vaccination, String description, String image, String color, String race, String groupe, int like, boolean playWithMe) {

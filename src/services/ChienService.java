@@ -56,16 +56,28 @@ public class ChienService {
         pre.setString(6, c.getImage());
         pre.executeUpdate();
     }
+    
+     public void ajouterChienSansProprietaireb(Chien c) throws SQLException {
+        PreparedStatement pre = connect.prepareStatement("INSERT INTO chien (nom,age,description,color,race,groupe)VALUES (?,?,?,?,?,?);");
+        pre.setString(1, c.getNom());
+        pre.setString(2, c.getAge());
+        pre.setString(3, c.getDescription());
+        pre.setString(4, c.getColor());
+        pre.setString(5, c.getRace());
+        pre.setString(6, c.getGroupe());
+        pre.executeUpdate();
+    }
 
-    public boolean updateChien(int idChien, String nom, String sexe, String age, boolean vaccination, String description) {
+    public boolean updateChien(int idChien, Chien c) {
         try {
-            PreparedStatement pre = connect.prepareStatement("UPDATE chien SET nom= ? , sexe= ?, age= ?, vaccination= ?, description= ? where idChien=?;");
-            pre.setString(1, nom);
-            pre.setString(2, sexe);
-            pre.setString(3, age);
-            pre.setBoolean(4, vaccination);
-            pre.setString(5, description);
-            pre.setInt(6, idChien);
+            PreparedStatement pre = connect.prepareStatement("UPDATE chien SET nom= ? , age= ?, description= ? , color=? , race = ? , groupe = ? where idChien=?;");
+             pre.setString(1, c.getNom());
+        pre.setString(2, c.getAge());
+        pre.setString(3, c.getDescription());
+        pre.setString(4, c.getColor());
+        pre.setString(5, c.getRace());
+        pre.setString(6, c.getGroupe());
+            pre.setInt(7, idChien);
 
             if (pre.executeUpdate() != 0) {
                 System.out.println(" Chien updated");
@@ -95,14 +107,50 @@ public class ChienService {
 
     public List<Chien> afficherChiens() throws SQLException {
         List<Chien> chiens = new ArrayList<>();
-        String req = "select * from chien;";
+        String req = "select * from chien c LEFT JOIN individu i on i.idIndividu=c.idIndividu left join utilisateur u on u.idUtilisateur=i.idUtilisateur;";
         ste = connect.createStatement();
         ResultSet rst = ste.executeQuery(req);
 
         while (rst.next()) {
-            Individu ni = new Individu(rst.getInt("idIndividu"));
+             Utilisateur nu= new Utilisateur(rst.getInt("u.idUtilisateur"));
+            Individu  i= new Individu(rst.getInt("i.idIndividu"),nu,rst.getString("i.nom"),rst.getString("prenom"),rst.getString("sexe"),rst.getDate("dateNaissance"),rst.getString("adresse"),
+                    rst.getString("facebook"),rst.getString("instagram"),rst.getString("whatsapp"),rst.getBoolean("proprietaireChien"));
             Chien a = new Chien(rst.getInt("idChien"),
-                    ni,
+                    i,
+                    rst.getString("nom"),
+                    rst.getString("sexe"),
+                    rst.getString("age"),
+                    rst.getBoolean("vaccination"),
+                    rst.getString("description"),
+                    rst.getString("image"),
+                    rst.getString("color"),
+                    rst.getString("race"),
+                    rst.getString("groupe"));
+
+            chiens.add(a);
+        }
+        return chiens;
+    }
+    
+     public List<Chien> rechercherChiens(String input) throws SQLException {
+        List<Chien> chiens = new ArrayList<>();
+        String req = "select * from chien c LEFT JOIN individu i on i.idIndividu=c.idIndividu left join utilisateur u on u.idUtilisateur=i.idUtilisateur where c.nom like ? or i.prenom like ? or age like ? or description like ? or race like ? or groupe like ? or color like ?;";
+        PreparedStatement ps = connect.prepareStatement(req);
+        ps.setString(1, "%" + input+ "%");
+         ps.setString(2, "%" + input+ "%");
+          ps.setString(3, "%" + input+ "%");
+           ps.setString(4, "%" + input+ "%");
+            ps.setString(5, "%" + input+ "%");
+             ps.setString(6, "%" + input+ "%");
+             ps.setString(7, "%" + input+ "%");
+        ResultSet rst = ps.executeQuery();
+
+        while (rst.next()) {
+             Utilisateur nu= new Utilisateur(rst.getInt("u.idUtilisateur"));
+            Individu  i= new Individu(rst.getInt("i.idIndividu"),nu,rst.getString("i.nom"),rst.getString("prenom"),rst.getString("sexe"),rst.getDate("dateNaissance"),rst.getString("adresse"),
+                    rst.getString("facebook"),rst.getString("instagram"),rst.getString("whatsapp"),rst.getBoolean("proprietaireChien"));
+            Chien a = new Chien(rst.getInt("idChien"),
+                    i,
                     rst.getString("nom"),
                     rst.getString("sexe"),
                     rst.getString("age"),

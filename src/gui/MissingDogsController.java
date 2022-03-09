@@ -6,7 +6,7 @@
 package gui;
 
 import HabHub.CommunityListener;
-import com.jfoenix.controls.JFXTextField;
+import Utils.SmsApi;
 import entities.AnnonceProprietaireChien;
 import java.io.IOException;
 import java.net.URL;
@@ -16,8 +16,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,12 +25,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.Pagination;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -99,11 +94,11 @@ public class MissingDogsController implements Initializable {
     private Label ownerLocationLabel2;
 
     private CommunityListener communityListener;
-    
+    private AnnonceProprietaireChien chosenAnnonce;
     private Stage stage;
     private Scene scene;
     private Parent root;
- 
+    SmsApi sms=new SmsApi();
     @FXML
     public void switchSceneMyDogs (ActionEvent event) throws IOException
     {
@@ -164,8 +159,12 @@ public class MissingDogsController implements Initializable {
 
     }
 
+     @FXML
+    void sendSms(ActionEvent event) {
+        sms.send(chosenAnnonce.getChien().getIndividu().getUtilisateur().getNumTel(), "Mission Accomplished");
+    }
     private void setChosenChien(AnnonceProprietaireChien a) {
-
+        chosenAnnonce=a;
         dogNameLabel.setText(a.getChien().getNom());
         Image genderImg = new Image(getClass().getResourceAsStream("../assets/img/female.png"));
         genderLabel.setText("Female");

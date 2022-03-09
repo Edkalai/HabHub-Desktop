@@ -19,6 +19,12 @@ public class Utilisateur {
     public Utilisateur() {
     }
 
+    public Utilisateur(int idUtilisateur, String email, int numTel) {
+        this.idUtilisateur = idUtilisateur;
+        this.email = email;
+        this.numTel = numTel;
+    }
+
     public Utilisateur(String email, String password, int numTel, String type) {
         this.email = email;
         this.password = password;

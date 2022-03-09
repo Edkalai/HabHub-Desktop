@@ -99,12 +99,12 @@ public class AnnonceProprietaireChienService {
    
         public List<AnnonceProprietaireChien> afficherAnnonceProprietaireChien(String type) throws SQLException {
         List<AnnonceProprietaireChien> annoncesProprietaireChien = new ArrayList<>();
-        PreparedStatement ps = connect.prepareStatement("select * from annonce_proprietaire_chien a join chien c ON a.idChien=c.idChien join individu i on i.idIndividu=c.idIndividu where type=? order by datePublication desc;");
+        PreparedStatement ps = connect.prepareStatement("select * from annonce_proprietaire_chien a join chien c ON a.idChien=c.idChien join individu i on i.idIndividu=c.idIndividu join utilisateur u on i.idUtilisateur=u.idUtilisateur where a.type=? order by datePublication desc;");
         ps.setString(1,type);
             ResultSet rst = ps.executeQuery();
 
         while (rst.next()) {
-            Utilisateur nu= new Utilisateur(rst.getInt("idUtilisateur"));
+            Utilisateur nu= new Utilisateur(rst.getInt("idUtilisateur"),rst.getString("email"),rst.getInt("numTel"));
             Individu  ni= new Individu(rst.getInt("idIndividu"),nu,rst.getString("i.nom"),rst.getString("prenom"),rst.getDate("dateNaissance"),rst.getString("adresse"),
             rst.getString("facebook"),rst.getString("instagram"),rst.getString("whatsapp"));
             
