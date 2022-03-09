@@ -5,12 +5,14 @@
  */
 package gui.backOffice;
 
+import entities.AnnonceAdoption;
 import entities.AnnonceProprietaireChien;
 import entities.Chien;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +24,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -30,6 +34,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import services.AnnonceAdoptionService;
 import services.AnnonceProprietaireChienService;
 import services.ChienService;
 
@@ -391,16 +396,139 @@ public class ChiensBackOfficeController implements Initializable {
          */
     }
     
-/* IHEEEB EKTEEB HOUNY KAHAAW
+/* IHEEEB EKTEEB HOUNY KAHAAW */
+    
+    @FXML
+    private TableView<AnnonceAdoption> adoptionTableView;
+
+    @FXML
+    private TableColumn<AnnonceAdoption, String> adoptionNomChien;
+
+    @FXML
+    private TableColumn<AnnonceAdoption, String> adoptionNomIndividu;
+
+    @FXML
+    private TableColumn<AnnonceAdoption, String> adoptionDescription;
+
+    @FXML
+    private TableColumn<AnnonceAdoption, String> adoptionDate;
+
+    @FXML
+    private TableColumn<AnnonceAdoption, String> adoptionLocalisation;
+    @FXML
+    private TextField searchBox11;
+
+    @FXML
+    private Button refreshButton1;
+
+    @FXML
+    private Button addButton1;
+
+    @FXML
+    private Button editButton1;
+
+    @FXML
+    private Button deleteButton1;
+    
+    AnnonceAdoptionService sa = new AnnonceAdoptionService();
+    AnnonceAdoption a = new AnnonceAdoption();
+    
+    public ObservableList<AnnonceAdoption> adoptionData = FXCollections.observableArrayList();
+    
+    @FXML
+    void deleteAnnonceAdoption(MouseEvent event) throws SQLException  {
+        a = adoptionTableView.getSelectionModel().getSelectedItem();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Do you want to proceed ?");
+            alert.setHeaderText(null);
+            alert.setContentText("Are you sure?");
+            Optional <ButtonType> action = alert.showAndWait();
+            if(action.get()== ButtonType.OK){
+                sa.deleteAnnonceAdoption(a.getIdAnnonceAdoption());
+        
+                
+                }
+        
+        
+        refreshAdoptionTable();
+        
+
+    }
+    @FXML
+    private void getAnnonceAddView(MouseEvent event) {
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource("AnnoncePopUp.fxml"));
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(ChiensBackOfficeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    @FXML
+    void getAnnonceEditView(MouseEvent event) {
+        if (adoptionTableView.getSelectionModel().getSelectedItem()!=null)
+        {
+        a = adoptionTableView.getSelectionModel().getSelectedItem();
+                            FXMLLoader loader = new FXMLLoader ();
+                            loader.setLocation(getClass().getResource("AnnoncePopUp.fxml"));
+                            try {
+                                loader.load();
+                            } catch (IOException ex) {
+                                Logger.getLogger(ChiensBackOfficeController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            
+                            AnnoncePopUpController annoncePopUpController = loader.getController();
+                            annoncePopUpController.setUpdate(true);
+                            annoncePopUpController.setIdUpdate(a.getIdAnnonceAdoption());
+                            
+                            annoncePopUpController.setTextField( a.getIdChien().getNom(), a.getIdChien().getAge(),a.getIdChien().getDescription(),
+                             a.getIdChien().getColor(),a.getIdChien().getRace()
+                            ,a.getIdChien().getGroupe());
+                            Parent parent = loader.getRoot();
+                            Stage stage = new Stage();
+                            stage.setScene(new Scene(parent));
+                            stage.initStyle(StageStyle.UTILITY);
+                            stage.show();
+
+    }
+    }
+    @FXML
+    void refreshAdoptionTable()throws SQLException {
+        adoptionData.clear();
+        adoptionData.addAll(sa.displayAnnonceAdoption());
+        System.out.println(adoptionData);
+        adoptionTableView.setItems(adoptionData);
+    }
+    
+     private void loadAdoptionData() {
+        try {
+            refreshAdoptionTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(ChiensBackOfficeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        adoptionNomChien.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getIdChien().getNom())));
+        adoptionDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        adoptionNomIndividu.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getIdIndividu().getPrenom())));
+        adoptionLocalisation.setCellValueFactory(new PropertyValueFactory<>("localisation"));
+        adoptionDate.setCellValueFactory(new PropertyValueFactory<>("datePublication"));
     
     
     
     
     
+     }
     
     
     
-    */
+    
+    
+   
     
     
     
@@ -412,7 +540,7 @@ public class ChiensBackOfficeController implements Initializable {
         loadDogData();
         loadMatingData();
         loadLostData();
-        //loadAdoptionData();
+        loadAdoptionData();
         searchBoxMating.textProperty().addListener((observable, oldValue, newValue) -> {
              matingData.clear();
             try {

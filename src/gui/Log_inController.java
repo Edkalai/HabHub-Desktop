@@ -74,7 +74,7 @@ public class Log_inController implements Initializable {
 
     void switchSceneProfile(ActionEvent event) throws IOException {
         
-        Parent root = FXMLLoader.load(getClass().getResource("../gui/BusinessFXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/AnnonceAdoptionFXML.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -82,7 +82,7 @@ public class Log_inController implements Initializable {
     }
     void switchSceneBackOffice(ActionEvent event) throws IOException {
         
-        Parent root = FXMLLoader.load(getClass().getResource("../gui/backOffice/HomeBackOffice.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/backOffice/chiensBackOffice.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -108,11 +108,12 @@ public class Log_inController implements Initializable {
         if (us.verifLogin(email.getText(), password.getText())) {
            
             u=us.chercherUtilisateur(email.getText());
+            Statics.currentIndividu = uis.findIndividuByIdUtilisateur(us.chercherUtilisateur(email.getText()));
             if (u.getType().equals("A")){
                 switchSceneBackOffice(event);
             }
             else{
-            Statics.currentIndividu = uis.findIndividuByIdUtilisateur(us.chercherUtilisateur(email.getText()));
+            
             switchSceneProfile(event);
             }
         } else {
