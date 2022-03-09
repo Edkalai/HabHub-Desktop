@@ -41,7 +41,7 @@ public class UsersBackOfficeController implements Initializable {
 
   
       @FXML
-    private TextField searchBoxProducts;
+    private TextField searchBoxUserss;
 
     @FXML
     private Button refreshButton;
@@ -114,7 +114,7 @@ public class UsersBackOfficeController implements Initializable {
     }
     
   @FXML
-    private void getUsersAddView(MouseEvent event) {
+    private void getUsersAddView(MouseEvent event)   {
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("UsersPopUp.fxml"));
             Scene scene = new Scene(parent);
@@ -124,7 +124,8 @@ public class UsersBackOfficeController implements Initializable {
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(UsersBackOfficeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+      
+}      
         
     }
     
@@ -204,10 +205,13 @@ public class UsersBackOfficeController implements Initializable {
       
         //loadAdoptionData();
         
-        searchBoxProducts.textProperty().addListener((observable, oldValue, newValue) -> {
+        searchBoxUserss.textProperty().addListener((observable, oldValue, newValue) -> {
              data.clear();
            try {
-                data.addAll(us.findIndividuByIdUtilisateur(u));
+                data.addAll(us.findIndividuByName(newValue))
+                        
+                        
+                        ;
             } catch (SQLException exception) {
                 Logger.getLogger(UsersBackOfficeController.class.getName()).log(Level.SEVERE, null, exception);
             }

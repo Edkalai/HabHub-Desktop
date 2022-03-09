@@ -51,9 +51,16 @@ public class UserIndividuServices implements IIndividu {
         u.setIdUtilisateur(rst.getInt("idUtilisateur"));
         }
       
-        PreparedStatement pre = connect.prepareStatement("INSERT INTO individu (idUtilisateur,nom)VALUES (?,?);");
+        PreparedStatement pre = connect.prepareStatement("INSERT INTO individu (idUtilisateur,nom,prenom,sexe,adresse,facebook,instagram,whatsapp)VALUES (?,?,?,?,?,?,?,?);");
         pre.setInt(1,u.getIdUtilisateur());      
-        pre.setString(2, I.getNom());
+        pre.setString(2, rst.getString("nom"));
+        pre.setString(3, rst.getString("prenom"));
+        pre.setString(4, rst.getString("sexe"));
+        pre.setString(5, rst.getString("adresse"));
+        pre.setString(6, rst.getString("facebbok"));
+        pre.setString(7, rst.getString("instagram"));
+        pre.setString(8, rst.getString("whatsapp"));
+       
      
         
                                     
@@ -68,7 +75,7 @@ public class UserIndividuServices implements IIndividu {
 
             PreparedStatement pre = connect.prepareStatement("UPDATE individu i join utilisateur u on i.idUtilisateur=u.idUtilisateur SET nom = ? ,"
                     + " email=? , prenom= ?,numtel=?"
-                    + " ,dateNaissance= ? , sexe= ? , adresse= ? ,    "
+                    + "sexe= ? , adresse= ? ,    "
                     + "facebook= ?,instagram= ? ,"
                     + " whatsapp= ? where idIndividu= ? ;");
            pre.setString(1, i.getNom());
@@ -76,13 +83,13 @@ public class UserIndividuServices implements IIndividu {
                
            pre.setString(3, i.getPrenom());
            pre.setInt(4, i.getUtilisateur().getNumTel());
-           pre.setString(5, i.getDateNaissance());
-           pre.setString(6, i.getSexe());
-           pre.setString(7, i.getAdresse());
-           pre.setString(8, i.getFacebook());
-           pre.setString(9, i.getInstagram());
-           pre.setString(10, i.getWhatsapp());
-           pre.setInt(11,Statics.currentIndividu.getIdIndividu());
+           //pre.setString(5, i.getDateNaissance());
+           pre.setString(5, i.getSexe());
+           pre.setString(6, i.getAdresse());
+           pre.setString(7, i.getFacebook());
+           pre.setString(8, i.getInstagram());
+           pre.setString(9, i.getWhatsapp());
+           pre.setInt(10,Statics.currentIndividu.getIdIndividu());
 
             
 
@@ -207,6 +214,25 @@ public Individu findIndividuByIdUtilisateur(Utilisateur u) throws SQLException{
             ex.printStackTrace();
          }
 return i;
+    }
+public List<Individu> findIndividuByName(String u) throws SQLException{
+       List<Individu> L = new ArrayList();
+          try {
+       PreparedStatement req = connect.prepareStatement("select * from individu where nom like ?");
+            req.setString(1,"%"+u+"%");
+
+             ResultSet rst= req.executeQuery();
+             while(rst.next())
+             {
+                 Utilisateur nu = new Utilisateur(rst.getInt("idUtilisateur"));
+                 Individu i = new Individu(rst.getInt("idIndividu"),nu,rst.getString("nom"),rst.getString("prenom"),
+                 rst.getString("dateNaissance"),rst.getString("sexe"),rst.getString("adresse"),rst.getString("facebook"),rst.getString("instagram"),rst.getString("whatsapp"));
+                    L.add(i);
+             }
+         } catch (SQLException ex) {
+            ex.printStackTrace();
+         }
+return L;
     }
     
 }

@@ -65,11 +65,10 @@ public class UsersPopUpController implements Initializable {
    private boolean update;
 
     @FXML
-    void submit(MouseEvent event) throws SQLException {
+    void submit(MouseEvent event)  {
  
         Individu i = new Individu(name.getText(),
         prenom.getText(),
-        datenaiss.getText(),
         adresse.getText(),
         sexe.getText(),
         facebook.getText(),

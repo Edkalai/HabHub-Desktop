@@ -163,11 +163,11 @@
                                                                   <Insets left="20.0" />
                                                                </HBox.margin>
                                                             </ImageView>
-                                                            <TextField fx:id="searchBoxProducts" prefHeight="25.0" prefWidth="441.0" promptText="Search for Names, Categories,Brands..." styleClass="transparent" />
+                                                            <TextField fx:id="searchBoxUserss" prefHeight="25.0" prefWidth="441.0" promptText="Search for Names, Categories,Brands..." styleClass="transparent" />
                                                          </children>
                                                       </HBox>
                                                       <Pane prefHeight="51.0" prefWidth="200.0" />
-                                                      <Button fx:id="refreshButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#refreshUsersTable" prefHeight="35.0" prefWidth="35.0" styleClass="transparent">
+                                                      <Button fx:id="refreshButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#refreshUsersTable" onMousePressed="#refreshUsersTable" prefHeight="35.0" prefWidth="35.0" styleClass="transparent">
                                                          <graphic>
                                                             <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>
@@ -178,14 +178,14 @@
                                                       </Button>
                                                       <Button fx:id="addButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#getUsersAddView" onMousePressed="#getUsersAddView" prefHeight="35.0" prefWidth="35.0" styleClass="transparent">
                                                          <graphic>
-                                                            <ImageView fitHeight="25.0" fitWidth="25.0" onMouseClicked="#getUsersAddView" pickOnBounds="true" preserveRatio="true" styleClass="press">
+                                                            <ImageView fitHeight="25.0" fitWidth="25.0" onMouseClicked="#getUsersAddView" onMousePressed="#getUsersAddView" pickOnBounds="true" preserveRatio="true" styleClass="press">
                                                                <image>
                                                                   <Image url="@../../assets/img/backOffice/navBar/addButton.png" />
                                                                </image>
                                                             </ImageView>
                                                          </graphic>
                                                       </Button>
-                                                      <Button fx:id="editButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#getUsersEditView" prefHeight="35.0" prefWidth="35.0" styleClass="transparent">
+                                                      <Button fx:id="editButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#getUsersEditView" onMousePressed="#getUsersEditView" prefHeight="35.0" prefWidth="35.0" styleClass="transparent">
                                                          <graphic>
                                                             <ImageView fitHeight="25.0" fitWidth="25.0" onMouseClicked="#getUsersEditView" pickOnBounds="true" preserveRatio="true">
                                                                <image>
@@ -196,7 +196,7 @@
                                                       </Button>
                                                       <Button fx:id="deleteButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#deleteUsers" prefHeight="35.0" prefWidth="35.0" styleClass="transparent">
                                                          <graphic>
-                                                            <ImageView fitHeight="25.0" fitWidth="25.0" onMouseClicked="#deleteUsers" pickOnBounds="true" preserveRatio="true">
+                                                            <ImageView fitHeight="25.0" fitWidth="25.0" onMouseClicked="#deleteUsers" onMousePressed="#deleteUsers" pickOnBounds="true" preserveRatio="true">
                                                                <image>
                                                                   <Image url="@../../assets/img/backOffice/navBar/deleteButton.png" />
                                                                </image>
