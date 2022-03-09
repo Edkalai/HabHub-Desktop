@@ -1,2 +1,5 @@
 /dist/
 /build/
+/build/classes
+/build.xml
+/manifest.mf
