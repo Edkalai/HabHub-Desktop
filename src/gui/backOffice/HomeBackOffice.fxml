@@ -32,78 +32,42 @@
                   <Pane prefHeight="23.0" prefWidth="220.0" />
                   <Line endX="100.0" startX="-70.0" stroke="#979797" />
                   <Pane prefHeight="32.0" prefWidth="220.0" />
-                  <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="220.0" styleClass="navItemSelected">
-                     <children>
-                        <ImageView fitHeight="35.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
+                  <Button mnemonicParsing="false" onAction="#switchBusinessBack" prefHeight="46.0" prefWidth="220.0" styleClass="navItemSelected" text="   Business Partners" textFill="#515151">
+                     <graphic>
+                        <ImageView fitHeight="36.0" fitWidth="25.0" layoutX="-100.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../assets/img/backOffice/navBar/businessSelected.png" />
                            </image>
                         </ImageView>
-                        <Pane prefHeight="45.0" prefWidth="10.0" />
-                        <Text fill="#e0642c" strokeType="OUTSIDE" strokeWidth="0.0" text="Business Partners">
-                           <font>
-                              <Font name="Lato Bold" size="15.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="220.0" styleClass="navItemUnderSelected">
-                     <children>
-                        <ImageView fitHeight="35.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#switchProductsBack" prefHeight="46.0" prefWidth="263.0" styleClass="navItemUnderSelected" text="  Products               ">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../assets/img/backOffice/navBar/products.png" />
                            </image>
                         </ImageView>
-                        <Pane prefHeight="45.0" prefWidth="10.0" />
-                        <Text fill="#515151" strokeType="OUTSIDE" strokeWidth="0.0" text="Products">
-                           <font>
-                              <Font name="Lato Regular" size="15.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="220.0" styleClass="navItem">
-                     <children>
-                        <ImageView fitHeight="35.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#switchDogsBack" prefHeight="46.0" prefWidth="263.0" styleClass="navItem" text="  Manage Dogs      ">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../assets/img/backOffice/navBar/dogs.png" />
                            </image>
                         </ImageView>
-                        <Pane prefHeight="45.0" prefWidth="13.0" />
-                        <Text fill="#515151" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Dogs">
-                           <font>
-                              <Font name="Lato Regular" size="15.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="220.0" styleClass="navItem">
-                     <children>
-                        <ImageView fitHeight="35.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#switchUsersBack" prefHeight="46.0" prefWidth="263.0" styleClass="navItem" text="  Manage Users     " textFill="#515151">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../assets/img/backOffice/navBar/business.png" />
+                              <Image url="@../../assets/img/backOffice/navBar/users.png" />
                            </image>
                         </ImageView>
-                        <Pane prefHeight="45.0" prefWidth="10.0" />
-                        <Text fill="#515151" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Users">
-                           <font>
-                              <Font name="Lato Regular" size="15.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
+                     </graphic>
+                  </Button>
                   <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="220.0" styleClass="navItem" />
                </children>
             </VBox>

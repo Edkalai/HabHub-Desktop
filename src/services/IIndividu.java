@@ -16,7 +16,7 @@ import java.util.List;
  */
 public interface IIndividu {
              public void ajouter(Individu I,Utilisateur U)throws SQLException;
-        public boolean Update(int idIndividu,Utilisateur utilisateur,String nom,String prenom,String dateNaissance,String sexe,String adresse, String facebook,String instagram, String whatsapp) ;
+        public boolean Update(Individu i) ;
         public boolean delete(int idIndividu) throws SQLException;
         public List<Individu> afficherIndividu() throws SQLException;
          public Individu findIndividuByIdUtilisateur(Utilisateur U) throws SQLException;
