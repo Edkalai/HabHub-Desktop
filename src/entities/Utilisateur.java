@@ -18,7 +18,13 @@ public class Utilisateur {
 
     public Utilisateur() {
     }
-
+    
+    
+      public Utilisateur(String email) {
+        this.email = email;
+    }
+    
+    
     public Utilisateur(int idUtilisateur, String email, int numTel) {
         this.idUtilisateur = idUtilisateur;
         this.email = email;

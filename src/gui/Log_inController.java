@@ -88,6 +88,16 @@ public class Log_inController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    
+    @FXML
+    void Forgotpassword(ActionEvent event)throws IOException, SQLException {
+          Parent root = FXMLLoader.load(getClass().getResource("../gui/EnterMail.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
 
     @FXML
     void seConnecter(ActionEvent event) throws IOException, SQLException {

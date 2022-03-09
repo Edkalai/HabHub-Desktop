@@ -52,7 +52,7 @@
                               <Font size="10.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="genderIcon" fitHeight="23.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="genderIcon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>

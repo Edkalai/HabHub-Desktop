@@ -12,10 +12,10 @@
     -fx-background-radius:11;
      -fx-effect: dropshadow(gaussian,rgba(194, 213, 231, 0.7) , 20,0 , 0, 0);
      /* Ellipse 14 */
-
-
-
 }
+
+
+
 .fpoasswd{ -fx-background-color:rgba(0,0,0,0);}
 .transparent {
     -fx-background-color:rgba(0,0,0,0);
@@ -26,6 +26,12 @@
     -fx-background-color:#E0642C;
     -fx-background-radius:9.17895px;
      -fx-font-weight: bold;
+      -fx-cursor:hand;
+}
+.loginButton:pressed{
+    
+
+ -fx-effect: dropshadow( three-pass-box, rgba(0, 0, 0, 0.60), 5, 0.0, 0, 1);
 }
 
 .image{
@@ -77,10 +83,36 @@ javafx
     -fx-border-color: yellowgreen;
     -fx-border-insets: -15px;
 }
-
 .signup{
     -fx-font-weight: bold;
+  
+-fx-background-color: transparent;
+
+   
+    -fx-cursor:hand;
+}
+.signup:pressed
+{
+ -fx-effect: dropshadow( three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
 }
 
- 
+.fg{
+   
+  
+-fx-background-color: transparent;
 
+   
+    -fx-cursor:hand;
+}
+.fg:pressed
+{
+ -fx-effect: dropshadow( three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+}
+
+.effect{
+       -fx-cursor:hand;
+}
+.effect :pressed
+{ -fx-effect: dropshadow( three-pass-box, rgba(0, 0, 0, 0.4), 1, 0.0, 0, 1);
+}
+ 
