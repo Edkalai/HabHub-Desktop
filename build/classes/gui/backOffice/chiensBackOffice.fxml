@@ -246,7 +246,7 @@
                                                                <children>
                                                                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                                                      <image>
-                                                                        <Image url="@../../assets/img/searchBar/zoom-in.png" />
+                                                                        <Image url="@../../../../../../Users/Ed/Desktop/srcIheb/assets/img/searchBar/zoom-in.png" />
                                                                      </image>
                                                                      <HBox.margin>
                                                                         <Insets left="20.0" />
@@ -256,7 +256,7 @@
                                                                </children>
                                                             </HBox>
                                                             <Pane prefHeight="51.0" prefWidth="200.0" />
-                                                            <Button fx:id="refreshButton1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#refreshDogTable" prefHeight="35.0" prefWidth="35.0" styleClass="transparent">
+                                                            <Button fx:id="refreshButton1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#refreshAdoptionTable" prefHeight="35.0" prefWidth="35.0" styleClass="transparent">
                                                                <graphic>
                                                                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                                                      <image>
@@ -265,7 +265,7 @@
                                                                   </ImageView>
                                                                </graphic>
                                                             </Button>
-                                                            <Button fx:id="addButton1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="transparent">
+                                                            <Button fx:id="addButton1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#getAnnonceAddView" prefHeight="35.0" prefWidth="35.0" styleClass="transparent">
                                                                <graphic>
                                                                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                                                      <image>
@@ -274,7 +274,7 @@
                                                                   </ImageView>
                                                                </graphic>
                                                             </Button>
-                                                            <Button fx:id="editButton1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="transparent">
+                                                            <Button fx:id="editButton1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#getAnnonceEditView" prefHeight="35.0" prefWidth="35.0" styleClass="transparent">
                                                                <graphic>
                                                                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                                                      <image>
@@ -283,7 +283,7 @@
                                                                   </ImageView>
                                                                </graphic>
                                                             </Button>
-                                                            <Button fx:id="deleteButton1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#deleteDog" prefHeight="35.0" prefWidth="35.0" styleClass="transparent">
+                                                            <Button fx:id="deleteButton1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#deleteAnnonceAdoption" prefHeight="35.0" prefWidth="35.0" styleClass="transparent">
                                                                <graphic>
                                                                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                                                      <image>
@@ -301,13 +301,13 @@
                                                 </HBox>
                                                 <HBox alignment="TOP_CENTER" prefHeight="581.0" prefWidth="1020.0">
                                                    <children>
-                                                      <TableView prefHeight="511.0" prefWidth="984.0">
+                                                      <TableView fx:id="adoptionTableView" prefHeight="511.0" prefWidth="984.0">
                                                          <columns>
-                                                            <TableColumn minWidth="126.0" prefWidth="189.0" text="Dog Name" />
-                                                            <TableColumn minWidth="136.0" prefWidth="201.0" text="Dog Owner" />
-                                                            <TableColumn minWidth="300.0" prefWidth="310.0" text="Description" />
-                                                            <TableColumn minWidth="110.0" prefWidth="110.0" text="Posted On " />
-                                                            <TableColumn minWidth="100.0" prefWidth="0.0" text="Location" />
+                                                            <TableColumn fx:id="adoptionNomChien" minWidth="126.0" prefWidth="204.0" text="Dog Name" />
+                                                            <TableColumn fx:id="adoptionNomIndividu" minWidth="117.0" prefWidth="138.0" text="Dog Owner" />
+                                                            <TableColumn fx:id="adoptionDescription" minWidth="247.0" prefWidth="248.0" text="Description" />
+                                                            <TableColumn fx:id="adoptionDate" minWidth="110.0" prefWidth="143.0" text="Posted On " />
+                                                            <TableColumn fx:id="adoptionLocalisation" minWidth="100.0" prefWidth="168.0" text="Location" />
                                                          </columns>
                                                       </TableView>
                                                    </children>

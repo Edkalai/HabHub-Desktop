@@ -14,7 +14,6 @@ import java.util.List;
  */
 public interface IAnnonceAdoption<I> {
     public void addAnnonceAdoption(I a) throws SQLException;
-    public void updateAnnonceAdoption(I a) throws SQLException;
     public void deleteAnnonceAdoption(int id) throws SQLException;
     public List<I> displayAnnonceAdoption() throws SQLException;
     public List<I> rechercheAnnonceAdoption(String nom) throws SQLException;
