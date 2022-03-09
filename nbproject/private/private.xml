@@ -5,14 +5,24 @@
         <group>
             <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/log_in.css</file>
             <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/HabHub/Main.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/services/UserIndividuServices.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/profile.css</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/loginfxml.css</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/Log_inController.java</file>
-            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/ProfileditController.java</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/utils/Mail.java</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/fxml.css</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/FXML.fxml</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/MailAPI/JavaMailUtil.java</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/profiledit.fxml</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/Log_in.fxml</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/profile.fxml</file>
             <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/SignUpController.java</file>
             <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/services/UtilisateurService.java</file>
             <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/ProfileController.java</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/services/UserIndividuServices.java</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/profile.css</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/MailAPI/MailHandler.java</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/loginfxml.css</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/Log_inController.java</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/ProfileditController.java</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/gui/SignUp.fxml</file>
+            <file>file:/C:/Users/DELL/Desktop/HabHub/HabHub-Desktop/src/MailAPI/MainMail.java</file>
         </group>
     </open-files>
 </project-private>

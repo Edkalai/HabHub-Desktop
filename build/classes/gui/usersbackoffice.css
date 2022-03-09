@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap%27');
+
+.mainFxmlClass {
+ -fx-background-color :#F5F5F5;
+-fx-font-family: 'Lato', sans-serif;
+
+}
+
+.navbar{
+     -fx-background-color :#ffffff;
+    -fx-effect: dropshadow(gaussian,rgba(194, 213, 231, 0.7) , 20,0 , 0, 0);
+
+}
+
+.navItem{
+     -fx-background-color :#ffffff;
+     -fx-border-color :#E5E5E5;
+     -fx-border-width : 1 0 0 0; 
+
+}
+

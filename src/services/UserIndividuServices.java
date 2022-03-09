@@ -161,7 +161,7 @@ public class UserIndividuServices implements IIndividu {
             return false;
         }}
    
-    @Override
+ @Override
     public List<Individu> afficherIndividu() throws SQLException {
                
         List<Individu> Individu = new ArrayList<>();
@@ -170,10 +170,9 @@ public class UserIndividuServices implements IIndividu {
         ResultSet rst = stm.executeQuery(req);
             while (rst.next()) {
             Individu k = new Individu(rst.getInt("idIndividu"),
-                       new Utilisateur(rst.getInt     ("idUtilisateur"))  ,
+                       new Utilisateur(rst.getInt     ("idUtilisateur"),rst.getString("email"),rst.getInt("numTel"))  ,
             rst.getString("nom"),
             rst.getString("prenom"),
-            rst.getString("dateNaissance"),
             rst.getString("sexe"),
             rst.getString("adresse"),
                         rst.getString("facebook"),

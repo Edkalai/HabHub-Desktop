@@ -3,9 +3,11 @@
  */
 
 .mainFxmlClass {
--fx-background-color : #F4F4F4;
+
+ -fx-background-color : linear-gradient(to bottom,#FFFFFF 0%, #FFF3E1 100%);
 
 }
+
 
 
 .VBox{

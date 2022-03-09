@@ -5,10 +5,13 @@
  */
 package utils;
 
+import entite.Individu;
 import entite.Utilisateur;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
+import javafx.collections.FXCollections;
 
 
 
@@ -41,5 +44,11 @@ public class MyDB {
         return connexion;
     }
     
+    
+    private List<Individu> afficherIndividu(){
+        Connection connexion =  MyDB.getInstance().getConnexion();
+        List<Individu> list = FXCollections.observableArrayList();
+        return null ;
+    }
    
 }
