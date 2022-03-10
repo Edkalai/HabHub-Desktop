@@ -12,7 +12,10 @@ import entities.Individu;
 import entities.Reservation;
 import entities.Revue;
 import entities.ServiceBusiness;
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -28,6 +31,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -41,6 +47,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import org.controlsfx.control.Rating;
 import services.ReservationServices;
 import services.RevueServices;
@@ -120,7 +127,66 @@ public class BusinessFXMLController implements Initializable {
     @FXML
     private HBox bookBox;
 
+     private Stage stage;
+    private Scene scene;
+    private Parent root;
     
+    @FXML
+    void switchAdoption(ActionEvent event) throws IOException {
+    root = FXMLLoader.load(getClass().getResource("AnnonceAdoptionFXML.fxml"));
+    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    }
+
+    @FXML
+    void switchBoutique(ActionEvent event) throws IOException {
+ root = FXMLLoader.load(getClass().getResource("BoutiqueFXML.fxml"));
+    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    }
+
+    @FXML
+    void switchHome(ActionEvent event) throws IOException {
+ root = FXMLLoader.load(getClass().getResource("BusinessFXML.fxml"));
+    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    }
+
+    @FXML
+    void switchHub(ActionEvent event) throws IOException {
+  if (Statics.currentIndividu.getProprietaireChien())
+        {
+         root = FXMLLoader.load(getClass().getResource("MyDogs.fxml"));
+        }
+        else
+        { root = FXMLLoader.load(getClass().getResource("CommunityInitialPage.fxml"));
+        }
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void switchProfile(ActionEvent event) throws IOException {
+    root = FXMLLoader.load(getClass().getResource("profiledit.fxml"));
+    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    
+    } 
+
+    @FXML
+    void maps(ActionEvent event) throws URISyntaxException, IOException {
+        Desktop.getDesktop().browse(new URI (chosenBusiness.getLocalisation()));
+    }
     
     private Business chosenBusiness;
     private BusinessListener businessListener;
@@ -303,7 +369,7 @@ public class BusinessFXMLController implements Initializable {
         Image businessImg = new Image(getClass().getResourceAsStream("../assets/img/business/dynamic/"+b.getImage()+".png"));
         businessImage.setImage(businessImg);
         businessTitleLabel.setText(b.getTitre());
-        businessLocationLabel.setText(b.getLocalisation());
+        businessLocationLabel.setText(b.getVille());
         businessDecriptionLabel.setText(b.getDescription());
         experienceLabel.setText(Integer.toString(b.getExperience()));
         openingHoursLabel.setText(b.getHoraire());

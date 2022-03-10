@@ -3,6 +3,7 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -27,9 +28,9 @@
             <TextField fx:id="email" layoutX="101.0" layoutY="130.0" prefHeight="51.0" prefWidth="357.0" promptText="Email" styleClass="emailbox" />
             <TextField fx:id="name" layoutX="101.0" layoutY="218.0" prefHeight="51.0" prefWidth="357.0" promptText="Name" styleClass="passwordbox" />
             <TextField fx:id="numtel" layoutX="101.0" layoutY="300.0" prefHeight="51.0" prefWidth="357.0" promptText="Phone Number" styleClass="emailbox" />
-            <TextField fx:id="password" layoutX="101.0" layoutY="385.0" prefHeight="51.0" prefWidth="357.0" promptText="Password" styleClass="passwordbox" />
             <Button layoutX="101.0" layoutY="476.0" mnemonicParsing="false" onAction="#signup" prefHeight="51.0" prefWidth="357.0" styleClass="loginButton" text="Sign up" textFill="WHITE" />
             <Line endX="229.0" endY="6.0" layoutX="253.0" layoutY="99.0" startX="-177.0" startY="6.0" stroke="#e5e5e5" />
+            <PasswordField fx:id="password" layoutX="101.0" layoutY="387.0" prefHeight="51.0" prefWidth="357.0" promptText="Password" styleClass="emailbox" />
          </children>
       </Pane>
       <Hyperlink layoutX="392.0" layoutY="721.0" styleClass="effect" text="Copyright © 2021, par HabHub. Tous droits réservés" textFill="#cfcdcd" />
