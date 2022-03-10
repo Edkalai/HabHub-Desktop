@@ -31,7 +31,7 @@
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../assets/img/HabHub%20logo%20(1).png" />
+                              <Image url="@../assets/img/HabHub%20logo.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -46,7 +46,7 @@
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </Separator>
-                        <Button fx:id="homeButton" minHeight="68.0" mnemonicParsing="false" onAction="#switchHome" prefHeight="107.0" prefWidth="68.0" styleClass="transparent">
+                        <Button fx:id="homeButton" minHeight="68.0" mnemonicParsing="false" onAction="#switchHome" prefHeight="107.0" prefWidth="68.0" styleClass="navBarItems">
                            <graphic>
                               <ImageView fitHeight="35.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
                                  <image>
@@ -62,7 +62,7 @@
                            <graphic>
                               <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../assets/img/zoom-inSelected.png" />
+                                    <Image url="@../assets/img/zoom-in.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -120,7 +120,7 @@
             </VBox>
             <VBox prefHeight="800.0" prefWidth="1215.0" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Text lineSpacing="36.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30; -fx-font-weight: 800;" text="Adopt a furry friend today!">
                            <font>
@@ -350,6 +350,9 @@
                                                       <Image url="@../assets/img/Rectangle%20210.png" />
                                                    </image></ImageView>
                                              </children>
+                                             <HBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </HBox.margin>
                                           </VBox>
                                           <Pane prefHeight="101.0" prefWidth="33.0" />
                                           <VBox prefHeight="100.0" prefWidth="469.0">
@@ -391,6 +394,9 @@
                                              </children>
                                           </VBox>
                                        </children>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" />
+                                       </VBox.margin>
                                     </HBox>
                                  </children>
                               </VBox>

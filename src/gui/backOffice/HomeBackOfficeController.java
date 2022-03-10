@@ -17,9 +17,11 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -205,6 +207,46 @@ public class HomeBackOfficeController implements Initializable {
     private Business vet ;
     private Business dogSitting ;
     private ServiceBusiness service ;
+    
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+        @FXML
+    void switchBusinessBack(ActionEvent event) throws IOException {
+ root = FXMLLoader.load(getClass().getResource("HomeBackOffice.fxml"));
+    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    }
+
+    @FXML
+    void switchDogsBack(ActionEvent event) throws IOException {
+ root = FXMLLoader.load(getClass().getResource("chiensBackOffice.fxml"));
+    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    }
+
+    @FXML
+    void switchProductsBack(ActionEvent event) throws IOException {
+ root = FXMLLoader.load(getClass().getResource("ProductsBackOffice.fxml"));
+    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    }
+
+    @FXML
+    void switchUsersBack(ActionEvent event) throws IOException {
+ root = FXMLLoader.load(getClass().getResource("UsersBackOffice.fxml"));
+    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    }
+
 
      public ObservableList<Business> groomingData = FXCollections.observableArrayList();
      public ObservableList<Business> parksData = FXCollections.observableArrayList();

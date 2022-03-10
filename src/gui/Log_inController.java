@@ -74,7 +74,7 @@ public class Log_inController implements Initializable {
 
     void switchSceneProfile(ActionEvent event) throws IOException {
         
-        Parent root = FXMLLoader.load(getClass().getResource("../gui/profiledit.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/BusinessFXML.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -82,7 +82,7 @@ public class Log_inController implements Initializable {
     }
     void switchSceneBackOffice(ActionEvent event) throws IOException {
         
-        Parent root = FXMLLoader.load(getClass().getResource("../gui/backOffice/UsersBackOffice.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/backOffice/HomeBackOffice.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

@@ -38,6 +38,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import services.AnnonceProprietaireChienService;
+import utils.Statics;
 
 /**
  * FXML Controller class
@@ -97,6 +98,58 @@ public class DogsMatchupController implements Initializable {
     private Scene scene;
     private Parent root;
 
+    
+      @FXML
+    void switchAdoption(ActionEvent event) throws IOException {
+    root = FXMLLoader.load(getClass().getResource("AnnonceAdoptionFXML.fxml"));
+    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    }
+
+    @FXML
+    void switchBoutique(ActionEvent event) throws IOException {
+ root = FXMLLoader.load(getClass().getResource("BoutiqueFXML.fxml"));
+    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    }
+
+    @FXML
+    void switchHome(ActionEvent event) throws IOException {
+ root = FXMLLoader.load(getClass().getResource("BusinessFXML.fxml"));
+    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    }
+
+    @FXML
+    void switchHub(ActionEvent event) throws IOException {
+  if (Statics.currentIndividu.getProprietaireChien())
+        {
+         root = FXMLLoader.load(getClass().getResource("MyDogs.fxml"));
+        }
+        else
+        { root = FXMLLoader.load(getClass().getResource("CommunityInitialPage.fxml"));
+        }
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void switchProfile(ActionEvent event) throws IOException {
+    root = FXMLLoader.load(getClass().getResource("profiledit.fxml"));
+    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    
+    } 
     @FXML
     public void switchSceneMyDogs(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("MyDogs.fxml"));

@@ -50,14 +50,10 @@ public class UserIndividuServices implements IIndividu {
         u.setIdUtilisateur(rst.getInt("idUtilisateur"));
         }
       
-        PreparedStatement pre = connect.prepareStatement("INSERT INTO indivdu (idUtilisateur,nom,prenom,sexe,adresse,facebook,instagram,whatsapp)VALUES (?,?,?,?,?,?,?,?);");
+        PreparedStatement pre = connect.prepareStatement("INSERT INTO individu (idUtilisateur,nom)VALUES (?,?);");
         pre.setInt(1,u.getIdUtilisateur());      
-        pre.setString(2, I.getNom());
-        pre.setString(3, I.getPrenom());
-        pre.setString(4, I.getAdresse());
-        pre.setString(5, I.getFacebook());
-        pre.setString(6, I.getInstagram());
-        pre.setString(7, I.getWhatsapp());
+        pre.setString(2, I.getPrenom());
+       
                                     
         pre.executeUpdate();
         
@@ -65,11 +61,12 @@ public class UserIndividuServices implements IIndividu {
 
     @Override
     public boolean Update(Individu i) {
+        System.out.println("a");
                     try {
 
             PreparedStatement pre = connect.prepareStatement("UPDATE individu i join utilisateur u on i.idUtilisateur=u.idUtilisateur SET nom = ? ,"
-                    + " email=? , prenom= ?,numtel=?"
-                    + "sexe= ? , adresse= ? ,    "
+                    + " email=? , prenom= ?,numtel=?,"
+                    + "sexe= ? ,    "
                     + "facebook= ?,instagram= ? ,"
                     + " whatsapp= ? where idIndividu= ? ;");
            pre.setString(1, i.getNom());
@@ -79,11 +76,12 @@ public class UserIndividuServices implements IIndividu {
            pre.setInt(4, i.getUtilisateur().getNumTel());
            //pre.setString(5, i.getDateNaissance());
            pre.setString(5, i.getSexe());
-           pre.setString(6, i.getAdresse());
-           pre.setString(7, i.getFacebook());
-           pre.setString(8, i.getInstagram());
-           pre.setString(9, i.getWhatsapp());
-           pre.setInt(10,Statics.currentIndividu.getIdIndividu());
+           pre.setString(6, i.getFacebook());
+           pre.setString(7, i.getInstagram());
+           pre.setString(8, i.getWhatsapp());
+           pre.setInt(9,Statics.currentIndividu.getIdIndividu());
+
+            
 
             
 

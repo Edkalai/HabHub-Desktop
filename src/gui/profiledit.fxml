@@ -17,6 +17,7 @@
 <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProfileditController">
     <stylesheets>
         <URL value="@profile.css" />
+      <URL value="@navBar.css" />
     </stylesheets>
    <children>
       <Pane layoutX="455.0" layoutY="97.0" prefHeight="429.0" prefWidth="741.0">
@@ -71,7 +72,7 @@
             <Image url="@../assets/img/user.png" />
          </image>
       </ImageView>
-      <VBox alignment="TOP_CENTER" layoutY="14.0" maxWidth="-Infinity" prefHeight="805.0" prefWidth="70.0" styleClass="VBox">
+      <VBox alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="805.0" prefWidth="70.0" styleClass="VBox">
          <children>
             <Button mnemonicParsing="false" styleClass="navBarItems" textAlignment="CENTER" VBox.vgrow="NEVER">
                <graphic>
@@ -89,22 +90,22 @@
                <children>
                   <Separator maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0">
                      <VBox.margin>
-                        <Insets bottom="30.0" />
+                        <Insets bottom="10.0" />
                      </VBox.margin>
                   </Separator>
-                  <Button mnemonicParsing="false" styleClass="navBarItems">
+                  <Button fx:id="homeButton" minHeight="68.0" mnemonicParsing="false" onAction="#switchHome" prefHeight="107.0" prefWidth="68.0" styleClass="navBarItems">
                      <graphic>
-                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
+                        <ImageView fitHeight="35.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
                            <image>
                               <Image url="@../assets/img/house-door.png" />
                            </image>
                         </ImageView>
                      </graphic>
                      <VBox.margin>
-                        <Insets bottom="20.0" />
+                        <Insets />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" styleClass="navBarItems">
+                  <Button minHeight="68.0" mnemonicParsing="false" onAction="#switchAdoption" prefHeight="68.0" prefWidth="82.0" styleClass="navBarItems">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -113,10 +114,10 @@
                         </ImageView>
                      </graphic>
                      <VBox.margin>
-                        <Insets bottom="20.0" />
+                        <Insets />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" styleClass="navBarItems">
+                  <Button minHeight="68.0" mnemonicParsing="false" onAction="#switchBoutique" prefHeight="68.0" prefWidth="92.0" styleClass="navBarItems">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -125,10 +126,10 @@
                         </ImageView>
                      </graphic>
                      <VBox.margin>
-                        <Insets bottom="20.0" />
+                        <Insets />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" styleClass="navBarItems">
+                  <Button minHeight="68.0" mnemonicParsing="false" onAction="#switchHub" prefHeight="68.0" prefWidth="105.0" styleClass="navBarItems">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -137,10 +138,10 @@
                         </ImageView>
                      </graphic>
                      <VBox.margin>
-                        <Insets bottom="20.0" />
+                        <Insets />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" styleClass="navBarItems">
+                  <Button minHeight="68.0" mnemonicParsing="false" onAction="#switchProfile" prefHeight="68.0" prefWidth="106.0" styleClass="navBarItemsSelected">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -154,7 +155,7 @@
                   </Button>
                   <Separator maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0">
                      <VBox.margin>
-                        <Insets top="30.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </Separator>
                </children>

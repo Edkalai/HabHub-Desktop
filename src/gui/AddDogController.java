@@ -100,6 +100,61 @@ public class AddDogController implements Initializable {
     private AnchorPane test;
 
     private String dogImageName;
+    
+     private Stage stage;
+    private Scene scene;
+    private Parent root;
+       @FXML
+    void switchAdoption(ActionEvent event) throws IOException {
+    root = FXMLLoader.load(getClass().getResource("AnnonceAdoptionFXML.fxml"));
+    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    }
+
+    @FXML
+    void switchBoutique(ActionEvent event) throws IOException {
+ root = FXMLLoader.load(getClass().getResource("BoutiqueFXML.fxml"));
+    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    }
+
+    @FXML
+    void switchHome(ActionEvent event) throws IOException {
+ root = FXMLLoader.load(getClass().getResource("BusinessFXML.fxml"));
+    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    }
+
+    @FXML
+    void switchHub(ActionEvent event) throws IOException {
+  if (Statics.currentIndividu.getProprietaireChien())
+        {
+         root = FXMLLoader.load(getClass().getResource("MyDogs.fxml"));
+        }
+        else
+        { root = FXMLLoader.load(getClass().getResource("CommunityInitialPage.fxml"));
+        }
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void switchProfile(ActionEvent event) throws IOException {
+    root = FXMLLoader.load(getClass().getResource("profiledit.fxml"));
+    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    
+    } 
 
     UserIndividuServices uis = new UserIndividuServices();
 
@@ -179,7 +234,7 @@ public class AddDogController implements Initializable {
         String color = colorLabel.getText();
         Statics.currentIndividu.getIdIndividu();
         String image = Integer.toString(Statics.currentIndividu.getIdIndividu()) + "_" + Integer.toString(uis.getDogsNumberByIdIndividu(Statics.currentIndividu.getIdIndividu()) + 1);
-        File file = new File("C:\\Kaizen\\Esprit\\3eme\\HabHub\\HabHub-Desktop\\src\\assets\\img\\chien\\"
+        File file = new File("C:\\Kaizen\\HabHub\\Habhub-desktop\\src\\assets\\img\\chien\\"
                 + image + ".png");
         try {
             ImageIO.write(SwingFXUtils.fromFXImage(dogImageView.getImage(), null), "png", file);
@@ -194,10 +249,7 @@ public class AddDogController implements Initializable {
         switchSceneMyDogs(event);
     }
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
+  
     @FXML
     public void switchSceneDogsMatchup(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("DogsMatchup.fxml"));

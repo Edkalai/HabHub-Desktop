@@ -22,7 +22,7 @@
    <children>
       <HBox prefHeight="800.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="805.0" prefWidth="70.0" styleClass="VBox" HBox.hgrow="ALWAYS">
+            <VBox alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="805.0" prefWidth="70.0" styleClass="VBox">
                <children>
                   <Button mnemonicParsing="false" styleClass="navBarItems" textAlignment="CENTER" VBox.vgrow="NEVER">
                      <graphic>
@@ -40,22 +40,22 @@
                      <children>
                         <Separator maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0">
                            <VBox.margin>
-                              <Insets bottom="30.0" />
+                              <Insets bottom="10.0" />
                            </VBox.margin>
                         </Separator>
-                        <Button mnemonicParsing="false" styleClass="navBarItems">
+                        <Button fx:id="homeButton" minHeight="68.0" mnemonicParsing="false" onAction="#switchHome" prefHeight="107.0" prefWidth="68.0" styleClass="navBarItems">
                            <graphic>
-                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
+                              <ImageView fitHeight="35.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
                                  <image>
                                     <Image url="@../assets/img/house-door.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                            <VBox.margin>
-                              <Insets bottom="20.0" />
+                              <Insets />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" styleClass="navBarItems">
+                        <Button minHeight="68.0" mnemonicParsing="false" onAction="#switchAdoption" prefHeight="68.0" prefWidth="82.0" styleClass="navBarItems">
                            <graphic>
                               <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -64,10 +64,10 @@
                               </ImageView>
                            </graphic>
                            <VBox.margin>
-                              <Insets bottom="20.0" />
+                              <Insets />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#goToStore" styleClass="navBarItems">
+                        <Button minHeight="68.0" mnemonicParsing="false" onAction="#switchBoutique" prefHeight="68.0" prefWidth="92.0" styleClass="navBarItemsSelected">
                            <graphic>
                               <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -76,10 +76,10 @@
                               </ImageView>
                            </graphic>
                            <VBox.margin>
-                              <Insets bottom="20.0" />
+                              <Insets />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" styleClass="navBarItems">
+                        <Button minHeight="68.0" mnemonicParsing="false" onAction="#switchHub" prefHeight="68.0" prefWidth="105.0" styleClass="navBarItems">
                            <graphic>
                               <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -88,10 +88,10 @@
                               </ImageView>
                            </graphic>
                            <VBox.margin>
-                              <Insets bottom="20.0" />
+                              <Insets />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" styleClass="navBarItems">
+                        <Button minHeight="68.0" mnemonicParsing="false" onAction="#switchProfile" prefHeight="68.0" prefWidth="106.0" styleClass="navBarItems">
                            <graphic>
                               <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -105,7 +105,7 @@
                         </Button>
                         <Separator maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0">
                            <VBox.margin>
-                              <Insets top="30.0" />
+                              <Insets top="10.0" />
                            </VBox.margin>
                         </Separator>
                      </children>
@@ -141,13 +141,13 @@
                            <children>
                               <HBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="691.0">
                                  <children>
-                                    <Pane prefHeight="57.0" prefWidth="70.0" />
+                                    <Pane prefHeight="63.0" prefWidth="159.0" />
                                     <Label text="Product" textFill="#adadad">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <Pane prefHeight="63.0" prefWidth="286.0" />
+                                    <Pane prefHeight="63.0" prefWidth="168.0" />
                                     <Label text="Quantity" textFill="#adadad">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
@@ -266,5 +266,6 @@
    <stylesheets>
       <URL value="@panierfxml.css" />
       <URL value="@Boutiquefxml.css" />
+      <URL value="@navBar.css" />
    </stylesheets>
 </AnchorPane>
