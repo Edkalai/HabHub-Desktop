@@ -111,7 +111,7 @@ public class AnnonceAdoptionService implements IAnnonceAdoption<AnnonceAdoption>
     public List displayAnnonceAdoption() throws SQLException {
         List<AnnonceAdoption> listeannonces = new ArrayList<AnnonceAdoption>();
 
-        String req = "select * from annonce_adoption a join chien c on a.idChien=c.idChien join individu i on a.idIndividu=i.idIndividu order by datePublication desc";
+        String req = "select * from annonce_adoption a join chien c on a.idChien=c.idChien join individu i on a.idIndividu=i.idIndividu where status='P' order by datePublication desc";
         stm = connexion.createStatement();
             //ensemble de resultat
         ResultSet rst = stm.executeQuery(req);

@@ -13,11 +13,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import entities.Business;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javax.imageio.ImageIO;
+import static utils.Statics.imageDirectory;
 
 
 
@@ -70,9 +77,15 @@ public class BusinessItemController implements Initializable {
         villeLabel.setText(business.getVille());
         horaireLabel.setText(business.getHoraire());
         nbEtoilesLabel.setText("5");
-        Image bImage = new Image(getClass().getResourceAsStream("../assets/img/business/dynamic/"+business.getImage()+".png"));
-        
-        businessImage.setImage(bImage);
+        File sourceimage = new File(imageDirectory+business.getImage());
+                    Image image;
+        try {
+            image = SwingFXUtils.toFXImage(ImageIO.read(sourceimage), null);
+            Image businessImg=image;
+            businessImage.setImage(businessImg);
+        } catch (IOException ex) {
+            Logger.getLogger(DogsMatchupController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 

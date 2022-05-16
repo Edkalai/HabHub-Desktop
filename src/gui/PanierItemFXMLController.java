@@ -31,6 +31,12 @@ import javafx.stage.Stage;
 import services.PanierService;
 import utils.Statics;
 import HabHub.Listen;
+import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.embed.swing.SwingFXUtils;
+import javax.imageio.ImageIO;
+import static utils.Statics.imageDirectory;
 
 /**
  * FXML Controller class
@@ -131,9 +137,17 @@ public class PanierItemFXMLController implements Initializable {
        String s = Float.toString(pa.getIdProduit().getPrix());
         itemPrice.setText(s);
         System.out.println(pa.getIdProduit().getImage());
-        Image PImg = new Image(getClass().getResourceAsStream("../assets/img/produits/"+pa.getIdProduit().getImage()+".jpg"));
-       // Image PImg = new Image(getClass().getResourceAsStream("../assets/img/produits/food.jpg"));
-        itemImage.setImage(PImg);
+        
+         File sourceimage = new File(imageDirectory+pa.getIdProduit().getImage());
+                    Image image;
+        try {
+            image = SwingFXUtils.toFXImage(ImageIO.read(sourceimage), null);
+            Image PImg=image;
+            itemImage.setImage(PImg);
+        } catch (IOException ex) {
+            Logger.getLogger(DogsMatchupController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
         
         quantity.setText(Integer.toString(pa.getQuantite()));
         TotItemPrice.setText(Float.toString(Integer.parseInt(quantity.getText()) * (Float.parseFloat(itemPrice.getText()))));

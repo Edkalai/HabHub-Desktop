@@ -15,10 +15,17 @@ import javafx.scene.image.ImageView;
 import services.AnnonceAdoptionService;
 import entities.AnnonceAdoption;
 import entities.Chien;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javax.imageio.ImageIO;
+import static utils.Statics.imageDirectory;
 
 
 
@@ -64,8 +71,17 @@ public class ChienFXMLController implements Initializable {
         nameLabel.setText(annonceAdoption.getIdChien().getNom()+",");
         ageLabel.setText(annonceAdoption.getIdChien().getAge());
         locationLabel.setText(annonceAdoption.getLocalisation());
-        Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/adoption/"+annonceAdoption.getIdChien().getImage()+".png"));
-        dogImage.setImage(dogImg);
+        
+         File sourceimage = new File(imageDirectory+annonceAdoption.getIdChien().getImage());
+                    Image image;
+        try {
+            image = SwingFXUtils.toFXImage(ImageIO.read(sourceimage), null);
+            Image dogImg=image;
+            dogImage.setImage(dogImg);
+        } catch (IOException ex) {
+            Logger.getLogger(DogsMatchupController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         //Image genderImg = new Image(getClass().getResourceAsStream("../assets/img/female.png"));
         Image genderImg = null;
         if (annonceAdoption.getIdChien().getSexe().toLowerCase().equals("m")) {

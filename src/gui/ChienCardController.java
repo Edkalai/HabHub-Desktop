@@ -14,10 +14,15 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import services.AnnonceProprietaireChienService;
 import entities.AnnonceProprietaireChien;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javax.imageio.ImageIO;
+import static utils.Statics.imageDirectory;
 
 
 
@@ -63,13 +68,15 @@ public class ChienCardController implements Initializable {
    
    
 
-    public void setData(AnnonceProprietaireChien annonceProprietaireChien,CommunityListener communityListener) {
+    public void setData(AnnonceProprietaireChien annonceProprietaireChien,CommunityListener communityListener) throws IOException {
         this.annonceProprietaireChien = annonceProprietaireChien;
         this.communityListener=communityListener;
         nameLabel.setText(annonceProprietaireChien.getChien().getNom()+",");
         ageLabel.setText(annonceProprietaireChien.getChien().getAge());
         locationLabel.setText(annonceProprietaireChien.getLocalisation());
-        Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/chien/"+annonceProprietaireChien.getChien().getImage()+".png"));
+        File sourceimage = new File(imageDirectory+annonceProprietaireChien.getChien().getImage());
+                    Image image = SwingFXUtils.toFXImage(ImageIO.read(sourceimage), null);
+                    Image dogImg=image;
         dogImage.setImage(dogImg);
         Image genderImg = new Image(getClass().getResourceAsStream("../assets/img/female.png"));
         if ("M".equals(annonceProprietaireChien.getChien().getSexe())){

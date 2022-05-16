@@ -85,8 +85,8 @@ public class SignUpController implements Initializable {
             U.setEmail(email.getText());
                  U.setPassword(password.getText());
                  U.setNumTel(  Integer.parseInt(numtel.getText()));
-                 U.setType("individu");
-                 p.setNom(name.getText());
+                 U.setType("I");
+                 p.setPrenom(name.getText());
                  p.setUtilisateur(U);
 
                 i.ajouter(p, U);

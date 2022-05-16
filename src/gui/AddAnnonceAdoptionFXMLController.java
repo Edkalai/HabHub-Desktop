@@ -39,6 +39,7 @@ import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import services.AnnonceAdoptionService;
 import utils.Statics;
+import static utils.Statics.imageDirectory;
 
 public class AddAnnonceAdoptionFXMLController implements Initializable {
 
@@ -247,9 +248,9 @@ public class AddAnnonceAdoptionFXMLController implements Initializable {
                 String description = descriptionTextArea.getText();
                 String color = colorLabel.getText();
                 Statics.currentIndividu.getIdIndividu();
-                String image = Integer.toString(Statics.currentIndividu.getIdIndividu()) + "_" + Integer.toString(as.getAnnonceAdoptionNumberByIdIndividu(Statics.currentIndividu.getIdIndividu())+ 1);
-                File file = new File("C:\\Kaizen\\HabHub\\Habhub-desktop\\src\\assets\\img\\adoption\\"
-                + image + ".png");
+                String image = Integer.toString(Statics.currentIndividu.getIdIndividu()) + "_" + Integer.toString(as.getAnnonceAdoptionNumberByIdIndividu(Statics.currentIndividu.getIdIndividu())+ 1)+"_Adoption_"+".png";
+                File file = new File(imageDirectory
+                + image);
                 try {
                     ImageIO.write(SwingFXUtils.fromFXImage(dogImageView.getImage(), null), "png", file);
                 } catch (IOException e) {

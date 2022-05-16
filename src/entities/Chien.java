@@ -45,7 +45,7 @@ public class Chien {
 
     
 
-    public Chien(int idChien, Individu individu, String nom, String sexe, String age, Boolean vaccination, String description, String image, String color, String race, String groupe, int like, boolean playWithMe) {
+    public Chien(int idChien, Individu individu, String nom, String sexe, String age, Boolean vaccination, String description, String image, String color, String race, String groupe, boolean playWithMe) {
         this.idChien = idChien;
         this.individu = individu;
         this.nom = nom;
@@ -57,7 +57,6 @@ public class Chien {
         this.color = color;
         this.race = race;
         this.groupe = groupe;
-        this.like = like;
         this.playWithMe = playWithMe;
     }
                                                                         

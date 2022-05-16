@@ -114,7 +114,7 @@ public class DogListItemController implements Initializable {
         }
         nameLabel.setText(chien.getNom()+",");
         ageLabel.setText(chien.getAge());
-        Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/chien/"+chien.getImage()+".png"));
+        Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/chien/"+chien.getImage()));
         dogImage.setImage(dogImg);
         Image genderImg = new Image(getClass().getResourceAsStream("../assets/img/female.png"));
        

@@ -26,6 +26,13 @@ import javafx.scene.input.MouseEvent;
 import services.PanierService;
 import utils.Statics;
 import HabHub.Listen;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.embed.swing.SwingFXUtils;
+import javax.imageio.ImageIO;
+import static utils.Statics.imageDirectory;
 
 
 
@@ -86,8 +93,17 @@ public class ProduitFXMLController implements Initializable {
         Price.setText(s);
        
        
-               Image PImg = new Image(getClass().getResourceAsStream("../assets/img/produits/"+produit.getImage()+".jpg"));
-        ProdImage.setImage(PImg);
+        System.out.println(produit.getImage());
+        File sourceimage = new File(imageDirectory+produit.getImage());
+                    Image image;
+        try {
+            image = SwingFXUtils.toFXImage(ImageIO.read(sourceimage), null);
+            Image PImg=image;
+            ProdImage.setImage(PImg);
+        } catch (IOException ex) {
+            Logger.getLogger(BusinessFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+              
         
         System.out.println(this.produit.getIdCategorie());
         

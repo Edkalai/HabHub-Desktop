@@ -218,7 +218,7 @@ public class DogsNextDoorController implements Initializable {
        
         ownerNameLabel.setText(a.getIndividu().getPrenom());
 
-       Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/chien/"+a.getImage()+".png"));
+       Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/chien/"+a.getImage()));
        dogImage.setImage(dogImg);
 
     }

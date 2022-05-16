@@ -7,6 +7,7 @@ package gui;
 
 import HabHub.MyListener;
 import entities.AnnonceAdoption;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -18,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
@@ -38,8 +40,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 import services.AnnonceAdoptionService;
 import utils.Statics;
+import static utils.Statics.imageDirectory;
 
 
 /**
@@ -364,8 +368,17 @@ public class AnnonceAdoptionFXMLController implements Initializable {
         adoptionLocation.setText(a.getLocalisation());
         adoptionFosterName.setText(a.getIdIndividu().getPrenom());
         adoptionFosterAdress.setText(a.getIdIndividu().getAdresse());
-        Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/adoption/"+a.getIdChien().getImage()+".png"));
-        chienImg.setImage(dogImg);
+        
+         File sourceimage = new File(imageDirectory+a.getIdChien().getImage());
+                    Image image;
+        try {
+            image = SwingFXUtils.toFXImage(ImageIO.read(sourceimage), null);
+            Image dogImg=image;
+            chienImg.setImage(dogImg);
+        } catch (IOException ex) {
+            Logger.getLogger(DogsMatchupController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         
         /*chosenFruitCard.setStyle("-fx-background-color: #" + fruit.getColor() + ";\n" +
                 "    -fx-background-radius: 30;");*/

@@ -50,7 +50,7 @@ public class UserIndividuServices implements IIndividu {
         u.setIdUtilisateur(rst.getInt("idUtilisateur"));
         }
       
-        PreparedStatement pre = connect.prepareStatement("INSERT INTO individu (idUtilisateur,nom)VALUES (?,?);");
+        PreparedStatement pre = connect.prepareStatement("INSERT INTO individu (idUtilisateur,prenom)VALUES (?,?);");
         pre.setInt(1,u.getIdUtilisateur());      
         pre.setString(2, I.getPrenom());
        

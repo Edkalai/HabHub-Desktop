@@ -41,6 +41,12 @@ import services.ProduitService;
 import utils.MyDB;
 import utils.Statics;
 import HabHub.Listen;
+import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.embed.swing.SwingFXUtils;
+import javax.imageio.ImageIO;
+import static utils.Statics.imageDirectory;
 
 /**
  * FXML Controller class
@@ -234,8 +240,15 @@ public class BoutiqueFXMLController implements Initializable {
         this.chosenProduit = p;
         quantity.setText("1");
 
-        Image PImg = new Image(getClass().getResourceAsStream("../assets/img/produits/"+p.getImage()+".JPG"));
-        ProdImage.setImage(PImg);
+       File sourceimage = new File(imageDirectory+p.getImage());
+                    Image image;
+        try {
+            image = SwingFXUtils.toFXImage(ImageIO.read(sourceimage), null);
+            Image PImg=image;
+            ProdImage.setImage(PImg);
+        } catch (IOException ex) {
+            Logger.getLogger(BoutiqueFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
         nameLabel.setText(p.getNom());
         String s = Float.toString(p.getPrix());

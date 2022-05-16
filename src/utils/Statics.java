@@ -15,5 +15,6 @@ import entities.Individu;
 public class Statics {
 
     public static Individu currentIndividu = new Individu();
+    public static String imageDirectory="C:\\xampp\\htdocs\\HabHub-Website\\public\\FrontOffice\\uploads\\";
     
 }

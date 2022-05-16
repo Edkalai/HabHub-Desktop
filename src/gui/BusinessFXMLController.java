@@ -13,6 +13,7 @@ import entities.Reservation;
 import entities.Revue;
 import entities.ServiceBusiness;
 import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -24,8 +25,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,12 +52,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 import org.controlsfx.control.Rating;
 import services.ReservationServices;
 import services.RevueServices;
 import services.ServiceBusinessServices;
 import services.UserBusinessServices;
 import utils.Statics;
+import static utils.Statics.imageDirectory;
 
 /**
  * FXML Controller class
@@ -366,8 +372,16 @@ public class BusinessFXMLController implements Initializable {
 
        // Image businessImg = new Image(getClass().getResourceAsStream("../assets/img/business/dynamic/16.png"));
 
-        Image businessImg = new Image(getClass().getResourceAsStream("../assets/img/business/dynamic/"+b.getImage()+".png"));
-        businessImage.setImage(businessImg);
+        File sourceimage = new File(imageDirectory+b.getImage());
+                    Image image;
+        try {
+            image = SwingFXUtils.toFXImage(ImageIO.read(sourceimage), null);
+            Image businessImg=image;
+            businessImage.setImage(businessImg);
+        } catch (IOException ex) {
+            Logger.getLogger(BusinessFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         businessTitleLabel.setText(b.getTitre());
         businessLocationLabel.setText(b.getVille());
         businessDecriptionLabel.setText(b.getDescription());

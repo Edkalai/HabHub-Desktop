@@ -9,6 +9,7 @@ import HabHub.CommunityListener;
 import HabHub.DogItemListener;
 import entities.AnnonceProprietaireChien;
 import entities.Chien;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -19,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,9 +39,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 import services.AnnonceProprietaireChienService;
 import services.ChienService;
 import utils.Statics;
+import static utils.Statics.imageDirectory;
 
 /**
  * FXML Controller class
@@ -276,7 +280,7 @@ public class MyDogsController implements Initializable {
 
     }
 
-    private void setChosenChien(Chien a) throws SQLException {
+    private void setChosenChien(Chien a) throws SQLException, IOException {
         if (as.checkDog(a.getIdChien(),"P")){
             missingButton.setStyle("-fx-background-color: #FFEEE8; "
                     + "-fx-border-color:#E0642C;"
@@ -335,8 +339,11 @@ public class MyDogsController implements Initializable {
         ownerLocationLabel.setText(Statics.currentIndividu.getAdresse());
         ownerNameLabel.setText(Statics.currentIndividu.getPrenom());
 
-        Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/chien/" + a.getImage() + ".png"));
+      File sourceimage = new File(imageDirectory+a.getImage());
+                    Image image = SwingFXUtils.toFXImage(ImageIO.read(sourceimage), null);
+                    Image dogImg=image;
         dogImage.setImage(dogImg);
+        
 
     }
 
@@ -352,6 +359,8 @@ public class MyDogsController implements Initializable {
                     try {
                         setChosenChien(chien);
                     } catch (SQLException ex) {
+                        Logger.getLogger(MyDogsController.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
                         Logger.getLogger(MyDogsController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
@@ -398,6 +407,8 @@ public class MyDogsController implements Initializable {
             try {
                 setChosenChien(data.get(0));
             } catch (SQLException ex) {
+                Logger.getLogger(MyDogsController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
                 Logger.getLogger(MyDogsController.class.getName()).log(Level.SEVERE, null, ex);
             }
 

@@ -196,7 +196,7 @@ public class ChienService {
         while (rst.next()) {
             Individu i = new Individu(rst.getInt(2));
             Chien c = new Chien(rst.getInt("idChien"), i, rst.getString("nom"), rst.getString("sexe"), rst.getString("age"), rst.getBoolean("vaccination"),
-                     rst.getString("description"), rst.getString("image"), rst.getString("color"), rst.getString("race"), rst.getString("groupe"),rst.getInt("likeNumber"),rst.getBoolean("playWithMe"));
+                     rst.getString("description"), rst.getString("image"), rst.getString("color"), rst.getString("race"), rst.getString("groupe"),rst.getBoolean("playWithMe"));
             chiens.add(c);
         }
         return chiens;
@@ -218,7 +218,7 @@ public class ChienService {
                     rst.getString("facebook"),rst.getString("instagram"),rst.getString("whatsapp"),rst.getBoolean("proprietaireChien"));
                     
             Chien c = new Chien(rst.getInt("idChien"), i, rst.getString("nom"), rst.getString("sexe"), rst.getString("age"), rst.getBoolean("vaccination"),
-                     rst.getString("description"), rst.getString("image"), rst.getString("color"), rst.getString("race"), rst.getString("groupe"),rst.getInt("likeNumber"),rst.getBoolean("playWithMe"));
+                     rst.getString("description"), rst.getString("image"), rst.getString("color"), rst.getString("race"), rst.getString("groupe"),rst.getBoolean("playWithMe"));
             chiens.add(c);
         }
         return chiens;

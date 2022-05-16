@@ -7,16 +7,20 @@ package gui;
 
 import HabHub.CommunityListener;
 import entities.AnnonceProprietaireChien;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,8 +41,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 import services.AnnonceProprietaireChienService;
 import utils.Statics;
+import static utils.Statics.imageDirectory;
 
 /**
  * FXML Controller class
@@ -229,8 +235,15 @@ public class DogsMatchupController implements Initializable {
 
         ownerNameLabel.setText(a.getChien().getIndividu().getPrenom());
 
-        Image dogImg = new Image(getClass().getResourceAsStream("../assets/img/chien/" + a.getChien().getImage() + ".png"));
-        dogImage.setImage(dogImg);
+         File sourceimage = new File(imageDirectory+a.getChien().getImage());
+                    Image image;
+        try {
+            image = SwingFXUtils.toFXImage(ImageIO.read(sourceimage), null);
+            Image dogImg=image;
+            dogImage.setImage(dogImg);
+        } catch (IOException ex) {
+            Logger.getLogger(DogsMatchupController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 

@@ -33,6 +33,7 @@ import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import services.UserIndividuServices;
 import utils.Statics;
+import static utils.Statics.imageDirectory;
 
 public class AddDogController implements Initializable {
 
@@ -233,9 +234,9 @@ public class AddDogController implements Initializable {
         String description = descriptionTextArea.getText();
         String color = colorLabel.getText();
         Statics.currentIndividu.getIdIndividu();
-        String image = Integer.toString(Statics.currentIndividu.getIdIndividu()) + "_" + Integer.toString(uis.getDogsNumberByIdIndividu(Statics.currentIndividu.getIdIndividu()) + 1);
-        File file = new File("C:\\Kaizen\\HabHub\\Habhub-desktop\\src\\assets\\img\\chien\\"
-                + image + ".png");
+        String image = Integer.toString(Statics.currentIndividu.getIdIndividu()) + "_" + Integer.toString(uis.getDogsNumberByIdIndividu(Statics.currentIndividu.getIdIndividu()) + 1)+"_"+"hub"
+                +".png";
+        File file = new File(imageDirectory+ image);
         try {
             ImageIO.write(SwingFXUtils.fromFXImage(dogImageView.getImage(), null), "png", file);
         } catch (IOException e) {
